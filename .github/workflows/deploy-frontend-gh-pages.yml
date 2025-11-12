@@ -18,10 +18,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Use Node.js 20
+      - name: Use Node.js 20.19.5 (ensure >= 20.19)
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '20.19.5'
           cache: 'npm'
 
       - name: Install dependencies
@@ -32,6 +32,19 @@ jobs:
         # use a relative base href so the site works on project pages and local file preview
         run: npx ng build --configuration production --base-href ./
         working-directory: frontend/repute-frontend
+
+      - name: Verify build output exists
+        run: |
+          echo "Checking build output folder: frontend/repute-frontend/dist/repute-frontend"
+          if [ -d "frontend/repute-frontend/dist/repute-frontend" ]; then
+            echo "Build output found. Listing contents:"
+            ls -la frontend/repute-frontend/dist/repute-frontend
+          else
+            echo "ERROR: build output not found at frontend/repute-frontend/dist/repute-frontend"
+            echo "Listing dist dir for debugging:"
+            ls -la frontend/repute-frontend/dist || true
+            exit 1
+          fi
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
