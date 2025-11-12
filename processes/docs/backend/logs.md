@@ -196,4 +196,3 @@ management:
 * Avoid heavy synchronous appenders. Use async.
 * Don’t log secrets.
 
-If you want, I’ll generate the exact three files to drop in: `logback-spring.xml`, `RequestCorrelationFilter.java`, and a `Mask` util. Which one first?
