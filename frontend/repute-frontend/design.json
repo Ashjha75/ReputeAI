@@ -1,0 +1,656 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "ReputeAI Design System",
+  "version": "1.0.0",
+  "description": "Complete design system for ReputeAI - AI-Powered Digital Footprint Management Platform",
+  "lastUpdated": "2025-11-12",
+  
+  "colors": {
+    "description": "Color palette combining Tailwind and Angular Material design tokens",
+    "primary": {
+      "name": "Primary Blue",
+      "usage": "Main brand color, primary actions, links",
+      "tailwind": "blue-600",
+      "hex": "#2563eb",
+      "rgb": "rgb(37, 99, 235)",
+      "materialVariable": "var(--mat-sys-primary)",
+      "shades": {
+        "50": "#ebf3ff",
+        "100": "#dbe9ff",
+        "200": "#bcd7ff",
+        "300": "#9cc3ff",
+        "400": "#6fa8ff",
+        "500": "#3f8fff",
+        "600": "#2563eb",
+        "700": "#1a4db4",
+        "800": "#133a88",
+        "900": "#0b2658"
+      }
+    },
+    "secondary": {
+      "name": "Emerald Green",
+      "usage": "Success states, positive actions, confirmations",
+      "tailwind": "emerald-500",
+      "hex": "#10b981",
+      "rgb": "rgb(16, 185, 129)",
+      "materialVariable": "var(--mat-sys-secondary)"
+    },
+    "accent": {
+      "name": "Violet Purple",
+      "usage": "Highlights, special features, premium indicators",
+      "tailwind": "violet-500",
+      "hex": "#8b5cf6",
+      "rgb": "rgb(139, 92, 246)",
+      "materialVariable": "var(--mat-sys-tertiary)"
+    },
+    "semantic": {
+      "success": {
+        "color": "#10b981",
+        "tailwind": "emerald-500",
+        "usage": "Successful operations, positive feedback"
+      },
+      "warning": {
+        "color": "#f59e0b",
+        "tailwind": "amber-500",
+        "usage": "Warnings, medium risk alerts"
+      },
+      "error": {
+        "color": "#ef4444",
+        "tailwind": "red-500",
+        "usage": "Errors, critical issues, high risk"
+      },
+      "info": {
+        "color": "#3b82f6",
+        "tailwind": "blue-500",
+        "usage": "Informational messages, tips"
+      }
+    },
+    "neutral": {
+      "white": "#ffffff",
+      "gray": {
+        "50": "#f8fafc",
+        "100": "#f1f5f9",
+        "200": "#e2e8f0",
+        "300": "#cbd5e1",
+        "400": "#94a3b8",
+        "500": "#64748b",
+        "600": "#475569",
+        "700": "#334155",
+        "800": "#1e293b",
+        "900": "#0f172a"
+      },
+      "black": "#000000"
+    },
+    "background": {
+      "light": "#f8fafc",
+      "card": "#ffffff",
+      "elevated": "#ffffff",
+      "materialVariable": "var(--mat-sys-surface)"
+    },
+    "text": {
+      "primary": "#0f172a",
+      "secondary": "#475569",
+      "disabled": "#94a3b8",
+      "inverse": "#ffffff",
+      "materialVariable": "var(--mat-sys-on-surface)"
+    }
+  },
+
+  "typography": {
+    "description": "Typography system using Roboto font family (Material Design standard)",
+    "fontFamily": {
+      "primary": "Roboto, 'Helvetica Neue', Arial, sans-serif",
+      "monospace": "'Roboto Mono', 'Courier New', monospace",
+      "materialVariable": "var(--mat-sys-body-medium)"
+    },
+    "fontWeights": {
+      "light": 300,
+      "regular": 400,
+      "medium": 500,
+      "bold": 700
+    },
+    "scale": {
+      "display": {
+        "large": {
+          "size": "3.5rem",
+          "lineHeight": "1.2",
+          "weight": 700,
+          "usage": "Hero sections, landing pages",
+          "tailwind": "text-7xl font-bold"
+        },
+        "medium": {
+          "size": "2.25rem",
+          "lineHeight": "1.3",
+          "weight": 700,
+          "usage": "Page titles, major sections",
+          "tailwind": "text-4xl font-bold"
+        },
+        "small": {
+          "size": "1.875rem",
+          "lineHeight": "1.4",
+          "weight": 700,
+          "usage": "Section headers",
+          "tailwind": "text-3xl font-bold"
+        }
+      },
+      "headline": {
+        "large": {
+          "size": "1.5rem",
+          "lineHeight": "1.5",
+          "weight": 500,
+          "usage": "Card titles, dialog titles",
+          "tailwind": "text-2xl font-medium"
+        },
+        "medium": {
+          "size": "1.25rem",
+          "lineHeight": "1.5",
+          "weight": 500,
+          "usage": "Subsection titles",
+          "tailwind": "text-xl font-medium"
+        },
+        "small": {
+          "size": "1.125rem",
+          "lineHeight": "1.5",
+          "weight": 500,
+          "usage": "List headers, small card titles",
+          "tailwind": "text-lg font-medium"
+        }
+      },
+      "body": {
+        "large": {
+          "size": "1rem",
+          "lineHeight": "1.75",
+          "weight": 400,
+          "usage": "Main content, paragraphs",
+          "tailwind": "text-base"
+        },
+        "medium": {
+          "size": "0.875rem",
+          "lineHeight": "1.5",
+          "weight": 400,
+          "usage": "Secondary content, descriptions",
+          "tailwind": "text-sm"
+        },
+        "small": {
+          "size": "0.75rem",
+          "lineHeight": "1.5",
+          "weight": 400,
+          "usage": "Captions, labels, metadata",
+          "tailwind": "text-xs"
+        }
+      },
+      "label": {
+        "large": {
+          "size": "0.875rem",
+          "lineHeight": "1.5",
+          "weight": 500,
+          "usage": "Form labels, button text",
+          "tailwind": "text-sm font-medium"
+        },
+        "medium": {
+          "size": "0.75rem",
+          "lineHeight": "1.5",
+          "weight": 500,
+          "usage": "Small buttons, chips",
+          "tailwind": "text-xs font-medium"
+        }
+      }
+    }
+  },
+
+  "spacing": {
+    "description": "Consistent spacing scale using Tailwind's default 4px base unit",
+    "scale": {
+      "0": "0px",
+      "1": "0.25rem",
+      "2": "0.5rem",
+      "3": "0.75rem",
+      "4": "1rem",
+      "5": "1.25rem",
+      "6": "1.5rem",
+      "8": "2rem",
+      "10": "2.5rem",
+      "12": "3rem",
+      "16": "4rem",
+      "20": "5rem",
+      "24": "6rem"
+    },
+    "semantic": {
+      "componentPadding": {
+        "small": "0.5rem",
+        "medium": "1rem",
+        "large": "1.5rem",
+        "tailwind": "p-2, p-4, p-6"
+      },
+      "sectionSpacing": {
+        "small": "2rem",
+        "medium": "3rem",
+        "large": "4rem",
+        "tailwind": "space-y-8, space-y-12, space-y-16"
+      },
+      "gridGap": {
+        "small": "1rem",
+        "medium": "1.5rem",
+        "large": "2rem",
+        "tailwind": "gap-4, gap-6, gap-8"
+      }
+    }
+  },
+
+  "borderRadius": {
+    "description": "Border radius scale for component corners",
+    "scale": {
+      "none": "0px",
+      "sm": "0.125rem",
+      "default": "0.25rem",
+      "md": "0.375rem",
+      "lg": "0.5rem",
+      "xl": "0.75rem",
+      "2xl": "1rem",
+      "3xl": "1.5rem",
+      "full": "9999px"
+    },
+    "components": {
+      "button": "0.375rem",
+      "card": "0.5rem",
+      "input": "0.375rem",
+      "dialog": "0.75rem",
+      "chip": "9999px"
+    }
+  },
+
+  "shadows": {
+    "description": "Elevation system following Material Design principles",
+    "levels": {
+      "none": "none",
+      "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+      "default": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+      "md": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+      "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+      "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+      "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)"
+    },
+    "materialElevation": {
+      "level1": "var(--mat-sys-elevation-1)",
+      "level2": "var(--mat-sys-elevation-2)",
+      "level3": "var(--mat-sys-elevation-3)",
+      "level4": "var(--mat-sys-elevation-4)",
+      "level5": "var(--mat-sys-elevation-5)"
+    }
+  },
+
+  "animations": {
+    "description": "Animation system for smooth, delightful interactions",
+    "duration": {
+      "fast": "150ms",
+      "normal": "300ms",
+      "slow": "500ms",
+      "verySlow": "700ms"
+    },
+    "easing": {
+      "standard": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+      "decelerate": "cubic-bezier(0.0, 0.0, 0.2, 1)",
+      "accelerate": "cubic-bezier(0.4, 0.0, 1, 1)",
+      "sharp": "cubic-bezier(0.4, 0.0, 0.6, 1)"
+    },
+    "transitions": {
+      "fadeIn": {
+        "duration": "300ms",
+        "easing": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+        "css": "transition: opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+        "tailwind": "transition-opacity duration-300 ease-in-out"
+      },
+      "slideUp": {
+        "duration": "300ms",
+        "easing": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+        "css": "transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+        "tailwind": "transition-transform duration-300 ease-in-out"
+      },
+      "scale": {
+        "duration": "200ms",
+        "easing": "cubic-bezier(0.4, 0.0, 0.2, 1)",
+        "css": "transition: transform 200ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+        "tailwind": "transition-transform duration-200 ease-in-out hover:scale-105"
+      }
+    },
+    "keyframes": {
+      "pulse": "animate-pulse",
+      "bounce": "animate-bounce",
+      "spin": "animate-spin",
+      "ping": "animate-ping"
+    }
+  },
+
+  "icons": {
+    "description": "Material Icons usage guidelines",
+    "source": "https://fonts.googleapis.com/icon?family=Material+Icons",
+    "sizes": {
+      "small": "18px",
+      "medium": "24px",
+      "large": "36px",
+      "xlarge": "48px"
+    },
+    "usage": {
+      "navigation": ["home", "menu", "arrow_back", "arrow_forward", "close"],
+      "actions": ["add", "edit", "delete", "save", "check", "cancel"],
+      "status": ["check_circle", "error", "warning", "info", "verified_user"],
+      "social": ["public", "person", "group", "share", "favorite"],
+      "content": ["filter_list", "search", "sort", "visibility", "download"]
+    },
+    "materialComponent": "<mat-icon>icon_name</mat-icon>",
+    "cssClass": "material-icons",
+    "colors": {
+      "default": "currentColor",
+      "primary": "text-primary",
+      "success": "text-emerald-500",
+      "warning": "text-amber-500",
+      "error": "text-red-500"
+    }
+  },
+
+  "components": {
+    "description": "Component design specifications using Angular Material",
+    "buttons": {
+      "variants": {
+        "primary": {
+          "material": "mat-raised-button",
+          "color": "primary",
+          "usage": "Primary actions, main CTAs",
+          "example": "<button mat-raised-button color=\"primary\">Action</button>",
+          "tailwind": "bg-primary text-white hover:bg-primary-700"
+        },
+        "secondary": {
+          "material": "mat-stroked-button",
+          "color": "primary",
+          "usage": "Secondary actions",
+          "example": "<button mat-stroked-button color=\"primary\">Action</button>",
+          "tailwind": "border border-primary text-primary hover:bg-primary-50"
+        },
+        "text": {
+          "material": "mat-button",
+          "color": "primary",
+          "usage": "Tertiary actions, less emphasis",
+          "example": "<button mat-button color=\"primary\">Action</button>",
+          "tailwind": "text-primary hover:bg-primary-50"
+        },
+        "icon": {
+          "material": "mat-icon-button",
+          "usage": "Icon-only actions",
+          "example": "<button mat-icon-button><mat-icon>close</mat-icon></button>",
+          "tailwind": "p-2 rounded-full hover:bg-gray-100"
+        },
+        "fab": {
+          "material": "mat-fab",
+          "color": "primary",
+          "usage": "Floating action button for primary actions",
+          "example": "<button mat-fab color=\"primary\"><mat-icon>add</mat-icon></button>"
+        }
+      },
+      "sizes": {
+        "small": "mat-button-sm or custom class: py-1 px-3 text-sm",
+        "medium": "default Material button size",
+        "large": "mat-button-lg or custom class: py-3 px-6 text-lg"
+      },
+      "states": {
+        "hover": "Subtle background change, elevation increase",
+        "active": "Pressed state with darker color",
+        "disabled": "Reduced opacity, no pointer events",
+        "loading": "Show spinner, disable interaction"
+      }
+    },
+    "cards": {
+      "material": "mat-card",
+      "structure": {
+        "header": "mat-card-header",
+        "title": "mat-card-title",
+        "subtitle": "mat-card-subtitle",
+        "content": "mat-card-content",
+        "actions": "mat-card-actions"
+      },
+      "example": "<mat-card>\n  <mat-card-header>\n    <mat-card-title>Title</mat-card-title>\n  </mat-card-header>\n  <mat-card-content>Content</mat-card-content>\n</mat-card>",
+      "tailwind": "bg-white rounded-lg shadow-md p-6",
+      "variants": {
+        "default": "shadow-md",
+        "elevated": "shadow-lg hover:shadow-xl transition-shadow",
+        "outlined": "border border-gray-200 shadow-none"
+      }
+    },
+    "forms": {
+      "material": "mat-form-field",
+      "variants": {
+        "fill": {
+          "appearance": "fill",
+          "usage": "Default form field style",
+          "example": "<mat-form-field appearance=\"fill\"><input matInput></mat-form-field>"
+        },
+        "outline": {
+          "appearance": "outline",
+          "usage": "More prominent, better for complex forms",
+          "example": "<mat-form-field appearance=\"outline\"><input matInput></mat-form-field>"
+        }
+      },
+      "inputs": {
+        "text": "matInput directive on input/textarea",
+        "select": "mat-select component",
+        "checkbox": "mat-checkbox component",
+        "radio": "mat-radio-group and mat-radio-button",
+        "slider": "mat-slider component",
+        "toggle": "mat-slide-toggle component"
+      },
+      "validation": {
+        "error": "mat-error element for error messages",
+        "hint": "mat-hint element for helper text",
+        "required": "required attribute + matInput"
+      }
+    },
+    "navigation": {
+      "toolbar": {
+        "material": "mat-toolbar",
+        "color": "primary",
+        "example": "<mat-toolbar color=\"primary\"><span>ReputeAI</span></mat-toolbar>",
+        "tailwind": "bg-primary text-white shadow-md"
+      },
+      "sidenav": {
+        "material": "mat-sidenav-container, mat-sidenav",
+        "modes": ["over", "push", "side"],
+        "example": "<mat-sidenav-container><mat-sidenav mode=\"side\">Nav</mat-sidenav></mat-sidenav-container>"
+      },
+      "tabs": {
+        "material": "mat-tab-group, mat-tab",
+        "example": "<mat-tab-group><mat-tab label=\"Tab 1\">Content</mat-tab></mat-tab-group>"
+      },
+      "menu": {
+        "material": "mat-menu",
+        "trigger": "matMenuTriggerFor",
+        "example": "<button mat-button [matMenuTriggerFor]=\"menu\">Menu</button>\n<mat-menu #menu><button mat-menu-item>Item</button></mat-menu>"
+      }
+    },
+    "feedback": {
+      "dialog": {
+        "material": "MatDialog service",
+        "usage": "Modal dialogs for important information or forms",
+        "example": "this.dialog.open(DialogComponent, { data: {} })"
+      },
+      "snackbar": {
+        "material": "MatSnackBar service",
+        "usage": "Toast notifications for feedback",
+        "example": "this.snackbar.open('Message', 'Action', { duration: 3000 })"
+      },
+      "progressBar": {
+        "material": "mat-progress-bar",
+        "modes": ["determinate", "indeterminate"],
+        "example": "<mat-progress-bar mode=\"indeterminate\"></mat-progress-bar>"
+      },
+      "spinner": {
+        "material": "mat-progress-spinner",
+        "usage": "Loading states",
+        "example": "<mat-progress-spinner mode=\"indeterminate\"></mat-progress-spinner>"
+      }
+    },
+    "dataDisplay": {
+      "table": {
+        "material": "mat-table",
+        "features": ["Sorting", "Pagination", "Filtering"],
+        "example": "<mat-table [dataSource]=\"data\"><ng-container matColumnDef=\"name\"></ng-container></mat-table>"
+      },
+      "list": {
+        "material": "mat-list, mat-list-item",
+        "variants": ["Simple list", "List with icons", "Multi-line list"],
+        "example": "<mat-list><mat-list-item>Item</mat-list-item></mat-list>"
+      },
+      "chips": {
+        "material": "mat-chip-set, mat-chip",
+        "usage": "Tags, filters, selected items",
+        "example": "<mat-chip-set><mat-chip>Tag</mat-chip></mat-chip-set>"
+      },
+      "badge": {
+        "material": "matBadge directive",
+        "usage": "Notification counts, status indicators",
+        "example": "<button mat-icon-button matBadge=\"3\"><mat-icon>notifications</mat-icon></button>"
+      }
+    }
+  },
+
+  "layouts": {
+    "description": "Layout patterns and grid systems",
+    "container": {
+      "maxWidth": "1280px",
+      "padding": "1rem",
+      "tailwind": "max-w-7xl mx-auto px-4"
+    },
+    "grid": {
+      "columns": {
+        "mobile": 4,
+        "tablet": 8,
+        "desktop": 12
+      },
+      "gap": "1.5rem",
+      "tailwind": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    },
+    "breakpoints": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1536px"
+    },
+    "patterns": {
+      "dashboard": {
+        "structure": "Sidebar + Main content",
+        "sidebar": "256px fixed width on desktop",
+        "content": "Flexible with max-width constraint"
+      },
+      "list-detail": {
+        "structure": "List view + Detail panel",
+        "split": "1/3 - 2/3 on desktop, stacked on mobile"
+      },
+      "centered": {
+        "structure": "Centered card with max-width",
+        "maxWidth": "600px",
+        "usage": "Login, forms, focused content"
+      }
+    }
+  },
+
+  "accessibility": {
+    "description": "Accessibility standards and requirements",
+    "wcag": "2.1 Level AA",
+    "colorContrast": {
+      "normalText": "4.5:1 minimum",
+      "largeText": "3:1 minimum",
+      "interactive": "3:1 minimum"
+    },
+    "focus": {
+      "indicator": "2px solid primary color with 2px offset",
+      "tailwind": "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+    },
+    "aria": {
+      "labels": "All interactive elements must have accessible labels",
+      "roles": "Use semantic HTML and ARIA roles when necessary",
+      "live": "Use aria-live for dynamic content updates"
+    },
+    "keyboard": {
+      "navigation": "All interactive elements keyboard accessible",
+      "shortcuts": "Document keyboard shortcuts",
+      "focus": "Visible focus indicators on all interactive elements"
+    }
+  },
+
+  "implementation": {
+    "description": "Implementation guidelines and best practices",
+    "imports": {
+      "material": [
+        "import { MatButtonModule } from '@angular/material/button';",
+        "import { MatCardModule } from '@angular/material/card';",
+        "import { MatIconModule } from '@angular/material/icon';",
+        "import { MatFormFieldModule } from '@angular/material/form-field';",
+        "import { MatInputModule } from '@angular/material/input';"
+      ],
+      "tailwind": "Import automatically via styles.css with @tailwind directives"
+    },
+    "bestPractices": {
+      "materialFirst": "Always use Angular Material components when available",
+      "tailwindUtilities": "Use Tailwind for spacing, sizing, colors when Material doesn't provide",
+      "consistency": "Follow design tokens consistently across all components",
+      "responsiveness": "Mobile-first responsive design",
+      "performance": "Lazy load Material modules, optimize Tailwind with purge",
+      "accessibility": "Test with screen readers, keyboard navigation"
+    },
+    "fileStructure": {
+      "theme": "src/custom-theme.scss - Material theme configuration",
+      "global": "src/styles.css - Tailwind directives and global styles",
+      "config": "tailwind.config.cjs - Tailwind configuration with design tokens"
+    }
+  },
+
+  "examples": {
+    "description": "Common component usage examples",
+    "primaryButton": "<button mat-raised-button color=\"primary\" class=\"px-6\">Get Started</button>",
+    "iconButton": "<button mat-icon-button class=\"text-gray-600\"><mat-icon>close</mat-icon></button>",
+    "inputField": "<mat-form-field appearance=\"outline\" class=\"w-full\">\n  <mat-label>Email</mat-label>\n  <input matInput type=\"email\" required>\n  <mat-error>Valid email required</mat-error>\n</mat-form-field>",
+    "card": "<mat-card class=\"shadow-md hover:shadow-lg transition-shadow\">\n  <mat-card-header>\n    <mat-card-title class=\"text-xl font-medium\">Risk Score</mat-card-title>\n  </mat-card-header>\n  <mat-card-content class=\"pt-4\">\n    <p class=\"text-3xl font-bold text-primary\">85</p>\n  </mat-card-content>\n</mat-card>",
+    "statusChip": "<mat-chip class=\"bg-emerald-100 text-emerald-800\">Active</mat-chip>",
+    "notification": "this.snackBar.open('Profile updated successfully', 'Close', {\n  duration: 3000,\n  horizontalPosition: 'end',\n  verticalPosition: 'top',\n  panelClass: ['success-snackbar']\n});"
+  },
+
+  "riskLevelColors": {
+    "description": "Specific color scheme for ReputeAI risk scoring system",
+    "low": {
+      "score": "0-49",
+      "color": "#10b981",
+      "background": "#d1fae5",
+      "tailwind": "text-emerald-600 bg-emerald-100",
+      "icon": "check_circle"
+    },
+    "medium": {
+      "score": "50-69",
+      "color": "#f59e0b",
+      "background": "#fef3c7",
+      "tailwind": "text-amber-600 bg-amber-100",
+      "icon": "warning"
+    },
+    "high": {
+      "score": "70-89",
+      "color": "#f97316",
+      "background": "#ffedd5",
+      "tailwind": "text-orange-600 bg-orange-100",
+      "icon": "error"
+    },
+    "critical": {
+      "score": "90-100",
+      "color": "#ef4444",
+      "background": "#fee2e2",
+      "tailwind": "text-red-600 bg-red-100",
+      "icon": "dangerous"
+    }
+  },
+
+  "platformColors": {
+    "description": "Brand colors for social platforms",
+    "twitter": "#1DA1F2",
+    "linkedin": "#0077B5",
+    "github": "#181717",
+    "reddit": "#FF4500",
+    "stackoverflow": "#F48024"
+  }
+}
