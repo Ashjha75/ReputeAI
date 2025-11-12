@@ -1,5 +1,10 @@
-/* src/styles.css */
-/* Your global styles below */
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f8fafc; }
 
