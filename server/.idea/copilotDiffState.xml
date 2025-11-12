@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/reputeai/.dockerignore">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/reputeai/.dockerignore" />
+              <option name="originalContent" value="target/&#10;**/target/&#10;.mvn/&#10;.mvnw&#10;.mvnw.cmd&#10;.idea/&#10;*.iml&#10;*.log&#10;.DS_Store&#10;.git&#10;&#10;" />
+              <option name="updatedContent" value="target/&#10;**/target/&#10;.idea/&#10;*.iml&#10;*.log&#10;.DS_Store&#10;.git" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
