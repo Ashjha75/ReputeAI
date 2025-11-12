@@ -2,11 +2,13 @@
 <module version="4">
   <component name="AdditionalModuleElements">
     <content url="file://$MODULE_DIR$/server/ReputeAI" />
+    <content url="file://$MODULE_DIR$/server/ReputeAI/.idea" />
+    <content url="file://$MODULE_DIR$/server/ReputeAI/.mvn" />
+    <content url="file://$MODULE_DIR$/server/ReputeAI/src" />
     <content url="file://$MODULE_DIR$" dumb="true">
+      <sourceFolder url="file://$MODULE_DIR$/server" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/server/ReputeAI" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/server/ReputeAI/src" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/frontend" />
-      <excludeFolder url="file://$MODULE_DIR$/processes" />
     </content>
   </component>
 </module>
