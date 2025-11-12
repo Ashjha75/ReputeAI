@@ -23,9 +23,19 @@ jobs:
         with:
           node-version: '20.19.5'
           cache: 'npm'
+          # point cache lookup to the frontend app lockfile so caching works when the lockfile is present
+          cache-dependency-path: frontend/repute-frontend/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        # use npm ci when a lockfile exists, otherwise fallback to npm install
+        run: |
+          if [ -f frontend/repute-frontend/package-lock.json ]; then
+            echo "Found package-lock.json — running npm ci"
+            npm ci
+          else
+            echo "No package-lock.json found — running npm install (consider committing a lockfile for reproducible builds)"
+            npm install
+          fi
         working-directory: frontend/repute-frontend
 
       - name: Build (production, relative base-href)
