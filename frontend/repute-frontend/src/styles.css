@@ -1,9 +1,17 @@
-/* src/styles.scss */
+/* src/styles.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Your global styles below *//* You can add global styles to this file, and also import other style files */
+/* Global variables and color system using Tailwind tokens */
+:root {
+	--color-primary: theme('colors.primary.DEFAULT');
+	--color-on-primary: #ffffff;
+}
 
+/* Your global styles below */
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f8fafc; }
+
+/* Material icons helper */
+.material-icon { font-family: 'Material Icons'; }
