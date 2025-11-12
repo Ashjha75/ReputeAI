@@ -11,6 +11,12 @@ jobs:
   build-and-deploy:
     name: Build and deploy
     runs-on: ubuntu-latest
+    # Add permissions to allow the default GITHUB_TOKEN to write to the repository
+    # This fixes the "Permission denied" error during git push.
+    permissions:
+      contents: write
+      pages: write # optional, but good practice for GitHub Pages actions
+      id-token: write # required if using OIDC to authenticate with a different service
 
     steps:
       - name: Checkout repository
@@ -23,11 +29,9 @@ jobs:
         with:
           node-version: '20.19.5'
           cache: 'npm'
-          # point cache lookup to the frontend app lockfile so caching works when the lockfile is present
           cache-dependency-path: frontend/repute-frontend/package-lock.json
 
       - name: Install dependencies
-        # use npm ci when a lockfile exists, otherwise fallback to npm install
         run: |
           if [ -f frontend/repute-frontend/package-lock.json ]; then
             echo "Found package-lock.json — running npm ci"
@@ -39,27 +43,29 @@ jobs:
         working-directory: frontend/repute-frontend
 
       - name: Build (production, relative base-href)
-        # use a relative base href so the site works on project pages and local file preview
+        # Assuming you have migrated to the 'application' builder, 
+        # the output path will now be in dist/repute-frontend/browser
         run: npx ng build --configuration production --base-href ./
         working-directory: frontend/repute-frontend
 
-      - name: Verify build output exists
+      - name: Verify build output exists (Updated for latest Angular)
+        # The key update: checking for the 'browser' sub-directory.
         run: |
-          echo "Checking build output folder: frontend/repute-frontend/dist/repute-frontend"
-          if [ -d "frontend/repute-frontend/dist/repute-frontend" ]; then
+          BUILD_PATH="frontend/repute-frontend/dist/repute-frontend/browser"
+          echo "Checking build output folder: $BUILD_PATH"
+          if [ -d "$BUILD_PATH" ]; then
             echo "Build output found. Listing contents:"
-            ls -la frontend/repute-frontend/dist/repute-frontend
+            ls -la "$BUILD_PATH"
           else
-            echo "ERROR: build output not found at frontend/repute-frontend/dist/repute-frontend"
-            echo "Listing dist dir for debugging:"
-            ls -la frontend/repute-frontend/dist || true
+            echo "ERROR: build output not found at $BUILD_PATH"
+            ls -la frontend/repute-frontend/dist/repute-frontend || true
             exit 1
           fi
-
-      - name: Deploy to GitHub Pages
+      
+      - name: Deploy to GitHub Pages (Updated publish_dir)
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/repute-frontend/dist/repute-frontend
-          # optional: set user name & email for commit created by the action
+          # KEY CHANGE: Append '/browser' to the publish_dir path
+          publish_dir: ./frontend/repute-frontend/dist/repute-frontend/browser
           commit_message: 'chore(gh-pages): deploy from ${{ github.ref }}'
