@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh": "ng build --configuration production --base-href ./",
+    "deploy": "npm run build:gh && npx angular-cli-ghpages --dir=dist/repute-frontend",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:repute-frontend": "node dist/repute-frontend/server/server.mjs"
