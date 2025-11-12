@@ -1,0 +1,42 @@
+name: Deploy front-end to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - dev_v1
+      - 'release/**'
+
+jobs:
+  build-and-deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: frontend/repute-frontend
+
+      - name: Build (production, relative base-href)
+        # use a relative base href so the site works on project pages and local file preview
+        run: npx ng build --configuration production --base-href ./
+        working-directory: frontend/repute-frontend
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frontend/repute-frontend/dist/repute-frontend
+          # optional: set user name & email for commit created by the action
+          commit_message: 'chore(gh-pages): deploy from ${{ github.ref }}'
