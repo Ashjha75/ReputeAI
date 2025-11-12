@@ -1,4 +1,4 @@
-Here’s a focused, practical checklist for the **backend coding** work you need to deliver ReputeAI. It’s ordered from essentials a 2-year dev must know through mid-level production practices. Each item is short, actionable, and includes recommended libraries/config and one-line why it matters.
+
 
 # Core stack & versions
 
@@ -242,9 +242,3 @@ flyway:
 
 ---
 
-If you want, I can now:
-
-* produce **one-page README template** for the repo, or
-* generate **starter code skeleton** (pom, sample controller, Flyway init, Dockerfile).
-
-Pick one and I’ll generate it.
