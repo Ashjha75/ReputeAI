@@ -1,4 +1,4 @@
-/* Hero Section Animations */
+/* Hero Section Animations - Responsive */
 .fade-in {
   animation: fadeIn 1s ease-out;
 }
@@ -13,6 +13,30 @@
 
 .floating {
   animation: floating 6s ease-in-out infinite;
+}
+
+/* Disable animations on mobile for performance */
+@media (max-width: 768px) {
+  .fade-in,
+  .slide-up,
+  .fade-in-card,
+  .floating {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in,
+  .slide-up,
+  .fade-in-card,
+  .floating {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes fadeIn {

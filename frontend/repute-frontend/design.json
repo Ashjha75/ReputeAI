@@ -279,6 +279,161 @@
     }
   },
 
+  "breakpoints": {
+    "description": "Responsive breakpoints following Tailwind's mobile-first approach",
+    "values": {
+      "xs": "0px",
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1536px"
+    },
+    "devices": {
+      "mobile": {
+        "range": "0px - 639px",
+        "viewport": "xs",
+        "description": "Mobile phones in portrait and landscape",
+        "example": "iPhone SE, iPhone 12, Samsung Galaxy",
+        "tailwind": "default styles (no prefix)"
+      },
+      "tablet": {
+        "range": "640px - 1023px",
+        "viewport": "sm-md",
+        "description": "Tablets and large phones",
+        "example": "iPad Mini, iPad Air, Surface Go",
+        "tailwind": "sm: and md: prefixes"
+      },
+      "desktop": {
+        "range": "1024px+",
+        "viewport": "lg-2xl",
+        "description": "Laptops, desktops, and large displays",
+        "example": "MacBook, iMac, Desktop monitors",
+        "tailwind": "lg:, xl:, 2xl: prefixes"
+      }
+    },
+    "usage": {
+      "mobilePriority": "Design for mobile first, then scale up",
+      "stackingOrder": "Stack elements vertically on mobile, grid on desktop",
+      "textScaling": "Smaller font sizes on mobile, larger on desktop",
+      "spacing": "Tighter spacing on mobile, more generous on desktop",
+      "navigation": "Hamburger menu on mobile, full nav on desktop"
+    },
+    "materialBreakpoints": {
+      "xs": "0px",
+      "sm": "600px",
+      "md": "960px",
+      "lg": "1280px",
+      "xl": "1920px"
+    }
+  },
+
+  "responsive": {
+    "description": "Responsive design patterns and utilities",
+    "containerSizes": {
+      "mobile": "100%",
+      "tablet": "640px",
+      "desktop": "1024px",
+      "wide": "1280px",
+      "tailwind": "container mx-auto"
+    },
+    "gridColumns": {
+      "mobile": 4,
+      "tablet": 8,
+      "desktop": 12,
+      "tailwind": "grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12"
+    },
+    "typography": {
+      "mobile": {
+        "hero": "text-4xl md:text-5xl lg:text-7xl",
+        "heading": "text-2xl md:text-3xl lg:text-4xl",
+        "body": "text-base",
+        "small": "text-sm"
+      },
+      "tablet": {
+        "hero": "text-5xl lg:text-7xl",
+        "heading": "text-3xl lg:text-4xl",
+        "body": "text-base lg:text-lg",
+        "small": "text-sm"
+      },
+      "desktop": {
+        "hero": "text-7xl",
+        "heading": "text-4xl xl:text-5xl",
+        "body": "text-lg",
+        "small": "text-sm"
+      }
+    },
+    "spacing": {
+      "mobile": {
+        "section": "py-12 px-4",
+        "container": "px-4",
+        "card": "p-4"
+      },
+      "tablet": {
+        "section": "py-16 px-6 md:py-20",
+        "container": "px-6 md:px-8",
+        "card": "p-6"
+      },
+      "desktop": {
+        "section": "py-20 px-8 lg:py-24",
+        "container": "px-8 lg:px-12",
+        "card": "p-8"
+      }
+    },
+    "layout": {
+      "flexDirection": {
+        "mobile": "flex-col",
+        "tablet": "md:flex-row",
+        "desktop": "lg:flex-row"
+      },
+      "gridGap": {
+        "mobile": "gap-4",
+        "tablet": "md:gap-6",
+        "desktop": "lg:gap-8"
+      },
+      "imageSize": {
+        "mobile": "w-full h-48",
+        "tablet": "md:w-1/2 md:h-64",
+        "desktop": "lg:w-1/3 lg:h-80"
+      }
+    },
+    "components": {
+      "button": {
+        "mobile": "w-full py-3 text-base",
+        "tablet": "md:w-auto md:px-6",
+        "desktop": "lg:px-8 lg:py-4 lg:text-lg"
+      },
+      "card": {
+        "mobile": "w-full",
+        "tablet": "md:w-1/2 lg:w-1/3",
+        "desktop": "lg:w-1/4"
+      },
+      "modal": {
+        "mobile": "w-full h-full rounded-none",
+        "tablet": "md:w-3/4 md:h-auto md:rounded-lg",
+        "desktop": "lg:w-1/2 lg:max-w-2xl"
+      },
+      "navigation": {
+        "mobile": "hidden md:flex",
+        "mobileMenu": "block md:hidden",
+        "desktop": "lg:space-x-8"
+      }
+    },
+    "visibility": {
+      "hideOnMobile": "hidden md:block",
+      "hideOnTablet": "md:hidden lg:block",
+      "hideOnDesktop": "lg:hidden",
+      "showOnMobileOnly": "block md:hidden",
+      "showOnTabletOnly": "hidden md:block lg:hidden",
+      "showOnDesktopOnly": "hidden lg:block"
+    },
+    "touch": {
+      "minTapSize": "44px (iOS) / 48px (Android)",
+      "spacing": "Minimum 8px between interactive elements",
+      "hoverStates": "Hide hover effects on touch devices using @media (hover: hover)"
+    }
+  },
+
   "animations": {
     "description": "Animation system for smooth, delightful interactions",
     "duration": {
