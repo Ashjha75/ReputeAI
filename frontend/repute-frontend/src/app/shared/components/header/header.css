@@ -1,0 +1,107 @@
+/* Header styles */
+header {
+  backdrop-filter: blur(10px);
+}
+
+/* Dropdown menu animations */
+.dropdown-menu {
+  animation: dropdownFadeIn 0.2s ease-out;
+  transform-origin: top;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile menu animations */
+.mobile-menu {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.mobile-dropdown {
+  animation: expandDown 0.2s ease-out;
+}
+
+@keyframes expandDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 300px;
+  }
+}
+
+/* Nav item hover effects */
+.nav-item {
+  position: relative;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #1f2937;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-out;
+}
+
+.nav-item:hover::after {
+  transform: scaleX(1);
+}
+
+/* CTA Button - Desktop only */
+.cta-button {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .cta-button {
+    display: flex;
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Search button hover */
+button:hover svg {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-out;
+}
+
+/* Mobile menu button animation */
+.mobile-menu-button svg {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Scrolled header shadow */
+header.shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

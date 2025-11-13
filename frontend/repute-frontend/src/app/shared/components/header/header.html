@@ -1,1 +1,130 @@
-<p>header works!</p>
+<header 
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  [class.bg-white]="isScrolled"
+  [class.shadow-md]="isScrolled"
+  [class.bg-transparent]="!isScrolled">
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Logo -->
+      <div class="flex items-center gap-2 cursor-pointer">
+        <span class="text-xl font-normal text-gray-900">Android</span>
+        <span class="text-2xl">🤖</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <div 
+          *ngFor="let item of navItems" 
+          class="relative nav-item"
+          (mouseenter)="toggleDropdown(item.id)"
+          (mouseleave)="closeDropdown()">
+          
+          <button 
+            class="flex items-center gap-1 text-gray-900 text-sm font-normal hover:text-gray-700 transition-colors duration-200 py-2">
+            {{ item.label }}
+            <svg 
+              *ngIf="item.hasDropdown"
+              class="w-4 h-4 transition-transform duration-200"
+              [class.rotate-180]="openDropdown === item.id"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div 
+            *ngIf="item.hasDropdown && openDropdown === item.id"
+            class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 dropdown-menu">
+            <a 
+              *ngFor="let subItem of item.dropdownItems"
+              [href]="subItem.link"
+              class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+              {{ subItem.label }}
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Right Side Actions -->
+      <div class="flex items-center gap-4">
+        <!-- Search Icon -->
+        <button class="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 hidden md:block">
+          <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </button>
+
+        <!-- CTA Button -->
+        <button class="cta-button bg-gray-900 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-800 transition-all duration-300 items-center gap-2 group">
+          Shop phones
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button 
+          (click)="toggleMobileMenu()"
+          class="p-2 hover:bg-gray-100 rounded-md transition-all duration-200 md:hidden">
+          <svg *ngIf="!isMobileMenuOpen" class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg *ngIf="isMobileMenuOpen" class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div 
+    *ngIf="isMobileMenuOpen"
+    class="md:hidden bg-white border-t border-gray-100 mobile-menu">
+    <div class="px-4 py-4 space-y-4">
+      <div *ngFor="let item of navItems" class="space-y-2">
+        <button 
+          (click)="toggleDropdown(item.id)"
+          class="w-full flex items-center justify-between text-gray-900 text-base font-normal py-2">
+          {{ item.label }}
+          <svg 
+            *ngIf="item.hasDropdown"
+            class="w-5 h-5 transition-transform duration-200"
+            [class.rotate-180]="openDropdown === item.id"
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        
+        <div 
+          *ngIf="item.hasDropdown && openDropdown === item.id"
+          class="pl-4 space-y-2 mobile-dropdown">
+          <a 
+            *ngFor="let subItem of item.dropdownItems"
+            [href]="subItem.link"
+            class="block py-2 text-sm text-gray-600 hover:text-gray-900">
+            {{ subItem.label }}
+          </a>
+        </div>
+      </div>
+      
+      <!-- Mobile CTA -->
+      <button class="w-full bg-gray-900 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-all duration-300 flex items-center justify-center gap-2 mt-4">
+        Shop phones
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Spacer to prevent content from going under fixed header -->
+<div class="h-16"></div>
