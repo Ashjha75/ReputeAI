@@ -1,6 +1,6 @@
 .auth-container {
   position: relative;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
+  background: linear-gradient(135deg, #f5f6e9 0%, #f5f6e9e1 50%, #f5f6e9 100%);
   min-height: 100vh;
   overflow: hidden;
 }
@@ -44,38 +44,37 @@
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(251, 191, 36, 0.1);
+  background: linear-gradient(135deg, #fff7eca0 0%, #f7f6f6 100%);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(251, 191, 36, 0.08);
   transition: all 0.3s ease;
 }
 
 ::ng-deep .mat-mdc-form-field:hover .mat-mdc-text-field-wrapper {
-  box-shadow: 0 4px 6px rgba(251, 191, 36, 0.15);
+  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.12);
 }
 
 ::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading,
 ::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing,
 ::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__notch {
-  border-color: #fbbf24;
+  border: none !important;
 }
 
 ::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline .mdc-notched-outline__leading,
 ::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline .mdc-notched-outline__trailing,
 ::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline .mdc-notched-outline__notch {
-  border-color: #f59e0b;
+  border: none !important;
 }
 
 ::ng-deep .mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__leading,
 ::ng-deep .mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__trailing,
 ::ng-deep .mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__notch {
-  border-color: #f59e0b !important;
-  border-width: 2px !important;
+  border: none !important;
 }
 
 ::ng-deep .mat-mdc-form-field-icon-prefix {
   padding-right: 12px;
-  color: #f59e0b;
+  color: #d97706;
 }
 
 ::ng-deep .mat-mdc-form-field-icon-prefix .mat-icon {
