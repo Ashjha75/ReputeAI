@@ -1,0 +1,46 @@
+# Production profile - no secrets hard-coded. Use environment variables or AWS Secrets Manager.
+spring:
+  datasource:
+    url: ${JDBC_DATABASE_URL:}
+    username: ${JDBC_DATABASE_USERNAME:}
+    password: ${JDBC_DATABASE_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  data:
+    redis:
+      host: ${REDIS_HOST:}
+      port: ${REDIS_PORT:6379}
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600000ms
+
+app:
+  domain: ${APP_DOMAIN:https://your-production-domain.example.com}
+  jwtSecret: ${JWT_SECRET:}
+  expirationTimeMS: 3600000
+  jwtRefreshExpirationMs: 604800000
+  cookieName: TOKEN
+
+aws:
+  region: ${AWS_REGION:ap-south-1}
+  s3:
+    bucket: ${AWS_S3_BUCKET:}
+  # For production, prefer instance roles / IAM roles or Secrets Manager
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${OAUTH_GOOGLE_CLIENT_ID:}
+            client-secret: ${OAUTH_GOOGLE_CLIENT_SECRET:}
+          github:
+            client-id: ${OAUTH_GITHUB_CLIENT_ID:}
+            client-secret: ${OAUTH_GITHUB_CLIENT_SECRET:}
+
+external:
+  api:
+    url: ${EXTERNAL_API_URL:}
+

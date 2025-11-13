@@ -1,0 +1,44 @@
+# Common application configuration
+spring:
+  application:
+    name: reputeai
+  profiles:
+    # default active profile kept as dev to match previous behavior
+    active: dev
+  sql:
+    init:
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  error:
+    include-message: always
+
+app:
+  # common defaults; environment-specific values live in profile files
+  cookieName: TOKEN
+
+springdoc:
+  swagger-ui:
+    path: /api/v1/docs
+    use-root-path: true
+
+grpc:
+  server:
+    security:
+      enabled: false
+
+logging:
+  level:
+    org.springframework.security: TRACE
+    org.springframework.web: DEBUG
+
+# Note: sensitive, environment-specific values (DB credentials, AWS keys, client secrets)
+# are kept in profile files (application-dev.yml, application-prod.yml).
+
