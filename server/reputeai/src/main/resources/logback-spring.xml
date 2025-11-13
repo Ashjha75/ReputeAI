@@ -39,9 +39,8 @@
   <root level="INFO">
     <appender-ref ref="CONSOLE"/>
     <appender-ref ref="ASYNC_FILE"/>
-    <!-- <appender-ref ref="JSON"/> Uncomment for JSON logs -->
+    <appender-ref ref="JSON"/>
   </root>
 
   <logger name="com.reputeai" level="DEBUG"/>
 </configuration>
-
