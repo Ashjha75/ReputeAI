@@ -1,0 +1,189 @@
+.how-it-works-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works-section::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.how-it-works-section::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.step-card {
+  position: relative;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  padding: 2px;
+  background: linear-gradient(135deg, #e0e7ff, #ddd6fe);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.step-card:hover::before {
+  opacity: 1;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(99, 102, 241, 0.1);
+}
+
+/* Step number badge animation */
+.step-card:hover .flex-shrink-0:first-child {
+  animation: pulse-scale 1s ease-in-out infinite;
+}
+
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Icon animation on hover */
+.step-card:hover mat-icon {
+  animation: bounce-icon 0.6s ease-in-out;
+}
+
+@keyframes bounce-icon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Get Started Button */
+.get-started-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.get-started-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.get-started-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.get-started-btn mat-icon {
+  transition: transform 0.3s ease;
+}
+
+.get-started-btn:hover mat-icon {
+  transform: translateX(5px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .step-card {
+    padding: 2rem;
+  }
+
+  .how-it-works-section h2 {
+    font-size: 2rem;
+  }
+
+  .step-card h3 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Grid layout enhancement */
+.grid {
+  position: relative;
+}
+
+/* Arrow connector for desktop */
+@media (min-width: 768px) {
+  .grid > div:nth-child(odd) {
+    animation: fade-in-left 0.8s ease-out forwards;
+  }
+
+  .grid > div:nth-child(even) {
+    animation: fade-in-right 0.8s ease-out forwards;
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stagger animation delay */
+.grid > div:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.grid > div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.grid > div:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.grid > div:nth-child(4) {
+  animation-delay: 0.4s;
+}
