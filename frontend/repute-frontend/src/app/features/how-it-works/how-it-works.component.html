@@ -1,54 +1,53 @@
 <section class="how-it-works-section py-20 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto">
+  <div class="max-w-5xl mx-auto">
     
     <!-- Section Header -->
     <div class="text-center mb-16">
-      <div class="inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full mb-4">
-        <span class="text-indigo-600 font-semibold text-sm">HOW IT WORKS</span>
+      <div class="inline-flex items-center justify-center px-5 py-2 bg-gray-900 rounded-full mb-6">
+        <span class="text-white font-medium text-sm tracking-wide">HOW IT WORKS</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Get Started in 4 Simple Steps
+        Get Started with ReputeAI
       </h2>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Transform your online reputation management with our AI-powered platform
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Simple steps to transform your online reputation
       </p>
     </div>
 
-    <!-- Steps Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+    <!-- Steps List -->
+    <div class="space-y-12">
       <div *ngFor="let step of steps; let i = index" 
-           class="step-card bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300">
+           class="step-item">
         
-        <!-- Step Content -->
-        <div class="flex flex-col h-full">
-          
-          <!-- Icon Container -->
-          <div class="flex items-start gap-6 mb-6">
-            <!-- Step Number Badge -->
-            <div class="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
-              <span class="text-white font-bold text-2xl">{{ step.number }}</span>
-            </div>
+        <!-- Step Card -->
+        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="flex flex-col md:flex-row gap-8 items-center">
             
-            <!-- Icon Circle -->
-            <div class="flex-shrink-0 w-20 h-20 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center">
-              <mat-icon class="text-indigo-600 text-4xl">{{ step.icon }}</mat-icon>
+            <!-- Phone Mockup (Left Side) -->
+            <div class="flex-shrink-0">
+              <div class="phone-mockup bg-gray-900 rounded-3xl p-4 w-48 h-96 flex items-center justify-center shadow-2xl">
+                <div class="text-center text-white space-y-4">
+                  <mat-icon class="text-6xl opacity-80">{{ step.icon }}</mat-icon>
+                  <div class="text-xs opacity-60">Step {{ step.number }}</div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <!-- Text Content -->
-          <div class="flex-grow">
-            <h3 class="text-2xl font-bold text-gray-900 mb-3">
-              {{ step.title }}
-            </h3>
-            <p class="text-gray-600 leading-relaxed text-lg">
-              {{ step.description }}
-            </p>
-          </div>
+            <!-- Step Content (Right Side) -->
+            <div class="flex-grow">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center">
+                  <span class="text-white font-bold text-lg">{{ step.number }}</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
+                  {{ step.title }}
+                </h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed text-base md:text-lg">
+                {{ step.description }}
+              </p>
+            </div>
 
-          <!-- Decorative Arrow (except last item) -->
-          <div *ngIf="i < steps.length - 1" 
-               class="hidden md:block absolute -right-6 top-1/2 transform -translate-y-1/2">
-            <mat-icon class="text-indigo-300 text-5xl">arrow_forward</mat-icon>
           </div>
         </div>
       </div>
@@ -56,11 +55,10 @@
 
     <!-- CTA Button -->
     <div class="text-center mt-16">
-      <button class="get-started-btn px-10 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-lg rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+      <button class="get-started-btn px-10 py-4 bg-gray-900 text-white font-semibold text-lg rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
         Get Started Now
-        <mat-icon class="ml-2 inline-block align-middle">arrow_forward</mat-icon>
       </button>
-      <p class="mt-4 text-gray-500">No credit card required • Free 14-day trial</p>
+      <p class="mt-4 text-gray-500 text-sm">No credit card required • Free 14-day trial</p>
     </div>
 
   </div>

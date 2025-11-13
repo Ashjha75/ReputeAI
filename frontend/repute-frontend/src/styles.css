@@ -10,3 +10,59 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 
 /* Material icons helper */
 .material-icon { font-family: 'Material Icons'; }
+
+/* Snackbar Success */
+.snack-success {
+  background-color: #10b981 !important;
+  color: white !important;
+}
+
+.snack-success .mat-mdc-snack-bar-label {
+  color: white !important;
+}
+
+.snack-success .mat-mdc-button {
+  color: white !important;
+}
+
+/* Snackbar Error */
+.snack-error {
+  background-color: #ef4444 !important;
+  color: white !important;
+}
+
+.snack-error .mat-mdc-snack-bar-label {
+  color: white !important;
+}
+
+.snack-error .mat-mdc-button {
+  color: white !important;
+}
+
+/* Snackbar Warning */
+.snack-warning {
+  background-color: #f59e0b !important;
+  color: white !important;
+}
+
+.snack-warning .mat-mdc-snack-bar-label {
+  color: white !important;
+}
+
+.snack-warning .mat-mdc-button {
+  color: white !important;
+}
+
+/* Snackbar Info */
+.snack-info {
+  background-color: #3b82f6 !important;
+  color: white !important;
+}
+
+.snack-info .mat-mdc-snack-bar-label {
+  color: white !important;
+}
+
+.snack-info .mat-mdc-button {
+  color: white !important;
+}
