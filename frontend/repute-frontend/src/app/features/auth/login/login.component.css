@@ -1,45 +1,183 @@
 .auth-container {
   position: relative;
-  background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
   min-height: 100vh;
+  overflow: hidden;
 }
 
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 20s ease-in-out infinite;
+}
+
+.auth-container::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float 15s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+}
+
+/* Material Form Field Styling */
 ::ng-deep .mat-mdc-form-field {
   width: 100%;
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper {
   background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(251, 191, 36, 0.1);
+  transition: all 0.3s ease;
+}
+
+::ng-deep .mat-mdc-form-field:hover .mat-mdc-text-field-wrapper {
+  box-shadow: 0 4px 6px rgba(251, 191, 36, 0.15);
 }
 
 ::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading,
-::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing {
-  border-color: #d1d5db;
+::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing,
+::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__notch {
+  border-color: #fbbf24;
 }
 
 ::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline .mdc-notched-outline__leading,
-::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline .mdc-notched-outline__trailing {
-  border-color: #6366f1;
+::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline .mdc-notched-outline__trailing,
+::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline .mdc-notched-outline__notch {
+  border-color: #f59e0b;
 }
 
 ::ng-deep .mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__leading,
 ::ng-deep .mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__trailing,
 ::ng-deep .mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__notch {
-  border-color: #6366f1 !important;
+  border-color: #f59e0b !important;
+  border-width: 2px !important;
 }
 
+::ng-deep .mat-mdc-form-field-icon-prefix {
+  padding-right: 12px;
+  color: #f59e0b;
+}
+
+::ng-deep .mat-mdc-form-field-icon-prefix .mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+::ng-deep .mat-mdc-input-element {
+  color: #374151;
+  font-size: 14px;
+}
+
+::ng-deep .mat-mdc-input-element::placeholder {
+  color: #9ca3af;
+}
+
+::ng-deep .mat-mdc-form-field-error {
+  font-size: 12px;
+  color: #ef4444;
+}
+
+::ng-deep .mdc-floating-label {
+  color: #6b7280 !important;
+}
+
+::ng-deep .mdc-floating-label--float-above {
+  color: #f59e0b !important;
+}
+
+/* Button Styling */
 button {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
+  letter-spacing: 0.3px;
 }
 
 button:hover:not(:disabled) {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
 }
 
 button:active:not(:disabled) {
   transform: translateY(0);
 }
 
+.bg-amber-500 {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+.bg-amber-500:hover:not(:disabled) {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+/* OAuth Buttons */
+.border-2 {
+  border-width: 2px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.border-2:hover:not(:disabled) {
+  border-color: #fbbf24;
+  background: #fffbeb;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
+}
+
+/* Checkbox Styling */
+::ng-deep .mat-mdc-checkbox {
+  --mdc-checkbox-selected-checkmark-color: white;
+  --mdc-checkbox-selected-focus-icon-color: #f59e0b;
+  --mdc-checkbox-selected-hover-icon-color: #f59e0b;
+  --mdc-checkbox-selected-icon-color: #f59e0b;
+  --mdc-checkbox-selected-pressed-icon-color: #d97706;
+  --mdc-checkbox-unselected-focus-icon-color: #fbbf24;
+  --mdc-checkbox-unselected-hover-icon-color: #fbbf24;
+  --mdc-checkbox-unselected-icon-color: #d1d5db;
+}
+
+::ng-deep .mat-mdc-checkbox-label {
+  color: #374151;
+  font-size: 14px;
+}
+
+/* Card Animation */
+.bg-white {
+  animation: slideUp 0.6s ease-out;
+  box-shadow: 0 20px 60px rgba(251, 191, 36, 0.15);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading Spinner */
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -50,33 +188,37 @@ button:active:not(:disabled) {
   animation: spin 1s linear infinite;
 }
 
+/* Text Colors */
+.text-amber-600 {
+  color: #d97706;
+}
+
+.text-amber-600:hover {
+  color: #b45309;
+}
+
+/* Additional Polish */
 .bg-white {
-  animation: slideUp 0.5s ease-out;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(251, 191, 36, 0.1);
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+a {
+  transition: color 0.2s ease;
+  text-decoration: none;
 }
 
-::ng-deep .mat-mdc-checkbox {
-  --mdc-checkbox-selected-checkmark-color: white;
-  --mdc-checkbox-selected-focus-icon-color: #6366f1;
-  --mdc-checkbox-selected-hover-icon-color: #6366f1;
-  --mdc-checkbox-selected-icon-color: #6366f1;
-  --mdc-checkbox-selected-pressed-icon-color: #6366f1;
+a:hover {
+  text-decoration: underline;
 }
 
-::ng-deep .mat-mdc-form-field-icon-prefix {
-  padding-right: 8px;
+/* Focus visible states */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
 }
 
-::ng-deep .mat-mdc-form-field-error {
-  font-size: 12px;
+input:focus-visible {
+  outline: none;
 }
