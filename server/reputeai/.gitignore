@@ -35,3 +35,8 @@ build/
 # Ignore application.properties and dev YAML for security
 src/main/resources/application.properties
 src/main/resources/application-dev.yml
+
+# Ignore log files
+logs/
+*.log
+*.log.*
