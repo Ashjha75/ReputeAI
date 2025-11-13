@@ -1,0 +1,114 @@
+.support-faq-section {
+  position: relative;
+}
+
+/* Accordion animations */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-content.open {
+  max-height: 500px;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Accordion item hover effect */
+.accordion-item {
+  transition: background-color 0.2s ease-out;
+}
+
+.accordion-item:hover {
+  background-color: rgba(249, 250, 251, 0.5);
+}
+
+/* Arrow rotation animation */
+svg {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button hover effects */
+button:hover {
+  transition: all 0.2s ease-out;
+}
+
+/* Support link buttons */
+a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover svg {
+  transform: translateX(2px) translateY(-2px);
+  transition: transform 0.3s ease-out;
+}
+
+a:active {
+  transform: scale(0.98);
+}
+
+/* Smooth text transitions */
+.accordion-content p {
+  animation: fadeInText 0.3s ease-out;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+a:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .support-faq-section h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .accordion-content.open {
+    max-height: 600px;
+  }
+}
+
+/* Underline hover effect */
+.underline {
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* Border animations */
+.border-b {
+  position: relative;
+}
+
+.border-b::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #e5e7eb;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-out;
+}
+
+.accordion-item:hover .border-b::after {
+  transform: scaleX(1);
+}

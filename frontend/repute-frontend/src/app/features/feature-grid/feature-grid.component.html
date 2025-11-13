@@ -1,0 +1,77 @@
+<section class="feature-grid-section bg-white py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-6xl mx-auto">
+    
+    <!-- Section Title -->
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-16 max-w-2xl mx-auto leading-tight">
+      New ways Android lets you do you.
+    </h2>
+
+    <!-- Feature Items -->
+    <div class="space-y-12 lg:space-y-20">
+      
+      <!-- Feature Item 1 - Image Left, Text Right -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <div class="bg-gray-100 rounded-[32px] aspect-[4/3] overflow-hidden flex items-center justify-center">
+            <!-- Empty container for image -->
+            <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100"></div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2 flex flex-col justify-center">
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-6 leading-snug">
+            {{ features[0].title }}
+          </h3>
+          <button class="inline-flex items-center px-6 py-3 border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 w-fit">
+            {{ features[0].buttonText }}
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Feature Item 2 - Text Left, Image Right -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="flex flex-col justify-center">
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-6 leading-snug">
+            {{ features[1].title }}
+          </h3>
+          <button class="inline-flex items-center px-6 py-3 border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 w-fit">
+            {{ features[1].buttonText }}
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+        <div>
+          <div class="bg-gray-100 rounded-[32px] aspect-[4/3] overflow-hidden flex items-center justify-center">
+            <!-- Empty container for image -->
+            <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Item 3 - Image Left, Text Right -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <div class="bg-gray-100 rounded-[32px] aspect-[4/3] overflow-hidden flex items-center justify-center">
+            <!-- Empty container for image -->
+            <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100"></div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2 flex flex-col justify-center">
+          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-6 leading-snug">
+            {{ features[2].title }}
+          </h3>
+          <button class="inline-flex items-center px-6 py-3 border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 w-fit">
+            {{ features[2].buttonText }}
+            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { HeroSectionComponent } from '../hero-section/hero-section.component';
 import { FeaturesCarouselComponent } from '../features-carousel/features-carousel.component';
+import { FeatureGridComponent } from '../feature-grid/feature-grid.component';
+import { SupportFaqComponent } from '../support-faq/support-faq.component';
 
 
 @Component({
@@ -16,7 +18,9 @@ import { FeaturesCarouselComponent } from '../features-carousel/features-carouse
       MatIconModule,
       MatCardModule,
       HeroSectionComponent,
-      FeaturesCarouselComponent
+      FeaturesCarouselComponent,
+      FeatureGridComponent,
+      SupportFaqComponent
     ],
     templateUrl: './home.html',
     styleUrl: './home.css'

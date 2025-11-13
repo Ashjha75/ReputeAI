@@ -1,0 +1,67 @@
+<section class="support-faq-section bg-white py-16 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-4xl mx-auto">
+    
+    <!-- Section Title -->
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-6">
+      Get support
+    </h2>
+
+    <!-- Subtitle with link -->
+    <p class="text-center text-base sm:text-lg text-gray-600 mb-8">
+      Check out our 
+      <a href="#" class="underline hover:text-gray-900 transition-colors duration-200">Help Centre</a> 
+      to get answers. For concierge support, follow the links below:
+    </p>
+
+    <!-- Support Links -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <a 
+        *ngFor="let link of supportLinks"
+        [href]="link.url"
+        class="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300">
+        {{ link.label }}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+        </svg>
+      </a>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="space-y-0 border-t border-gray-200">
+      <div 
+        *ngFor="let faq of faqs"
+        class="border-b border-gray-200 accordion-item">
+        
+        <!-- Question Button -->
+        <button
+          (click)="toggleAccordion(faq.id)"
+          class="w-full flex items-center justify-between py-6 text-left hover:bg-gray-50 transition-all duration-200 px-4 sm:px-6"
+          [attr.aria-expanded]="isOpen(faq.id)">
+          <span class="text-base sm:text-lg font-semibold text-gray-900 pr-4">
+            {{ faq.question }}
+          </span>
+          <svg 
+            class="w-6 h-6 text-gray-900 flex-shrink-0 transition-transform duration-300"
+            [class.rotate-180]="isOpen(faq.id)"
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+
+        <!-- Answer Content -->
+        <div 
+          class="accordion-content"
+          [class.open]="isOpen(faq.id)">
+          <div class="px-4 sm:px-6 pb-6">
+            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+              {{ faq.answer }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
