@@ -1,0 +1,114 @@
+<div class="auth-container min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full">
+    
+    <!-- Logo/Brand -->
+    <div class="text-center mb-8">
+      <div class="mb-4">
+        <mat-icon class="text-gray-900 text-6xl">verified_user</mat-icon>
+      </div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-2">Verify Your Email</h1>
+      <p class="text-gray-600">We've sent a 6-digit code to</p>
+      <p class="text-gray-900 font-semibold">{{ email }}</p>
+    </div>
+
+    <!-- OTP Form Card -->
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+      
+      <form [formGroup]="otpForm" (ngSubmit)="onSubmit()">
+        
+        <!-- OTP Input Fields -->
+        <div class="flex justify-center gap-2 sm:gap-3 mb-6">
+          <input 
+            type="text" 
+            id="digit1"
+            formControlName="digit1"
+            maxlength="1"
+            (input)="onDigitInput($event, 'digit2')"
+            (paste)="onPaste($event)"
+            class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:border-gray-900 focus:outline-none transition-all duration-200"
+            autocomplete="off">
+          
+          <input 
+            type="text" 
+            id="digit2"
+            formControlName="digit2"
+            maxlength="1"
+            (input)="onDigitInput($event, 'digit3', 'digit1')"
+            class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:border-gray-900 focus:outline-none transition-all duration-200"
+            autocomplete="off">
+          
+          <input 
+            type="text" 
+            id="digit3"
+            formControlName="digit3"
+            maxlength="1"
+            (input)="onDigitInput($event, 'digit4', 'digit2')"
+            class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:border-gray-900 focus:outline-none transition-all duration-200"
+            autocomplete="off">
+          
+          <input 
+            type="text" 
+            id="digit4"
+            formControlName="digit4"
+            maxlength="1"
+            (input)="onDigitInput($event, 'digit5', 'digit3')"
+            class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:border-gray-900 focus:outline-none transition-all duration-200"
+            autocomplete="off">
+          
+          <input 
+            type="text" 
+            id="digit5"
+            formControlName="digit5"
+            maxlength="1"
+            (input)="onDigitInput($event, 'digit6', 'digit4')"
+            class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:border-gray-900 focus:outline-none transition-all duration-200"
+            autocomplete="off">
+          
+          <input 
+            type="text" 
+            id="digit6"
+            formControlName="digit6"
+            maxlength="1"
+            (input)="onDigitInput($event, '', 'digit5')"
+            class="otp-input w-12 h-14 sm:w-14 sm:h-16 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:border-gray-900 focus:outline-none transition-all duration-200"
+            autocomplete="off">
+        </div>
+
+        <!-- Resend Timer -->
+        <div class="text-center mb-6">
+          <p class="text-gray-600 text-sm mb-2">Didn't receive the code?</p>
+          <button 
+            type="button"
+            (click)="resendOtp()"
+            [disabled]="!canResend"
+            class="text-gray-900 font-semibold hover:underline disabled:text-gray-400 disabled:no-underline transition-colors duration-200">
+            <span *ngIf="!canResend">Resend in {{ resendTimer }}s</span>
+            <span *ngIf="canResend">Resend Code</span>
+          </button>
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          [disabled]="!otpForm.valid || isLoading"
+          class="w-full bg-gray-900 text-white py-3 rounded-xl font-medium hover:bg-gray-800 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+          <span *ngIf="!isLoading">Verify & Continue</span>
+          <span *ngIf="isLoading">Verifying...</span>
+          <svg *ngIf="isLoading" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+        </button>
+      </form>
+
+      <!-- Back Link -->
+      <div class="mt-6 text-center">
+        <a routerLink="/auth/signup" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 flex items-center justify-center gap-1">
+          <mat-icon>arrow_back</mat-icon>
+          <span>Back to Sign Up</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

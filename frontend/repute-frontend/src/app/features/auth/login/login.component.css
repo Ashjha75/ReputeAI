@@ -1,0 +1,68 @@
+.auth-container {
+  position: relative;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+::ng-deep .mat-mdc-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  background-color: white;
+}
+
+::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading,
+::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: #d1d5db;
+}
+
+::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline .mdc-notched-outline__leading,
+::ng-deep .mdc-text-field--outlined:hover .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: #111827;
+}
+
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.bg-white {
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+::ng-deep .mat-mdc-checkbox {
+  --mdc-checkbox-selected-checkmark-color: white;
+  --mdc-checkbox-selected-focus-icon-color: #111827;
+  --mdc-checkbox-selected-hover-icon-color: #111827;
+  --mdc-checkbox-selected-icon-color: #111827;
+  --mdc-checkbox-selected-pressed-icon-color: #111827;
+}
