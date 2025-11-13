@@ -18,9 +18,9 @@ import { SupportFaqComponent } from '../support-faq/support-faq.component';
       MatIconModule,
       MatCardModule,
       HeroSectionComponent,
-      FeaturesCarouselComponent,
       FeatureGridComponent,
-      SupportFaqComponent
+      SupportFaqComponent,
+      FeaturesCarouselComponent,
     ],
     templateUrl: './home.html',
     styleUrl: './home.css'
