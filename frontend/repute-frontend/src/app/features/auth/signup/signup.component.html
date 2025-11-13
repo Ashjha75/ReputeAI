@@ -100,7 +100,7 @@
         <button 
           type="submit" 
           [disabled]="!signupForm.valid || isLoading"
-          class="w-full bg-gray-900 text-white py-3 rounded-xl font-medium hover:bg-gray-800 transition-all duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+          class="w-full bg-indigo-600 text-white py-3.5 rounded-xl font-medium hover:bg-indigo-700 transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm hover:shadow-md">
           <span *ngIf="!isLoading">Create Account</span>
           <span *ngIf="isLoading">Creating Account...</span>
           <svg *ngIf="isLoading" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -111,10 +111,10 @@
       </form>
 
       <!-- Login Link -->
-      <div class="mt-6 text-center">
+      <div class="mt-8 text-center">
         <p class="text-gray-600">
           Already have an account? 
-          <a routerLink="/auth/login" class="text-gray-900 font-semibold hover:underline">Sign in</a>
+          <a routerLink="/auth/login" class="text-indigo-600 font-semibold hover:text-indigo-700 transition-colors">Sign in</a>
         </p>
       </div>
 
