@@ -137,6 +137,13 @@ export class AuthService extends BaseApiService {
   }
 
   /**
+   * Get auth token (public for interceptor)
+   */
+  public override getToken(): string | null {
+    return super.getToken();
+  }
+
+  /**
    * Get current user from storage
    */
   getCurrentUser(): UserProfile | null {

@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService, LoginRequest } from '../../../core/services/auth.service';
-import { NotificationService } from '../../../core/services/notification.service';
-import { LoadingService } from '../../../core/services/loading.service';
+import { AuthService, LoginRequest } from '../core/services/auth.service';
+import { NotificationService } from '../core/services/notification.service';
+import { LoadingService } from '../core/services/loading.service';
 
 @Component({
   selector: 'app-login-example',
@@ -104,7 +104,7 @@ export class LoginExampleComponent implements OnInit {
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BaseApiService } from '../../../core/services/base-api.service';
+import { BaseApiService } from '../core/services/base-api.service';
 import { Observable } from 'rxjs';
 
 export interface UserData {

@@ -42,26 +42,26 @@ export const routes: Routes = [
   },
 
   // Protected routes (require authentication)
-  {
-    path: 'dashboard',
-    canActivate: [authGuard],
-    loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent)
-  },
+//   {
+//     path: 'dashboard',
+//     canActivate: [authGuard],
+//     loadComponent: () => import('../features/dashboard/dashboard.component').then(m => m.DashboardComponent)
+//   },
 
   // Admin routes (require admin role)
-  {
-    path: 'admin',
-    canActivate: [roleGuard(['admin'])],
-    loadComponent: () => import('./features/admin/admin.component').then(m => m.AdminComponent)
-  },
+//   {
+//     path: 'admin',
+//     canActivate: [roleGuard(['admin'])],
+//     loadComponent: () => import('./features/admin/admin.component').then(m => m.AdminComponent)
+//   },
 
   // Error routes
-  {
-    path: 'unauthorized',
-    loadComponent: () => import('./shared/components/unauthorized/unauthorized.component').then(m => m.UnauthorizedComponent)
-  },
-  {
-    path: '**',
-    loadComponent: () => import('./shared/components/not-found/not-found.component').then(m => m.NotFoundComponent)
-  }
+//   {
+//     path: 'unauthorized',
+//     loadComponent: () => import('./shared/components/unauthorized/unauthorized.component').then(m => m.UnauthorizedComponent)
+//   },
+//   {
+//     path: '**',
+//     loadComponent: () => import('./shared/components/not-found/not-found.component').then(m => m.NotFoundComponent)
+//   }
 ];
