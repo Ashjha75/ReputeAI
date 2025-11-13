@@ -1,10 +1,12 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, MatIconModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -12,6 +14,8 @@ export class Header {
   isScrolled = false;
   openDropdown: string | null = null;
   isMobileMenuOpen = false;
+  isAuthenticated = false; // This should be connected to your auth service
+  userDropdownOpen = false;
 
   navItems = [
     {
@@ -65,5 +69,21 @@ export class Header {
 
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  toggleUserDropdown() {
+    this.userDropdownOpen = !this.userDropdownOpen;
+  }
+
+  closeUserDropdown() {
+    this.userDropdownOpen = false;
+  }
+
+  constructor(private router: Router) {}
+
+  logout() {
+    // Add logout logic here (clear tokens, etc.)
+    this.isAuthenticated = false;
+    this.router.navigate(['/auth/login']);
   }
 }
