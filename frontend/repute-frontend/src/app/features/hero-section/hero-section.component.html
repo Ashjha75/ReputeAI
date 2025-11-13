@@ -1,90 +1,30 @@
-<section class="hero-section min-h-screen w-full flex flex-col md:flex-row items-center justify-between bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-blue-900/80 dark:via-blue-800/60 dark:to-gray-900/80 overflow-hidden relative py-12 md:py-20">
-  <div class="absolute inset-0 z-0 pointer-events-none">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(30,64,175,0.06)_1px,transparent_0)] bg-[size:40px_40px] opacity-40"></div>
-    <div class="absolute inset-0 bg-gradient-to-br from-blue-200/30 via-white/10 to-blue-100/20 animate-gradient-shift"></div>
-  </div>
-  <div class="container max-w-7xl mx-auto px-4 sm:px-6 md:px-8 relative z-10 flex flex-col md:flex-row items-center gap-12 md:gap-20">
-    <div class="flex-1 flex flex-col gap-6 md:gap-8">
-      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50/90 dark:bg-blue-900/30 shadow-md backdrop-blur-md text-blue-700 dark:text-blue-200 font-medium text-sm w-max">
-        <mat-icon class="text-blue-500">shield</mat-icon>
-        AI-Powered Digital Reputation Management
-      </span>
-      <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white">
-        Protect Your <span class="bg-gradient-to-r from-blue-600 via-cyan-400 to-blue-400 bg-clip-text text-transparent">Digital Reputation</span>
-      </h1>
-      <p class="text-lg md:text-xl text-gray-700 dark:text-gray-200 font-medium bg-white/70 dark:bg-white/5 rounded-xl px-4 py-3 shadow-sm backdrop-blur-sm">
-        ReputeAI automatically scans, analyzes, and monitors your digital footprint across multiple platforms. Identify reputation risks before they become problems.
-      </p>
-      <div class="flex gap-4 mt-2">
-        <button mat-raised-button color="primary" class="!bg-gradient-to-r !from-blue-600 !to-cyan-400 !text-white !shadow-lg !px-6 !py-3 !rounded-full !font-semibold !text-lg animate-pulse-btn">
-          <mat-icon class="mr-2">rocket_launch</mat-icon> Get Started Free
-        </button>
-        <button mat-stroked-button color="primary" class="!border-blue-400 !text-blue-700 !bg-white/90 !backdrop-blur-md !rounded-full !px-6 !py-3 !font-semibold !text-lg">
-          <mat-icon class="mr-2">play_circle</mat-icon> Watch Demo
-        </button>
+<section class="hero-section bg-white min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl w-full mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      
+      <!-- Left Column: Text Content -->
+      <div class="text-left space-y-6 fade-in-left">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight tracking-tight">
+          Switch to a<br />
+          phone that<br />
+          feels like you.
+        </h1>
+        <p class="text-base sm:text-lg text-gray-600 max-w-lg leading-relaxed">
+          Your favourite apps, photos, chats, and more come too,<br />
+          with Android Switch.<sup>1</sup>
+        </p>
       </div>
-      <div class="flex gap-8 mt-8 text-center text-gray-800 dark:text-gray-200/80">
-        <div>
-          <div class="text-2xl font-bold">95%</div>
-          <div class="text-xs opacity-70">Time Saved</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold">&lt;1hr</div>
-          <div class="text-xs opacity-70">Alert Time</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold">5+</div>
-          <div class="text-xs opacity-70">Platforms</div>
-        </div>
-        <div>
-          <div class="text-2xl font-bold">90%+</div>
-          <div class="text-xs opacity-70">Accuracy</div>
-        </div>
-      </div>
-    </div>
-    <div class="flex-1 flex items-center justify-center">
-      <div class="w-full max-w-md bg-gradient-to-br from-blue-100/90 via-white/90 to-cyan-100/80 dark:from-blue-900/80 dark:via-gray-900/90 dark:to-blue-800/80 rounded-3xl shadow-2xl backdrop-blur-2xl border border-blue-100/60 dark:border-blue-900/40 p-8 md:p-10 flex flex-col gap-6 animate-float-card">
-        <div class="flex items-center gap-2 text-blue-700 dark:text-blue-200 font-semibold text-lg mb-2">
-          <mat-icon class="text-blue-500">verified_user</mat-icon>
-          Reputation Score
-        </div>
-        <div class="text-5xl font-extrabold text-gray-900 dark:text-white mb-1">85</div>
-        <div class="text-base text-gray-600 dark:text-gray-300 mb-4">Excellent standing across all platforms</div>
-        <div class="flex flex-col gap-3">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <mat-icon class="text-green-500">check_circle</mat-icon>
-              <span class="font-semibold text-gray-800 dark:text-gray-100">Low Risk</span>
-              <span class="text-xs text-gray-500">Score: 0-49</span>
-            </div>
-            <span class="px-3 py-1 rounded-full bg-green-50 text-green-700 text-xs font-bold">12 posts</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <mat-icon class="text-yellow-500">warning</mat-icon>
-              <span class="font-semibold text-gray-800 dark:text-gray-100">Medium Risk</span>
-              <span class="text-xs text-gray-500">Score: 50-69</span>
-            </div>
-            <span class="px-3 py-1 rounded-full bg-yellow-50 text-yellow-700 text-xs font-bold">5 posts</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <mat-icon class="text-orange-500">error</mat-icon>
-              <span class="font-semibold text-gray-800 dark:text-gray-100">High Risk</span>
-              <span class="text-xs text-gray-500">Score: 70-89</span>
-            </div>
-            <span class="px-3 py-1 rounded-full bg-orange-50 text-orange-700 text-xs font-bold">2 posts</span>
-          </div>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <mat-icon class="text-red-500">cancel</mat-icon>
-              <span class="font-semibold text-gray-800 dark:text-gray-100">Critical Risk</span>
-              <span class="text-xs text-gray-500">Score: 90-100</span>
-            </div>
-            <span class="px-3 py-1 rounded-full bg-red-50 text-red-700 text-xs font-bold">0 posts</span>
+
+      <!-- Right Column: Gradient Card with Play Button -->
+      <div class="flex items-center justify-center lg:justify-end fade-in-right">
+        <div class="relative w-full max-w-[500px] aspect-square rounded-[60px] bg-gradient-to-br from-green-200 via-cyan-200 to-blue-300 shadow-2xl overflow-hidden">
+          <!-- Dummy text placeholder instead of play icon -->
+          <div class="absolute bottom-8 right-8 w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm border border-gray-300 shadow-lg flex items-center justify-center text-xs text-gray-700 font-medium hover:bg-white hover:scale-105 transition-all duration-300 cursor-pointer">
+            Play
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </section>

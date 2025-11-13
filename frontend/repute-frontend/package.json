@@ -25,6 +25,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^20.3.11",
     "@angular/cdk": "^20.2.12",
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",
@@ -37,6 +38,7 @@
     "@angular/ssr": "^20.3.9",
     "@tailwindcss/postcss": "^4.1.17",
     "express": "^5.1.0",
+    "ngx-countup": "^13.2.0",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.17",
     "tslib": "^2.3.0",

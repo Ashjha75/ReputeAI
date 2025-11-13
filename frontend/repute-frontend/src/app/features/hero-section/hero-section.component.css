@@ -1,24 +1,55 @@
 .hero-section {
   position: relative;
+  overflow: hidden;
 }
-.animate-gradient-shift {
-  animation: gradient-shift 8s ease-in-out infinite alternate;
+
+/* Scroll-based fade-in animations */
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Gradient animation for the card */
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
-.animate-pulse-btn {
-  animation: pulse-btn 1.5s infinite;
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 }
-@keyframes pulse-btn {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
-  50% { box-shadow: 0 0 0 12px rgba(59,130,246,0.1); }
-}
-.animate-float-card {
-  animation: float-card 4s ease-in-out infinite alternate;
-}
-@keyframes float-card {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-12px); }
+
+@media (max-width: 640px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
 }
