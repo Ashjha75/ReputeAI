@@ -9,6 +9,7 @@ import { FeaturesCarouselComponent } from '../features-carousel/features-carouse
 import { FeatureGridComponent } from '../feature-grid/feature-grid.component';
 import { SupportFaqComponent } from '../support-faq/support-faq.component';
 import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
 
 
 @Component({
@@ -23,6 +24,7 @@ import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
       SupportFaqComponent,
       FeaturesCarouselComponent,
       HowItWorksComponent,
+      FooterComponent,
     ],
     templateUrl: './home.html',
     styleUrl: './home.css'
