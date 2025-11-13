@@ -1,8 +1,10 @@
+--- START OF FILE design.json ---
+
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "name": "ReputeAI Design System",
-  "version": "2.0.0",
-  "description": "Enterprise-grade design system for ReputeAI - Angular 20 + Material Design 3 + Tailwind CSS with advanced animations and responsive design",
+  "name": "ReputeAI Design System - Android / Google Aesthetic",
+  "version": "2.1.0",
+  "description": "Design system based on the Google/Android aesthetic: vibrant colors, airy spacing, large rounded corners, and bold typography. Built on Angular Material 3 and Tailwind CSS.",
   "lastUpdated": "2025-11-13",
   "framework": {
     "angular": "20.x",
@@ -10,26 +12,19 @@
     "tailwind": "4.x",
     "animations": "Angular Animations + Tailwind CSS"
   },
-
   "designPrinciples": {
-    "materialFirst": "Always use Angular Material components as the foundation",
-    "responsiveFirst": "Mobile-first approach with tablet and desktop enhancements",
-    "animationDriven": "Smooth, purposeful animations that enhance user experience",
-    "accessible": "WCAG 2.1 AA compliant with keyboard and screen reader support",
-    "performant": "Optimized bundle size, lazy loading, and efficient rendering"
+    "googleAesthetic": "Clean, airy, bold typography, and large, soft rounded corners (rounded-3xl).",
+    "responsiveFirst": "Mobile-first approach with generous, responsive spacing.",
+    "materialFirst": "Always use Angular Material components (M3) as the foundation.",
+    "accessible": "WCAG 2.1 AA compliant, emphasizing high color contrast.",
+    "performance": "Optimized bundle size, lazy loading, and efficient rendering."
   },
-
   "colors": {
-    "description": "Material Design 3 color tokens with Tailwind utilities",
+    "description": "Google-inspired color palette with Android Green as a key accent.",
     "primary": {
-      "name": "Primary Blue",
-      "usage": "Main brand color, primary actions, links, active states",
-      "material": {
-        "light": "var(--mat-primary-50)",
-        "main": "var(--mat-primary-500)",
-        "dark": "var(--mat-primary-700)",
-        "contrast": "var(--mat-primary-contrast)"
-      },
+      "name": "Google Blue",
+      "usage": "Main brand color, primary actions, links, active states.",
+      "hex": "#1A73E8",
       "tailwind": {
         "50": "bg-blue-50 text-blue-50",
         "100": "bg-blue-100 text-blue-100",
@@ -42,317 +37,148 @@
         "800": "bg-blue-800 text-blue-800",
         "900": "bg-blue-900 text-blue-900"
       },
-      "hex": {
-        "50": "#ebf3ff",
-        "100": "#dbe9ff",
-        "200": "#bcd7ff",
-        "300": "#9cc3ff",
-        "400": "#6fa8ff",
-        "500": "#3f8fff",
-        "600": "#2563eb",
-        "700": "#1a4db4",
-        "800": "#133a88",
-        "900": "#0b2658"
+      "material": {
+        "main": "var(--mat-primary-600)",
+        "contrast": "var(--mat-primary-contrast)"
       }
     },
-    "secondary": {
-      "name": "Emerald Green",
-      "usage": "Success states, positive actions, confirmations",
+    "accent": {
+      "name": "Android Green",
+      "usage": "Success states, positive feedback, low-risk indicators, brand highlights (e.g., FAB).",
+      "hex": "#3DDC84",
+      "tailwind": "bg-[#3DDC84] text-[#3DDC84]",
       "material": {
-        "light": "var(--mat-secondary-50)",
-        "main": "var(--mat-secondary-500)",
-        "dark": "var(--mat-secondary-700)",
-        "contrast": "var(--mat-secondary-contrast)"
-      },
-      "tailwind": "emerald-500",
-      "hex": "#10b981"
-    },
-    "tertiary": {
-      "name": "Violet Purple",
-      "usage": "Highlights, special features, premium indicators",
-      "material": "var(--mat-tertiary-500)",
-      "tailwind": "violet-500",
-      "hex": "#8b5cf6"
-    },
-    "semantic": {
-      "success": {
-        "color": "#10b981",
-        "background": "#d1fae5",
-        "border": "#6ee7b7",
-        "tailwind": "text-emerald-600 bg-emerald-100 border-emerald-300",
-        "materialColor": "accent",
-        "usage": "Successful operations, low risk, positive feedback"
-      },
-      "warning": {
-        "color": "#f59e0b",
-        "background": "#fef3c7",
-        "border": "#fcd34d",
-        "tailwind": "text-amber-600 bg-amber-100 border-amber-300",
-        "materialColor": "warn",
-        "usage": "Warnings, medium risk, caution needed"
-      },
-      "error": {
-        "color": "#ef4444",
-        "background": "#fee2e2",
-        "border": "#fca5a5",
-        "tailwind": "text-red-600 bg-red-100 border-red-300",
-        "materialColor": "warn",
-        "usage": "Errors, critical issues, high risk"
-      },
-      "info": {
-        "color": "#3b82f6",
-        "background": "#dbeafe",
-        "border": "#93c5fd",
-        "tailwind": "text-blue-600 bg-blue-100 border-blue-300",
-        "materialColor": "primary",
-        "usage": "Informational messages, tips, help text"
+        "main": "var(--mat-accent-500)",
+        "contrast": "var(--mat-accent-contrast)"
       }
     },
     "surface": {
       "background": {
-        "light": "#f8fafc",
-        "main": "#ffffff",
-        "dark": "#1e293b",
+        "light": "#F8F9FA",
+        "main": "#FFFFFF",
         "material": "var(--mat-sys-surface)",
-        "tailwind": "bg-slate-50"
+        "tailwind": "bg-gray-50"
       },
       "card": {
-        "elevated": "#ffffff",
-        "outlined": "#ffffff",
+        "elevated": "#FFFFFF",
         "material": "var(--mat-sys-surface-container)",
         "tailwind": "bg-white"
+      }
+    },
+    "semantic": {
+      "success": {
+        "color": "#10B981",
+        "background": "#D1FAE5",
+        "tailwind": "text-emerald-600 bg-emerald-100",
+        "usage": "Successful operations, low risk"
       },
-      "overlay": {
-        "light": "rgba(0, 0, 0, 0.5)",
-        "dark": "rgba(0, 0, 0, 0.8)",
-        "tailwind": "bg-black/50"
+      "warning": {
+        "color": "#F59E0B",
+        "background": "#FEF3C7",
+        "tailwind": "text-amber-600 bg-amber-100",
+        "usage": "Warnings, medium risk"
+      },
+      "error": {
+        "color": "#EF4444",
+        "background": "#FEE2E2",
+        "tailwind": "text-red-600 bg-red-100",
+        "usage": "Errors, critical issues, high risk"
+      },
+      "info": {
+        "color": "#3B82F6",
+        "background": "#DBEAFE",
+        "tailwind": "text-blue-600 bg-blue-100",
+        "usage": "Informational messages, tips"
       }
     },
     "text": {
       "primary": {
-        "color": "#0f172a",
-        "material": "var(--mat-sys-on-surface)",
-        "tailwind": "text-slate-900"
+        "color": "#202124",
+        "tailwind": "text-gray-900"
       },
       "secondary": {
-        "color": "#475569",
-        "material": "var(--mat-sys-on-surface-variant)",
-        "tailwind": "text-slate-600"
-      },
-      "disabled": {
-        "color": "#94a3b8",
-        "material": "var(--mat-sys-on-surface) with opacity",
-        "tailwind": "text-slate-400"
-      },
-      "inverse": {
-        "color": "#ffffff",
-        "material": "var(--mat-sys-on-primary)",
-        "tailwind": "text-white"
+        "color": "#5F6368",
+        "tailwind": "text-gray-600"
       }
     }
   },
-
   "typography": {
-    "description": "Material Design 3 type scale with Roboto font family",
+    "description": "Roboto font family with a bold, hierarchical scale.",
     "fontFamily": {
       "primary": "'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-      "monospace": "'Roboto Mono', 'Courier New', monospace",
       "material": "var(--mat-sys-body-medium-font)"
     },
     "fontWeights": {
-      "light": 300,
       "regular": 400,
       "medium": 500,
-      "semibold": 600,
       "bold": 700
     },
     "scale": {
       "display": {
         "large": {
-          "desktop": "text-7xl font-bold leading-tight",
-          "tablet": "text-6xl font-bold leading-tight",
-          "mobile": "text-5xl font-bold leading-tight",
+          "responsive": "text-5xl md:text-6xl lg:text-7xl font-bold",
           "material": "mat-display-large",
-          "usage": "Hero sections, landing pages",
-          "responsive": "text-5xl md:text-6xl lg:text-7xl font-bold"
-        },
-        "medium": {
-          "desktop": "text-5xl font-bold leading-tight",
-          "tablet": "text-4xl font-bold leading-tight",
-          "mobile": "text-3xl font-bold leading-tight",
-          "material": "mat-display-medium",
-          "responsive": "text-3xl md:text-4xl lg:text-5xl font-bold"
-        },
-        "small": {
-          "desktop": "text-4xl font-bold leading-snug",
-          "tablet": "text-3xl font-bold leading-snug",
-          "mobile": "text-2xl font-bold leading-snug",
-          "material": "mat-display-small",
-          "responsive": "text-2xl md:text-3xl lg:text-4xl font-bold"
+          "usage": "Hero sections (e.g., 'Android 14')"
         }
       },
       "headline": {
         "large": {
-          "desktop": "text-3xl font-medium leading-normal",
-          "tablet": "text-2xl font-medium leading-normal",
-          "mobile": "text-xl font-medium leading-normal",
+          "responsive": "text-3xl md:text-4xl lg:text-5xl font-bold",
           "material": "mat-headline-large",
-          "usage": "Page titles, section headers",
-          "responsive": "text-xl md:text-2xl lg:text-3xl font-medium"
-        },
-        "medium": {
-          "desktop": "text-2xl font-medium leading-normal",
-          "tablet": "text-xl font-medium leading-normal",
-          "mobile": "text-lg font-medium leading-normal",
-          "material": "mat-headline-medium",
-          "responsive": "text-lg md:text-xl lg:text-2xl font-medium"
-        },
-        "small": {
-          "desktop": "text-xl font-medium leading-normal",
-          "tablet": "text-lg font-medium leading-normal",
-          "mobile": "text-base font-medium leading-normal",
-          "material": "mat-headline-small",
-          "responsive": "text-base md:text-lg lg:text-xl font-medium"
+          "usage": "Section titles (e.g., 'All the Latest')"
         }
       },
       "title": {
         "large": {
-          "desktop": "text-lg font-medium leading-relaxed",
-          "tablet": "text-base font-medium leading-relaxed",
-          "mobile": "text-base font-medium leading-relaxed",
+          "responsive": "text-xl md:text-2xl font-medium",
           "material": "mat-title-large",
-          "usage": "Card titles, dialog titles",
-          "responsive": "text-base md:text-lg font-medium"
-        },
-        "medium": {
-          "desktop": "text-base font-medium leading-relaxed",
-          "tablet": "text-sm font-medium leading-relaxed",
-          "mobile": "text-sm font-medium leading-relaxed",
-          "material": "mat-title-medium",
-          "responsive": "text-sm md:text-base font-medium"
-        },
-        "small": {
-          "desktop": "text-sm font-medium leading-relaxed",
-          "tablet": "text-xs font-medium leading-relaxed",
-          "mobile": "text-xs font-medium leading-relaxed",
-          "material": "mat-title-small",
-          "responsive": "text-xs md:text-sm font-medium"
+          "usage": "Card titles, main navigation"
         }
       },
       "body": {
         "large": {
-          "desktop": "text-base leading-relaxed",
-          "tablet": "text-base leading-relaxed",
-          "mobile": "text-sm leading-relaxed",
+          "responsive": "text-base md:text-lg leading-relaxed",
           "material": "mat-body-large",
-          "usage": "Main content, paragraphs",
-          "responsive": "text-sm md:text-base"
-        },
-        "medium": {
-          "desktop": "text-sm leading-relaxed",
-          "tablet": "text-sm leading-relaxed",
-          "mobile": "text-xs leading-relaxed",
-          "material": "mat-body-medium",
-          "responsive": "text-xs md:text-sm"
-        },
-        "small": {
-          "desktop": "text-xs leading-relaxed",
-          "tablet": "text-xs leading-relaxed",
-          "mobile": "text-xs leading-normal",
-          "material": "mat-body-small",
-          "responsive": "text-xs"
+          "usage": "Main content, descriptive text"
         }
       },
       "label": {
-        "large": {
-          "desktop": "text-sm font-medium tracking-wide",
-          "tablet": "text-sm font-medium tracking-wide",
-          "mobile": "text-xs font-medium tracking-wide",
-          "material": "mat-label-large",
-          "usage": "Form labels, button text",
-          "responsive": "text-xs md:text-sm font-medium"
-        },
         "medium": {
-          "desktop": "text-xs font-medium tracking-wide",
-          "tablet": "text-xs font-medium tracking-wide",
-          "mobile": "text-xs font-medium tracking-wide",
+          "responsive": "text-sm font-medium tracking-wider uppercase",
           "material": "mat-label-medium",
-          "responsive": "text-xs font-medium"
-        },
-        "small": {
-          "desktop": "text-xs font-medium tracking-wider uppercase",
-          "tablet": "text-xs font-medium tracking-wider uppercase",
-          "mobile": "text-xs font-medium tracking-wider uppercase",
-          "material": "mat-label-small",
-          "responsive": "text-xs font-medium uppercase tracking-wider"
+          "usage": "Category tags, button text"
         }
       }
     }
   },
-
   "spacing": {
-    "description": "Responsive spacing system using Tailwind's scale",
+    "description": "Generous, airy spacing system (multiples of 8px).",
     "baseUnit": "0.25rem (4px)",
     "scale": {
-      "0": "0",
-      "0.5": "0.125rem",
-      "1": "0.25rem",
-      "1.5": "0.375rem",
-      "2": "0.5rem",
-      "2.5": "0.625rem",
-      "3": "0.75rem",
-      "3.5": "0.875rem",
-      "4": "1rem",
-      "5": "1.25rem",
-      "6": "1.5rem",
-      "7": "1.75rem",
-      "8": "2rem",
-      "9": "2.25rem",
-      "10": "2.5rem",
-      "11": "2.75rem",
-      "12": "3rem",
-      "14": "3.5rem",
-      "16": "4rem",
-      "20": "5rem",
-      "24": "6rem",
-      "28": "7rem",
-      "32": "8rem"
+      "8": "2rem (32px)",
+      "12": "3rem (48px)",
+      "16": "4rem (64px)",
+      "20": "5rem (80px)"
     },
     "responsive": {
       "container": {
-        "mobile": "px-4 py-8",
-        "tablet": "px-6 py-12 md:px-8",
-        "desktop": "px-8 py-16 lg:px-12 lg:py-20",
-        "responsive": "px-4 py-8 md:px-8 md:py-12 lg:px-12 lg:py-20"
+        "responsive": "px-4 py-8 md:px-8 md:py-12 lg:px-16 lg:py-20"
       },
       "section": {
-        "mobile": "space-y-8 py-12",
-        "tablet": "space-y-12 py-16 md:space-y-16",
-        "desktop": "space-y-16 py-20 lg:space-y-20 lg:py-24",
-        "responsive": "space-y-8 py-12 md:space-y-12 md:py-16 lg:space-y-20 lg:py-24"
+        "responsive": "space-y-12 py-16 md:space-y-16 md:py-20 lg:space-y-24 lg:py-32"
       },
       "card": {
-        "mobile": "p-4 space-y-3",
-        "tablet": "p-6 space-y-4 md:p-8",
-        "desktop": "p-8 space-y-6 lg:p-10",
-        "responsive": "p-4 space-y-3 md:p-6 md:space-y-4 lg:p-8 lg:space-y-6"
+        "responsive": "p-6 space-y-4 md:p-8 lg:p-10"
       },
       "grid": {
-        "mobile": "gap-4",
-        "tablet": "gap-6 md:gap-8",
-        "desktop": "gap-8 lg:gap-10",
         "responsive": "gap-4 md:gap-6 lg:gap-8"
       }
     }
   },
-
   "borderRadius": {
-    "description": "Border radius following Material Design 3 guidelines",
+    "description": "Extremely rounded corners, a key Google aesthetic trait.",
     "scale": {
-      "none": "0",
-      "xs": "0.125rem",
       "sm": "0.25rem",
-      "default": "0.375rem",
       "md": "0.5rem",
       "lg": "0.75rem",
       "xl": "1rem",
@@ -362,786 +188,135 @@
     },
     "components": {
       "button": {
-        "default": "rounded-md",
-        "pill": "rounded-full",
-        "material": "Material buttons have built-in border radius"
+        "default": "rounded-lg",
+        "pill": "rounded-full"
       },
       "card": {
-        "mobile": "rounded-lg",
-        "tablet": "rounded-xl md:rounded-2xl",
-        "desktop": "rounded-2xl",
-        "responsive": "rounded-lg md:rounded-xl lg:rounded-2xl"
+        "responsive": "rounded-xl md:rounded-2xl lg:rounded-3xl"
       },
       "input": {
-        "default": "rounded-md",
-        "material": "Material form fields handle this automatically"
-      },
-      "dialog": {
-        "mobile": "rounded-t-2xl",
-        "tablet": "rounded-xl",
-        "desktop": "rounded-2xl",
-        "responsive": "rounded-t-2xl md:rounded-xl"
+        "default": "rounded-xl"
       },
       "chip": "rounded-full"
     }
   },
-
   "shadows": {
-    "description": "Material Design 3 elevation system",
+    "description": "Subtle Material Design 3 elevation for a light, floating feel.",
     "material": {
-      "level0": "var(--mat-sys-elevation-0)",
       "level1": "var(--mat-sys-elevation-1)",
-      "level2": "var(--mat-sys-elevation-2)",
-      "level3": "var(--mat-sys-elevation-3)",
-      "level4": "var(--mat-sys-elevation-4)",
-      "level5": "var(--mat-sys-elevation-5)"
+      "level2": "var(--mat-sys-elevation-2)"
     },
     "tailwind": {
-      "none": "shadow-none",
-      "sm": "shadow-sm",
-      "default": "shadow",
-      "md": "shadow-md",
-      "lg": "shadow-lg",
-      "xl": "shadow-xl",
-      "2xl": "shadow-2xl",
-      "inner": "shadow-inner"
+      "default": "shadow-md",
+      "hover": "shadow-lg",
+      "2xl": "shadow-2xl"
     },
     "responsive": {
       "card": {
-        "mobile": "shadow-md",
-        "tablet": "shadow-lg md:shadow-xl",
-        "desktop": "shadow-xl hover:shadow-2xl",
-        "responsive": "shadow-md md:shadow-lg lg:shadow-xl hover:shadow-2xl",
-        "transition": "transition-shadow duration-300"
-      },
-      "dialog": {
-        "mobile": "shadow-2xl",
-        "tablet": "shadow-2xl",
-        "desktop": "shadow-2xl",
-        "responsive": "shadow-2xl"
-      },
-      "button": {
-        "elevated": "shadow-md hover:shadow-lg active:shadow-sm",
-        "transition": "transition-shadow duration-200"
+        "responsive": "shadow-md hover:shadow-lg transition-shadow duration-300"
       }
     }
   },
-
-  "breakpoints": {
-    "description": "Responsive breakpoints with device targeting",
-    "values": {
-      "xs": "0px",
-      "sm": "640px",
-      "md": "768px",
-      "lg": "1024px",
-      "xl": "1280px",
-      "2xl": "1536px"
-    },
-    "devices": {
-      "mobile": {
-        "portrait": {
-          "range": "320px - 479px",
-          "tailwind": "default (no prefix)",
-          "example": "iPhone SE, iPhone 12/13 Mini"
-        },
-        "landscape": {
-          "range": "480px - 639px",
-          "tailwind": "default (no prefix)",
-          "example": "iPhone 12/13 Pro Max"
-        }
-      },
-      "tablet": {
-        "portrait": {
-          "range": "640px - 767px",
-          "tailwind": "sm:",
-          "example": "iPad Mini, iPad Air (portrait)"
-        },
-        "landscape": {
-          "range": "768px - 1023px",
-          "tailwind": "md:",
-          "example": "iPad Air, iPad Pro 11\" (landscape)"
-        }
-      },
-      "desktop": {
-        "small": {
-          "range": "1024px - 1279px",
-          "tailwind": "lg:",
-          "example": "13\" MacBook, small desktop monitors"
-        },
-        "medium": {
-          "range": "1280px - 1535px",
-          "tailwind": "xl:",
-          "example": "15\" MacBook, standard desktop monitors"
-        },
-        "large": {
-          "range": "1536px+",
-          "tailwind": "2xl:",
-          "example": "27\" iMac, large desktop monitors, 4K displays"
-        }
-      }
-    },
-    "containerSizes": {
-      "mobile": "w-full px-4",
-      "tablet": "max-w-3xl mx-auto px-6 md:px-8",
-      "desktop": "max-w-7xl mx-auto px-8 lg:px-12",
-      "responsive": "w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8"
-    }
-  },
-
-  "animations": {
-    "description": "Advanced animation system using Angular Animations + Tailwind",
-    "duration": {
-      "instant": "0ms",
-      "fast": "150ms",
-      "normal": "300ms",
-      "slow": "500ms",
-      "verySlow": "700ms",
-      "extraSlow": "1000ms"
-    },
-    "easing": {
-      "linear": "cubic-bezier(0, 0, 1, 1)",
-      "easeIn": "cubic-bezier(0.4, 0, 1, 1)",
-      "easeOut": "cubic-bezier(0, 0, 0.2, 1)",
-      "easeInOut": "cubic-bezier(0.4, 0, 0.2, 1)",
-      "sharp": "cubic-bezier(0.4, 0, 0.6, 1)",
-      "emphasized": "cubic-bezier(0.2, 0, 0, 1)",
-      "spring": "cubic-bezier(0.34, 1.56, 0.64, 1)"
-    },
-    "angular": {
-      "fadeIn": {
-        "trigger": "@fadeIn",
-        "definition": "trigger('fadeIn', [transition(':enter', [style({ opacity: 0 }), animate('300ms ease-out', style({ opacity: 1 }))])])",
-        "usage": "Element entrance"
-      },
-      "fadeOut": {
-        "trigger": "@fadeOut",
-        "definition": "trigger('fadeOut', [transition(':leave', [animate('200ms ease-in', style({ opacity: 0 }))])])",
-        "usage": "Element exit"
-      },
-      "slideInUp": {
-        "trigger": "@slideInUp",
-        "definition": "trigger('slideInUp', [transition(':enter', [style({ transform: 'translateY(100%)', opacity: 0 }), animate('400ms cubic-bezier(0.2, 0, 0, 1)', style({ transform: 'translateY(0)', opacity: 1 }))])])",
-        "usage": "Dialogs, bottom sheets"
-      },
-      "slideInDown": {
-        "trigger": "@slideInDown",
-        "definition": "trigger('slideInDown', [transition(':enter', [style({ transform: 'translateY(-100%)', opacity: 0 }), animate('400ms cubic-bezier(0.2, 0, 0, 1)', style({ transform: 'translateY(0)', opacity: 1 }))])])",
-        "usage": "Top bars, notifications"
-      },
-      "slideInLeft": {
-        "trigger": "@slideInLeft",
-        "definition": "trigger('slideInLeft', [transition(':enter', [style({ transform: 'translateX(-100%)' }), animate('300ms cubic-bezier(0.2, 0, 0, 1)', style({ transform: 'translateX(0)' }))])])",
-        "usage": "Side navigation, drawers"
-      },
-      "scaleIn": {
-        "trigger": "@scaleIn",
-        "definition": "trigger('scaleIn', [transition(':enter', [style({ transform: 'scale(0.8)', opacity: 0 }), animate('250ms cubic-bezier(0.34, 1.56, 0.64, 1)', style({ transform: 'scale(1)', opacity: 1 }))])])",
-        "usage": "Modals, tooltips, popovers"
-      },
-      "listAnimation": {
-        "trigger": "@listAnimation",
-        "definition": "trigger('listAnimation', [transition('* => *', [query(':enter', [style({ opacity: 0, transform: 'translateY(20px)' }), stagger('50ms', [animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))])], { optional: true })])])",
-        "usage": "List items, cards grid"
-      },
-      "routeAnimation": {
-        "trigger": "@routeAnimation",
-        "definition": "trigger('routeAnimation', [transition('* <=> *', [style({ position: 'relative' }), query(':enter, :leave', [style({ position: 'absolute', top: 0, left: 0, width: '100%' })], { optional: true }), query(':enter', [style({ opacity: 0, transform: 'translateX(100%)' })], { optional: true }), query(':leave', [animate('300ms ease-in', style({ opacity: 0, transform: 'translateX(-100%)' }))], { optional: true }), query(':enter', [animate('300ms 100ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))], { optional: true })])])",
-        "usage": "Route transitions"
-      }
-    },
-    "tailwind": {
-      "hover": {
-        "scale": "hover:scale-105 transition-transform duration-200",
-        "lift": "hover:-translate-y-1 transition-transform duration-200",
-        "glow": "hover:shadow-lg transition-shadow duration-300",
-        "brightness": "hover:brightness-110 transition-all duration-200"
-      },
-      "active": {
-        "scale": "active:scale-95 transition-transform duration-100",
-        "press": "active:translate-y-0.5 transition-transform duration-100"
-      },
-      "loading": {
-        "spin": "animate-spin",
-        "pulse": "animate-pulse",
-        "bounce": "animate-bounce",
-        "ping": "animate-ping"
-      },
-      "entrance": {
-        "fadeIn": "animate-[fadeIn_300ms_ease-out]",
-        "slideUp": "animate-[slideUp_400ms_ease-out]",
-        "scaleIn": "animate-[scaleIn_250ms_cubic-bezier(0.34,1.56,0.64,1)]"
-      }
-    },
-    "microInteractions": {
-      "ripple": {
-        "material": "MatRipple directive",
-        "usage": "matRipple on clickable elements",
-        "example": "<div matRipple class=\"cursor-pointer\">Click me</div>"
-      },
-      "buttonPress": "active:scale-95 transition-transform duration-100",
-      "cardHover": "hover:scale-[1.02] hover:shadow-xl transition-all duration-300",
-      "iconRotate": "hover:rotate-12 transition-transform duration-200",
-      "textHighlight": "hover:text-primary transition-colors duration-200",
-      "backgroundShift": "hover:bg-gradient-to-r from-primary to-secondary transition-all duration-500"
-    },
-    "pageTransitions": {
-      "fade": {
-        "duration": "300ms",
-        "easing": "ease-in-out",
-        "implementation": "Angular Router animations"
-      },
-      "slide": {
-        "duration": "400ms",
-        "easing": "cubic-bezier(0.2, 0, 0, 1)",
-        "implementation": "Custom route animation"
-      }
-    },
-    "skeletonLoaders": {
-      "pulse": "animate-pulse bg-gray-200 rounded",
-      "shimmer": "animate-[shimmer_2s_ease-in-out_infinite] bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200",
-      "wave": "animate-[wave_1.5s_ease-in-out_infinite]"
-    }
-  },
-
   "materialComponents": {
-    "description": "Angular Material component usage with responsive configurations",
+    "description": "Angular Material component usage with Google aesthetic styling.",
     "buttons": {
-      "basic": {
-        "component": "mat-button",
-        "usage": "Text buttons, low emphasis",
-        "responsive": {
-          "mobile": "<button mat-button class=\"w-full sm:w-auto\">Action</button>",
-          "tablet": "<button mat-button class=\"px-4 md:px-6\">Action</button>",
-          "desktop": "<button mat-button class=\"px-6 lg:px-8\">Action</button>"
-        },
-        "animation": "matRipple + hover:bg-primary-50 transition-colors duration-200"
-      },
       "raised": {
         "component": "mat-raised-button",
-        "usage": "Primary actions, high emphasis",
         "responsive": {
-          "mobile": "<button mat-raised-button color=\"primary\" class=\"w-full py-3 text-base\">Get Started</button>",
-          "tablet": "<button mat-raised-button color=\"primary\" class=\"w-full sm:w-auto px-6 py-3\">Get Started</button>",
-          "desktop": "<button mat-raised-button color=\"primary\" class=\"px-8 py-4 text-lg\">Get Started</button>"
+          "desktop": "<button mat-raised-button color="primary" class="px-8 py-4 text-lg rounded-xl font-medium">Get Started</button>"
         },
-        "animation": "matRipple + hover:scale-105 active:scale-95 transition-all duration-200"
-      },
-      "stroked": {
-        "component": "mat-stroked-button",
-        "usage": "Secondary actions, medium emphasis",
-        "responsive": {
-          "mobile": "<button mat-stroked-button class=\"w-full\">Cancel</button>",
-          "tablet": "<button mat-stroked-button class=\"w-full sm:w-auto px-6\">Cancel</button>"
-        }
-      },
-      "flat": {
-        "component": "mat-flat-button",
-        "usage": "Contained button without elevation",
-        "responsive": {
-          "mobile": "<button mat-flat-button color=\"primary\" class=\"w-full\">Submit</button>"
-        }
-      },
-      "icon": {
-        "component": "mat-icon-button",
-        "usage": "Icon-only actions",
-        "responsive": {
-          "mobile": "<button mat-icon-button class=\"text-2xl\"><mat-icon>menu</mat-icon></button>",
-          "tablet": "<button mat-icon-button class=\"text-xl md:text-2xl\"><mat-icon>menu</mat-icon></button>"
-        },
-        "animation": "matRipple + hover:rotate-12 transition-transform duration-200"
+        "animation": "hover:scale-105 active:scale-95 transition-all duration-200"
       },
       "fab": {
-        "component": "mat-fab / mat-mini-fab",
-        "usage": "Floating action button",
+        "component": "mat-fab",
         "responsive": {
-          "mobile": "<button mat-mini-fab color=\"primary\" class=\"fixed bottom-4 right-4 z-50\"><mat-icon>add</mat-icon></button>",
-          "tablet": "<button mat-fab color=\"primary\" class=\"fixed bottom-6 right-6 z-50\"><mat-icon>add</mat-icon></button>",
-          "desktop": "<button mat-fab color=\"primary\" class=\"fixed bottom-8 right-8 z-50 hover:scale-110\"><mat-icon>add</mat-icon></button>"
-        },
-        "animation": "@scaleIn + hover:scale-110 active:scale-90 transition-all duration-200"
+          "desktop": "<button mat-fab color="accent" class="rounded-full hover:shadow-xl"><mat-icon>add</mat-icon></button>"
+        }
       }
     },
     "cards": {
       "basic": {
         "component": "mat-card",
-        "structure": "mat-card-header, mat-card-title, mat-card-subtitle, mat-card-content, mat-card-actions",
         "responsive": {
-          "mobile": "<mat-card class=\"shadow-md rounded-lg\">\n  <mat-card-header class=\"space-y-2\">\n    <mat-card-title class=\"text-lg\">Title</mat-card-title>\n  </mat-card-header>\n  <mat-card-content class=\"pt-4 space-y-3\">\n    <p class=\"text-sm\">Content</p>\n  </mat-card-content>\n</mat-card>",
-          "tablet": "<mat-card class=\"shadow-lg md:shadow-xl rounded-xl transition-shadow duration-300\">\n  <mat-card-header class=\"space-y-2\">\n    <mat-card-title class=\"text-xl\">Title</mat-card-title>\n  </mat-card-header>\n  <mat-card-content class=\"pt-6 space-y-4\">\n    <p>Content</p>\n  </mat-card-content>\n</mat-card>",
-          "desktop": "<mat-card class=\"shadow-xl hover:shadow-2xl rounded-2xl transition-all duration-300 hover:scale-[1.02]\">\n  <mat-card-header class=\"space-y-3\">\n    <mat-card-title class=\"text-2xl\">Title</mat-card-title>\n  </mat-card-header>\n  <mat-card-content class=\"pt-8 space-y-6\">\n    <p class=\"text-lg\">Content</p>\n  </mat-card-content>\n</mat-card>"
+          "desktop": "<mat-card class="shadow-lg hover:shadow-xl rounded-3xl transition-all duration-300">\n <mat-card-header class="space-y-4">\n <mat-card-title class="text-2xl font-bold">Title</mat-card-title>\n </mat-card-header>\n <mat-card-content class="pt-8 space-y-6">\n <p class="text-lg">Content</p>\n </mat-card-content>\n</mat-card>"
         },
-        "animation": "@fadeIn + hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
-      },
-      "outlined": {
-        "component": "mat-card with appearance=\"outlined\"",
-        "responsive": {
-          "mobile": "<mat-card appearance=\"outlined\" class=\"border-2 rounded-lg\">",
-          "tablet": "<mat-card appearance=\"outlined\" class=\"border-2 rounded-xl hover:border-primary transition-colors duration-300\">"
-        }
+        "animation": "@fadeIn + hover:shadow-2xl"
       }
     },
     "forms": {
       "textField": {
         "component": "mat-form-field",
-        "appearance": "outline | fill",
+        "appearance": "outline",
         "responsive": {
-          "mobile": "<mat-form-field appearance=\"outline\" class=\"w-full\">\n  <mat-label>Email</mat-label>\n  <input matInput type=\"email\" required>\n  <mat-icon matPrefix class=\"text-gray-400\">email</mat-icon>\n  <mat-error>Valid email required</mat-error>\n  <mat-hint>We'll never share your email</mat-hint>\n</mat-form-field>",
-          "tablet": "<mat-form-field appearance=\"outline\" class=\"w-full md:w-2/3\">\n  <mat-label>Email</mat-label>\n  <input matInput type=\"email\" required>\n  <mat-icon matPrefix>email</mat-icon>\n  <mat-error>Valid email required</mat-error>\n</mat-form-field>",
-          "desktop": "<mat-form-field appearance=\"outline\" class=\"w-full lg:w-1/2\">\n  <mat-label>Email</mat-label>\n  <input matInput type=\"email\" required>\n  <mat-icon matPrefix>email</mat-icon>\n  <mat-error>Valid email required</mat-error>\n</mat-form-field>"
+          "desktop": "<mat-form-field appearance="outline" class="w-full lg:w-1/2 rounded-xl">\n <mat-label>Email</mat-label>\n <input matInput type="email" required>\n <mat-icon matPrefix class="text-gray-400">email</mat-icon>\n</mat-form-field>"
         },
         "animation": "focus-within:scale-[1.01] transition-transform duration-200"
-      },
-      "select": {
-        "component": "mat-select",
-        "responsive": {
-          "mobile": "<mat-form-field appearance=\"outline\" class=\"w-full\">\n  <mat-label>Platform</mat-label>\n  <mat-select>\n    <mat-option value=\"twitter\">Twitter</mat-option>\n    <mat-option value=\"linkedin\">LinkedIn</mat-option>\n  </mat-select>\n</mat-form-field>"
-        },
-        "animation": "Built-in Material animations"
-      },
-      "checkbox": {
-        "component": "mat-checkbox",
-        "responsive": {
-          "mobile": "<mat-checkbox class=\"text-sm\" color=\"primary\">Remember me</mat-checkbox>",
-          "tablet": "<mat-checkbox class=\"text-base\" color=\"primary\">Remember me</mat-checkbox>"
-        },
-        "animation": "matRipple + smooth checkmark animation"
-      },
-      "radio": {
-        "component": "mat-radio-group, mat-radio-button",
-        "responsive": {
-          "mobile": "<mat-radio-group class=\"flex flex-col space-y-2\">\n  <mat-radio-button value=\"daily\">Daily</mat-radio-button>\n  <mat-radio-button value=\"weekly\">Weekly</mat-radio-button>\n</mat-radio-group>",
-          "tablet": "<mat-radio-group class=\"flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0\">\n  <mat-radio-button value=\"daily\">Daily</mat-radio-button>\n  <mat-radio-button value=\"weekly\">Weekly</mat-radio-button>\n</mat-radio-group>"
-        }
-      },
-      "slider": {
-        "component": "mat-slider",
-        "responsive": {
-          "mobile": "<mat-slider class=\"w-full\" min=\"0\" max=\"100\" step=\"1\">\n  <input matSliderThumb>\n</mat-slider>",
-          "tablet": "<mat-slider class=\"w-full md:w-2/3\" min=\"0\" max=\"100\" step=\"1\">\n  <input matSliderThumb>\n</mat-slider>"
-        },
-        "animation": "Smooth thumb movement with Material animations"
-      },
-      "toggle": {
-        "component": "mat-slide-toggle",
-        "responsive": {
-          "mobile": "<mat-slide-toggle color=\"primary\" class=\"text-sm\">Enable monitoring</mat-slide-toggle>",
-          "tablet": "<mat-slide-toggle color=\"primary\" class=\"text-base\">Enable monitoring</mat-slide-toggle>"
-        },
-        "animation": "Smooth toggle animation with ripple effect"
-      }
-    },
-    "navigation": {
-      "toolbar": {
-        "component": "mat-toolbar",
-        "responsive": {
-          "mobile": "<mat-toolbar color=\"primary\" class=\"h-14 px-4\">\n  <button mat-icon-button (click)=\"drawer.toggle()\">\n    <mat-icon>menu</mat-icon>\n  </button>\n  <span class=\"text-lg font-medium\">ReputeAI</span>\n  <span class=\"flex-1\"></span>\n  <button mat-icon-button>\n    <mat-icon>notifications</mat-icon>\n  </button>\n</mat-toolbar>",
-          "tablet": "<mat-toolbar color=\"primary\" class=\"h-16 px-6\">\n  <button mat-icon-button class=\"md:hidden\" (click)=\"drawer.toggle()\">\n    <mat-icon>menu</mat-icon>\n  </button>\n  <span class=\"text-xl font-medium\">ReputeAI</span>\n  <span class=\"flex-1\"></span>\n  <nav class=\"hidden md:flex space-x-4\">\n    <button mat-button>Dashboard</button>\n    <button mat-button>Analytics</button>\n  </nav>\n  <button mat-icon-button>\n    <mat-icon matBadge=\"3\" matBadgeColor=\"warn\">notifications</mat-icon>\n  </button>\n</mat-toolbar>",
-          "desktop": "<mat-toolbar color=\"primary\" class=\"h-16 px-8 lg:px-12\">\n  <span class=\"text-2xl font-medium\">ReputeAI</span>\n  <span class=\"flex-1\"></span>\n  <nav class=\"flex space-x-6\">\n    <button mat-button class=\"text-base\">Dashboard</button>\n    <button mat-button class=\"text-base\">Analytics</button>\n    <button mat-button class=\"text-base\">Settings</button>\n  </nav>\n  <button mat-icon-button class=\"ml-4\">\n    <mat-icon matBadge=\"3\" matBadgeColor=\"warn\">notifications</mat-icon>\n  </button>\n  <button mat-icon-button [matMenuTriggerFor]=\"userMenu\">\n    <mat-icon>account_circle</mat-icon>\n  </button>\n</mat-toolbar>"
-        },
-        "animation": "@slideInDown + shadow transitions on scroll"
-      },
-      "sidenav": {
-        "component": "mat-sidenav-container, mat-sidenav",
-        "responsive": {
-          "mobile": "<mat-sidenav-container class=\"h-full\">\n  <mat-sidenav #drawer mode=\"over\" class=\"w-64\">\n    <mat-nav-list>\n      <a mat-list-item routerLink=\"/dashboard\" routerLinkActive=\"bg-primary-50 text-primary\">\n        <mat-icon matListItemIcon>dashboard</mat-icon>\n        <span matListItemTitle>Dashboard</span>\n      </a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content>\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container>",
-          "tablet": "<mat-sidenav-container class=\"h-full\">\n  <mat-sidenav #drawer mode=\"side\" [opened]=\"isDesktop\" class=\"w-64 md:w-72\">\n    <mat-nav-list class=\"pt-4\">\n      <a mat-list-item routerLink=\"/dashboard\" routerLinkActive=\"bg-primary-50 text-primary\" class=\"rounded-lg mx-2 transition-all duration-200 hover:scale-[1.02]\">\n        <mat-icon matListItemIcon>dashboard</mat-icon>\n        <span matListItemTitle>Dashboard</span>\n      </a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content class=\"min-h-screen\">\n    <router-outlet></router-outlet>\n  </mat-sidenav-content>\n</mat-sidenav-container>",
-          "desktop": "<mat-sidenav-container class=\"h-full\">\n  <mat-sidenav mode=\"side\" opened class=\"w-72 lg:w-80 border-r\">\n    <div class=\"p-6\">\n      <h2 class=\"text-xl font-bold text-primary mb-6\">ReputeAI</h2>\n    </div>\n    <mat-nav-list class=\"px-4\">\n      <a mat-list-item routerLink=\"/dashboard\" routerLinkActive=\"bg-primary-50 text-primary font-medium\" class=\"rounded-xl mb-2 transition-all duration-200 hover:scale-[1.02] hover:shadow-md\">\n        <mat-icon matListItemIcon class=\"text-primary\">dashboard</mat-icon>\n        <span matListItemTitle class=\"text-base\">Dashboard</span>\n      </a>\n    </mat-nav-list>\n  </mat-sidenav>\n  <mat-sidenav-content class=\"min-h-screen bg-slate-50\">\n    <div class=\"p-8 lg:p-12\">\n      <router-outlet></router-outlet>\n    </div>\n  </mat-sidenav-content>\n</mat-sidenav-container>"
-        },
-        "animation": "@slideInLeft for sidenav + backdrop fade"
-      },
-      "tabs": {
-        "component": "mat-tab-group, mat-tab",
-        "responsive": {
-          "mobile": "<mat-tab-group class=\"w-full\" animationDuration=\"300ms\">\n  <mat-tab label=\"Overview\">\n    <div class=\"p-4\">\n      <p class=\"text-sm\">Content</p>\n    </div>\n  </mat-tab>\n  <mat-tab label=\"Details\">\n    <div class=\"p-4\">\n      <p class=\"text-sm\">Content</p>\n    </div>\n  </mat-tab>\n</mat-tab-group>",
-          "tablet": "<mat-tab-group class=\"w-full\" animationDuration=\"300ms\">\n  <mat-tab>\n    <ng-template mat-tab-label>\n      <mat-icon class=\"mr-2\">dashboard</mat-icon>\n      <span class=\"hidden sm:inline\">Overview</span>\n    </ng-template>\n    <div class=\"p-6\">\n      <p>Content</p>\n    </div>\n  </mat-tab>\n</mat-tab-group>",
-          "desktop": "<mat-tab-group class=\"w-full\" animationDuration=\"300ms\" headerPosition=\"above\">\n  <mat-tab>\n    <ng-template mat-tab-label>\n      <mat-icon class=\"mr-3\">dashboard</mat-icon>\n      <span class=\"text-base\">Overview</span>\n    </ng-template>\n    <div class=\"p-8\">\n      <p class=\"text-lg\">Content</p>\n    </div>\n  </mat-tab>\n</mat-tab-group>"
-        },
-        "animation": "Built-in slide animation + ink bar transition"
-      },
-      "menu": {
-        "component": "mat-menu",
-        "responsive": {
-          "mobile": "<button mat-icon-button [matMenuTriggerFor]=\"menu\">\n  <mat-icon>more_vert</mat-icon>\n</button>\n<mat-menu #menu=\"matMenu\" class=\"mt-2\">\n  <button mat-menu-item class=\"text-sm\">\n    <mat-icon>edit</mat-icon>\n    <span>Edit</span>\n  </button>\n  <button mat-menu-item class=\"text-sm\">\n    <mat-icon>delete</mat-icon>\n    <span>Delete</span>\n  </button>\n</mat-menu>",
-          "tablet": "<button mat-button [matMenuTriggerFor]=\"menu\">\n  Actions\n  <mat-icon class=\"ml-2\">arrow_drop_down</mat-icon>\n</button>\n<mat-menu #menu=\"matMenu\" xPosition=\"after\">\n  <button mat-menu-item>\n    <mat-icon>edit</mat-icon>\n    <span>Edit</span>\n  </button>\n  <button mat-menu-item>\n    <mat-icon>delete</mat-icon>\n    <span>Delete</span>\n  </button>\n  <mat-divider></mat-divider>\n  <button mat-menu-item>\n    <mat-icon>share</mat-icon>\n    <span>Share</span>\n  </button>\n</mat-menu>"
-        },
-        "animation": "@scaleIn + smooth fade"
-      },
-      "bottomNav": {
-        "component": "Custom with mat-button-toggle-group",
-        "responsive": {
-          "mobile": "<mat-button-toggle-group class=\"fixed bottom-0 left-0 right-0 w-full bg-white shadow-2xl border-t md:hidden\" value=\"dashboard\">\n  <mat-button-toggle value=\"dashboard\" class=\"flex-1\">\n    <mat-icon>dashboard</mat-icon>\n    <span class=\"text-xs block mt-1\">Home</span>\n  </mat-button-toggle>\n  <mat-button-toggle value=\"content\" class=\"flex-1\">\n    <mat-icon>list</mat-icon>\n    <span class=\"text-xs block mt-1\">Content</span>\n  </mat-button-toggle>\n  <mat-button-toggle value=\"analytics\" class=\"flex-1\">\n    <mat-icon>analytics</mat-icon>\n    <span class=\"text-xs block mt-1\">Analytics</span>\n  </mat-button-toggle>\n  <mat-button-toggle value=\"settings\" class=\"flex-1\">\n    <mat-icon>settings</mat-icon>\n    <span class=\"text-xs block mt-1\">Settings</span>\n  </mat-button-toggle>\n</mat-button-toggle-group>",
-          "usage": "Mobile-only navigation at bottom of screen"
-        },
-        "animation": "@slideInUp on mount"
-      }
-    },
-    "feedback": {
-      "dialog": {
-        "component": "MatDialog service",
-        "responsive": {
-          "mobile": "this.dialog.open(DialogComponent, {\n  width: '100vw',\n  height: '100vh',\n  maxWidth: '100vw',\n  maxHeight: '100vh',\n  panelClass: 'mobile-dialog',\n  enterAnimationDuration: '300ms',\n  exitAnimationDuration: '200ms'\n})",
-          "tablet": "this.dialog.open(DialogComponent, {\n  width: '90vw',\n  maxWidth: '600px',\n  panelClass: 'tablet-dialog',\n  enterAnimationDuration: '300ms',\n  exitAnimationDuration: '200ms'\n})",
-          "desktop": "this.dialog.open(DialogComponent, {\n  width: '600px',\n  maxWidth: '90vw',\n  panelClass: ['desktop-dialog', 'animate-scaleIn'],\n  enterAnimationDuration: '300ms',\n  exitAnimationDuration: '200ms',\n  backdropClass: 'backdrop-blur-sm'\n})"
-        },
-        "animation": "@scaleIn + backdrop fade"
-      },
-      "snackbar": {
-        "component": "MatSnackBar service",
-        "responsive": {
-          "mobile": "this.snackBar.open('Action completed', 'Dismiss', {\n  duration: 3000,\n  horizontalPosition: 'center',\n  verticalPosition: 'bottom',\n  panelClass: ['mobile-snackbar', 'text-sm']\n})",
-          "tablet": "this.snackBar.open('Action completed successfully', 'Dismiss', {\n  duration: 3000,\n  horizontalPosition: 'end',\n  verticalPosition: 'bottom',\n  panelClass: ['tablet-snackbar']\n})",
-          "desktop": "this.snackBar.open('Action completed successfully', 'Dismiss', {\n  duration: 3000,\n  horizontalPosition: 'end',\n  verticalPosition: 'top',\n  panelClass: ['desktop-snackbar', 'shadow-xl']\n})"
-        },
-        "variants": {
-          "success": "panelClass: ['success-snackbar', 'bg-emerald-600', 'text-white']",
-          "error": "panelClass: ['error-snackbar', 'bg-red-600', 'text-white']",
-          "warning": "panelClass: ['warning-snackbar', 'bg-amber-600', 'text-white']",
-          "info": "panelClass: ['info-snackbar', 'bg-blue-600', 'text-white']"
-        },
-        "animation": "@slideInUp from bottom"
-      },
-      "progressBar": {
-        "component": "mat-progress-bar",
-        "responsive": {
-          "mobile": "<mat-progress-bar mode=\"indeterminate\" color=\"primary\" class=\"h-1\"></mat-progress-bar>",
-          "tablet": "<mat-progress-bar mode=\"determinate\" [value]=\"progress\" color=\"primary\" class=\"h-1.5\"></mat-progress-bar>",
-          "desktop": "<mat-progress-bar mode=\"buffer\" [value]=\"progress\" [bufferValue]=\"buffer\" color=\"primary\" class=\"h-2\"></mat-progress-bar>"
-        },
-        "animation": "Smooth indeterminate animation"
-      },
-      "spinner": {
-        "component": "mat-progress-spinner",
-        "responsive": {
-          "mobile": "<mat-progress-spinner mode=\"indeterminate\" diameter=\"32\" color=\"primary\"></mat-progress-spinner>",
-          "tablet": "<mat-progress-spinner mode=\"indeterminate\" diameter=\"48\" color=\"primary\"></mat-progress-spinner>",
-          "desktop": "<mat-progress-spinner mode=\"indeterminate\" diameter=\"64\" color=\"primary\" class=\"mx-auto\"></mat-progress-spinner>"
-        },
-        "animation": "Smooth rotation animation"
-      },
-      "tooltip": {
-        "component": "matTooltip directive",
-        "responsive": {
-          "mobile": "<button mat-icon-button matTooltip=\"Delete\" matTooltipPosition=\"above\" matTooltipClass=\"text-xs\">\n  <mat-icon>delete</mat-icon>\n</button>",
-          "tablet": "<button mat-icon-button matTooltip=\"Delete content permanently\" matTooltipPosition=\"above\" matTooltipShowDelay=\"500\">\n  <mat-icon>delete</mat-icon>\n</button>",
-          "desktop": "<button mat-icon-button matTooltip=\"Delete content permanently. This action cannot be undone.\" matTooltipPosition=\"right\" matTooltipShowDelay=\"300\" matTooltipHideDelay=\"100\">\n  <mat-icon>delete</mat-icon>\n</button>"
-        },
-        "animation": "@fadeIn with scale"
-      },
-      "bottomSheet": {
-        "component": "MatBottomSheet service",
-        "responsive": {
-          "mobile": "this.bottomSheet.open(BottomSheetComponent, {\n  panelClass: 'mobile-bottom-sheet',\n  backdropClass: 'backdrop-blur-sm'\n})",
-          "usage": "Mobile-only alternative to dialogs"
-        },
-        "animation": "@slideInUp from bottom"
       }
     },
     "dataDisplay": {
-      "table": {
-        "component": "mat-table with MatTableDataSource",
-        "responsive": {
-          "mobile": "<!-- Hide table, show cards -->\n<div class=\"md:hidden space-y-4\">\n  <mat-card *ngFor=\"let item of data\" class=\"p-4\">\n    <div class=\"flex justify-between items-start\">\n      <div>\n        <h3 class=\"font-medium text-sm\">{{ item.name }}</h3>\n        <p class=\"text-xs text-gray-600 mt-1\">{{ item.date }}</p>\n      </div>\n      <mat-chip class=\"text-xs\" [class]=\"getRiskClass(item.risk)\">{{ item.risk }}</mat-chip>\n    </div>\n  </mat-card>\n</div>\n\n<!-- Show table on tablet+ -->\n<div class=\"hidden md:block overflow-x-auto\">\n  <mat-table [dataSource]=\"dataSource\" class=\"w-full\">\n    <ng-container matColumnDef=\"name\">\n      <mat-header-cell *matHeaderCellDef class=\"font-semibold\">Name</mat-header-cell>\n      <mat-cell *matCellDef=\"let element\">{{ element.name }}</mat-cell>\n    </ng-container>\n    <!-- More columns -->\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns\" class=\"hover:bg-gray-50 transition-colors duration-200 cursor-pointer\"></mat-row>\n  </mat-table>\n  <mat-paginator [pageSizeOptions]=\"[10, 25, 50]\" showFirstLastButtons></mat-paginator>\n</div>",
-          "tablet": "<div class=\"overflow-x-auto rounded-xl border\">\n  <mat-table [dataSource]=\"dataSource\" matSort class=\"w-full\">\n    <!-- Columns with sorting -->\n    <ng-container matColumnDef=\"name\">\n      <mat-header-cell *matHeaderCellDef mat-sort-header class=\"font-semibold text-base\">Name</mat-header-cell>\n      <mat-cell *matCellDef=\"let element\" class=\"text-sm\">{{ element.name }}</mat-cell>\n    </ng-container>\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\" class=\"bg-gray-50\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns\" class=\"hover:bg-blue-50 transition-colors duration-200 cursor-pointer hover:scale-[1.01]\"></mat-row>\n  </mat-table>\n  <mat-paginator [pageSizeOptions]=\"[25, 50, 100]\" showFirstLastButtons class=\"border-t\"></mat-paginator>\n</div>",
-          "desktop": "<div class=\"overflow-x-auto rounded-2xl border shadow-lg\">\n  <mat-table [dataSource]=\"dataSource\" matSort class=\"w-full\">\n    <!-- Full columns with all features -->\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\" class=\"bg-gray-50 text-base\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns\" [@fadeIn] class=\"hover:bg-blue-50 transition-all duration-200 cursor-pointer hover:scale-[1.005] hover:shadow-md\"></mat-row>\n  </mat-table>\n  <mat-paginator [pageSizeOptions]=\"[25, 50, 100, 200]\" [pageSize]=\"50\" showFirstLastButtons class=\"border-t bg-gray-50\"></mat-paginator>\n</div>"
-        },
-        "animation": "@listAnimation for rows + hover effects"
-      },
-      "list": {
-        "component": "mat-list, mat-list-item",
-        "responsive": {
-          "mobile": "<mat-list class=\"py-2\">\n  <mat-list-item *ngFor=\"let item of items\" class=\"h-16 hover:bg-gray-50 transition-colors duration-200\">\n    <mat-icon matListItemIcon class=\"text-primary\">{{ item.icon }}</mat-icon>\n    <div matListItemTitle class=\"text-sm font-medium\">{{ item.title }}</div>\n    <div matListItemLine class=\"text-xs text-gray-600\">{{ item.subtitle }}</div>\n  </mat-list-item>\n</mat-list>",
-          "tablet": "<mat-list class=\"py-4\">\n  <mat-list-item *ngFor=\"let item of items\" class=\"h-20 hover:bg-gray-50 transition-all duration-200 hover:scale-[1.01] rounded-lg mx-2\">\n    <mat-icon matListItemIcon class=\"text-primary text-2xl\">{{ item.icon }}</mat-icon>\n    <div matListItemTitle class=\"text-base font-medium\">{{ item.title }}</div>\n    <div matListItemLine class=\"text-sm text-gray-600\">{{ item.subtitle }}</div>\n    <button mat-icon-button matListItemMeta>\n      <mat-icon>chevron_right</mat-icon>\n    </button>\n  </mat-list-item>\n</mat-list>",
-          "desktop": "<mat-list class=\"py-4\">\n  <mat-list-item *ngFor=\"let item of items\" [@fadeIn] class=\"h-24 hover:bg-blue-50 transition-all duration-300 hover:scale-[1.02] hover:shadow-md rounded-xl mx-4 cursor-pointer\">\n    <mat-icon matListItemIcon class=\"text-primary text-3xl\">{{ item.icon }}</mat-icon>\n    <div matListItemTitle class=\"text-lg font-medium\">{{ item.title }}</div>\n    <div matListItemLine class=\"text-base text-gray-600\">{{ item.subtitle }}</div>\n    <button mat-icon-button matListItemMeta class=\"hover:scale-110 transition-transform\">\n      <mat-icon>chevron_right</mat-icon>\n    </button>\n  </mat-list-item>\n</mat-list>"
-        },
-        "animation": "@listAnimation + hover effects"
-      },
       "chips": {
         "component": "mat-chip-set, mat-chip",
-        "responsive": {
-          "mobile": "<mat-chip-set class=\"flex flex-wrap gap-2\">\n  <mat-chip class=\"text-xs\">{{ tag }}</mat-chip>\n</mat-chip-set>",
-          "tablet": "<mat-chip-set class=\"flex flex-wrap gap-3\">\n  <mat-chip class=\"text-sm hover:scale-105 transition-transform duration-200\">{{ tag }}</mat-chip>\n</mat-chip-set>",
-          "desktop": "<mat-chip-set class=\"flex flex-wrap gap-4\">\n  <mat-chip class=\"text-base hover:scale-110 hover:shadow-md transition-all duration-200 cursor-pointer\">{{ tag }}</mat-chip>\n</mat-chip-set>"
-        },
         "variants": {
-          "riskLow": "<mat-chip class=\"bg-emerald-100 text-emerald-800\">Low</mat-chip>",
-          "riskMedium": "<mat-chip class=\"bg-amber-100 text-amber-800\">Medium</mat-chip>",
-          "riskHigh": "<mat-chip class=\"bg-orange-100 text-orange-800\">High</mat-chip>",
-          "riskCritical": "<mat-chip class=\"bg-red-100 text-red-800 font-semibold\">Critical</mat-chip>"
-        },
-        "animation": "hover:scale-110 transition-all duration-200"
-      },
-      "badge": {
-        "component": "matBadge directive",
-        "responsive": {
-          "mobile": "<button mat-icon-button matBadge=\"3\" matBadgeSize=\"small\" matBadgeColor=\"warn\">\n  <mat-icon class=\"text-xl\">notifications</mat-icon>\n</button>",
-          "tablet": "<button mat-icon-button matBadge=\"12\" matBadgeSize=\"medium\" matBadgeColor=\"warn\">\n  <mat-icon class=\"text-2xl\">notifications</mat-icon>\n</button>",
-          "desktop": "<button mat-icon-button matBadge=\"99+\" matBadgeSize=\"large\" matBadgeColor=\"warn\" class=\"hover:scale-110 transition-transform duration-200\">\n  <mat-icon class=\"text-3xl\">notifications</mat-icon>\n</button>"
-        },
-        "animation": "Pulse animation for new notifications"
-      },
-      "expansionPanel": {
-        "component": "mat-expansion-panel",
-        "responsive": {
-          "mobile": "<mat-accordion class=\"space-y-2\">\n  <mat-expansion-panel class=\"rounded-lg shadow-md\">\n    <mat-expansion-panel-header class=\"h-14\">\n      <mat-panel-title class=\"text-sm font-medium\">Panel Title</mat-panel-title>\n    </mat-expansion-panel-header>\n    <div class=\"p-4 text-sm\">Content</div>\n  </mat-expansion-panel>\n</mat-accordion>",
-          "tablet": "<mat-accordion class=\"space-y-4\">\n  <mat-expansion-panel class=\"rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl\">\n    <mat-expansion-panel-header class=\"h-16\">\n      <mat-panel-title class=\"text-base font-medium\">Panel Title</mat-panel-title>\n      <mat-panel-description class=\"text-sm\">Description</mat-panel-description>\n    </mat-expansion-panel-header>\n    <div class=\"p-6\">Content</div>\n  </mat-expansion-panel>\n</mat-accordion>",
-          "desktop": "<mat-accordion class=\"space-y-6\">\n  <mat-expansion-panel class=\"rounded-2xl shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]\">\n    <mat-expansion-panel-header class=\"h-20\">\n      <mat-panel-title class=\"text-lg font-semibold\">Panel Title</mat-panel-title>\n      <mat-panel-description class=\"text-base\">Detailed description</mat-panel-description>\n    </mat-expansion-panel-header>\n    <div class=\"p-8 space-y-4\">Content</div>\n  </mat-expansion-panel>\n</mat-accordion>"
-        },
-        "animation": "Built-in expand/collapse animation"
-      },
-      "stepper": {
-        "component": "mat-stepper",
-        "responsive": {
-          "mobile": "<mat-stepper orientation=\"vertical\" class=\"rounded-lg shadow-md\">\n  <mat-step label=\"Step 1\">\n    <div class=\"p-4\">\n      <p class=\"text-sm mb-4\">Content</p>\n      <div class=\"flex gap-2\">\n        <button mat-raised-button matStepperNext color=\"primary\" class=\"flex-1\">Next</button>\n      </div>\n    </div>\n  </mat-step>\n</mat-stepper>",
-          "tablet": "<mat-stepper orientation=\"vertical\" class=\"md:orientation-horizontal rounded-xl shadow-lg\">\n  <mat-step label=\"Step 1\" optional>\n    <div class=\"p-6\">\n      <p class=\"mb-6\">Content</p>\n      <div class=\"flex gap-4\">\n        <button mat-stroked-button matStepperPrevious>Back</button>\n        <button mat-raised-button matStepperNext color=\"primary\">Next</button>\n      </div>\n    </div>\n  </mat-step>\n</mat-stepper>",
-          "desktop": "<mat-stepper orientation=\"horizontal\" linear class=\"rounded-2xl shadow-xl\">\n  <mat-step label=\"Step 1\" state=\"edit\" optional>\n    <div class=\"p-8\">\n      <h3 class=\"text-xl font-semibold mb-4\">Step Title</h3>\n      <p class=\"text-base mb-6\">Content</p>\n      <div class=\"flex gap-6\">\n        <button mat-stroked-button matStepperPrevious class=\"px-8\">Back</button>\n        <button mat-raised-button matStepperNext color=\"primary\" class=\"px-8\">Next</button>\n      </div>\n    </div>\n  </mat-step>\n</mat-stepper>"
-        },
-        "animation": "Smooth step transitions with fade"
+          "categoryTag": "<mat-chip class="bg-blue-100 text-blue-600 rounded-lg text-sm font-medium uppercase tracking-wider">MESSAGES</mat-chip>"
+        }
       }
     }
   },
-
   "responsiveLayouts": {
-    "description": "Pre-built responsive layout patterns",
-    "dashboardLayout": {
-      "mobile": "<div class=\"min-h-screen bg-slate-50\">\n  <!-- Mobile: Stacked layout -->\n  <mat-toolbar color=\"primary\" class=\"h-14 px-4\">\n    <button mat-icon-button (click)=\"drawer.toggle()\">\n      <mat-icon>menu</mat-icon>\n    </button>\n    <span class=\"text-lg\">Dashboard</span>\n  </mat-toolbar>\n  \n  <div class=\"p-4 space-y-4 pb-20\">\n    <!-- Stats Cards -->\n    <mat-card class=\"p-4\">\n      <h3 class=\"text-sm font-medium text-gray-600\">Reputation Score</h3>\n      <p class=\"text-3xl font-bold text-primary mt-2\">85</p>\n    </mat-card>\n    \n    <!-- Content -->\n    <mat-card class=\"p-4\">\n      <h2 class=\"text-base font-semibold mb-4\">Recent Activity</h2>\n      <!-- List content -->\n    </mat-card>\n  </div>\n  \n  <!-- Bottom Navigation -->\n  <mat-button-toggle-group class=\"fixed bottom-0 left-0 right-0 w-full bg-white shadow-2xl border-t\">\n    <!-- Nav items -->\n  </mat-button-toggle-group>\n</div>",
-      "tablet": "<div class=\"min-h-screen bg-slate-50\">\n  <!-- Tablet: Sidebar + Content -->\n  <mat-sidenav-container class=\"h-screen\">\n    <mat-sidenav mode=\"side\" [opened]=\"true\" class=\"w-64\">\n      <div class=\"p-6\">\n        <h2 class=\"text-xl font-bold text-primary\">ReputeAI</h2>\n      </div>\n      <mat-nav-list class=\"px-4\">\n        <!-- Navigation items -->\n      </mat-nav-list>\n    </mat-sidenav>\n    \n    <mat-sidenav-content>\n      <mat-toolbar color=\"primary\" class=\"h-16\">\n        <span class=\"text-xl\">Dashboard</span>\n        <span class=\"flex-1\"></span>\n        <button mat-icon-button>\n          <mat-icon matBadge=\"3\">notifications</mat-icon>\n        </button>\n      </mat-toolbar>\n      \n      <div class=\"p-6 md:p-8\">\n        <!-- Grid Layout -->\n        <div class=\"grid grid-cols-2 gap-6 mb-8\">\n          <mat-card class=\"p-6\">\n            <h3 class=\"text-sm font-medium text-gray-600\">Reputation Score</h3>\n            <p class=\"text-4xl font-bold text-primary mt-2\">85</p>\n          </mat-card>\n          <!-- More cards -->\n        </div>\n        \n        <!-- Content Area -->\n        <mat-card class=\"p-6\">\n          <h2 class=\"text-xl font-semibold mb-6\">Recent Activity</h2>\n          <!-- Content -->\n        </mat-card>\n      </div>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>",
-      "desktop": "<div class=\"min-h-screen bg-slate-50\">\n  <!-- Desktop: Full sidebar + Content -->\n  <mat-sidenav-container class=\"h-screen\">\n    <mat-sidenav mode=\"side\" opened class=\"w-72 lg:w-80 border-r\">\n      <div class=\"p-8\">\n        <h2 class=\"text-2xl font-bold text-primary\">ReputeAI</h2>\n      </div>\n      <mat-nav-list class=\"px-6\">\n        <!-- Navigation with icons and labels -->\n      </mat-nav-list>\n    </mat-sidenav>\n    \n    <mat-sidenav-content>\n      <mat-toolbar color=\"primary\" class=\"h-20 px-12\">\n        <span class=\"text-2xl font-medium\">Dashboard</span>\n        <span class=\"flex-1\"></span>\n        <button mat-icon-button class=\"mr-4\">\n          <mat-icon matBadge=\"12\" matBadgeColor=\"warn\">notifications</mat-icon>\n        </button>\n        <button mat-icon-button [matMenuTriggerFor]=\"menu\">\n          <mat-icon>account_circle</mat-icon>\n        </button>\n      </mat-toolbar>\n      \n      <div class=\"p-12\">\n        <!-- Responsive Grid -->\n        <div class=\"grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-12\">\n          <mat-card class=\"p-8 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]\">\n            <h3 class=\"text-base font-medium text-gray-600\">Reputation Score</h3>\n            <p class=\"text-5xl font-bold text-primary mt-4\">85</p>\n            <div class=\"mt-4 flex items-center text-sm text-emerald-600\">\n              <mat-icon class=\"mr-1\">trending_up</mat-icon>\n              <span>+5% from last month</span>\n            </div>\n          </mat-card>\n          <!-- More stat cards -->\n        </div>\n        \n        <!-- Content Grid -->\n        <div class=\"grid grid-cols-1 xl:grid-cols-3 gap-8\">\n          <!-- Main content (2/3 width) -->\n          <div class=\"xl:col-span-2 space-y-8\">\n            <mat-card class=\"p-8\">\n              <h2 class=\"text-2xl font-semibold mb-6\">Recent Activity</h2>\n              <!-- Content -->\n            </mat-card>\n          </div>\n          \n          <!-- Sidebar content (1/3 width) -->\n          <div class=\"space-y-8\">\n            <mat-card class=\"p-6\">\n              <h3 class=\"text-lg font-semibold mb-4\">Quick Actions</h3>\n              <!-- Actions -->\n            </mat-card>\n          </div>\n        </div>\n      </div>\n    </mat-sidenav-content>\n  </mat-sidenav-container>\n</div>"
-    },
+    "description": "Layout patterns for the airy, spaced-out Google aesthetic.",
     "listDetailLayout": {
-      "mobile": "<!-- Mobile: Full-screen list, navigate to detail -->\n<div class=\"h-screen flex flex-col\">\n  <mat-toolbar color=\"primary\" class=\"h-14\">\n    <button mat-icon-button *ngIf=\"selectedItem\" (click)=\"back()\">\n      <mat-icon>arrow_back</mat-icon>\n    </button>\n    <span>{{ selectedItem ? 'Details' : 'Content' }}</span>\n  </mat-toolbar>\n  \n  <!-- List View -->\n  <div *ngIf=\"!selectedItem\" class=\"flex-1 overflow-y-auto\">\n    <mat-list>\n      <mat-list-item *ngFor=\"let item of items\" (click)=\"select(item)\" class=\"h-20\">\n        <!-- Item content -->\n      </mat-list-item>\n    </mat-list>\n  </div>\n  \n  <!-- Detail View -->\n  <div *ngIf=\"selectedItem\" class=\"flex-1 overflow-y-auto p-4\">\n    <mat-card class=\"p-4\">\n      <!-- Detail content -->\n    </mat-card>\n  </div>\n</div>",
-      "tablet": "<!-- Tablet: Split view -->\n<div class=\"h-screen flex\">\n  <!-- List (1/3) -->\n  <div class=\"w-1/3 border-r overflow-y-auto\">\n    <mat-toolbar color=\"primary\" class=\"h-16\">\n      <span>Content</span>\n    </mat-toolbar>\n    <mat-list>\n      <mat-list-item *ngFor=\"let item of items\" (click)=\"select(item)\" [class.selected]=\"item === selectedItem\" class=\"h-24\">\n        <!-- Item content -->\n      </mat-list-item>\n    </mat-list>\n  </div>\n  \n  <!-- Detail (2/3) -->\n  <div class=\"flex-1 overflow-y-auto\">\n    <div *ngIf=\"selectedItem\" class=\"p-8\">\n      <mat-card class=\"p-8\">\n        <!-- Detail content -->\n      </mat-card>\n    </div>\n    <div *ngIf=\"!selectedItem\" class=\"flex items-center justify-center h-full text-gray-400\">\n      <div class=\"text-center\">\n        <mat-icon class=\"text-6xl mb-4\">inbox</mat-icon>\n        <p>Select an item to view details</p>\n      </div>\n    </div>\n  </div>\n</div>",
-      "desktop": "<!-- Desktop: Optimized split view -->\n<div class=\"h-screen flex bg-slate-50\">\n  <!-- List (1/3) -->\n  <div class=\"w-1/3 xl:w-1/4 bg-white border-r overflow-y-auto\">\n    <div class=\"p-6 border-b\">\n      <h2 class=\"text-xl font-semibold\">Content Library</h2>\n      <div class=\"mt-4\">\n        <mat-form-field class=\"w-full\" appearance=\"outline\">\n          <mat-icon matPrefix>search</mat-icon>\n          <input matInput placeholder=\"Search content...\">\n        </mat-form-field>\n      </div>\n    </div>\n    \n    <mat-list>\n      <mat-list-item *ngFor=\"let item of items\" (click)=\"select(item)\" [class.bg-blue-50]=\"item === selectedItem\" [class.border-l-4]=\"item === selectedItem\" [class.border-primary]=\"item === selectedItem\" class=\"h-28 hover:bg-gray-50 transition-all duration-200 cursor-pointer\">\n        <!-- Item with avatar, title, subtitle, metadata -->\n      </mat-list-item>\n    </mat-list>\n  </div>\n  \n  <!-- Detail (2/3) -->\n  <div class=\"flex-1 overflow-y-auto\">\n    <div *ngIf=\"selectedItem\" class=\"p-12\">\n      <div class=\"max-w-4xl mx-auto\">\n        <mat-card class=\"p-10 shadow-xl rounded-2xl\">\n          <!-- Rich detail content with actions -->\n        </mat-card>\n      </div>\n    </div>\n    <div *ngIf=\"!selectedItem\" class=\"flex items-center justify-center h-full\">\n      <div class=\"text-center\">\n        <mat-icon class=\"text-8xl text-gray-300 mb-6\">inbox</mat-icon>\n        <h3 class=\"text-2xl font-medium text-gray-600 mb-2\">No item selected</h3>\n        <p class=\"text-gray-400\">Select an item from the list to view details</p>\n      </div>\n    </div>\n  </div>\n</div>"
+      "desktop": "<!-- Desktop: Optimized split view with generous padding and rounded corners -->\n<div class="h-screen flex bg-gray-50">\n <!-- List (1/3) -->\n <div class="w-1/3 xl:w-1/4 bg-white border-r overflow-y-auto">\n <div class="p-8 border-b">\n <h2 class="text-2xl font-semibold">Content Library</h2>\n </div>\n <mat-list class="px-4 py-6">\n <mat-list-item class="h-32 hover:bg-blue-50 transition-all duration-300 rounded-2xl mb-4 p-4">\n <!-- Item with large image/icon, title, subtitle -->\n </mat-list-item>\n </mat-list>\n </div>\n \n <!-- Detail (2/3) -->\n <div class="flex-1 overflow-y-auto">\n <div class="p-16">\n <div class="max-w-4xl mx-auto">\n <mat-card class="p-12 shadow-xl rounded-3xl">\n <!-- Rich detail content -->\n </mat-card>\n </div>\n </div>\n </div>\n</div>"
     },
-    "formLayout": {
-      "mobile": "<!-- Mobile: Full-width stacked form -->\n<div class=\"min-h-screen bg-slate-50 py-8 px-4\">\n  <mat-card class=\"max-w-md mx-auto p-6\">\n    <mat-card-header class=\"mb-6\">\n      <mat-card-title class=\"text-xl font-semibold\">Connect Platform</mat-card-title>\n    </mat-card-header>\n    \n    <mat-card-content>\n      <form class=\"space-y-4\">\n        <mat-form-field appearance=\"outline\" class=\"w-full\">\n          <mat-label>Platform</mat-label>\n          <mat-select>\n            <mat-option value=\"twitter\">Twitter</mat-option>\n            <mat-option value=\"linkedin\">LinkedIn</mat-option>\n          </mat-select>\n        </mat-form-field>\n        \n        <mat-form-field appearance=\"outline\" class=\"w-full\">\n          <mat-label>Username</mat-label>\n          <input matInput required>\n        </mat-form-field>\n        \n        <mat-form-field appearance=\"outline\" class=\"w-full\">\n          <mat-label>API Key</mat-label>\n          <input matInput type=\"password\" required>\n        </mat-form-field>\n      </form>\n    </mat-card-content>\n    \n    <mat-card-actions class=\"flex flex-col gap-2 mt-6\">\n      <button mat-raised-button color=\"primary\" class=\"w-full py-3\">Connect</button>\n      <button mat-stroked-button class=\"w-full\">Cancel</button>\n    </mat-card-actions>\n  </mat-card>\n</div>",
-      "tablet": "<!-- Tablet: Centered form with better spacing -->\n<div class=\"min-h-screen bg-slate-50 py-12 px-6\">\n  <mat-card class=\"max-w-2xl mx-auto p-8 shadow-lg rounded-xl\">\n    <mat-card-header class=\"mb-8\">\n      <mat-card-title class=\"text-2xl font-semibold\">Connect Platform</mat-card-title>\n      <mat-card-subtitle class=\"mt-2\">Link your social media account for monitoring</mat-card-subtitle>\n    </mat-card-header>\n    \n    <mat-card-content>\n      <form class=\"space-y-6\">\n        <div class=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\n          <mat-form-field appearance=\"outline\" class=\"w-full\">\n            <mat-label>Platform</mat-label>\n            <mat-select>\n              <mat-option value=\"twitter\">Twitter</mat-option>\n              <mat-option value=\"linkedin\">LinkedIn</mat-option>\n            </mat-select>\n          </mat-form-field>\n          \n          <mat-form-field appearance=\"outline\" class=\"w-full\">\n            <mat-label>Username</mat-label>\n            <input matInput required>\n          </mat-form-field>\n        </div>\n        \n        <mat-form-field appearance=\"outline\" class=\"w-full\">\n          <mat-label>API Key</mat-label>\n          <input matInput type=\"password\" required>\n          <mat-hint>Keep your API key secure</mat-hint>\n        </mat-form-field>\n      </form>\n    </mat-card-content>\n    \n    <mat-card-actions class=\"flex gap-4 mt-8\">\n      <button mat-stroked-button class=\"flex-1\">Cancel</button>\n      <button mat-raised-button color=\"primary\" class=\"flex-1\">Connect</button>\n    </mat-card-actions>\n  </mat-card>\n</div>",
-      "desktop": "<!-- Desktop: Spacious form with visual hierarchy -->\n<div class=\"min-h-screen bg-slate-50 py-16 px-8\">\n  <mat-card class=\"max-w-3xl mx-auto p-12 shadow-2xl rounded-2xl\">\n    <mat-card-header class=\"mb-10\">\n      <mat-card-title class=\"text-3xl font-bold\">Connect Platform</mat-card-title>\n      <mat-card-subtitle class=\"mt-3 text-base\">Link your social media account for continuous monitoring and analysis</mat-card-subtitle>\n    </mat-card-header>\n    \n    <mat-card-content>\n      <form class=\"space-y-8\">\n        <div class=\"grid grid-cols-2 gap-8\">\n          <mat-form-field appearance=\"outline\" class=\"w-full\">\n            <mat-label>Platform</mat-label>\n            <mat-select>\n              <mat-option value=\"twitter\">\n                <div class=\"flex items-center\">\n                  <mat-icon class=\"mr-2 text-[#1DA1F2]\">public</mat-icon>\n                  <span>Twitter</span>\n                </div>\n              </mat-option>\n              <mat-option value=\"linkedin\">\n                <div class=\"flex items-center\">\n                  <mat-icon class=\"mr-2 text-[#0077B5]\">work</mat-icon>\n                  <span>LinkedIn</span>\n                </div>\n              </mat-option>\n            </mat-select>\n          </mat-form-field>\n          \n          <mat-form-field appearance=\"outline\" class=\"w-full\">\n            <mat-label>Username</mat-label>\n            <mat-icon matPrefix>person</mat-icon>\n            <input matInput required>\n          </mat-form-field>\n        </div>\n        \n        <mat-form-field appearance=\"outline\" class=\"w-full\">\n          <mat-label>API Key</mat-label>\n          <mat-icon matPrefix>key</mat-icon>\n          <input matInput type=\"password\" required>\n          <mat-hint>Your API key is encrypted and never shared</mat-hint>\n        </mat-form-field>\n        \n        <mat-divider></mat-divider>\n        \n        <div class=\"bg-blue-50 p-6 rounded-xl\">\n          <h4 class=\"font-semibold text-primary mb-2 flex items-center\">\n            <mat-icon class=\"mr-2\">info</mat-icon>\n            What happens next?\n          </h4>\n          <ul class=\"text-sm text-gray-700 space-y-2 ml-8\">\n            <li>We'll scan your historical posts</li>\n            <li>AI analysis will identify potential risks</li>\n            <li>You'll receive a detailed report within 24 hours</li>\n          </ul>\n        </div>\n      </form>\n    </mat-card-content>\n    \n    <mat-card-actions class=\"flex gap-6 mt-10\">\n      <button mat-stroked-button class=\"px-8 py-3 text-base\">Cancel</button>\n      <button mat-raised-button color=\"primary\" class=\"flex-1 py-3 text-base\">Connect Platform</button>\n    </mat-card-actions>\n  </mat-card>\n</div>"
+    "heroSection": {
+      "responsive": "<div class="bg-white py-20 md:py-24 lg:py-32">\n <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">\n <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">Android: Write smarter, share quicker</h1>\n <p class="text-lg md:text-xl text-gray-600 max-w-4xl mb-10">The official source for news about Android.</p>\n <button mat-raised-button color="primary" class="px-10 py-5 text-xl rounded-xl font-medium shadow-lg hover:shadow-2xl">Discover</button>\n </div>\n</div>"
     }
   },
-
-  "advancedAnimations": {
-    "description": "Advanced animation patterns and custom keyframes",
-    "customKeyframes": {
-      "shimmer": "@keyframes shimmer {\n  0% { background-position: -1000px 0; }\n  100% { background-position: 1000px 0; }\n}",
-      "fadeInUp": "@keyframes fadeInUp {\n  from {\n    opacity: 0;\n    transform: translateY(30px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}",
-      "scaleInBounce": "@keyframes scaleInBounce {\n  0% {\n    opacity: 0;\n    transform: scale(0.3);\n  }\n  50% {\n    transform: scale(1.05);\n  }\n  70% {\n    transform: scale(0.9);\n  }\n  100% {\n    opacity: 1;\n    transform: scale(1);\n  }\n}",
-      "slideInRight": "@keyframes slideInRight {\n  from {\n    transform: translateX(100%);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0);\n    opacity: 1;\n  }\n}",
-      "ripple": "@keyframes ripple {\n  to {\n    transform: scale(4);\n    opacity: 0;\n  }\n}"
-    },
-    "tailwindConfig": "// tailwind.config.cjs\nmodule.exports = {\n  theme: {\n    extend: {\n      animation: {\n        'shimmer': 'shimmer 2s ease-in-out infinite',\n        'fadeInUp': 'fadeInUp 0.5s ease-out',\n        'scaleInBounce': 'scaleInBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',\n        'slideInRight': 'slideInRight 0.4s ease-out',\n        'ripple': 'ripple 0.6s ease-out'\n      },\n      keyframes: {\n        shimmer: {\n          '0%': { backgroundPosition: '-1000px 0' },\n          '100%': { backgroundPosition: '1000px 0' }\n        },\n        fadeInUp: {\n          'from': {\n            opacity: '0',\n            transform: 'translateY(30px)'\n          },\n          'to': {\n            opacity: '1',\n            transform: 'translateY(0)'\n          }\n        },\n        scaleInBounce: {\n          '0%': {\n            opacity: '0',\n            transform: 'scale(0.3)'\n          },\n          '50%': { transform: 'scale(1.05)' },\n          '70%': { transform: 'scale(0.9)' },\n          '100%': {\n            opacity: '1',\n            transform: 'scale(1)'\n          }\n        }\n      }\n    }\n  }\n}"
-  },
-
   "accessibility": {
     "description": "WCAG 2.1 AA compliance guidelines",
     "colorContrast": {
       "text": {
         "normal": "4.5:1 minimum ratio for body text",
-        "large": "3:1 minimum for text >= 18pt or 14pt bold",
-        "testing": "Use Chrome DevTools or WAVE tool"
-      },
-      "interactive": {
-        "buttons": "3:1 minimum contrast for button borders and states",
-        "focus": "3:1 minimum for focus indicators"
+        "large": "3:1 minimum for text >= 18pt or 14pt bold"
       }
     },
     "focusManagement": {
-      "visible": "Always show focus indicators: focus:ring-2 focus:ring-primary focus:ring-offset-2",
-      "keyboard": "All interactive elements must be keyboard accessible (Tab, Enter, Space, Arrow keys)",
-      "trapFocus": "Use MatDialog and MatBottomSheet which handle focus trapping automatically",
-      "skipLinks": "<a href=\"#main-content\" class=\"sr-only focus:not-sr-only\">Skip to main content</a>"
-    },
-    "aria": {
-      "labels": "Use aria-label or aria-labelledby for all interactive elements without visible text",
-      "roles": "Material components include appropriate ARIA roles automatically",
-      "live": "Use aria-live=\"polite\" for dynamic content updates (snackbars include this)",
-      "hidden": "Use aria-hidden=\"true\" for decorative icons"
-    },
-    "screenReader": {
-      "hiddenText": "<span class=\"sr-only\">Screen reader only text</span>",
-      "srOnlyClass": ".sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }",
-      "announcements": "Use MatSnackBar or LiveAnnouncer service for status updates"
-    },
-    "touch": {
-      "targetSize": "Minimum 44x44px (iOS) or 48x48px (Android) for touch targets",
-      "spacing": "8px minimum between interactive elements",
-      "hoverStates": "Hide hover-only interactions on touch devices: @media (hover: hover) { }"
+      "visible": "Always show focus indicators: focus:ring-2 focus:ring-primary focus:ring-offset-2"
     }
   },
-
   "riskLevelSystem": {
-    "description": "ReputeAI-specific risk level visualization",
+    "description": "ReputeAI-specific risk level visualization with Android Green and soft corners.",
     "levels": {
       "low": {
         "score": "0-49",
-        "color": "#10b981",
-        "background": "#d1fae5",
-        "tailwind": "text-emerald-600 bg-emerald-100",
-        "materialColor": "accent",
+        "color": "#3DDC84",
+        "tailwind": "text-[#3DDC84] bg-[#E8F8F0]",
         "icon": "check_circle",
-        "badge": "<mat-chip class=\"bg-emerald-100 text-emerald-800\">\n  <mat-icon class=\"mr-1\">check_circle</mat-icon>\n  Low Risk\n</mat-chip>",
-        "animation": "animate-pulse when score improves"
+        "badge": "<mat-chip class="bg-[#E8F8F0
+        ] text-[#3DDC84
+        ] rounded-lg">\n <mat-icon class="mr-1">check_circle</mat-icon>\n Low Risk\n</mat-chip>"
       },
       "medium": {
         "score": "50-69",
-        "color": "#f59e0b",
-        "background": "#fef3c7",
+        "color": "#F59E0B",
         "tailwind": "text-amber-600 bg-amber-100",
-        "materialColor": "warn",
         "icon": "warning",
-        "badge": "<mat-chip class=\"bg-amber-100 text-amber-800\">\n  <mat-icon class=\"mr-1\">warning</mat-icon>\n  Medium Risk\n</mat-chip>",
-        "animation": "hover:scale-105 transition"
+        "badge": "<mat-chip class="bg-amber-100 text-amber-600 rounded-lg">\n <mat-icon class="mr-1">warning</mat-icon>\n Medium Risk\n</mat-chip>"
       },
       "high": {
         "score": "70-89",
-        "color": "#f97316",
-        "background": "#ffedd5",
+        "color": "#F97316",
         "tailwind": "text-orange-600 bg-orange-100",
-        "materialColor": "warn",
         "icon": "error",
-        "badge": "<mat-chip class=\"bg-orange-100 text-orange-800 font-semibold\">\n  <mat-icon class=\"mr-1\">error</mat-icon>\n  High Risk\n</mat-chip>",
-        "animation": "animate-bounce when first detected"
+        "badge": "<mat-chip class="bg-orange-100 text-orange-600 font-semibold rounded-lg">\n <mat-icon class="mr-1">error</mat-icon>\n High Risk\n</mat-chip>"
       },
       "critical": {
         "score": "90-100",
-        "color": "#ef4444",
-        "background": "#fee2e2",
+        "color": "#EF4444",
         "tailwind": "text-red-600 bg-red-100",
-        "materialColor": "warn",
         "icon": "dangerous",
-        "badge": "<mat-chip class=\"bg-red-100 text-red-800 font-bold border-2 border-red-300\">\n  <mat-icon class=\"mr-1 animate-pulse\">dangerous</mat-icon>\n  Critical Risk\n</mat-chip>",
-        "animation": "animate-ping + show urgent dialog"
+        "badge": "<mat-chip class="bg-red-100 text-red-600 font-bold border-2 border-red-300 rounded-xl">\n <mat-icon class="mr-1">dangerous</mat-icon>\n Critical Risk\n</mat-chip>"
       }
-    },
-    "scoreDisplay": {
-      "mobile": "<div class=\"flex items-center justify-center p-6\">\n  <div class=\"relative\">\n    <mat-progress-spinner [value]=\"score\" mode=\"determinate\" diameter=\"120\" [color]=\"getRiskColor(score)\" class=\"animate-fadeIn\"></mat-progress-spinner>\n    <div class=\"absolute inset-0 flex flex-col items-center justify-center\">\n      <span class=\"text-3xl font-bold\" [class]=\"getScoreClass(score)\">{{ score }}</span>\n      <span class=\"text-xs text-gray-600 mt-1\">Risk Score</span>\n    </div>\n  </div>\n</div>",
-      "tablet": "<div class=\"flex items-center justify-center p-8\">\n  <div class=\"relative\">\n    <mat-progress-spinner [value]=\"score\" mode=\"determinate\" diameter=\"160\" [color]=\"getRiskColor(score)\" strokeWidth=\"8\"></mat-progress-spinner>\n    <div class=\"absolute inset-0 flex flex-col items-center justify-center\">\n      <span class=\"text-5xl font-bold\" [class]=\"getScoreClass(score)\">{{ score }}</span>\n      <span class=\"text-sm text-gray-600 mt-2\">Risk Score</span>\n      <mat-chip class=\"mt-3\" [class]=\"getRiskChipClass(score)\">{{ getRiskLevel(score) }}</mat-chip>\n    </div>\n  </div>\n</div>",
-      "desktop": "<div class=\"flex items-center justify-center p-12\">\n  <div class=\"relative group\">\n    <mat-progress-spinner [value]=\"score\" mode=\"determinate\" diameter=\"200\" [color]=\"getRiskColor(score)\" strokeWidth=\"10\" class=\"transition-all duration-500 group-hover:scale-110\"></mat-progress-spinner>\n    <div class=\"absolute inset-0 flex flex-col items-center justify-center\">\n      <span class=\"text-6xl font-bold transition-all duration-300\" [class]=\"getScoreClass(score)\">{{ score }}</span>\n      <span class=\"text-base text-gray-600 mt-3\">Reputation Score</span>\n      <mat-chip class=\"mt-4 transition-all duration-300 group-hover:scale-110\" [class]=\"getRiskChipClass(score)\">\n        <mat-icon class=\"mr-2\">{{ getRiskIcon(score) }}</mat-icon>\n        {{ getRiskLevel(score) }} Risk\n      </mat-chip>\n      <div class=\"mt-4 flex items-center text-sm\" [class.text-emerald-600]=\"scoreImprovement > 0\" [class.text-red-600]=\"scoreImprovement < 0\">\n        <mat-icon class=\"text-base\">{{ scoreImprovement > 0 ? 'trending_up' : 'trending_down' }}</mat-icon>\n        <span class=\"ml-1\">{{ Math.abs(scoreImprovement) }}% from last month</span>\n      </div>\n    </div>\n  </div>\n</div>"
-    }
-  },
-
-  "platformBranding": {
-    "description": "Social platform brand colors and styling",
-    "platforms": {
-      "twitter": {
-        "color": "#1DA1F2",
-        "background": "#E8F5FD",
-        "tailwind": "text-[#1DA1F2] bg-[#E8F5FD]",
-        "icon": "public",
-        "badge": "<mat-chip class=\"bg-[#E8F5FD] text-[#1DA1F2] border border-[#1DA1F2]\">\n  <mat-icon class=\"mr-2\">public</mat-icon>\n  Twitter\n</mat-chip>"
-      },
-      "linkedin": {
-        "color": "#0077B5",
-        "background": "#E0F2F7",
-        "tailwind": "text-[#0077B5] bg-[#E0F2F7]",
-        "icon": "work",
-        "badge": "<mat-chip class=\"bg-[#E0F2F7] text-[#0077B5] border border-[#0077B5]\">\n  <mat-icon class=\"mr-2\">work</mat-icon>\n  LinkedIn\n</mat-chip>"
-      },
-      "github": {
-        "color": "#181717",
-        "background": "#F0F0F0",
-        "tailwind": "text-[#181717] bg-[#F0F0F0]",
-        "icon": "code",
-        "badge": "<mat-chip class=\"bg-[#F0F0F0] text-[#181717] border border-[#181717]\">\n  <mat-icon class=\"mr-2\">code</mat-icon>\n  GitHub\n</mat-chip>"
-      },
-      "reddit": {
-        "color": "#FF4500",
-        "background": "#FFE5DB",
-        "tailwind": "text-[#FF4500] bg-[#FFE5DB]",
-        "icon": "forum",
-        "badge": "<mat-chip class=\"bg-[#FFE5DB] text-[#FF4500] border border-[#FF4500]\">\n  <mat-icon class=\"mr-2\">forum</mat-icon>\n  Reddit\n</mat-chip>"
-      },
-      "stackoverflow": {
-        "color": "#F48024",
-        "background": "#FFF3E5",
-        "tailwind": "text-[#F48024] bg-[#FFF3E5]",
-        "icon": "help",
-        "badge": "<mat-chip class=\"bg-[#FFF3E5] text-[#F48024] border border-[#F48024]\">\n  <mat-icon class=\"mr-2\">help</mat-icon>\n  Stack Overflow\n</mat-chip>"
-      }
-    }
-  },
-
-  "performanceOptimization": {
-    "description": "Performance best practices",
-    "lazyLoading": {
-      "modules": "// app-routing.module.ts\nconst routes: Routes = [\n  {\n    path: 'dashboard',\n    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)\n  },\n  {\n    path: 'analytics',\n    loadChildren: () => import('./analytics/analytics.module').then(m => m.AnalyticsModule)\n  }\n];",
-      "materialModules": "// Import only what you need\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatCardModule } from '@angular/material/card';\n// Don't import MatModule (imports everything)"
-    },
-    "changeDetection": {
-      "onPush": "@Component({\n  selector: 'app-content-card',\n  templateUrl: './content-card.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush\n})",
-      "trackBy": "<mat-list-item *ngFor=\"let item of items; trackBy: trackById\">\n  <!-- Content -->\n</mat-list-item>\n\ntrackById(index: number, item: any): number {\n  return item.id;\n}"
-    },
-    "virtualScrolling": {
-      "cdkVirtual": "<cdk-virtual-scroll-viewport itemSize=\"80\" class=\"h-screen\">\n  <mat-list-item *cdkVirtualFor=\"let item of items\" class=\"h-20\">\n    <!-- Item content -->\n  </mat-list-item>\n</cdk-virtual-scroll-viewport>",
-      "usage": "Use for lists with 100+ items"
-    },
-    "imageOptimization": {
-      "lazyLoad": "<img [src]=\"item.image\" loading=\"lazy\" class=\"rounded-lg\" alt=\"{{ item.title }}\">",
-      "responsive": "<img [srcset]=\"getResponsiveSrcset(item)\" sizes=\"(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw\" class=\"w-full h-auto\">"
-    },
-    "tailwindPurge": {
-      "config": "// tailwind.config.cjs\nmodule.exports = {\n  content: [\n    './src/**/*.{html,ts}',\n  ],\n  safelist: [\n    'bg-emerald-100',\n    'text-emerald-600',\n    'bg-amber-100',\n    'text-amber-600',\n    'bg-red-100',\n    'text-red-600'\n  ]\n}"
-    }
-  },
-
-  "implementationGuide": {
-    "description": "Step-by-step implementation guide",
-    "setup": {
-      "angular": "ng new reputeai --routing --style=scss\ncd reputeai",
-      "material": "ng add @angular/material\n# Select theme: Custom\n# Typography: Yes\n# Animations: Yes",
-      "tailwind": "npm install -D tailwindcss postcss autoprefixer\nnpx tailwindcss init",
-      "materialIcons": "// index.html\n<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap\" rel=\"stylesheet\">"
-    },
-    "configuration": {
-      "customTheme": "// src/custom-theme.scss\n@use '@angular/material' as mat;\n\n@include mat.core();\n\n$reputeai-primary: mat.define-palette(mat.$blue-palette, 600);\n$reputeai-accent: mat.define-palette(mat.$green-palette, 500);\n$reputeai-warn: mat.define-palette(mat.$red-palette, 500);\n\n$reputeai-theme: mat.define-light-theme((\n  color: (\n    primary: $reputeai-primary,\n    accent: $reputeai-accent,\n    warn: $reputeai-warn,\n  ),\n  typography: mat.define-typography-config(),\n  density: 0,\n));\n\n@include mat.all-component-themes($reputeai-theme);",
-      "tailwindConfig": "// tailwind.config.cjs\nmodule.exports = {\n  content: ['./src/**/*.{html,ts}'],\n  theme: {\n    extend: {\n      colors: {\n        primary: {\n          50: '#ebf3ff',\n          600: '#2563eb',\n          700: '#1a4db4',\n        },\n      },\n    },\n  },\n  plugins: [],\n};",
-      "styles": "// src/styles.scss\n@use '@angular/material' as mat;\n@import './custom-theme.scss';\n\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\nhtml, body { \n  height: 100%; \n  margin: 0; \n  font-family: Roboto, sans-serif;\n}\n\n.mat-mdc-button, .mat-mdc-raised-button {\n  @apply transition-all duration-200;\n}\n\n.mat-mdc-card {\n  @apply transition-shadow duration-300;\n}"
-    },
-    "componentExample": {
-      "typescript": "// dashboard.component.ts\nimport { Component, OnInit } from '@angular/core';\nimport { trigger, state, style, transition, animate } from '@angular/animations';\nimport { MatDialog } from '@angular/material/dialog';\n\n@Component({\n  selector: 'app-dashboard',\n  templateUrl: './dashboard.component.html',\n  styleUrls: ['./dashboard.component.scss'],\n  animations: [\n    trigger('fadeIn', [\n      transition(':enter', [\n        style({ opacity: 0, transform: 'translateY(20px)' }),\n        animate('400ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))\n      ])\n    ])\n  ]\n})\nexport class DashboardComponent implements OnInit {\n  reputationScore = 85;\n  scoreImprovement = 5;\n  \n  statsCards = [\n    { title: 'Total Content', value: '12,485', icon: 'description', color: 'text-blue-600' },\n    { title: 'Flagged Items', value: '23', icon: 'warning', color: 'text-amber-600' },\n    { title: 'Platforms', value: '5', icon: 'public', color: 'text-emerald-600' },\n  ];\n\n  constructor(private dialog: MatDialog) {}\n\n  ngOnInit(): void {\n    // Load data\n  }\n\n  getRiskColor(score: number): string {\n    if (score < 50) return 'accent';\n    if (score < 70) return 'warn';\n    return 'warn';\n  }\n\n  getRiskLevel(score: number): string {\n    if (score < 50) return 'Low';\n    if (score < 70) return 'Medium';\n    if (score < 90) return 'High';\n    return 'Critical';\n  }\n}",
-      "html": "<!-- dashboard.component.html -->\n<div class=\"min-h-screen bg-slate-50\">\n  <!-- Responsive Header -->\n  <mat-toolbar color=\"primary\" class=\"h-16 px-4 md:px-8\">\n    <button mat-icon-button class=\"md:hidden\" (click)=\"drawer.toggle()\">\n      <mat-icon>menu</mat-icon>\n    </button>\n    <span class=\"text-xl md:text-2xl font-medium\">Dashboard</span>\n    <span class=\"flex-1\"></span>\n    <button mat-icon-button>\n      <mat-icon matBadge=\"3\" matBadgeColor=\"warn\">notifications</mat-icon>\n    </button>\n  </mat-toolbar>\n\n  <!-- Main Content -->\n  <div class=\"p-4 md:p-8 lg:p-12\">\n    <!-- Stats Grid (Responsive) -->\n    <div class=\"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 mb-8\" @fadeIn>\n      <!-- Reputation Score Card -->\n      <mat-card class=\"p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] rounded-xl\">\n        <div class=\"flex items-center justify-between mb-4\">\n          <h3 class=\"text-sm md:text-base font-medium text-gray-600\">Reputation Score</h3>\n          <mat-icon class=\"text-primary\">verified_user</mat-icon>\n        </div>\n        <p class=\"text-4xl md:text-5xl font-bold text-primary\">{{ reputationScore }}</p>\n        <div class=\"mt-4 flex items-center text-sm text-emerald-600\">\n          <mat-icon class=\"text-base mr-1\">trending_up</mat-icon>\n          <span>+{{ scoreImprovement }}% this month</span>\n        </div>\n      </mat-card>\n\n      <!-- Other Stats Cards -->\n      <mat-card *ngFor=\"let card of statsCards\" class=\"p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] rounded-xl\">\n        <div class=\"flex items-center justify-between mb-4\">\n          <h3 class=\"text-sm md:text-base font-medium text-gray-600\">{{ card.title }}</h3>\n          <mat-icon [class]=\"card.color\">{{ card.icon }}</mat-icon>\n        </div>\n        <p class=\"text-4xl md:text-5xl font-bold\" [class]=\"card.color\">{{ card.value }}</p>\n      </mat-card>\n    </div>\n\n    <!-- Content Area (Responsive) -->\n    <div class=\"grid grid-cols-1 xl:grid-cols-3 gap-6 md:gap-8\">\n      <!-- Main Content (2/3 on desktop) -->\n      <div class=\"xl:col-span-2 space-y-6 md:space-y-8\">\n        <mat-card class=\"p-6 md:p-8 shadow-lg rounded-xl\" @fadeIn>\n          <h2 class=\"text-xl md:text-2xl font-semibold mb-6\">Recent Activity</h2>\n          <!-- Content here -->\n        </mat-card>\n      </div>\n\n      <!-- Sidebar (1/3 on desktop) -->\n      <div class=\"space-y-6 md:space-y-8\">\n        <mat-card class=\"p-6 shadow-lg rounded-xl\" @fadeIn>\n          <h3 class=\"text-lg font-semibold mb-4\">Quick Actions</h3>\n          <div class=\"space-y-3\">\n            <button mat-raised-button color=\"primary\" class=\"w-full\">\n              <mat-icon class=\"mr-2\">add</mat-icon>\n              Connect Platform\n            </button>\n            <button mat-stroked-button class=\"w-full\">\n              <mat-icon class=\"mr-2\">play_arrow</mat-icon>\n              Run Scan\n            </button>\n          </div>\n        </mat-card>\n      </div>\n    </div>\n  </div>\n</div>"
-    }
-  },
-
-  "bestPractices": {
-    "description": "Development best practices",
-    "dos": [
-      "✅ Use Angular Material components as the foundation",
-      "✅ Apply Tailwind for spacing, sizing, and custom styling",
-      "✅ Follow mobile-first responsive design",
-      "✅ Use semantic HTML and ARIA labels",
-      "✅ Implement proper error handling and loading states",
-      "✅ Use TypeScript strict mode",
-      "✅ Lazy load feature modules",
-      "✅ Use OnPush change detection for performance",
-      "✅ Implement proper animation timing",
-      "✅ Test on multiple devices and screen sizes"
-    ],
-    "donts": [
-      "❌ Don't override Material component styles unnecessarily",
-      "❌ Don't use inline styles (use Tailwind classes)",
-      "❌ Don't forget mobile touch target sizes (44px minimum)",
-      "❌ Don't ignore accessibility requirements",
-      "❌ Don't use too many animations (causes motion sickness)",
-      "❌ Don't hardcode colors (use design tokens)",
-      "❌ Don't forget loading and error states",
-      "❌ Don't import entire Material library",
-      "❌ Don't use deprecated Angular or Material APIs",
-      "❌ Don't forget to test keyboard navigation"
-    ]
-  },
-
-  "resourceLinks": {
-    "documentation": {
-      "angular": "https://angular.io/docs",
-      "material": "https://material.angular.io/components/categories",
-      "tailwind": "https://tailwindcss.com/docs",
-      "materialDesign3": "https://m3.material.io/"
-    },
-    "tools": {
-      "colorContrast": "https://webaim.org/resources/contrastchecker/",
-      "accessibility": "https://wave.webaim.org/",
-      "responsiveTesting": "https://responsively.app/",
-      "iconSearch": "https://fonts.google.com/icons"
     }
   }
 }
+--- END OF FILE design.json ---
