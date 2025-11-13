@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+
 import { MatCardModule } from '@angular/material/card';
+import { HeroSectionComponent } from '../hero-section/hero-section.component';
 
 
 @Component({
@@ -12,7 +14,7 @@ import { MatCardModule } from '@angular/material/card';
       MatButtonModule,
       MatIconModule,
       MatCardModule,
-
+      HeroSectionComponent
     ],
     templateUrl: './home.html',
     styleUrl: './home.css'
