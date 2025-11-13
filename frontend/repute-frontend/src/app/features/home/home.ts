@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { MatCardModule } from '@angular/material/card';
 import { HeroSectionComponent } from '../hero-section/hero-section.component';
+import { FeaturesCarouselComponent } from '../features-carousel/features-carousel.component';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { HeroSectionComponent } from '../hero-section/hero-section.component';
       MatButtonModule,
       MatIconModule,
       MatCardModule,
-      HeroSectionComponent
+      HeroSectionComponent,
+      FeaturesCarouselComponent
     ],
     templateUrl: './home.html',
     styleUrl: './home.css'
