@@ -1,64 +1,55 @@
 <footer class="footer">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
     
-    <!-- Main Footer Content -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-      
-      <!-- Brand Section -->
-      <div class="col-span-1">
-        <div class="flex items-center gap-2 mb-4">
-          <img src="/logo.png" alt="ReputeAI Logo" class="w-10 h-10 rounded-xl object-contain bg-white" style="box-shadow:0 2px 8px #0002;" />
-          <span class="text-xl font-bold text-white">ReputeAI</span>
-        </div>
-        <p class="text-gray-300 text-sm leading-relaxed">
-          AI-powered reputation management for the modern digital age.
-        </p>
+    <!-- Social Links at Top -->
+    <div class="border-b border-gray-700 pb-6 mb-8">
+      <div class="flex items-center justify-start gap-3">
+        <span class="text-gray-400 text-sm font-medium">Follow us</span>
+        <a *ngFor="let social of socialLinks"
+           [href]="social.url"
+           target="_blank"
+           rel="noopener noreferrer"
+           [attr.aria-label]="social.label"
+           class="social-icon w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-all duration-200"
+           [innerHTML]="social.svg">
+        </a>
       </div>
+    </div>
 
-      <!-- Footer Links -->
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+      <!-- Footer Sections -->
       <div *ngFor="let section of footerSections" class="col-span-1">
-        <h3 class="text-gray-900 font-semibold mb-4 text-sm">{{ section.title }}</h3>
-        <ul class="space-y-3">
+        <h3 class="text-white font-semibold mb-4 text-sm">{{ section.title }}</h3>
+        <ul class="space-y-2.5">
           <li *ngFor="let link of section.links">
             <a *ngIf="link.route" 
                [routerLink]="link.route"
-               class="text-gray-600 hover:text-indigo-600 text-sm transition-colors duration-200">
+               class="text-gray-400 hover:text-white text-sm transition-colors duration-200 flex items-center gap-1">
               {{ link.label }}
+              <span *ngIf="link.external" class="text-xs">↗</span>
             </a>
             <a *ngIf="link.external" 
                [href]="link.external"
                target="_blank"
                rel="noopener noreferrer"
-               class="text-gray-600 hover:text-indigo-600 text-sm transition-colors duration-200">
+               class="text-gray-400 hover:text-white text-sm transition-colors duration-200 flex items-center gap-1">
               {{ link.label }}
+              <span class="text-xs">↗</span>
             </a>
           </li>
         </ul>
       </div>
     </div>
 
-    <!-- Divider -->
-    <div class="border-t border-gray-200 pt-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        
-        <!-- Copyright -->
-        <p class="text-gray-500 text-sm">
-          © {{ currentYear }} ReputeAI. All rights reserved.
-        </p>
-
-        <!-- Social Links -->
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-700 pt-6 pb-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+        <p>© {{ currentYear }} ReputeAI. All rights reserved.</p>
         <div class="flex items-center gap-4">
-          <span class="text-gray-400 text-sm mr-2">Follow us</span>
-          <a *ngFor="let social of socialLinks"
-             [href]="social.url"
-             target="_blank"
-             rel="noopener noreferrer"
-             [attr.aria-label]="social.label"
-             class="social-icon w-9 h-9 rounded-full bg-neutral-900 hover:bg-white border border-neutral-700 flex items-center justify-center transition-all duration-300 group">
-            <mat-icon class="text-white group-hover:text-black text-xl transition-colors duration-300 flex items-center justify-center" style="vertical-align:middle;">
-              {{ social.icon }}
-            </mat-icon>
-          </a>
+          <a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+          <span>•</span>
+          <a href="/terms" class="hover:text-white transition-colors">Terms</a>
         </div>
       </div>
     </div>
