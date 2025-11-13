@@ -1,97 +1,87 @@
-<section class="features-carousel-section bg-white py-16 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto">
+<section class="features-carousel-section" #carouselSection [class.visible]="isVisible">
+  <div class="carousel-container">
     
-    <!-- Section Title -->
-    <div class="text-center mb-16">
-      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-        Classic features and new favourites, about to be yours.
-      </h2>
-    </div>
-
-    <!-- Carousel Container -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <!-- Carousel Content Grid -->
+    <div class="carousel-grid">
       
-      <!-- Left Column: Text Content with Card Animation -->
-      <div class="relative min-h-[400px]">
-        <div 
-          *ngFor="let feature of features; let i = index"
-          class="absolute inset-0 transition-all duration-500 ease-in-out bg-gray-50 rounded-3xl p-8 sm:p-10"
-          [class.opacity-100]="i === currentSlide"
-          [class.opacity-0]="i !== currentSlide"
-          [class.translate-x-0]="i === currentSlide"
-          [class.translate-x-full]="i > currentSlide"
-          [class.-translate-x-full]="i < currentSlide"
-          [class.pointer-events-none]="i !== currentSlide"
-          [class.z-10]="i === currentSlide"
-          [class.z-0]="i !== currentSlide">
-          
-          <!-- Progress Indicators -->
-          <div class="flex gap-2 mb-8">
-            <div 
-              *ngFor="let f of features; let idx = index"
-              class="h-1 rounded-full transition-all duration-500 cursor-pointer"
-              [class.bg-gray-800]="idx === currentSlide"
-              [class.bg-gray-300]="idx !== currentSlide"
-              [style.width]="idx === currentSlide ? '60px' : '30px'"
-              (click)="goToSlide(idx)">
+      <!-- Left Side: Phone Mockup with Blob Background -->
+      <div class="phone-side">
+        <div class="blob-container">
+          <div 
+            *ngFor="let feature of features; let i = index"
+            class="phone-mockup-wrapper"
+            [class.active]="i === currentSlide"
+            [class.next]="i > currentSlide"
+            [class.prev]="i < currentSlide">
+            
+            <!-- Phone Mockup -->
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-content">
+                <span class="placeholder-text">Phone Screen</span>
+              </div>
             </div>
           </div>
-
-          <!-- Main Title -->
-          <h3 class="text-2xl sm:text-3xl font-semibold text-gray-900 leading-tight mb-6">
-            {{ feature.title }}
-          </h3>
-
-          <!-- Description -->
-          <p class="text-base text-gray-600 leading-relaxed mb-8">
-            {{ feature.description }}
-          </p>
-
-          <!-- CTA Button -->
-          <button class="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-gray-300 text-gray-900 font-medium hover:border-gray-900 hover:bg-gray-100 transition-all duration-300 group">
-            {{ feature.buttonText }}
-            <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-            </svg>
-          </button>
-
-          <!-- Navigation Arrows -->
-          <div class="flex gap-3 mt-10">
-            <button 
-              (click)="prevSlide()"
-              [disabled]="isAnimating"
-              class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-              <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
-            <button 
-              (click)="nextSlide()"
-              [disabled]="isAnimating"
-              class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-              <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
-          </div>
-
         </div>
       </div>
 
-      <!-- Right Column: Image/Visual Container -->
-      <div class="flex items-center justify-center">
-        <div 
-          class="relative w-full max-w-[500px] aspect-square rounded-[50px] bg-gradient-to-br from-purple-100 to-purple-200 shadow-xl overflow-hidden"
-          (mouseenter)="pauseAutoPlay()"
-          (mouseleave)="resumeAutoPlay()">
-          
-          <!-- Placeholder for phone/visual mockup -->
-          <div class="w-full h-full flex items-center justify-center p-12">
-            <div class="w-64 h-96 bg-white rounded-3xl shadow-2xl border-4 border-gray-800 flex items-center justify-center">
-              <span class="text-gray-400 text-sm">Phone mockup here</span>
+      <!-- Right Side: Text Content Card -->
+      <div class="content-side">
+        <div class="content-card-wrapper">
+          <div 
+            *ngFor="let feature of features; let i = index"
+            class="content-card"
+            [class.active]="i === currentSlide"
+            [class.next]="i > currentSlide"
+            [class.prev]="i < currentSlide">
+            
+            <!-- Progress Indicators -->
+            <div class="progress-bars">
+              <div 
+                *ngFor="let f of features; let idx = index"
+                class="progress-bar"
+                [class.active]="idx === currentSlide"
+                (click)="goToSlide(idx)">
+              </div>
             </div>
-          </div>
 
+            <!-- Title -->
+            <h3 class="card-title">{{ feature.title }}</h3>
+
+            <!-- Description -->
+            <p class="card-description">{{ feature.description }}</p>
+
+            <!-- CTA Button -->
+            <button class="cta-button">
+              {{ feature.buttonText }}
+              <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </button>
+
+            <!-- Navigation Arrows -->
+            <div class="nav-arrows">
+              <button 
+                (click)="prevSlide()"
+                [disabled]="isAnimating"
+                class="nav-btn"
+                aria-label="Previous slide">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+              <button 
+                (click)="nextSlide()"
+                [disabled]="isAnimating"
+                class="nav-btn"
+                aria-label="Next slide">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+
+          </div>
         </div>
       </div>
       

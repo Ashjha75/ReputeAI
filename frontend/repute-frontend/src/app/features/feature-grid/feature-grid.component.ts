@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, ElementRef, ViewChild } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-feature-grid',
@@ -8,7 +8,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './feature-grid.component.html',
   styleUrls: ['./feature-grid.component.css'],
 })
-export class FeatureGridComponent {
+export class FeatureGridComponent implements OnInit, OnDestroy {
+  @ViewChild('gridSection', { static: true }) gridSection!: ElementRef;
+  
+  isVisible = false;
+  private observer?: IntersectionObserver;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   features = [
     {
       id: 1,
@@ -32,4 +38,37 @@ export class FeatureGridComponent {
       imageAlt: 'Security features'
     }
   ];
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.setupScrollAnimation();
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  private setupScrollAnimation(): void {
+    if (isPlatformBrowser(this.platformId) && 'IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.isVisible = true;
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      if (this.gridSection) {
+        this.observer.observe(this.gridSection.nativeElement);
+      }
+    } else {
+      this.isVisible = true;
+    }
+  }
 }

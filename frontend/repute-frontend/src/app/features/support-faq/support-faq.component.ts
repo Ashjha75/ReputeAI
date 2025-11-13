@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, ElementRef, ViewChild } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-support-faq',
@@ -8,8 +8,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './support-faq.component.html',
   styleUrls: ['./support-faq.component.css'],
 })
-export class SupportFaqComponent {
+export class SupportFaqComponent implements OnInit, OnDestroy {
+  @ViewChild('faqSection', { static: true }) faqSection!: ElementRef;
+  
   openAccordionId: number | null = null;
+  isVisible = false;
+  private observer?: IntersectionObserver;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   supportLinks = [
     { label: 'Pixel', url: '#', icon: 'external' },
@@ -48,6 +54,39 @@ export class SupportFaqComponent {
       answer: 'Most modern Android devices support eSIM technology. Contact your mobile carrier to transfer your eSIM to your new Android device. They will provide you with a QR code or activation details to set up the eSIM. Make sure your new Android device is eSIM-compatible before proceeding with the transfer.'
     }
   ];
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.setupScrollAnimation();
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  private setupScrollAnimation(): void {
+    if (isPlatformBrowser(this.platformId) && 'IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.isVisible = true;
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      if (this.faqSection) {
+        this.observer.observe(this.faqSection.nativeElement);
+      }
+    } else {
+      this.isVisible = true;
+    }
+  }
 
   toggleAccordion(id: number): void {
     if (this.openAccordionId === id) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -9,10 +9,14 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   styleUrls: ['./features-carousel.component.css'],
 })
 export class FeaturesCarouselComponent implements OnInit, OnDestroy {
+  @ViewChild('carouselSection', { static: true }) carouselSection!: ElementRef;
+  
   currentSlide = 0;
   autoPlayInterval: any;
   isPaused = false;
   isAnimating = false;
+  isVisible = false;
+  private observer?: IntersectionObserver;
 
   features = [
     {
@@ -39,12 +43,37 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
+      this.setupScrollAnimation();
       this.startAutoPlay();
     }
   }
 
   ngOnDestroy(): void {
     this.stopAutoPlay();
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  private setupScrollAnimation(): void {
+    if (isPlatformBrowser(this.platformId) && 'IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              this.isVisible = true;
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      if (this.carouselSection) {
+        this.observer.observe(this.carouselSection.nativeElement);
+      }
+    } else {
+      this.isVisible = true;
+    }
   }
 
   startAutoPlay(): void {
