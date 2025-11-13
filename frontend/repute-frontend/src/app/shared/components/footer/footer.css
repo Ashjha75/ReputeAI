@@ -1,7 +1,6 @@
-
 .footer {
-  background: #f1f3f4;
-  border-top: 1px solid #222;
+  background: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+  border-top: 1px solid #e5e7eb;
   position: relative;
 }
 
@@ -15,7 +14,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #222 50%,
+    rgba(99, 102, 241, 0.3) 50%,
     transparent 100%
   );
 }
@@ -35,7 +34,6 @@
   display: inline-block;
 }
 
-
 .footer a::after {
   content: '';
   position: absolute;
@@ -43,7 +41,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: #fff;
+  background: #6366f1;
   transition: width 0.3s ease;
 }
 
@@ -52,17 +50,14 @@
 }
 
 /* Social icon animations */
-
 .social-icon {
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  border: 1px solid #222;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .social-icon:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-  border-color: #fff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 /* Responsive adjustments */
