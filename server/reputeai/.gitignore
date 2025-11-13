@@ -32,5 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 
-# Ignore application.properties for security
+# Ignore application.properties and dev YAML for security
 src/main/resources/application.properties
+src/main/resources/application-dev.yml
