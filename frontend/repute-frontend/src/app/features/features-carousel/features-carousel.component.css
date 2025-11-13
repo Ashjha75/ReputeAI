@@ -4,14 +4,6 @@
   background: linear-gradient(to bottom, #f3f4f6 0%, #e5e7eb 100%);
   padding: 80px 20px;
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.features-carousel-section.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .carousel-container {

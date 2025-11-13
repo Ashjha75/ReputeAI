@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, PLATFORM_ID, Inject, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -8,10 +8,10 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   templateUrl: './feature-grid.component.html',
   styleUrls: ['./feature-grid.component.css'],
 })
-export class FeatureGridComponent implements OnInit, OnDestroy {
-  @ViewChild('gridSection', { static: true }) gridSection!: ElementRef;
+export class FeatureGridComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('gridSection', { static: false }) gridSection!: ElementRef;
   
-  isVisible = false;
+  isVisible = true;
   private observer?: IntersectionObserver;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
@@ -40,6 +40,10 @@ export class FeatureGridComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit(): void {
+    // Component initialized
+  }
+
+  ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.setupScrollAnimation();
     }
@@ -52,22 +56,28 @@ export class FeatureGridComponent implements OnInit, OnDestroy {
   }
 
   private setupScrollAnimation(): void {
-    if (isPlatformBrowser(this.platformId) && 'IntersectionObserver' in window) {
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              this.isVisible = true;
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
+    if (isPlatformBrowser(this.platformId) && typeof IntersectionObserver !== 'undefined') {
+      // Start invisible for animation
+      this.isVisible = false;
+      
+      setTimeout(() => {
+        this.observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && !this.isVisible) {
+                this.isVisible = true;
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px' }
+        );
 
-      if (this.gridSection) {
-        this.observer.observe(this.gridSection.nativeElement);
-      }
+        if (this.gridSection?.nativeElement) {
+          this.observer.observe(this.gridSection.nativeElement);
+        }
+      }, 100);
     } else {
+      // Fallback: show immediately
       this.isVisible = true;
     }
   }

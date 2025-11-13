@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy, PLATFORM_ID, Inject, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -8,14 +8,14 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   templateUrl: './features-carousel.component.html',
   styleUrls: ['./features-carousel.component.css'],
 })
-export class FeaturesCarouselComponent implements OnInit, OnDestroy {
-  @ViewChild('carouselSection', { static: true }) carouselSection!: ElementRef;
+export class FeaturesCarouselComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('carouselSection', { static: false }) carouselSection!: ElementRef;
   
   currentSlide = 0;
   autoPlayInterval: any;
   isPaused = false;
   isAnimating = false;
-  isVisible = false;
+  isVisible = true;
   private observer?: IntersectionObserver;
 
   features = [
@@ -43,8 +43,13 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.setupScrollAnimation();
       this.startAutoPlay();
+    }
+  }
+
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.setupScrollAnimation();
     }
   }
 
@@ -56,22 +61,28 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   }
 
   private setupScrollAnimation(): void {
-    if (isPlatformBrowser(this.platformId) && 'IntersectionObserver' in window) {
-      this.observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              this.isVisible = true;
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
+    if (isPlatformBrowser(this.platformId) && typeof IntersectionObserver !== 'undefined') {
+      // Start invisible for animation
+      this.isVisible = false;
+      
+      setTimeout(() => {
+        this.observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && !this.isVisible) {
+                this.isVisible = true;
+              }
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px' }
+        );
 
-      if (this.carouselSection) {
-        this.observer.observe(this.carouselSection.nativeElement);
-      }
+        if (this.carouselSection?.nativeElement) {
+          this.observer.observe(this.carouselSection.nativeElement);
+        }
+      }, 100);
     } else {
+      // Fallback: show immediately
       this.isVisible = true;
     }
   }
