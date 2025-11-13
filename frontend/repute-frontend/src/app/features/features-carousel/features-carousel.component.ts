@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-features-carousel',
@@ -10,45 +10,37 @@ import { CommonModule } from '@angular/common';
 })
 export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   currentSlide = 0;
-  totalSlides = 3; // You can adjust this based on your needs
   autoPlayInterval: any;
   isPaused = false;
+  isAnimating = false;
 
   features = [
     {
-      badge: 'New',
-      badgeColor: 'bg-lime-400',
-      title: 'Feature One',
-      heading: 'Precision crafted.',
-      subheading: 'Performance ready.',
-      description: 'Reach your goals with comprehensive set of tools. And get help from our AI assistant.',
-      price: 'From ₹39,900.00',
-      buttonText: 'Buy now'
+      title: 'Text with both iPhone and Android friends, no problem.',
+      description: 'With RCS available across Android and iOS*, you can now text seamlessly with either one, share high-quality photos and videos, join and name group chats, and react to texts with any emoji you like. You\'ll also get the latest AI features, too.*',
+      buttonText: 'Discover Google Messages',
+      buttonLink: '#'
     },
     {
-      badge: 'New',
-      badgeColor: 'bg-lime-400',
-      title: 'Feature Two',
-      heading: 'Innovation first.',
-      subheading: 'Quality assured.',
-      description: 'Experience cutting-edge technology with powerful features designed for your needs.',
-      price: 'From ₹49,900.00',
-      buttonText: 'Buy now'
+      title: 'Make video calls and share files.',
+      description: 'Do not worry, you\'ll still be able to video chat with friends and family on Google Meet and if you want to send files to friends nearby, you\'ve got Quick Share, which works with Android, ChromeOS, and Windows PC devices.*',
+      buttonText: 'Explore Quick Share',
+      buttonLink: '#'
     },
     {
-      badge: 'New',
-      badgeColor: 'bg-lime-400',
-      title: 'Feature Three',
-      heading: 'Design excellence.',
-      subheading: 'User focused.',
-      description: 'Beautiful design meets functionality with intuitive controls and seamless experience.',
-      price: 'From ₹59,900.00',
-      buttonText: 'Buy now'
+      title: 'Stay connected everywhere.',
+      description: 'Experience seamless connectivity with powerful features that keep you in touch with what matters most. Share moments, collaborate easily, and stay connected across all your devices.',
+      buttonText: 'Learn More',
+      buttonLink: '#'
     }
   ];
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngOnInit(): void {
-    this.startAutoPlay();
+    if (isPlatformBrowser(this.platformId)) {
+      this.startAutoPlay();
+    }
   }
 
   ngOnDestroy(): void {
@@ -56,29 +48,47 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   }
 
   startAutoPlay(): void {
-    this.autoPlayInterval = setInterval(() => {
-      if (!this.isPaused) {
-        this.nextSlide();
-      }
-    }, 6000);
+    if (isPlatformBrowser(this.platformId)) {
+      this.autoPlayInterval = setInterval(() => {
+        if (!this.isPaused && !this.isAnimating) {
+          this.nextSlide();
+        }
+      }, 6000);
+    }
   }
 
   stopAutoPlay(): void {
     if (this.autoPlayInterval) {
       clearInterval(this.autoPlayInterval);
+      this.autoPlayInterval = null;
     }
   }
 
   nextSlide(): void {
-    this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+    this.currentSlide = (this.currentSlide + 1) % this.features.length;
+    setTimeout(() => {
+      this.isAnimating = false;
+    }, 600);
   }
 
   prevSlide(): void {
-    this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+    if (this.isAnimating) return;
+    this.isAnimating = true;
+    this.currentSlide = (this.currentSlide - 1 + this.features.length) % this.features.length;
+    setTimeout(() => {
+      this.isAnimating = false;
+    }, 600);
   }
 
   goToSlide(index: number): void {
+    if (this.isAnimating || index === this.currentSlide) return;
+    this.isAnimating = true;
     this.currentSlide = index;
+    setTimeout(() => {
+      this.isAnimating = false;
+    }, 600);
   }
 
   pauseAutoPlay(): void {

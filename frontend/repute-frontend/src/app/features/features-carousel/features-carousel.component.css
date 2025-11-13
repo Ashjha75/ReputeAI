@@ -1,45 +1,46 @@
 .features-carousel-section {
   position: relative;
   overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* Performance optimization for smooth animations */
+.features-carousel-section [class*="absolute"] {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* Smooth transitions for slide content */
-.transition-slide {
-  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+.transition-all {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Progress indicator animations */
-.progress-indicator {
-  transition: width 0.5s ease-in-out, background-color 0.3s ease-in-out;
+.features-carousel-section [class*="h-1"] {
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Button hover effects */
 button {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Fade in/out animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+button:hover:not(:disabled) {
+  transform: scale(1.05);
 }
 
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Font smoothing */
+.features-carousel-section * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Responsive adjustments */
