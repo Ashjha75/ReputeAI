@@ -1,4 +1,212 @@
-/* Hero Section Animations - Responsive */
+/* Hero Section Animations - Enhanced & Responsive */
+
+/* Animated Gradient Background */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Glassmorphism Effects */
+.backdrop-blur-lg {
+  backdrop-filter: blur(20px);
+}
+
+/* Typewriter Effect for Text */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 3px solid;
+  white-space: nowrap;
+  animation: typewriter 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+}
+
+/* Gradient Text Animation */
+@keyframes gradient-text {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-text {
+  background-size: 200% 200%;
+  animation: gradient-text 5s ease infinite;
+}
+
+/* Floating Particles */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(100px, -100px) rotate(90deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(200px, 0) rotate(180deg);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translate(100px, 100px) rotate(270deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translate(-80px, -120px);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translate(80px, 80px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes float-fast {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-150px, -150px) scale(1.5);
+    opacity: 0.2;
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 20s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 15s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 10s ease-in-out infinite;
+}
+
+/* Position particles */
+.particle-1 {
+  top: 20%;
+  left: 10%;
+}
+
+.particle-2 {
+  top: 60%;
+  right: 15%;
+}
+
+.particle-3 {
+  bottom: 30%;
+  left: 20%;
+}
+
+.particle-4 {
+  top: 40%;
+  right: 30%;
+}
+
+/* Pulse Glow Animation for CTA Button */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(147, 51, 234, 0.5),
+                0 0 40px rgba(147, 51, 234, 0.3),
+                0 0 60px rgba(147, 51, 234, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.7),
+                0 0 60px rgba(147, 51, 234, 0.5),
+                0 0 90px rgba(147, 51, 234, 0.3);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Subtle Pulse */
+@keyframes pulse-subtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+/* Slower Pulse */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Counter Animation */
+@keyframes counter-animate {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.counter-animate {
+  animation: counter-animate 1s ease-out;
+}
+
+/* 3D Tilt Card Effect */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.tilt-card:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(-5deg) scale(1.02);
+}
+
+/* Base Animations */
 .fade-in {
   animation: fadeIn 1s ease-out;
 }
@@ -15,27 +223,34 @@
   animation: floating 6s ease-in-out infinite;
 }
 
-/* Disable animations on mobile for performance */
+/* Disable complex animations on mobile for performance */
 @media (max-width: 768px) {
+  .typewriter-text,
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast,
+  .animate-pulse-glow,
+  .tilt-card:hover {
+    animation: none;
+    transform: none;
+  }
+  
   .fade-in,
   .slide-up,
   .fade-in-card,
   .floating {
-    animation: none;
-    opacity: 1;
-    transform: none;
+    animation-duration: 0.5s;
   }
 }
 
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  .fade-in,
-  .slide-up,
-  .fade-in-card,
-  .floating {
-    animation: none;
-    opacity: 1;
-    transform: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

@@ -1,0 +1,441 @@
+{
+  "homepageFeatures": {
+    "description": "Complete list of professional features for ReputeAI homepage using Angular 20 + Material + Tailwind",
+    
+    "sections": [
+      {
+        "id": 1,
+        "name": "Hero Section",
+        "priority": "Critical",
+        "elements": [
+          {
+            "name": "Animated Gradient Background",
+            "description": "Dynamic gradient that shifts colors smoothly",
+            "implementation": "CSS gradient with animation",
+            "code": "class=\"bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 animate-gradient-shift\"",
+            "impact": "Immediate visual wow factor"
+          },
+          {
+            "name": "Glassmorphism Overlay",
+            "description": "Frosted glass effect on hero card",
+            "implementation": "backdrop-blur with semi-transparent background",
+            "code": "class=\"backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl\"",
+            "impact": "Modern, premium feel"
+          },
+          {
+            "name": "Typewriter Effect Headline",
+            "description": "Text types out letter by letter",
+            "implementation": "Angular animation or CSS animation",
+            "libraries": ["ngx-typed-js", "Custom Angular animation"],
+            "code": "<h1 class=\"text-5xl md:text-7xl font-bold\">\n  Protect Your <span class=\"typewriter text-primary\">Digital Reputation</span>\n</h1>",
+            "impact": "Engaging, attention-grabbing"
+          },
+          {
+            "name": "Floating Action Particles",
+            "description": "Animated particles floating in background",
+            "implementation": "Angular particles library",
+            "libraries": ["angular-particle", "tsparticles"],
+            "code": "<ng-particles [options]=\"particlesOptions\"></ng-particles>",
+            "impact": "Tech-forward, dynamic atmosphere"
+          },
+          {
+            "name": "Animated Statistics Counter",
+            "description": "Numbers count up from 0 when section enters viewport",
+            "implementation": "Intersection Observer + CountUp.js",
+            "libraries": ["ngx-countup"],
+            "code": "<span [countUp]=\"12485\" [options]=\"countOptions\"></span>+ Posts Analyzed",
+            "impact": "Credibility through data visualization"
+          },
+          {
+            "name": "3D Tilting Card on Hover",
+            "description": "Hero card tilts based on mouse position",
+            "implementation": "Angular directive with mouse tracking",
+            "libraries": ["angular-tilt"],
+            "code": "<div tilt [tiltSettings]=\"tiltOptions\">",
+            "impact": "Interactive, premium feel"
+          },
+          {
+            "name": "Pulse Animation on CTA Button",
+            "description": "Primary button with pulsing glow effect",
+            "implementation": "Tailwind animation",
+            "code": "<button mat-raised-button class=\"animate-pulse-slow shadow-lg shadow-primary/50\">",
+            "impact": "Draws attention to main action"
+          },
+          {
+            "name": "Scroll Down Indicator",
+            "description": "Animated arrow/mouse icon indicating scrollable content",
+            "implementation": "CSS animation",
+            "code": "<div class=\"absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce\">\n  <mat-icon class=\"text-4xl text-white\">expand_more</mat-icon>\n</div>",
+            "impact": "Guides user behavior"
+          },
+          {
+            "name": "Video Background (Optional)",
+            "description": "Subtle looping video in background",
+            "implementation": "HTML5 video with overlay",
+            "code": "<video autoplay muted loop class=\"absolute inset-0 w-full h-full object-cover opacity-20\">\n  <source src=\"hero-bg.mp4\" type=\"video/mp4\">\n</video>",
+            "impact": "High-end, engaging"
+          },
+          {
+            "name": "Parallax Scrolling Effect",
+            "description": "Background moves slower than foreground on scroll",
+            "implementation": "Angular directive or Intersection Observer",
+            "libraries": ["ngx-parallax"],
+            "code": "<div parallax [ratio]=\"0.5\">",
+            "impact": "Depth and sophistication"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Trust Indicators Section",
+        "priority": "High",
+        "elements": [
+          {
+            "name": "Client Logos Carousel",
+            "description": "Infinite scrolling logos of trusted brands",
+            "implementation": "Angular carousel with auto-scroll",
+            "libraries": ["ngx-owl-carousel-o", "swiper"],
+            "code": "<owl-carousel-o [options]=\"logoCarouselOptions\">\n  <ng-template carouselSlide *ngFor=\"let logo of clientLogos\">\n    <img [src]=\"logo\" class=\"grayscale hover:grayscale-0 transition-all\">\n  </ng-template>\n</owl-carousel-o>",
+            "impact": "Social proof and credibility"
+          },
+          {
+            "name": "Real-time Stats Ticker",
+            "description": "Live updating numbers (posts analyzed, users protected)",
+            "implementation": "WebSocket or interval-based updates",
+            "code": "<div class=\"flex items-center space-x-2\">\n  <mat-icon class=\"text-emerald-500 animate-pulse\">check_circle</mat-icon>\n  <span class=\"text-2xl font-bold\">{{ liveStats.postsAnalyzed | number }}</span>\n  <span class=\"text-gray-600\">posts analyzed in real-time</span>\n</div>",
+            "impact": "Shows active usage and scale"
+          },
+          {
+            "name": "Security Badges",
+            "description": "Trust badges (GDPR, SOC2, SSL, etc.)",
+            "implementation": "Static images with hover tooltips",
+            "code": "<div class=\"flex gap-4\">\n  <img src=\"gdpr-badge.svg\" matTooltip=\"GDPR Compliant\" class=\"h-12 opacity-70 hover:opacity-100\">\n  <img src=\"soc2-badge.svg\" matTooltip=\"SOC 2 Type II Certified\">\n</div>",
+            "impact": "Trust and compliance assurance"
+          },
+          {
+            "name": "Star Rating with Animation",
+            "description": "5-star rating that animates in sequence",
+            "implementation": "Staggered animation",
+            "code": "<div class=\"flex\">\n  <mat-icon *ngFor=\"let star of [1,2,3,4,5]; let i = index\" \n            class=\"text-yellow-400 animate-[scaleIn_0.3s_ease-out_{{i*100}}ms]\">star</mat-icon>\n</div>",
+            "impact": "Visual credibility"
+          },
+          {
+            "name": "Testimonial Ticker",
+            "description": "Rotating customer testimonials",
+            "implementation": "Auto-rotating carousel",
+            "code": "<mat-carousel [autoplay]=\"true\" [interval]=\"5000\">\n  <mat-carousel-slide *ngFor=\"let testimonial of testimonials\">\n    <blockquote class=\"text-lg italic\">\"{{ testimonial.quote }}\"</blockquote>\n    <cite>- {{ testimonial.author }}</cite>\n  </mat-carousel-slide>\n</mat-carousel>",
+            "impact": "Social proof through user voices"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Features Showcase Section",
+        "priority": "Critical",
+        "elements": [
+          {
+            "name": "Interactive Feature Cards",
+            "description": "Cards that flip/expand on hover to show more details",
+            "implementation": "CSS 3D transforms + Angular animations",
+            "code": "<mat-card class=\"group perspective-1000 cursor-pointer h-80\">\n  <div class=\"relative preserve-3d group-hover:rotate-y-180 transition-all duration-700\">\n    <div class=\"absolute inset-0 backface-hidden\">\n      <!-- Front -->\n    </div>\n    <div class=\"absolute inset-0 backface-hidden rotate-y-180\">\n      <!-- Back -->\n    </div>\n  </div>\n</mat-card>",
+            "impact": "Engaging feature exploration"
+          },
+          {
+            "name": "Animated Icons with Lottie",
+            "description": "JSON-based animated icons for each feature",
+            "implementation": "Lottie files",
+            "libraries": ["ngx-lottie"],
+            "code": "<ng-lottie [options]=\"scanningAnimation\" class=\"w-24 h-24\"></ng-lottie>",
+            "impact": "Professional, smooth animations"
+          },
+          {
+            "name": "Hover Reveal Effect",
+            "description": "Feature details slide in from side on hover",
+            "implementation": "CSS transforms + Tailwind",
+            "code": "<div class=\"group relative overflow-hidden\">\n  <div class=\"transform translate-x-full group-hover:translate-x-0 transition-transform duration-500\">\n    <!-- Hidden content -->\n  </div>\n</div>",
+            "impact": "Progressive disclosure"
+          },
+          {
+            "name": "Feature Comparison Table",
+            "description": "Interactive table comparing plans/features",
+            "implementation": "Material table with custom styling",
+            "code": "<mat-table [dataSource]=\"features\" class=\"feature-comparison\">\n  <ng-container matColumnDef=\"feature\">\n    <mat-header-cell *matHeaderCellDef>Feature</mat-header-cell>\n    <mat-cell *matCellDef=\"let row\">{{ row.name }}</mat-cell>\n  </ng-container>\n  <!-- More columns -->\n</mat-table>",
+            "impact": "Clear value proposition"
+          },
+          {
+            "name": "Animated Process Timeline",
+            "description": "Step-by-step process with animations",
+            "implementation": "Material Stepper with custom animations",
+            "code": "<mat-stepper orientation=\"horizontal\" class=\"custom-stepper\" [linear]=\"false\">\n  <mat-step *ngFor=\"let step of processSteps\" [completed]=\"true\">\n    <ng-template matStepLabel>\n      <div class=\"flex flex-col items-center\">\n        <div class=\"w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-2 animate-pulse\">\n          <mat-icon class=\"text-white\">{{ step.icon }}</mat-icon>\n        </div>\n        <span>{{ step.label }}</span>\n      </div>\n    </ng-template>\n  </mat-step>\n</mat-stepper>",
+            "impact": "Clear process understanding"
+          },
+          {
+            "name": "Before/After Slider",
+            "description": "Interactive image slider showing results",
+            "implementation": "Image comparison slider",
+            "libraries": ["ngx-image-comparison-slider"],
+            "code": "<lib-ngx-image-comparison-slider \n  [leftImage]=\"beforeImage\" \n  [rightImage]=\"afterImage\">\n</lib-ngx-image-comparison-slider>",
+            "impact": "Visual proof of value"
+          },
+          {
+            "name": "Floating Labels with Info Icons",
+            "description": "Tooltips explaining technical terms",
+            "implementation": "Material tooltip",
+            "code": "<span>AI-Powered Analysis \n  <mat-icon class=\"text-sm cursor-help\" \n            matTooltip=\"Uses Google Gemini AI to analyze content\" \n            matTooltipPosition=\"above\">\n    info\n  </mat-icon>\n</span>",
+            "impact": "Reduces confusion, educates users"
+          },
+          {
+            "name": "Video Demo Modal",
+            "description": "Click to play product demo video",
+            "implementation": "Material dialog with video player",
+            "code": "<button mat-raised-button (click)=\"openVideoDemo()\">\n  <mat-icon class=\"mr-2\">play_circle</mat-icon>\n  Watch Demo\n</button>",
+            "impact": "Shows product in action"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Live Dashboard Preview",
+        "priority": "High",
+        "elements": [
+          {
+            "name": "Embedded Dashboard Screenshot",
+            "description": "Animated screenshot of actual dashboard",
+            "implementation": "Image with zoom/pan animation",
+            "code": "<div class=\"relative group overflow-hidden rounded-2xl shadow-2xl\">\n  <img src=\"dashboard-preview.png\" class=\"w-full transform group-hover:scale-110 transition-transform duration-700\">\n  <div class=\"absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity\">\n    <button mat-fab class=\"absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2\">\n      <mat-icon>visibility</mat-icon>\n    </button>\n  </div>\n</div>",
+            "impact": "Shows actual product"
+          },
+          {
+            "name": "Live Data Visualization",
+            "description": "Real charts showing platform activity",
+            "implementation": "Recharts or Chart.js with Angular",
+            "libraries": ["ngx-charts", "ng2-charts"],
+            "code": "<ngx-charts-line-chart\n  [results]=\"chartData\"\n  [animations]=\"true\"\n  [scheme]=\"colorScheme\"\n  class=\"chart-container\">\n</ngx-charts-line-chart>",
+            "impact": "Data-driven credibility"
+          },
+          {
+            "name": "Mockup Browser Window",
+            "description": "Dashboard inside browser chrome mockup",
+            "implementation": "Custom SVG browser frame",
+            "code": "<div class=\"bg-gray-800 rounded-t-xl p-3\">\n  <div class=\"flex space-x-2\">\n    <div class=\"w-3 h-3 rounded-full bg-red-500\"></div>\n    <div class=\"w-3 h-3 rounded-full bg-yellow-500\"></div>\n    <div class=\"w-3 h-3 rounded-full bg-green-500\"></div>\n  </div>\n</div>\n<div class=\"bg-white p-8 rounded-b-xl\">\n  <!-- Dashboard screenshot -->\n</div>",
+            "impact": "Professional presentation"
+          },
+          {
+            "name": "Animated Code Snippets",
+            "description": "Code typing effect showing API integration",
+            "implementation": "Prism.js with typing animation",
+            "libraries": ["ngx-prism", "prismjs"],
+            "code": "<pre class=\"language-typescript\"><code [highlight]=\"codeSnippet\" [lineNumbers]=\"true\"></code></pre>",
+            "impact": "Developer trust"
+          },
+          {
+            "name": "Risk Score Gauge",
+            "description": "Animated circular gauge showing score",
+            "implementation": "Material progress spinner customized",
+            "code": "<div class=\"relative w-48 h-48\">\n  <mat-progress-spinner \n    [value]=\"85\" \n    mode=\"determinate\" \n    diameter=\"192\" \n    strokeWidth=\"16\" \n    color=\"primary\"\n    class=\"animate-[spin_2s_ease-in-out]\">\n  </mat-progress-spinner>\n  <div class=\"absolute inset-0 flex flex-col items-center justify-center\">\n    <span class=\"text-5xl font-bold text-primary\">85</span>\n    <span class=\"text-sm text-gray-600\">Risk Score</span>\n  </div>\n</div>",
+            "impact": "Visual product demonstration"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Pricing Section",
+        "priority": "Critical",
+        "elements": [
+          {
+            "name": "Animated Pricing Cards",
+            "description": "Cards bounce in sequentially",
+            "implementation": "Staggered entrance animation",
+            "code": "<mat-card *ngFor=\"let plan of plans; let i = index\" \n          [@fadeInUp] \n          [style.animation-delay.ms]=\"i * 150\"\n          class=\"hover:scale-105 transition-all duration-300 hover:shadow-2xl\">",
+            "impact": "Eye-catching presentation"
+          },
+          {
+            "name": "Toggle Switch (Monthly/Yearly)",
+            "description": "Animated toggle to switch pricing",
+            "implementation": "Material slide-toggle",
+            "code": "<mat-slide-toggle [(ngModel)]=\"isYearly\" color=\"primary\" class=\"mb-6\">\n  <span class=\"text-lg\">Annual billing <span class=\"text-emerald-600 font-semibold\">(Save 20%)</span></span>\n</mat-slide-toggle>",
+            "impact": "Encourages annual plans"
+          },
+          {
+            "name": "Popular Badge with Animation",
+            "description": "Floating badge on recommended plan",
+            "implementation": "Absolute positioned badge with pulse",
+            "code": "<div class=\"absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full font-semibold animate-pulse shadow-lg\">\n  <mat-icon class=\"text-sm mr-1\">star</mat-icon>\n  Most Popular\n</div>",
+            "impact": "Guides user choice"
+          },
+          {
+            "name": "Feature Checklist with Icons",
+            "description": "Animated checkmarks appearing sequentially",
+            "implementation": "List with staggered animation",
+            "code": "<ul class=\"space-y-3\">\n  <li *ngFor=\"let feature of plan.features; let i = index\" \n      class=\"flex items-center animate-[fadeIn_0.5s_ease-out_{{i*100}}ms]\">\n    <mat-icon class=\"text-emerald-500 mr-3\">check_circle</mat-icon>\n    <span>{{ feature }}</span>\n  </li>\n</ul>",
+            "impact": "Clear value communication"
+          },
+          {
+            "name": "Hover Elevation Effect",
+            "description": "Cards lift up on hover",
+            "implementation": "Transform and shadow transition",
+            "code": "class=\"hover:-translate-y-4 hover:shadow-2xl transition-all duration-300\"",
+            "impact": "Interactive feel"
+          },
+          {
+            "name": "Money-Back Guarantee Badge",
+            "description": "Trust badge at bottom of cards",
+            "implementation": "Styled div with icon",
+            "code": "<div class=\"mt-6 p-4 bg-blue-50 rounded-lg flex items-center\">\n  <mat-icon class=\"text-blue-600 mr-2\">verified_user</mat-icon>\n  <span class=\"text-sm\">30-day money-back guarantee</span>\n</div>",
+            "impact": "Reduces purchase anxiety"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Social Proof Section",
+        "priority": "High",
+        "elements": [
+          {
+            "name": "Testimonial Cards with Photos",
+            "description": "Customer testimonials with avatars",
+            "implementation": "Card carousel",
+            "code": "<mat-card class=\"p-6 hover:shadow-xl transition-shadow\">\n  <div class=\"flex items-center mb-4\">\n    <img src=\"avatar.jpg\" class=\"w-16 h-16 rounded-full mr-4\">\n    <div>\n      <h4 class=\"font-semibold\">John Doe</h4>\n      <p class=\"text-sm text-gray-600\">CEO, TechCorp</p>\n    </div>\n  </div>\n  <div class=\"flex mb-3\">\n    <mat-icon *ngFor=\"let i of [1,2,3,4,5]\" class=\"text-yellow-400\">star</mat-icon>\n  </div>\n  <p class=\"italic text-gray-700\">\"Amazing tool! Saved my career...\"</p>\n</mat-card>",
+            "impact": "Human connection and trust"
+          },
+          {
+            "name": "Tweet Embed Carousel",
+            "description": "Real tweets from satisfied users",
+            "implementation": "Twitter embed widget",
+            "libraries": ["ngx-twitter-timeline"],
+            "code": "<twitter-widget [tweets]=\"tweetIds\"></twitter-widget>",
+            "impact": "Authentic social proof"
+          },
+          {
+            "name": "Video Testimonials",
+            "description": "Short video clips from customers",
+            "implementation": "Video grid with play buttons",
+            "code": "<div class=\"grid grid-cols-1 md:grid-cols-3 gap-6\">\n  <div *ngFor=\"let video of videoTestimonials\" class=\"relative group cursor-pointer\" (click)=\"playVideo(video)\">\n    <img [src]=\"video.thumbnail\" class=\"rounded-lg\">\n    <div class=\"absolute inset-0 flex items-center justify-center\">\n      <button mat-fab class=\"opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all\">\n        <mat-icon>play_arrow</mat-icon>\n      </button>\n    </div>\n  </div>\n</div>",
+            "impact": "Strongest form of social proof"
+          },
+          {
+            "name": "Case Study Highlights",
+            "description": "Before/after metrics from real users",
+            "implementation": "Stat cards with animations",
+            "code": "<div class=\"bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-2xl\">\n  <h3 class=\"text-2xl font-bold mb-6\">TechCorp's Success Story</h3>\n  <div class=\"grid grid-cols-3 gap-8\">\n    <div>\n      <p class=\"text-5xl font-bold\" [countUp]=\"98\">98</p>\n      <p class=\"text-sm opacity-90\">% Risk Reduction</p>\n    </div>\n    <!-- More stats -->\n  </div>\n</div>",
+            "impact": "Quantified success stories"
+          },
+          {
+            "name": "Press Mentions",
+            "description": "Logos of media outlets that featured you",
+            "implementation": "Grid of logos",
+            "code": "<div class=\"text-center mb-4\">\n  <p class=\"text-sm uppercase tracking-wide text-gray-600\">As Featured In</p>\n</div>\n<div class=\"flex justify-center items-center space-x-12 grayscale opacity-60\">\n  <img src=\"techcrunch.svg\" class=\"h-8\">\n  <img src=\"forbes.svg\" class=\"h-8\">\n  <img src=\"wired.svg\" class=\"h-8\">\n</div>",
+            "impact": "Media credibility"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "name": "FAQ Section",
+        "priority": "Medium",
+        "elements": [
+          {
+            "name": "Accordion with Search",
+            "description": "Expandable FAQs with search filter",
+            "implementation": "Material expansion panel",
+            "code": "<mat-form-field class=\"w-full mb-6\" appearance=\"outline\">\n  <mat-icon matPrefix>search</mat-icon>\n  <input matInput placeholder=\"Search FAQs...\" [(ngModel)]=\"searchTerm\">\n</mat-form-field>\n\n<mat-accordion>\n  <mat-expansion-panel *ngFor=\"let faq of filteredFaqs\" class=\"mb-2\">\n    <mat-expansion-panel-header>\n      <mat-panel-title class=\"font-medium\">{{ faq.question }}</mat-panel-title>\n    </mat-expansion-panel-header>\n    <p class=\"text-gray-700\">{{ faq.answer }}</p>\n  </mat-expansion-panel>\n</mat-accordion>",
+            "impact": "Self-service support"
+          },
+          {
+            "name": "Category Tabs for FAQs",
+            "description": "Organized by topic",
+            "implementation": "Material tabs",
+            "code": "<mat-tab-group>\n  <mat-tab label=\"Getting Started\"><!-- FAQs --></mat-tab>\n  <mat-tab label=\"Pricing\"><!-- FAQs --></mat-tab>\n  <mat-tab label=\"Security\"><!-- FAQs --></mat-tab>\n</mat-tab-group>",
+            "impact": "Easy navigation"
+          },
+          {
+            "name": "Still Have Questions? CTA",
+            "description": "Contact support prompt",
+            "implementation": "Card with button",
+            "code": "<mat-card class=\"bg-gradient-to-r from-primary to-purple-600 text-white p-8 text-center\">\n  <mat-icon class=\"text-6xl mb-4\">support_agent</mat-icon>\n  <h3 class=\"text-2xl font-bold mb-2\">Still have questions?</h3>\n  <p class=\"mb-6\">Our team is here to help</p>\n  <button mat-raised-button class=\"bg-white text-primary\">Contact Support</button>\n</mat-card>",
+            "impact": "Support accessibility"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "name": "Call-to-Action Section",
+        "priority": "Critical",
+        "elements": [
+          {
+            "name": "Sticky Bottom CTA Bar",
+            "description": "Fixed bar that appears on scroll",
+            "implementation": "Fixed positioning with scroll trigger",
+            "code": "<div *ngIf=\"showStickyCTA\" @slideInUp class=\"fixed bottom-0 left-0 right-0 bg-white shadow-2xl border-t z-50 p-4\">\n  <div class=\"max-w-7xl mx-auto flex items-center justify-between\">\n    <div>\n      <h3 class=\"font-semibold\">Ready to protect your reputation?</h3>\n      <p class=\"text-sm text-gray-600\">Start your free trial today</p>\n    </div>\n    <button mat-raised-button color=\"primary\" class=\"px-8 py-3\">Get Started Free</button>\n  </div>\n</div>",
+            "impact": "Persistent conversion opportunity"
+          },
+          {
+            "name": "Urgency Timer",
+            "description": "Countdown for limited-time offer",
+            "implementation": "Countdown timer component",
+            "libraries": ["ngx-countdown"],
+            "code": "<countdown [config]=\"countdownConfig\" class=\"text-3xl font-bold text-red-600\"></countdown>\n<p class=\"text-sm mt-2\">Offer ends soon!</p>",
+            "impact": "Creates urgency"
+          },
+          {
+            "name": "Exit-Intent Popup",
+            "description": "Modal when user tries to leave",
+            "implementation": "Mouse tracking dialog",
+            "code": "// Trigger on mouse leaving viewport\n@HostListener('document:mouseleave', ['$event'])\nonMouseLeave(event: MouseEvent) {\n  if (!this.exitIntentShown) {\n    this.dialog.open(ExitIntentDialogComponent);\n    this.exitIntentShown = true;\n  }\n}",
+            "impact": "Last-chance conversion"
+          },
+          {
+            "name": "Multi-Step Form",
+            "description": "Progressive onboarding form",
+            "implementation": "Material stepper",
+            "code": "<mat-stepper linear>\n  <mat-step [stepControl]=\"firstFormGroup\">\n    <form [formGroup]=\"firstFormGroup\">\n      <mat-form-field appearance=\"outline\">\n        <input matInput placeholder=\"Email\" formControlName=\"email\" required>\n      </mat-form-field>\n    </form>\n  </mat-step>\n  <!-- More steps -->\n</mat-stepper>",
+            "impact": "Reduces form abandonment"
+          },
+          {
+            "name": "Social Login Buttons",
+            "description": "One-click signup with Google/LinkedIn",
+            "implementation": "OAuth integration",
+            "code": "<button mat-stroked-button class=\"w-full mb-3\">\n  <img src=\"google-icon.svg\" class=\"w-5 h-5 mr-3\">\n  Continue with Google\n</button>\n<button mat-stroked-button class=\"w-full\">\n  <img src=\"linkedin-icon.svg\" class=\"w-5 h-5 mr-3\">\n  Continue with LinkedIn\n</button>",
+            "impact": "Frictionless signup"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "name": "Footer",
+        "priority": "Medium",
+        "elements": [
+          {
+            "name": "Newsletter Signup",
+            "description": "Email capture for updates",
+            "implementation": "Form with validation",
+            "code": "<form class=\"flex gap-2\">\n  <mat-form-field appearance=\"outline\" class=\"flex-1\">\n    <input matInput type=\"email\" placeholder=\"Enter your email\" required>\n  </mat-form-field>\n  <button mat-raised-button color=\"primary\">Subscribe</button>\n</form>",
+            "impact": "Lead generation"
+          },
+          {
+            "name": "Live Chat Widget",
+            "description": "Intercom/Drift-style chat bubble",
+            "implementation": "Third-party widget",
+            "libraries": ["Intercom", "Drift", "Tawk.to"],
+            "code": "<!-- Add to index.html -->\n<script>\n  window.intercomSettings = { app_id: 'your_app_id' };\n</script>",
+            "impact": "Instant support"
+          },
+          {
+            "name": "Social Media Icons with Hover",
+            "description": "Animated social links",
+            "implementation": "Icon buttons with transitions",
+            "code": "<div class=\"flex space-x-4\">\n  <a href=\"#\" mat-icon-button class=\"hover:text-primary hover:scale-125 transition-all\">\n    <mat-icon>twitter</mat-icon>\n  </a>\n  <!-- More social icons -->\n</div>",
+            "impact": "Social presence"
+          },
+          {
+            "name": "Trust Seal Badges",
+            "description": "SSL, Privacy, Compliance badges",
+            "implementation": "Image grid",
+            "code": "<div class=\"flex justify-center space-x-6 opacity-70\">\n  <img src=\"ssl-secure.svg\" class=\"h-10\">\n  <img src=\"gdpr-compliant.svg\" class=\"h-10\">\n  <img src=\"soc2.svg\" class=\"h-10\">\n</div>",
+            "impact": "Final trust reinforcement"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Performance & UX Enhancements",

@@ -27,6 +27,38 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Roboto', 'Helvetica Neue', 'ui-sans-serif', 'system-ui']
+      },
+      animation: {
+        'gradient-shift': 'gradient-shift 15s ease infinite',
+        'float-slow': 'float-slow 20s ease-in-out infinite',
+        'float-medium': 'float-medium 15s ease-in-out infinite',
+        'float-fast': 'float-fast 10s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+        'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
+        'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
+        'gradient-text': 'gradient-text 5s ease infinite',
+        'typewriter': 'typewriter 3s steps(30) 1s forwards'
+      },
+      keyframes: {
+        'gradient-shift': {
+          '0%, 100%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' }
+        },
+        'pulse-glow': {
+          '0%, 100%': { 
+            'box-shadow': '0 0 20px rgba(147, 51, 234, 0.5), 0 0 40px rgba(147, 51, 234, 0.3), 0 0 60px rgba(147, 51, 234, 0.1)'
+          },
+          '50%': { 
+            'box-shadow': '0 0 30px rgba(147, 51, 234, 0.7), 0 0 60px rgba(147, 51, 234, 0.5), 0 0 90px rgba(147, 51, 234, 0.3)'
+          }
+        },
+        'gradient-text': {
+          '0%, 100%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' }
+        }
+      },
+      backdropBlur: {
+        xs: '2px',
       }
     }
   },
