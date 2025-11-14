@@ -13,5 +13,23 @@
 <!-- Support FAQ Section -->
 <app-support-faq></app-support-faq>
 
+
+<!-- Polished Feature Cards Section -->
+<section class="feature-cards-section fade-in-card" style="margin-top: 3rem; margin-bottom: 3rem;">
+	<div class="feature-cards-grid">
+		<mat-card *ngFor="let feature of features" class="feature-card mat-elevation-z4 tilt-card">
+			<div class="feature-card-content">
+				<div class="feature-card-header">
+					<mat-icon class="feature-card-icon {{feature.color}}" fontIcon="{{feature.icon}}"></mat-icon>
+					<span class="feature-card-title">{{ feature.title }}</span>
+				</div>
+				<div class="feature-card-desc">{{ feature.description }}</div>
+				<!-- Optional image slot for future use -->
+				<!-- <img *ngIf="feature.image" [src]="feature.image" alt="" class="feature-card-img" /> -->
+			</div>
+		</mat-card>
+	</div>
+</section>
+
 <!-- Footer -->
 <app-footer></app-footer>

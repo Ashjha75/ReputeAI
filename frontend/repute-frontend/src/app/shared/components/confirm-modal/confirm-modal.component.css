@@ -27,10 +27,10 @@
 }
 
 .modal-card.small.variant-delete {
-  border-top: 4px solid #ef4444;
+  border-top: 4px solid #ffffff;
 }
 .modal-card.small.variant-update {
-  border-top: 4px solid #2563eb;
+  border-top: 4px solid #e3ecff;
 }
 
 .modal-card {
@@ -71,10 +71,10 @@
   }
   .icon-anim.update {
     background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-    color: #1d4ed8;
+    color: #000000;
   }
   .icon-anim.update .material-icons {
-    color: #1d4ed8;
+    color: #000000;
   }
   .icon-anim.warning {
     background: linear-gradient(135deg, #fef9c3, #fde68a);
@@ -193,7 +193,7 @@
 }
 
 .btn-confirm {
-  background: #2563eb;
+  background: #000000;
   color: #fff;
   border: none;
 }
