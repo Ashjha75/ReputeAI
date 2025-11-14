@@ -13,6 +13,7 @@ import {
   FeatureHighlightCardComponent
 } from '../../shared/components/feature-highlight-card/feature-highlight-card.component';
 import { CtaBannerComponent } from '../../shared/components/cta-banner/cta-banner.component';
+import { PixelDropPromoComponent } from '../../shared/components/pixel-drop-promo/pixel-drop-promo.component';
 
 @Component({
     selector: 'app-home',
@@ -25,7 +26,8 @@ import { CtaBannerComponent } from '../../shared/components/cta-banner/cta-banne
       HowItWorksComponent,
       FooterComponent,
       FeatureHighlightCardComponent,
-      CtaBannerComponent
+      CtaBannerComponent,
+      PixelDropPromoComponent
     ],
     templateUrl: './home.html',
     styleUrl: './home.css'
