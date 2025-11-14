@@ -1,93 +1,26 @@
-.feature-highlight-cta.primary {
-  background: #10182f !important;
-  color: #fff !important;
-  font-weight: 700;
-  font-size: 1.08rem;
-  box-shadow: 0 8px 32px 0 rgba(16, 24, 47, 0.22), 0 1.5px 4px 0 rgba(16, 24, 47, 0.08);
-  letter-spacing: 0.01em;
-  border: none;
-  padding: 0.85rem 2.1rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: box-shadow 0.18s cubic-bezier(.4,0,.2,1), background 0.18s, transform 0.18s;
-}
 
-.feature-highlight-cta.primary:hover {
-  background: #172042 !important;
-  box-shadow: 0 16px 40px 0 rgba(16, 24, 47, 0.28), 0 2px 8px 0 rgba(16, 24, 47, 0.10);
-  transform: translateY(-2px) scale(1.03);
-}
+/* --- Polished Card Layout, Responsive, and Accent --- */
 .feature-highlight-card {
-  background: linear-gradient(180deg, #fcfdff 80%, #f6f8fb 100%);
-  border: 1.5px solid #e6eaf2;
-  box-shadow: 0 6px 32px 0 rgba(24, 52, 81, 0.10), 0 1.5px 4px 0 rgba(24, 52, 81, 0.04);
-  transition: box-shadow 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1), border-color 0.22s;
-  margin: 1.6rem;
-  border-radius: 2.2rem;
-}
-
-.feature-highlight-card:hover {
-  box-shadow: 0 16px 40px 0 rgba(24, 52, 81, 0.16), 0 2px 8px 0 rgba(24, 52, 81, 0.08);
-  border-color: #d0e2fa;
-  transform: translateY(-4px) scale(1.025);
-}
-/* Uniform card sizing and structure */
-.feature-highlight-card {
+  border-radius: 2rem;
+  padding: 2rem;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(15,23,42,0.10);
   max-width: 370px;
   min-width: 320px;
   width: 100%;
-  min-height: 480px;
-  max-height: 520px;
+  min-height: 420px;
+  margin: 1.2rem auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
   box-sizing: border-box;
-  margin: 0 auto;
-  overflow: hidden;
+  transition: box-shadow 0.22s, transform 0.22s;
 }
-
-.feature-highlight-inner-vertical {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  height: 100%;
-  gap: 1.2rem;
-  overflow: hidden;
+.feature-highlight-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 48px rgba(15,23,42,0.16);
 }
-
-.feature-highlight-media-vertical {
-  flex-shrink: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 0.5rem;
-}
-
-.feature-highlight-media-vertical img {
-  width: 100%;
-  max-width: 320px;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  border-radius: 1.2rem;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10);
-  margin-bottom: 0.5rem;
-}
-
-.feature-highlight-copy-vertical {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  justify-content: flex-start;
-  overflow: hidden;
-}
-
 .feature-highlight-title {
   font-size: 1.25rem;
   font-weight: 700;
@@ -97,6 +30,75 @@
   white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.feature-highlight-description {
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 0.5rem 0;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.2em;
+}
+.feature-highlight-meta, .feature-highlight-chips, .feature-highlight-actions {
+  flex-shrink: 0;
+}
+@media (max-width: 1200px) {
+  .feature-highlight-card { max-width: 100%; min-width: 0; }
+}
+@media (max-width: 900px) {
+  .feature-highlight-card { min-width: 0; max-width: 100%; }
+}
+@media (max-width: 600px) {
+  .feature-highlight-card { min-width: 0; max-width: 100%; min-height: 340px; }
+  .feature-highlight-title { font-size: 1.08rem; }
+}
+.feature-highlight-title {
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.3rem 0;
+  line-height: 1.25;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.feature-highlight-description {
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 0.5rem 0;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.2em;
+}
+.feature-highlight-meta, .feature-highlight-chips, .feature-highlight-actions {
+  flex-shrink: 0;
+}
+@media (max-width: 1200px) {
+  .feature-highlight-card {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+@media (max-width: 900px) {
+  .feature-highlight-card {
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .feature-highlight-card {
+    min-width: 0;
+    max-width: 100%;
+    min-height: 340px;
+    max-height: 420px;
+  }
+  .feature-highlight-title {
+    font-size: 1.08rem;
+  }
 }
 
 .feature-highlight-description {
