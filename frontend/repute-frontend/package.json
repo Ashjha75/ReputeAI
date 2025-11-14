@@ -25,17 +25,18 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^20.3.11",
-    "@angular/cdk": "^20.2.12",
-    "@angular/common": "^20.3.0",
-    "@angular/compiler": "^20.3.0",
-    "@angular/core": "^20.3.0",
-    "@angular/forms": "^20.3.0",
-    "@angular/material": "^20.2.12",
-    "@angular/platform-browser": "^20.3.0",
-    "@angular/platform-server": "^20.3.0",
-    "@angular/router": "^20.3.0",
-    "@angular/ssr": "^20.3.9",
+    "@angular/animations": "^19.0.0",
+    "@angular/cdk": "^19.0.0",
+    "@angular/common": "^19.0.0",
+    "@angular/compiler": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/forms": "^19.0.0",
+    "@angular/material": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
+    "@angular/platform-browser-dynamic": "^19.0.0",
+    "@angular/platform-server": "^19.0.0",
+    "@angular/router": "^19.0.0",
+    "@angular/ssr": "^19.0.0",
     "@tailwindcss/postcss": "^4.1.17",
     "express": "^5.1.0",
     "ngx-countup": "^13.2.0",
@@ -45,9 +46,9 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular/build": "^20.3.9",
-    "@angular/cli": "^20.3.9",
-    "@angular/compiler-cli": "^20.3.0",
+    "@angular/build": "^19.0.0",
+    "@angular/cli": "^19.0.0",
+    "@angular/compiler-cli": "^19.0.0",
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
@@ -61,6 +62,6 @@
     "ngx-tailwind": "^4.0.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.1.6",
-    "typescript": "~5.9.2"
+    "typescript": "~5.7.0"
   }
 }
