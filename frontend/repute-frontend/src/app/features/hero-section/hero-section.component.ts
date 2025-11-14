@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, PLATFORM_ID, Inject, ViewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
+import { ConfirmModalComponent, ConfirmModalConfig } from '../../shared/components/confirm-modal/confirm-modal.component';
 import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
 import { CommonModule } from '@angular/common';
 
@@ -101,7 +101,20 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
     // Placeholder for CTA click handling (navigate / analytics etc.)
   }
 
-  openConfirmModal() {
+  confirmConfig: ConfirmModalConfig = {
+    title: 'Delete this item?',
+    message: 'Removing this item cannot be undone.',
+    detail: 'All related data will be removed permanently.',
+    variant: 'delete',
+    confirmLabel: 'Delete',
+    cancelLabel: 'Cancel'
+  };
+
+  openConfirmModal(configPatch?: Partial<ConfirmModalConfig>) {
+    if (configPatch) {
+      this.confirmConfig = { ...this.confirmConfig, ...configPatch };
+    }
+    this.confirmModal?.applyConfig(this.confirmConfig);
     this.confirmModal?.open();
   }
   closeConfirmModal() {

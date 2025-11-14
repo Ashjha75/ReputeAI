@@ -48,8 +48,7 @@
   <!-- Confirm Modal Instance -->
   <app-confirm-modal
     #confirmModal
-    [message]="'Are you sure you want to delete this?'"
-    icon="delete"
+    [config]="confirmConfig"
     (close)="closeConfirmModal()"
     (confirm)="confirmAction()">
   </app-confirm-modal>
