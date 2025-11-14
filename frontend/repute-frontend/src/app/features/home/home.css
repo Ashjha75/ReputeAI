@@ -16,8 +16,7 @@
   .animate-float-slow,
   .animate-float-medium,
   .animate-float-fast,
-  .animate-pulse-glow,
-  .tilt-card:hover {
+  .animate-pulse-glow {
     animation: none;
     transform: none;
   }
@@ -93,6 +92,22 @@ section {
   position: relative;
 }
 
+/* Spotlight Feature Cards */
+.feature-highlights-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: clamp(2.5rem, 6vw, 5rem) 1.5rem;
+}
+
+.feature-highlights-grid {
+  width: 100%;
+  max-width: 1120px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(1.75rem, 4vw, 3rem);
+}
+
 /* Card hover effects */
 mat-card {
   transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -140,32 +155,11 @@ button {
   .feature-highlights-section {
     padding: 2rem 1.25rem;
   }
-
-  .feature-highlights-card.mat-mdc-card {
-    padding: 1.75rem 1.5rem;
-  }
-
-  .feature-highlights-media {
-    min-height: 110px;
-  }
 }
 
 @media (max-width: 600px) {
   .feature-highlights-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
-  }
-
-  .feature-highlights-card.mat-mdc-card {
-    border-radius: 1.6rem;
-    padding: 1.4rem 1.2rem;
-  }
-
-  .feature-highlights-title {
-    font-size: 1.45rem;
-  }
-
-  .feature-highlights-description {
-    font-size: 1rem;
   }
 }

@@ -95,9 +95,6 @@ export class Home {
     if (!action) {
       return;
     }
-
-    if (action.url && typeof window !== 'undefined') {
-      window.open(action.url, action.target ?? '_blank');
-    }
+    // Hook for analytics or custom routing when consuming the reusable card component.
   }
 }
