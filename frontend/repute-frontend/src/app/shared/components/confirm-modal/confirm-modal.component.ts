@@ -35,7 +35,6 @@ const VARIANT_ICON: Record<ConfirmModalVariant, string> = {
   template: `
     <div *ngIf="visible" class="modal-backdrop">
       <div class="modal-card small" [class.variant-delete]="currentConfig.variant === 'delete'" [class.variant-update]="currentConfig.variant === 'update'">
-        <button class="modal-close" (click)="closeModal()">&times;</button>
         <div class="modal-content confirm-content">
           <div class="icon-anim" [class.delete]="currentConfig.variant === 'delete'" [class.update]="currentConfig.variant === 'update'" [class.warning]="currentConfig.variant === 'warning'">
             <span class="material-icons">{{ variantIcon }}</span>
