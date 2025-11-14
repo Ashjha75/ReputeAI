@@ -1,6 +1,22 @@
 <mat-card class="feature-highlight-card mat-elevation-z4" [ngClass]="'accent-' + resolvedAccent">
-  <div class="feature-highlight-inner">
-    <div class="feature-highlight-copy">
+  <div class="feature-highlight-inner-vertical">
+    <div class="feature-highlight-media-vertical" *ngIf="card.media">
+      <img
+        *ngIf="card.media?.src || placeholderImage"
+        [src]="mediaSrc"
+        [alt]="card.media.alt || card.title"
+        loading="lazy"
+      />
+      <button
+        *ngIf="card.media?.showPlayButton"
+        type="button"
+        aria-label="Play preview"
+        class="feature-highlight-play"
+      >
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+    </div>
+    <div class="feature-highlight-copy-vertical">
       <div class="feature-highlight-meta" *ngIf="card.badge || card.context">
         <span class="feature-highlight-badge" *ngIf="card.badge">{{ card.badge }}</span>
         <span class="feature-highlight-context" *ngIf="card.context">{{ card.context }}</span>
@@ -26,22 +42,6 @@
           <mat-icon *ngIf="cardAction.icon">{{ cardAction.icon }}</mat-icon>
         </button>
       </div>
-    </div>
-    <div class="feature-highlight-media" *ngIf="card.media">
-      <img
-        *ngIf="card.media?.src || placeholderImage"
-        [src]="mediaSrc"
-        [alt]="card.media.alt || card.title"
-        loading="lazy"
-      />
-      <button
-        *ngIf="card.media?.showPlayButton"
-        type="button"
-        aria-label="Play preview"
-        class="feature-highlight-play"
-      >
-        <mat-icon>play_arrow</mat-icon>
-      </button>
     </div>
   </div>
 </mat-card>

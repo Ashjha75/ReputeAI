@@ -98,6 +98,8 @@ section {
   display: flex;
   justify-content: center;
   padding: clamp(2.5rem, 6vw, 5rem) 1.5rem;
+  background: linear-gradient(180deg, #f8fafc 60%, #f4f7fb 100%);
+  /* Subtle off-white, not pure white */
 }
 
 .feature-highlights-grid {
