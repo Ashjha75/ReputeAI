@@ -6,9 +6,9 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="modal-backdrop">
+    <div *ngIf="visible" class="modal-backdrop">
       <div class="modal-card">
-        <button class="modal-close" (click)="close.emit()">&times;</button>
+        <button class="modal-close" (click)="closeModal()">&times;</button>
         <div class="modal-content">
           <ng-content></ng-content>
         </div>
@@ -18,5 +18,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./feature-modal.component.css']
 })
 export class FeatureModalComponent {
+  visible = false;
   @Output() close = new EventEmitter<void>();
+  open() { this.visible = true; }
+  closeModal() { this.visible = false; this.close.emit(); }
 }

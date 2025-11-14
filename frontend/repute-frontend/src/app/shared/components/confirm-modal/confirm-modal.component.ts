@@ -6,9 +6,9 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="modal-backdrop">
+    <div *ngIf="visible" class="modal-backdrop">
       <div class="modal-card small">
-        <button class="modal-close" (click)="close.emit()">&times;</button>
+        <button class="modal-close" (click)="closeModal()">&times;</button>
         <div class="modal-content confirm-content">
           <div class="icon-anim">
             <span *ngIf="icon === 'delete'" class="material-icons delete">delete_forever</span>
@@ -17,8 +17,8 @@ import { CommonModule } from '@angular/common';
           </div>
           <div class="confirm-message">{{ message }}</div>
           <div class="confirm-actions">
-            <button class="btn-cancel" (click)="close.emit()">Close</button>
-            <button class="btn-confirm" (click)="confirm.emit()">Confirm</button>
+            <button class="btn-cancel" (click)="closeModal()">Close</button>
+            <button class="btn-confirm" (click)="confirmModal()">Confirm</button>
           </div>
         </div>
       </div>
@@ -27,8 +27,12 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./confirm-modal.component.css']
 })
 export class ConfirmModalComponent {
-  @Input() message = 'Are you sure?';
+  visible = false;
+  @Input() message: string = 'Are you sure?';
   @Input() icon: 'delete' | 'update' | 'warning' = 'warning';
   @Output() close = new EventEmitter<void>();
   @Output() confirm = new EventEmitter<void>();
+  open() { this.visible = true; }
+  closeModal() { this.visible = false; this.close.emit(); }
+  confirmModal() { this.visible = false; this.confirm.emit(); }
 }
