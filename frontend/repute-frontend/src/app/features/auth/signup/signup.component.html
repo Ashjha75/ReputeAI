@@ -93,14 +93,14 @@
 
         <!-- Terms Checkbox -->
         <mat-checkbox formControlName="terms" class="text-sm">
-          <span class="text-gray-700">I agree to the <a href="#" class="text-indigo-600 hover:text-indigo-700 font-medium">Terms of Service</a> and <a href="#" class="text-indigo-600 hover:text-indigo-700 font-medium">Privacy Policy</a></span>
+          <span class="text-gray-700">I agree to the <a href="#" class="text-black hover:text-gray-700 font-medium">Terms of Service</a> and <a href="#" class="text-black hover:text-gray-700 font-medium">Privacy Policy</a></span>
         </mat-checkbox>
 
         <!-- Submit Button -->
         <button 
           type="submit" 
           [disabled]="!signupForm.valid || isLoading"
-          class="w-full bg-indigo-600 text-white py-3.5 rounded-xl font-medium hover:bg-indigo-700 transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm hover:shadow-md">
+          class="w-full bg-black text-white py-3.5 rounded-xl font-medium hover:bg-gray-700 transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm hover:shadow-md">
           <span *ngIf="!isLoading">Create Account</span>
           <span *ngIf="isLoading">Creating Account...</span>
           <svg *ngIf="isLoading" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -114,7 +114,7 @@
       <div class="mt-8 text-center">
         <p class="text-gray-600">
           Already have an account? 
-          <a routerLink="/auth/login" class="text-indigo-600 font-semibold hover:text-indigo-700 transition-colors">Sign in</a>
+          <a routerLink="/auth/login" class="text-black font-semibold hover:text-gray-700 transition-colors">Sign in</a>
         </p>
       </div>
 
