@@ -75,17 +75,30 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  showFeatureModal = false;
-  showConfirmModal = false;
-
   @ViewChild('featureModal') featureModal?: FeatureModalComponent;
   @ViewChild('confirmModal') confirmModal?: ConfirmModalComponent;
+
+  featureModalData = {
+    badgeLabel: 'Android 16',
+    badgeContext: 'Hearing device support',
+    title: 'Clearer calling with hearing devices.',
+    subtitle: 'June 2025 | Accessibility',
+    description:
+      'Control hearing devices from your device for a simpler experience across different hearing device brands. Or switch to your phone as input with LE Audio hearing devices for clearer calls in noisy environments.',
+    ctaLabel: 'Learn more about accessibility',
+    ctaIcon: 'open_in_new',
+    mediaSrc: 'assets/hero-modal-demo.png',
+    mediaAlt: 'Hearing device demo'
+  };
 
   openFeatureModal() {
     this.featureModal?.open();
   }
   closeFeatureModal() {
     this.featureModal?.closeModal();
+  }
+  handleFeatureCta() {
+    // Placeholder for CTA click handling (navigate / analytics etc.)
   }
 
   openConfirmModal() {
