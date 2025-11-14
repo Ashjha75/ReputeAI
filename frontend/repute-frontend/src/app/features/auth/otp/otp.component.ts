@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
@@ -33,7 +34,8 @@ export class OtpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.otpForm = this.fb.group({
       digit1: ['', [Validators.required, Validators.pattern(/^\d$/)]],
@@ -49,16 +51,19 @@ export class OtpComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.email = params['email'] || '';
     });
-    this.startResendTimer();
+    if (isPlatformBrowser(this.platformId)) {
+      this.startResendTimer();
+    }
   }
 
   ngOnDestroy() {
-    if (this.timerInterval) {
+    if (isPlatformBrowser(this.platformId) && this.timerInterval) {
       clearInterval(this.timerInterval);
     }
   }
 
   startResendTimer() {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.canResend = false;
     this.resendTimer = 60;
     this.timerInterval = setInterval(() => {
@@ -71,6 +76,7 @@ export class OtpComponent implements OnInit {
   }
 
   onDigitInput(event: any, nextInput: string, prevInput?: string) {
+    if (!isPlatformBrowser(this.platformId)) return;
     const input = event.target;
     const value = input.value;
 
@@ -88,6 +94,7 @@ export class OtpComponent implements OnInit {
   }
 
   onPaste(event: ClipboardEvent) {
+    if (!isPlatformBrowser(this.platformId)) return;
     event.preventDefault();
     const pastedData = event.clipboardData?.getData('text');
     if (pastedData && /^\d{6}$/.test(pastedData)) {
