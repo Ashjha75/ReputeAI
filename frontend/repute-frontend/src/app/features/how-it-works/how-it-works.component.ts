@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -15,7 +22,16 @@ interface Step {
   standalone: true,
   imports: [CommonModule, MatIconModule],
   templateUrl: './how-it-works.component.html',
-  styleUrls: ['./how-it-works.component.css']
+  styleUrls: ['./how-it-works.component.css'],
+  animations: [
+    trigger('scrollFadeInUp', [
+      state('hidden', style({ opacity: 0, transform: 'translateY(40px)' })),
+      state('visible', style({ opacity: 1, transform: 'translateY(0)' })),
+      transition('hidden => visible', [
+        animate('0.7s cubic-bezier(.4,0,.2,1)')
+      ])
+    ])
+  ]
 })
 export class HowItWorksComponent {
   steps: Step[] = [
@@ -44,4 +60,16 @@ export class HowItWorksComponent {
       icon: 'insights'
     }
   ];
+  // Track which step is visible
+  stepStates: string[] = [];
+
+  constructor() {
+    this.stepStates = Array(this.steps.length).fill('hidden');
+  }
+
+  onStepInView(index: number) {
+    if (this.stepStates[index] !== 'visible') {
+      this.stepStates[index] = 'visible';
+    }
+  }
 }
