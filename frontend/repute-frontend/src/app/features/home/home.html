@@ -17,57 +17,11 @@
 <!-- Spotlight Feature Cards Section -->
 <section class="feature-highlights-section fade-in-card">
 	<div class="feature-highlights-grid">
-		<mat-card
+		<app-feature-highlight-card
 			*ngFor="let card of featureHighlights"
-			class="feature-highlights-card tilt-card"
-			[ngClass]="card.accent ? 'accent-' + card.accent : 'accent-neutral'"
-		>
-			<div class="feature-highlights-inner">
-				<div class="feature-highlights-copy">
-					<div class="feature-highlights-meta" *ngIf="card.badge || card.context">
-						<span class="feature-highlights-badge" *ngIf="card.badge">{{ card.badge }}</span>
-						<span class="feature-highlights-context" *ngIf="card.context">{{ card.context }}</span>
-					</div>
-					<h3 class="feature-highlights-title">{{ card.title }}</h3>
-					<p class="feature-highlights-description">
-						{{ card.description }}
-						<sup *ngIf="card.footnote">{{ card.footnote }}</sup>
-					</p>
-					<div class="feature-highlights-chips" *ngIf="card.chips?.length">
-						<span class="feature-highlights-chip" *ngFor="let chip of card.chips">{{ chip }}</span>
-					</div>
-					<div class="feature-highlights-actions" *ngIf="card.actions?.length">
-						<button
-							*ngFor="let action of card.actions"
-							mat-flat-button
-							type="button"
-							class="feature-highlights-cta"
-							[ngClass]="action.variant || 'primary'"
-							(click)="handleCardAction(action)"
-						>
-							{{ action.label }}
-							<mat-icon *ngIf="action.icon">{{ action.icon }}</mat-icon>
-						</button>
-					</div>
-				</div>
-				<div class="feature-highlights-media" *ngIf="card.media?.src || card.media?.showPlayButton">
-					<img
-						*ngIf="card.media?.src"
-						[src]="card.media.src"
-						[alt]="card.media.alt || card.title"
-						loading="lazy"
-					/>
-					<button
-						*ngIf="card.media?.showPlayButton"
-						class="feature-highlights-play"
-						type="button"
-						aria-label="Play preview"
-					>
-						<mat-icon>play_arrow</mat-icon>
-					</button>
-				</div>
-			</div>
-		</mat-card>
+			[card]="card"
+			(action)="handleCardAction($event)"
+		></app-feature-highlight-card>
 	</div>
 </section>
 

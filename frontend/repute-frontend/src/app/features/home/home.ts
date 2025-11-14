@@ -1,56 +1,28 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-
 import { HeroSectionComponent } from '../hero-section/hero-section.component';
 import { FeaturesCarouselComponent } from '../features-carousel/features-carousel.component';
 import { FeatureGridComponent } from '../feature-grid/feature-grid.component';
 import { SupportFaqComponent } from '../support-faq/support-faq.component';
 import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
-
-
-export interface FeatureCardAction {
-  label: string;
-  icon?: string;
-  url?: string;
-  target?: '_blank' | '_self';
-  variant?: 'primary' | 'outline';
-}
-
-export interface FeatureCardMedia {
-  src?: string;
-  alt?: string;
-  showPlayButton?: boolean;
-}
-
-export interface FeatureHighlightCard {
-  badge?: string;
-  context?: string;
-  title: string;
-  description: string;
-  footnote?: string;
-  chips?: string[];
-  actions?: FeatureCardAction[];
-  media?: FeatureCardMedia;
-  accent?: 'aqua' | 'emerald' | 'violet' | 'amber' | 'neutral';
-}
+import {
+  FeatureCardAction,
+  FeatureHighlightCard,
+  FeatureHighlightCardComponent
+} from '../../shared/components/feature-highlight-card/feature-highlight-card.component';
 
 @Component({
     selector: 'app-home',
     imports: [
       CommonModule,
-      MatButtonModule,
-      MatIconModule,
-      MatCardModule,
       HeroSectionComponent,
       FeatureGridComponent,
       SupportFaqComponent,
       FeaturesCarouselComponent,
       HowItWorksComponent,
       FooterComponent,
+      FeatureHighlightCardComponent
     ],
     templateUrl: './home.html',
     styleUrl: './home.css'
