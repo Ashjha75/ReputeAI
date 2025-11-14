@@ -23,6 +23,8 @@
   border: 1.5px solid #e6eaf2;
   box-shadow: 0 6px 32px 0 rgba(24, 52, 81, 0.10), 0 1.5px 4px 0 rgba(24, 52, 81, 0.04);
   transition: box-shadow 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1), border-color 0.22s;
+  margin: 1.6rem;
+  border-radius: 2.2rem;
 }
 
 .feature-highlight-card:hover {

@@ -6,11 +6,13 @@ import { FeatureGridComponent } from '../feature-grid/feature-grid.component';
 import { SupportFaqComponent } from '../support-faq/support-faq.component';
 import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
+
 import {
   FeatureCardAction,
   FeatureHighlightCard,
   FeatureHighlightCardComponent
 } from '../../shared/components/feature-highlight-card/feature-highlight-card.component';
+import { CtaBannerComponent } from '../../shared/components/cta-banner/cta-banner.component';
 
 @Component({
     selector: 'app-home',
@@ -22,7 +24,8 @@ import {
       FeaturesCarouselComponent,
       HowItWorksComponent,
       FooterComponent,
-      FeatureHighlightCardComponent
+      FeatureHighlightCardComponent,
+      CtaBannerComponent
     ],
     templateUrl: './home.html',
     styleUrl: './home.css'

@@ -1,0 +1,11 @@
+<div class="cta-banner">
+  <div class="cta-banner-icon">
+    <mat-icon [ngStyle]="{ color: iconColor, 'font-size': '2.8rem' }">{{ icon }}</mat-icon>
+  </div>
+  <div class="cta-banner-message">
+    <ng-content select="[cta-message]"></ng-content>
+  </div>
+  <button mat-raised-button class="cta-banner-btn">
+    <ng-content select="[cta-action]"></ng-content>
+  </button>
+</div>

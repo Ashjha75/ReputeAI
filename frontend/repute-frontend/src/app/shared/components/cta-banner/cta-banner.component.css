@@ -1,0 +1,55 @@
+.cta-banner {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  background: #f8f9fa;
+  border-radius: 2.2rem;
+  padding: 3.2rem 1.5rem 2.8rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 16px 0 rgba(24, 52, 81, 0.04);
+  gap: 1.6rem;
+}
+
+.cta-banner-icon {
+  margin-bottom: 0.7rem;
+}
+
+.cta-banner-message {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #181c23;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+.cta-banner-btn {
+  font-size: 1.08rem;
+  font-weight: 500;
+  border-radius: 2rem !important;
+  padding: 0.7rem 2.2rem;
+  border: 2px solid #181c23 !important;
+  color: #181c23 !important;
+  background: #fff !important;
+  box-shadow: 0 2px 8px 0 rgba(24, 52, 81, 0.08);
+  transition: box-shadow 0.18s, background 0.18s, color 0.18s;
+}
+
+.cta-banner-btn:hover {
+  background: #f1f3f7 !important;
+  color: #10182f !important;
+  box-shadow: 0 8px 24px 0 rgba(24, 52, 81, 0.10);
+}
+
+@media (max-width: 900px) {
+  .cta-banner-message {
+    font-size: 1.45rem;
+  }
+  .cta-banner {
+    padding: 2.2rem 0.7rem 2rem 0.7rem;
+  }
+}
