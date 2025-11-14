@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-
 import { MatCardModule } from '@angular/material/card';
+
 import { HeroSectionComponent } from '../hero-section/hero-section.component';
 import { FeaturesCarouselComponent } from '../features-carousel/features-carousel.component';
 import { FeatureGridComponent } from '../feature-grid/feature-grid.component';
@@ -11,6 +11,32 @@ import { SupportFaqComponent } from '../support-faq/support-faq.component';
 import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 
+
+export interface FeatureCardAction {
+  label: string;
+  icon?: string;
+  url?: string;
+  target?: '_blank' | '_self';
+  variant?: 'primary' | 'outline';
+}
+
+export interface FeatureCardMedia {
+  src?: string;
+  alt?: string;
+  showPlayButton?: boolean;
+}
+
+export interface FeatureHighlightCard {
+  badge?: string;
+  context?: string;
+  title: string;
+  description: string;
+  footnote?: string;
+  chips?: string[];
+  actions?: FeatureCardAction[];
+  media?: FeatureCardMedia;
+  accent?: 'aqua' | 'emerald' | 'violet' | 'amber' | 'neutral';
+}
 
 @Component({
     selector: 'app-home',
@@ -30,42 +56,52 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
     styleUrl: './home.css'
 })
 export class Home {
-  features = [
+  // Update copy, media, and actions here to reshuffle spotlight cards without editing the template.
+  readonly featureHighlights: FeatureHighlightCard[] = [
     {
-      icon: 'shield',
-      title: 'AI-Powered Analysis',
-      description: 'Advanced AI scans and analyzes your digital content across multiple platforms in minutes',
-      color: 'text-blue-600'
+      badge: 'Realtime Alerts',
+      context: 'Signals & Messaging',
+      title: 'Give reputation teams the context they need instantly.',
+      description: 'Custom alert recipes surface the right incidents for each stakeholder, complete with AI-authored summaries that explain the "why" at a glance',
+      footnote: '1',
+      chips: ['Slack', 'Teams', 'Email'],
+      actions: [
+        { label: 'Launch playbook', icon: 'arrow_forward', url: 'https://repute.ai/playbooks', variant: 'primary' }
+      ],
+      media: {
+        alt: 'Realtime notification mockup',
+        showPlayButton: true
+      },
+      accent: 'aqua'
     },
     {
-      icon: 'speed',
-      title: 'Real-Time Monitoring',
-      description: 'Continuous monitoring detects reputation risks before they become problems',
-      color: 'text-emerald-600'
+      badge: 'Insights Studio',
+      context: 'Reporting & Analytics',
+      title: 'Remix your signals with AI-generated storyboards.',
+      description: 'Create tailored update decks in seconds by blending KPI trends, notable mentions, and recommended actions. Share as slides or interactive dashboards',
+      footnote: '2',
+      chips: ['Deck export', 'AI recap'],
+      actions: [
+        { label: 'Try now', icon: 'arrow_forward', url: 'https://repute.ai/insights-studio', variant: 'primary' }
+      ],
+      media: {
+        alt: 'Reporting storyboard preview'
+      },
+      accent: 'violet'
     },
     {
-      icon: 'analytics',
-      title: 'Risk Scoring',
-      description: 'Intelligent risk assessment provides clear, actionable insights with 0-100 scoring',
-      color: 'text-violet-600'
-    },
-    {
-      icon: 'public',
-      title: 'Multi-Platform Coverage',
-      description: 'Scan Twitter, LinkedIn, GitHub, Reddit, and Stack Overflow from one dashboard',
-      color: 'text-amber-600'
-    },
-    {
-      icon: 'verified_user',
-      title: 'Privacy First',
-      description: 'Your data stays secure with enterprise-grade encryption and privacy controls',
-      color: 'text-red-600'
-    },
-    {
-      icon: 'trending_up',
-      title: 'Actionable Reports',
-      description: 'Clear, comprehensive reports with recommended actions and trend analysis',
-      color: 'text-indigo-600'
+      badge: 'Coverage Map',
+      context: 'Discovery',
+      title: 'Map every conversation that can impact trust.',
+      description: 'Track narratives across press, social, forums, and developer channels with a unified knowledge graph that updates hourly',
+      chips: ['News', 'Social', 'Communities'],
+      actions: [
+        { label: 'See live demo', icon: 'open_in_new', url: 'https://repute.ai/coverage-map-demo', variant: 'outline' }
+      ],
+      media: {
+        showPlayButton: true
+      },
+      accent: 'emerald'
     }
   ];
 
@@ -82,4 +118,14 @@ export class Home {
     { level: 'High Risk', range: '70-89', color: 'bg-orange-100 text-orange-800', icon: 'error' },
     { level: 'Critical Risk', range: '90-100', color: 'bg-red-100 text-red-800', icon: 'dangerous' }
   ];
+
+  handleCardAction(action?: FeatureCardAction): void {
+    if (!action) {
+      return;
+    }
+
+    if (action.url && typeof window !== 'undefined') {
+      window.open(action.url, action.target ?? '_blank');
+    }
+  }
 }

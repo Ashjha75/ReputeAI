@@ -410,6 +410,242 @@ section {
   position: relative;
 }
 
+/* --- Spotlight Feature Cards --- */
+.feature-highlights-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: clamp(2.5rem, 6vw, 5rem) 1.5rem;
+}
+
+.feature-highlights-grid {
+  width: 100%;
+  max-width: 1120px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(1.75rem, 4vw, 3rem);
+}
+
+.feature-highlights-card.mat-mdc-card {
+  --accent: rgba(56, 189, 248, 0.24);
+  --accent-light: rgba(56, 189, 248, 0.10);
+  border-radius: clamp(1.8rem, 4vw, 2.6rem);
+  padding: clamp(2.3rem, 3vw, 3rem);
+  background: linear-gradient(180deg, #f2f8ff 0%, #ffffff 58%);
+  box-shadow: 0 35px 60px rgba(15, 23, 42, 0.12);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.feature-highlights-card.mat-mdc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 90% 0%, var(--accent) 0%, transparent 55%);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.feature-highlights-card.mat-mdc-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 45px 80px rgba(15, 23, 42, 0.16);
+}
+
+.feature-highlights-card.mat-mdc-card:hover::before {
+  opacity: 0.95;
+}
+
+.feature-highlights-card.accent-aqua {
+  --accent: rgba(56, 189, 248, 0.28);
+  --accent-light: rgba(56, 189, 248, 0.14);
+  background: linear-gradient(180deg, #e7f7ff 0%, #ffffff 60%);
+}
+
+.feature-highlights-card.accent-violet {
+  --accent: rgba(129, 140, 248, 0.28);
+  --accent-light: rgba(129, 140, 248, 0.12);
+  background: linear-gradient(180deg, #f3f1ff 0%, #ffffff 60%);
+}
+
+.feature-highlights-card.accent-emerald {
+  --accent: rgba(52, 211, 153, 0.26);
+  --accent-light: rgba(52, 211, 153, 0.12);
+  background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 60%);
+}
+
+.feature-highlights-card.accent-amber {
+  --accent: rgba(251, 191, 36, 0.28);
+  --accent-light: rgba(251, 191, 36, 0.16);
+  background: linear-gradient(180deg, #fff7e6 0%, #ffffff 60%);
+}
+
+.feature-highlights-card.accent-neutral {
+  --accent: rgba(148, 163, 184, 0.22);
+  --accent-light: rgba(148, 163, 184, 0.12);
+  background: linear-gradient(180deg, #f5f7fb 0%, #ffffff 58%);
+}
+
+.feature-highlights-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.6rem, 3vw, 2.4rem);
+  min-height: 100%;
+  z-index: 1;
+}
+
+.feature-highlights-copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.8rem, 2.5vw, 1.35rem);
+}
+
+.feature-highlights-meta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.feature-highlights-badge {
+  background: rgba(255, 255, 255, 0.72);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  box-shadow: inset 0 0 0 1px var(--accent-light);
+}
+
+.feature-highlights-context {
+  text-transform: none;
+  letter-spacing: normal;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.feature-highlights-title {
+  margin: 0;
+  font-size: clamp(1.65rem, 3.2vw, 2.3rem);
+  line-height: 1.2;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.feature-highlights-description {
+  margin: 0;
+  color: #334155;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.feature-highlights-description sup {
+  font-size: 0.65em;
+  color: rgba(15, 23, 42, 0.6);
+  margin-left: 0.2rem;
+}
+
+.feature-highlights-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.feature-highlights-chip {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0f172a;
+  box-shadow: inset 0 0 0 1px var(--accent-light);
+}
+
+.feature-highlights-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.feature-highlights-cta {
+  border-radius: 999px;
+  padding: 0.7rem 1.6rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature-highlights-cta.primary {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 18px 28px rgba(15, 23, 42, 0.28);
+}
+
+.feature-highlights-cta.outline {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #0f172a !important;
+  box-shadow: inset 0 0 0 2px rgba(15, 23, 42, 0.12);
+}
+
+.feature-highlights-cta .mat-icon {
+  font-size: 1.1rem;
+  margin-left: 0.35rem;
+}
+
+.feature-highlights-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 36px rgba(15, 23, 42, 0.22);
+}
+
+.feature-highlights-media {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-height: 140px;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 1.6rem;
+}
+
+.feature-highlights-media img {
+  width: min(360px, 88%);
+  border-radius: 1.6rem;
+  box-shadow: 0 28px 48px rgba(15, 23, 42, 0.15);
+}
+
+.feature-highlights-play {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #0f172a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.25);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.feature-highlights-play:hover {
+  transform: scale(1.05);
+}
+
+.feature-highlights-play .mat-icon {
+  font-size: 1.6rem;
+}
+
 /* Card hover effects */
 mat-card {
   transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -452,5 +688,37 @@ button {
 @media (max-width: 768px) {
   .hero-visual {
     margin-top: 3rem;
+  }
+
+  .feature-highlights-section {
+    padding: 2rem 1.25rem;
+  }
+
+  .feature-highlights-card.mat-mdc-card {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .feature-highlights-media {
+    min-height: 110px;
+  }
+}
+
+@media (max-width: 600px) {
+  .feature-highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .feature-highlights-card.mat-mdc-card {
+    border-radius: 1.6rem;
+    padding: 1.4rem 1.2rem;
+  }
+
+  .feature-highlights-title {
+    font-size: 1.45rem;
+  }
+
+  .feature-highlights-description {
+    font-size: 1rem;
   }
 }

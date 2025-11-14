@@ -1,0 +1,47 @@
+<mat-card class="feature-highlight-card mat-elevation-z4 tilt-card" [ngClass]="'accent-' + resolvedAccent">
+  <div class="feature-highlight-inner">
+    <div class="feature-highlight-copy">
+      <div class="feature-highlight-meta" *ngIf="card.badge || card.context">
+        <span class="feature-highlight-badge" *ngIf="card.badge">{{ card.badge }}</span>
+        <span class="feature-highlight-context" *ngIf="card.context">{{ card.context }}</span>
+      </div>
+      <h3 class="feature-highlight-title">{{ card.title }}</h3>
+      <p class="feature-highlight-description">
+        {{ card.description }}
+        <sup *ngIf="card.footnote">{{ card.footnote }}</sup>
+      </p>
+      <div class="feature-highlight-chips" *ngIf="card.chips?.length">
+        <span class="feature-highlight-chip" *ngFor="let chip of card.chips">{{ chip }}</span>
+      </div>
+      <div class="feature-highlight-actions" *ngIf="card.actions?.length">
+        <button
+          *ngFor="let cardAction of card.actions"
+          mat-flat-button
+          type="button"
+          class="feature-highlight-cta"
+          [ngClass]="cardAction.variant || 'primary'"
+          (click)="handleAction(cardAction)"
+        >
+          {{ cardAction.label }}
+          <mat-icon *ngIf="cardAction.icon">{{ cardAction.icon }}</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="feature-highlight-media" *ngIf="card.media">
+      <img
+        *ngIf="card.media?.src || placeholderImage"
+        [src]="mediaSrc"
+        [alt]="card.media?.alt || card.title"
+        loading="lazy"
+      />
+      <button
+        *ngIf="card.media?.showPlayButton"
+        type="button"
+        aria-label="Play preview"
+        class="feature-highlight-play"
+      >
+        <mat-icon>play_arrow</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>
