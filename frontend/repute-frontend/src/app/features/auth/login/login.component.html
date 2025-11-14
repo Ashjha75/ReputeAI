@@ -74,7 +74,7 @@
           <mat-checkbox formControlName="rememberMe" class="text-sm">
             <span class="text-gray-700">Remember me</span>
           </mat-checkbox>
-          <a routerLink="/auth/forgot-password" class="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
+          <a routerLink="/auth/forgot-password" class="text-sm text-black hover:text-black font-medium">
             Forgot password?
           </a>
         </div>
@@ -83,7 +83,7 @@
         <button 
           type="submit" 
           [disabled]="!loginForm.valid || isLoading"
-          class="w-full bg-indigo-600 text-white py-3.5 rounded-xl font-medium hover:bg-indigo-700 transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm hover:shadow-md">
+          class="w-full bg-black text-white py-3.5 rounded-xl font-medium hover:bg-gray-900 transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm hover:shadow-md">
           <span *ngIf="!isLoading">Sign In</span>
           <span *ngIf="isLoading">Signing In...</span>
           <svg *ngIf="isLoading" class="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

@@ -1,6 +1,6 @@
 .auth-container {
   position: relative;
-  background: linear-gradient(135deg, #f5f6e9 0%, #f5f6e9e1 50%, #f5f6e9 100%);
+  background: #ebf4f4;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -12,7 +12,7 @@
   right: -10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, #b6e2e2 0%, #ebf4f4 60%, transparent 80%);
   border-radius: 50%;
   animation: float 20s ease-in-out infinite;
 }
@@ -24,7 +24,7 @@
   left: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+  background: radial-gradient(circle, #bff9f9 0%, #ebf4f4 60%, transparent 80%);
   border-radius: 50%;
   animation: float 15s ease-in-out infinite reverse;
 }
@@ -44,14 +44,14 @@
 }
 
 ::ng-deep .mat-mdc-text-field-wrapper {
-  background: linear-gradient(135deg, #fff7eca0 0%, #f7f6f6 100%);
+  background: linear-gradient(135deg, #e0f7f7 0%, #ebf4f4 100%);
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(251, 191, 36, 0.08);
+  box-shadow: 0 1px 3px rgba(200, 245, 245, 0.08);
   transition: all 0.3s ease;
 }
 
 ::ng-deep .mat-mdc-form-field:hover .mat-mdc-text-field-wrapper {
-  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.12);
+  box-shadow: 0 2px 8px rgba(204, 248, 248, 0.12);
 }
 
 ::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading,
@@ -74,7 +74,7 @@
 
 ::ng-deep .mat-mdc-form-field-icon-prefix {
   padding-right: 12px;
-  color: #d97706;
+  color: #7fd1d1;
 }
 
 ::ng-deep .mat-mdc-form-field-icon-prefix .mat-icon {
@@ -84,12 +84,12 @@
 }
 
 ::ng-deep .mat-mdc-input-element {
-  color: #374151;
+  color: #5a7a8c;
   font-size: 14px;
 }
 
 ::ng-deep .mat-mdc-input-element::placeholder {
-  color: #9ca3af;
+  color: #a3bfcf;
 }
 
 ::ng-deep .mat-mdc-form-field-error {
@@ -102,7 +102,7 @@
 }
 
 ::ng-deep .mdc-floating-label--float-above {
-  color: #f59e0b !important;
+  color: #7fd1d1 !important;
 }
 
 /* Button Styling */
@@ -114,7 +114,7 @@ button {
 
 button:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+  box-shadow: 0 10px 25px #b6e2e2;
 }
 
 button:active:not(:disabled) {
@@ -122,11 +122,11 @@ button:active:not(:disabled) {
 }
 
 .bg-amber-500 {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background: linear-gradient(135deg, #ebf4f4 0%, #b6e2e2 100%);
 }
 
 .bg-amber-500:hover:not(:disabled) {
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: linear-gradient(135deg, #b6e2e2 0%, #ebf4f4 100%);
 }
 
 /* OAuth Buttons */
@@ -137,20 +137,20 @@ button:active:not(:disabled) {
 }
 
 .border-2:hover:not(:disabled) {
-  border-color: #fbbf24;
-  background: #fffbeb;
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
+  border-color: #b6e2e2;
+  background: #e0f7f7;
+  box-shadow: 0 4px 12px #b6e2e2;
 }
 
 /* Checkbox Styling */
 ::ng-deep .mat-mdc-checkbox {
   --mdc-checkbox-selected-checkmark-color: white;
-  --mdc-checkbox-selected-focus-icon-color: #f59e0b;
-  --mdc-checkbox-selected-hover-icon-color: #f59e0b;
-  --mdc-checkbox-selected-icon-color: #f59e0b;
-  --mdc-checkbox-selected-pressed-icon-color: #d97706;
-  --mdc-checkbox-unselected-focus-icon-color: #fbbf24;
-  --mdc-checkbox-unselected-hover-icon-color: #fbbf24;
+  --mdc-checkbox-selected-focus-icon-color: #7fd1d1;
+  --mdc-checkbox-selected-hover-icon-color: #7fd1d1;
+  --mdc-checkbox-selected-icon-color: #7fd1d1;
+  --mdc-checkbox-selected-pressed-icon-color: #5a7a8c;
+  --mdc-checkbox-unselected-focus-icon-color: #b6e2e2;
+  --mdc-checkbox-unselected-hover-icon-color: #b6e2e2;
   --mdc-checkbox-unselected-icon-color: #d1d5db;
 }
 
@@ -162,7 +162,7 @@ button:active:not(:disabled) {
 /* Card Animation */
 .bg-white {
   animation: slideUp 0.6s ease-out;
-  box-shadow: 0 20px 60px rgba(251, 191, 36, 0.15);
+  box-shadow: 0 20px 60px #b6e2e2;
 }
 
 @keyframes slideUp {
@@ -189,17 +189,17 @@ button:active:not(:disabled) {
 
 /* Text Colors */
 .text-amber-600 {
-  color: #d97706;
+  color: #5a7a8c;
 }
 
 .text-amber-600:hover {
-  color: #b45309;
+  color: #7fd1d1;
 }
 
 /* Additional Polish */
 .bg-white {
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(251, 191, 36, 0.1);
+  border: 1px solid #b6e2e2;
 }
 
 a {
@@ -212,9 +212,10 @@ a:hover {
 }
 
 /* Focus visible states */
+
 button:focus-visible,
 a:focus-visible {
-  outline: 2px solid #fbbf24;
+  outline: 2px solid #b6e2e2;
   outline-offset: 2px;
 }
 
