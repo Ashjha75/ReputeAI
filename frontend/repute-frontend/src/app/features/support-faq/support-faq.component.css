@@ -65,13 +65,13 @@ a:active {
 
 /* Focus styles for accessibility */
 button:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+  outline: none;
+  outline-offset: none;
 }
 
 a:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+  outline: none;
+  outline-offset: none;
 }
 
 /* Responsive adjustments */

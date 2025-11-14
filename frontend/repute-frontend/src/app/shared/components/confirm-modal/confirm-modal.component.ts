@@ -1,7 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-confirm-modal',
+  standalone: true,
+  imports: [CommonModule],
   template: `
     <div class="modal-backdrop">
       <div class="modal-card small">

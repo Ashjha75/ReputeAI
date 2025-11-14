@@ -2,11 +2,12 @@ import { Component, OnInit, AfterViewInit, OnDestroy, PLATFORM_ID, Inject } from
 import { isPlatformBrowser } from '@angular/common';
 import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
 import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [ConfirmModalComponent, FeatureModalComponent],
+  imports: [CommonModule, ConfirmModalComponent, FeatureModalComponent],
   templateUrl: './hero-section.component.html',
   styleUrls: ['./hero-section.component.css'],
 })
