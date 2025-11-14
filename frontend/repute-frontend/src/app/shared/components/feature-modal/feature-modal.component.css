@@ -1,12 +1,28 @@
 .modal-backdrop {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0,0,0,0.18);
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(4px);
+  overflow: hidden;
+}
+
+.modal-card,
+.modal-card.small {
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
+body.modal-open {
+  overflow: hidden !important;
 }
 
 .modal-card {

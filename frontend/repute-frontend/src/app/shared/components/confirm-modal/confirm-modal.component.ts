@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Renderer2, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-confirm-modal',
@@ -32,7 +33,19 @@ export class ConfirmModalComponent {
   @Input() icon: 'delete' | 'update' | 'warning' = 'warning';
   @Output() close = new EventEmitter<void>();
   @Output() confirm = new EventEmitter<void>();
-  open() { this.visible = true; }
-  closeModal() { this.visible = false; this.close.emit(); }
-  confirmModal() { this.visible = false; this.confirm.emit(); }
+  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {}
+  open() {
+    this.visible = true;
+    this.renderer.addClass(this.document.body, 'modal-open');
+  }
+  closeModal() {
+    this.visible = false;
+    this.renderer.removeClass(this.document.body, 'modal-open');
+    this.close.emit();
+  }
+  confirmModal() {
+    this.visible = false;
+    this.renderer.removeClass(this.document.body, 'modal-open');
+    this.confirm.emit();
+  }
 }

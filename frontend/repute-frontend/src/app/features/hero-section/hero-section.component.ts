@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ConfirmModalComponent, FeatureModalComponent],
   templateUrl: './hero-section.component.html',
   styleUrls: ['./hero-section.component.css'],
 })

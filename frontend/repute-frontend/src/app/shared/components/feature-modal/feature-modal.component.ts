@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Renderer2, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-feature-modal',
@@ -20,6 +21,14 @@ import { CommonModule } from '@angular/common';
 export class FeatureModalComponent {
   visible = false;
   @Output() close = new EventEmitter<void>();
-  open() { this.visible = true; }
-  closeModal() { this.visible = false; this.close.emit(); }
+  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {}
+  open() {
+    this.visible = true;
+    this.renderer.addClass(this.document.body, 'modal-open');
+  }
+  closeModal() {
+    this.visible = false;
+    this.renderer.removeClass(this.document.body, 'modal-open');
+    this.close.emit();
+  }
 }
