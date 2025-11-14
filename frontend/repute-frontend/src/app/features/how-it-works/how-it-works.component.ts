@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, QueryList, ViewChildren, NgZone } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 import {
   trigger,
   state,
@@ -33,7 +34,7 @@ interface Step {
     ])
   ]
 })
-export class HowItWorksComponent {
+export class HowItWorksComponent implements AfterViewInit {
   steps: Step[] = [
     {
       number: 1,
@@ -63,13 +64,39 @@ export class HowItWorksComponent {
   // Track which step is visible
   stepStates: string[] = [];
 
-  constructor() {
+  @ViewChildren('stepCard', { read: ElementRef }) stepCards!: QueryList<ElementRef>;
+
+
+  constructor(private ngZone: NgZone, private cdr: ChangeDetectorRef) {
     this.stepStates = Array(this.steps.length).fill('hidden');
   }
 
-  onStepInView(index: number) {
-    if (this.stepStates[index] !== 'visible') {
-      this.stepStates[index] = 'visible';
+  ngAfterViewInit() {
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const idx = Number((entry.target as HTMLElement).getAttribute('data-step-index'));
+          if (entry.isIntersecting && this.stepStates[idx] !== 'visible') {
+            setTimeout(() => {
+              this.ngZone.run(() => {
+                this.stepStates[idx] = 'visible';
+                this.cdr.detectChanges();
+              });
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+      this.stepCards.forEach((el, idx) => {
+        el.nativeElement.setAttribute('data-step-index', idx);
+        observer.observe(el.nativeElement);
+      });
+    } else {
+      // Fallback: show all if IntersectionObserver not available
+      setTimeout(() => {
+        this.stepStates = this.stepStates.map(() => 'visible');
+        this.cdr.detectChanges();
+      });
     }
   }
 }
