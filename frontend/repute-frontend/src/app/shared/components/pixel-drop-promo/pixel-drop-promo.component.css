@@ -1,11 +1,16 @@
+
 .pixel-drop-promo-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3.5rem;
-  width: 100%;
-  min-height: 520px;
-  padding: 2.5rem 0;
+  gap: 2.2rem;
+  width: 90%;
+  margin: 3.5rem auto 3.5rem auto;
+  min-height: 420px;
+  padding: 0;
+  background: #f8fafc;
+  border-radius: 2.5rem;
+  box-shadow: 0 2px 16px 0 rgba(24, 52, 81, 0.04);
 }
 
 .pixel-drop-promo-content {
@@ -14,38 +19,41 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding-left: 2.5rem;
+  padding: 2.5rem 0 2.5rem 3.5rem;
 }
 
 .pixel-drop-promo-title {
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   font-weight: 700;
   color: #181c23;
-  margin-bottom: 1.2rem;
-  line-height: 1.1;
+  margin-bottom: 1.1rem;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
 }
 
 .pixel-drop-promo-desc {
-  font-size: 1.25rem;
+  font-size: 1.18rem;
   color: #222b36;
-  margin-bottom: 2.2rem;
+  margin-bottom: 2.1rem;
   line-height: 1.5;
+  max-width: 520px;
 }
 
 .pixel-drop-promo-btn {
-  background: #1967d2;
+  background: #1765e2;
   color: #fff;
   font-size: 1.18rem;
-  font-weight: 600;
+  font-weight: 700;
   border: none;
-  border-radius: 2rem;
+  border-radius: 2.2rem;
   padding: 0.7rem 2.5rem;
   box-shadow: 0 2px 12px 0 rgba(24, 52, 81, 0.10);
   cursor: pointer;
   transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+  margin-top: 1.2rem;
 }
 .pixel-drop-promo-btn:hover {
-  background: #1251a3;
+  background: #0b53c1;
   box-shadow: 0 8px 24px 0 rgba(24, 52, 81, 0.16);
   transform: translateY(-2px) scale(1.04);
 }
@@ -55,32 +63,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 420px;
 }
 
 .pixel-drop-promo-image-bg {
-  background: #f6f5f1;
-  border-radius: 2.5rem;
-  padding: 2.5rem 3.5rem;
-  min-width: 400px;
-  min-height: 400px;
+  background: #faf9f6;
+  border-radius: 3rem;
+  padding: 2.5rem 3.5rem 2.5rem 3.5rem;
+  min-width: 390px;
+  min-height: 390px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+  box-shadow: 0 2px 16px 0 rgba(24, 52, 81, 0.04);
 }
 
 .pixel-drop-plane {
   position: absolute;
-  top: 1.5rem;
-  left: 2.5rem;
-  width: 90px;
+  top: 1.2rem;
+  left: 2.2rem;
+  width: 70px;
   z-index: 2;
 }
 
 .pixel-drop-logo-text {
   font-family: 'Google Sans', Arial, sans-serif;
-  font-size: 6.2rem;
+  font-size: 5.2rem;
   font-weight: 700;
   color: #181c23;
   text-align: center;
@@ -98,42 +108,44 @@
 }
 .pixel-drop-logo-smiley {
   display: inline-block;
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   background: #fff200;
   border-radius: 50%;
   position: absolute;
-  left: 120px;
-  top: 60px;
+  left: 110px;
+  top: 52px;
   box-shadow: 0 2px 8px 0 rgba(24, 52, 81, 0.10);
-  background-image: url('data:image/svg+xml;utf8,<svg width="70" height="70" xmlns="http://www.w3.org/2000/svg"><circle cx="35" cy="35" r="35" fill="%23fff200"/><ellipse cx="25" cy="30" rx="4" ry="6" fill="black"/><ellipse cx="45" cy="30" rx="4" ry="6" fill="black"/><path d="M25 45 Q35 55 45 45" stroke="black" stroke-width="3" fill="none"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg width="65" height="65" xmlns="http://www.w3.org/2000/svg"><circle cx="32.5" cy="32.5" r="32.5" fill="%23fff200"/><ellipse cx="23" cy="28" rx="4" ry="6" fill="black"/><ellipse cx="41" cy="28" rx="4" ry="6" fill="black"/><path d="M23 40 Q32.5 50 41 40" stroke="black" stroke-width="3" fill="none"/></svg>');
   background-size: cover;
 }
 
 @media (max-width: 1100px) {
   .pixel-drop-promo-container {
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2.2rem;
     min-height: 0;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
+    width: 98%;
   }
   .pixel-drop-promo-content {
-    padding-left: 0;
+    padding: 1.2rem 0 0 0;
     align-items: center;
     text-align: center;
   }
   .pixel-drop-promo-image-bg {
-    min-width: 320px;
-    min-height: 320px;
-    padding: 1.5rem 1.5rem;
+    min-width: 260px;
+    min-height: 260px;
+    padding: 1.2rem 1.2rem;
+    border-radius: 2rem;
   }
   .pixel-drop-logo-text {
-    font-size: 3.2rem;
+    font-size: 2.2rem;
   }
   .pixel-drop-logo-smiley {
-    width: 40px;
-    height: 40px;
-    left: 60px;
-    top: 32px;
+    width: 32px;
+    height: 32px;
+    left: 38px;
+    top: 18px;
   }
 }
