@@ -1,8 +1,12 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
+import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
 
 @Component({
   selector: 'app-hero-section',
+  standalone: true,
+  imports: [ConfirmModalComponent, FeatureModalComponent],
   templateUrl: './hero-section.component.html',
   styleUrls: ['./hero-section.component.css'],
 })
@@ -68,5 +72,26 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
     fadeElements.forEach(el => {
       el.classList.add('visible');
     });
+  }
+
+  showFeatureModal = false;
+  showConfirmModal = false;
+
+  openFeatureModal() {
+    this.showFeatureModal = true;
+  }
+  closeFeatureModal() {
+    this.showFeatureModal = false;
+  }
+
+  openConfirmModal() {
+    this.showConfirmModal = true;
+  }
+  closeConfirmModal() {
+    this.showConfirmModal = false;
+  }
+  confirmAction() {
+    // Handle confirmation logic here
+    this.showConfirmModal = false;
   }
 }

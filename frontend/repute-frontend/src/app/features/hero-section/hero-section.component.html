@@ -19,9 +19,30 @@
       <div class="flex items-center justify-center lg:justify-end fade-in-right">
         <div class="relative w-full max-w-[500px] aspect-square rounded-[60px] bg-gradient-to-br from-green-200 via-cyan-200 to-blue-300 shadow-2xl overflow-hidden">
           <!-- Dummy text placeholder instead of play icon -->
-          <div class="absolute bottom-8 right-8 w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm border border-gray-300 shadow-lg flex items-center justify-center text-xs text-gray-700 font-medium hover:bg-white hover:scale-105 transition-all duration-300 cursor-pointer">
-            Play
+          <div class="absolute bottom-8 right-8 w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm border border-gray-300 shadow-lg flex items-center justify-center text-xs text-gray-700 font-medium hover:bg-white hover:scale-105 transition-all duration-300 cursor-pointer"
+               (click)="openFeatureModal()">
+            <span class="material-icons text-3xl text-blue-400 animate-pulse">play_circle</span>
           </div>
+
+          <!-- Feature Modal -->
+          <app-feature-modal *ngIf="showFeatureModal" (close)="closeFeatureModal()">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+              <div class="flex-1">
+                <span class="inline-block px-3 py-1 rounded-lg bg-lime-300 text-gray-900 font-semibold text-xs mb-2">Android 16</span>
+                <span class="ml-2 text-gray-600 text-xs">Hearing device support</span>
+                <h2 class="text-2xl md:text-3xl font-bold mt-2 mb-1">Clearer calling with hearing devices.</h2>
+                <div class="text-gray-500 text-sm mb-2">June 2025 | Accessibility</div>
+                <p class="text-gray-600 text-base mb-4">Control hearing devices from your device for a simpler experience across different hearing device brands. Or switch to your phone as input with LE Audio hearing devices for clearer calls in noisy environments.</p>
+                <button class="mt-2 px-5 py-2 rounded-full bg-gray-900 text-white font-semibold hover:bg-blue-700 transition">Learn more about accessibility <span class="material-icons align-middle text-base ml-1">open_in_new</span></button>
+              </div>
+              <div class="flex-1 flex items-center justify-center">
+                <img src="assets/hero-modal-demo.png" alt="Demo" class="rounded-2xl shadow-xl max-w-xs w-full" />
+              </div>
+            </div>
+          </app-feature-modal>
+
+          <!-- Confirm Modal Example (for demo, can be triggered elsewhere) -->
+          <app-confirm-modal *ngIf="showConfirmModal" [message]="'Are you sure you want to delete this?'" icon="delete" (close)="closeConfirmModal()" (confirm)="confirmAction()"></app-confirm-modal>
         </div>
       </div>
       
