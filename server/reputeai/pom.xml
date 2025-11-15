@@ -39,6 +39,7 @@
         <jjwt.version>0.12.6</jjwt.version>
         <protobuf.plugin.version>0.6.1</protobuf.plugin.version>
         <os.maven.plugin.version>1.7.1</os.maven.plugin.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
     </properties>
 
     <!-- dependencyManagement: import AWS SDK BOM -->
@@ -195,6 +196,11 @@
             <version>1.3.2</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
 
         <!-- AWS SDK v2 clients (BOM provides versions) -->
         <dependency>
@@ -241,9 +247,18 @@
                 <configuration>
                     <release>${java.version}</release>
                     <annotationProcessorPaths>
+                        <!-- Order is important: MapStruct must run after Lombok -->
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                        </path>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok-mapstruct-binding</artifactId>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
