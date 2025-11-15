@@ -66,4 +66,16 @@ public class LoginResponseDto {
         this.email = email;
         this.roles = roles;
     }
+
+    /**
+     * Convenience constructor for building the response when only tokens are available.
+     *
+     * @param accessToken The generated JWT access token.
+     * @param refreshToken The generated refresh token.
+     */
+    public LoginResponseDto(String accessToken, String refreshToken) {
+        this.accessToken = accessToken;
+        this.refreshToken = refreshToken;
+        this.tokenType = "Bearer";
+    }
 }
