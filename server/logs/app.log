@@ -350,3 +350,988 @@ Caused by: org.hibernate.HibernateException: Unable to determine Dialect without
 	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
 	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
 	... 33 common frames omitted
+2025-11-15 11:25:20,555 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-15 11:25:20,697 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 6244 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-15 11:25:20,707 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-15 11:25:20,710 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-15 11:25:20,834 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-15 11:25:20,834 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-15 11:25:23,594 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-15 11:25:23,647 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-15 11:25:23,744 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 60 ms. Found 0 JPA repository interfaces.
+2025-11-15 11:25:23,782 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-15 11:25:23,784 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-15 11:25:23,817 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-11-15 11:25:25,222 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-15 11:25:25,235 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-15 11:25:25,236 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-15 11:25:25,237 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-15 11:25:25,312 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-15 11:25:25,313 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4479 ms
+2025-11-15 11:25:25,361 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-15 11:25:25,524 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-15 11:25:25,581 INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-15 11:25:25,617 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-15 11:25:25,933 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-15 11:25:25,971 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-15 11:25:27,811 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d107863
+2025-11-15 11:25:27,818 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-15 11:25:28,287 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-15 11:25:28,721 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-15 11:25:28,727 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 11:25:29,055 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-15 11:25:29,211 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 14 mappings in 'requestMappingHandlerMapping'
+2025-11-15 11:25:29,262 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-15 11:25:29,308 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-15 11:25:29,393 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-15 11:25:29,474 INFO  [] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-11-15 11:25:29,594 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration$WebSecurityEnablerConfiguration=org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration$WebSecurityEnablerConfiguration@57664fcb}
+2025-11-15 11:25:29,596 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-15 11:25:29,772 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2LoginAuthenticationFilter, DefaultResourcesFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, OAuth2AuthorizationCodeGrantFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-15 11:25:30,698 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-15 11:25:30,748 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-15 11:25:30,761 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-15 11:25:30,872 INFO  [] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-11-15 11:25:30,873 INFO  [] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-11-15 11:25:31,111 INFO  [] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-11-15 11:25:31,125 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 12.508 seconds (process running for 14.091)
+2025-11-15 11:37:01,900 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-15 11:37:01,902 INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-15 11:37:01,902 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-11-15 11:37:01,902 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-11-15 11:37:01,903 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-11-15 11:37:01,904 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@75137d6a
+2025-11-15 11:37:01,905 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@40050d38
+2025-11-15 11:37:01,906 DEBUG [] o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-11-15 11:37:01,906 INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-11-15 11:37:01,937 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:01,938 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /health
+2025-11-15 11:37:01,940 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:01,941 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:01,944 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:01,945 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:01,947 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:01,949 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:01,949 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:01,950 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:01,950 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:01,950 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:01,951 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:01,951 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:01,951 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:01,952 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:01,952 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:01,952 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (12/18)
+2025-11-15 11:37:01,952 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-15 11:37:01,953 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (13/18)
+2025-11-15 11:37:01,953 TRACE [] o.s.s.w.s.HttpSessionRequestCache - matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+2025-11-15 11:37:01,953 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (14/18)
+2025-11-15 11:37:01,954 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (15/18)
+2025-11-15 11:37:01,955 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationCodeGrantFilter (16/18)
+2025-11-15 11:37:01,958 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (17/18)
+2025-11-15 11:37:01,959 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (18/18)
+2025-11-15 11:37:01,960 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /health
+2025-11-15 11:37:01,961 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /health using org.springframework.security.authorization.AuthenticatedAuthorizationManager@628d49c4
+2025-11-15 11:37:01,962 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - No HttpSession currently exists
+2025-11-15 11:37:01,962 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-15 11:37:01,963 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-15 11:37:01,965 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-15 11:37:01,966 TRACE [] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationCodeGrantFilter.doFilterInternal(OAuth2AuthorizationCodeGrantFilter.java:183)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-15 11:37:01,992 DEBUG [] o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/health?continue to session
+2025-11-15 11:37:01,993 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to http://localhost:8080/login
+2025-11-15 11:37:01,994 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:02,053 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:02,053 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login
+2025-11-15 11:37:02,054 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:02,055 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:02,055 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:02,055 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:02,057 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:02,057 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:02,058 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:02,058 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:02,058 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:02,059 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:02,060 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:02,060 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:02,060 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:02,061 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:02,061 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:02,074 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:13,670 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:13,670 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /health
+2025-11-15 11:37:13,671 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:13,671 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:13,671 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:13,671 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:13,672 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:13,672 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:13,672 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:13,672 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:13,672 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:13,673 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:13,673 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:13,673 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:13,673 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:13,673 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:13,674 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:13,674 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (12/18)
+2025-11-15 11:37:13,674 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-15 11:37:13,674 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (13/18)
+2025-11-15 11:37:13,674 TRACE [] o.s.s.w.s.HttpSessionRequestCache - matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+2025-11-15 11:37:13,675 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (14/18)
+2025-11-15 11:37:13,675 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (15/18)
+2025-11-15 11:37:13,675 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationCodeGrantFilter (16/18)
+2025-11-15 11:37:13,675 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (17/18)
+2025-11-15 11:37:13,676 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (18/18)
+2025-11-15 11:37:13,676 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /health
+2025-11-15 11:37:13,677 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /health using org.springframework.security.authorization.AuthenticatedAuthorizationManager@628d49c4
+2025-11-15 11:37:13,677 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - Did not find SecurityContext in HttpSession F733DF6ACD54E7906C346F9411100E58 using the SPRING_SECURITY_CONTEXT session attribute
+2025-11-15 11:37:13,677 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-15 11:37:13,677 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-15 11:37:13,677 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=F733DF6ACD54E7906C346F9411100E58], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-15 11:37:13,678 TRACE [] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=F733DF6ACD54E7906C346F9411100E58], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationCodeGrantFilter.doFilterInternal(OAuth2AuthorizationCodeGrantFilter.java:183)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-15 11:37:13,682 DEBUG [] o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/health?continue to session
+2025-11-15 11:37:13,682 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to http://localhost:8080/login
+2025-11-15 11:37:13,682 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:13,686 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:13,686 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login
+2025-11-15 11:37:13,686 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:13,687 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:13,687 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:13,687 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:13,687 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:13,687 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:13,687 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:13,687 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:13,688 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:13,688 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:13,688 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:13,688 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:13,688 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:13,688 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:13,688 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:13,688 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:36,497 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:36,501 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /health
+2025-11-15 11:37:36,501 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:36,501 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:36,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:36,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:36,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:36,502 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:36,502 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:36,506 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:36,506 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:36,507 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:36,507 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:36,507 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:36,507 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:36,507 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:36,508 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:36,508 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (12/18)
+2025-11-15 11:37:36,508 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-15 11:37:36,508 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (13/18)
+2025-11-15 11:37:36,508 TRACE [] o.s.s.w.s.HttpSessionRequestCache - matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+2025-11-15 11:37:36,508 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (14/18)
+2025-11-15 11:37:36,508 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (15/18)
+2025-11-15 11:37:36,510 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationCodeGrantFilter (16/18)
+2025-11-15 11:37:36,510 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (17/18)
+2025-11-15 11:37:36,510 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (18/18)
+2025-11-15 11:37:36,510 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /health
+2025-11-15 11:37:36,510 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /health using org.springframework.security.authorization.AuthenticatedAuthorizationManager@628d49c4
+2025-11-15 11:37:36,510 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - No HttpSession currently exists
+2025-11-15 11:37:36,510 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-15 11:37:36,510 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-15 11:37:36,512 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-15 11:37:36,512 TRACE [] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationCodeGrantFilter.doFilterInternal(OAuth2AuthorizationCodeGrantFilter.java:183)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-15 11:37:36,520 DEBUG [] o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/health?continue to session
+2025-11-15 11:37:36,522 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to http://localhost:8080/login
+2025-11-15 11:37:36,522 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:36,531 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:36,531 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login
+2025-11-15 11:37:36,531 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:36,531 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:36,531 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:36,531 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:36,531 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:36,531 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:36,535 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:36,535 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:36,536 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:36,537 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:36,540 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:36,540 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:36,540 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:36,540 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:36,542 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:36,544 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:36,621 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:36,621 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /default-ui.css
+2025-11-15 11:37:36,621 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:36,621 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:36,623 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:36,623 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:36,625 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:36,628 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:36,628 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:36,628 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:36,628 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:36,628 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:36,630 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:36,630 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:36,630 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:36,630 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:36,633 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:37,086 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:37,086 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /favicon.ico
+2025-11-15 11:37:37,086 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:37,086 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:37,086 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:37,086 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:37,086 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:37,086 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:37,086 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:37,086 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:37,091 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:37,091 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:37,091 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:37,091 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:37,091 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:37,091 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:37,091 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:37,093 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (12/18)
+2025-11-15 11:37:37,093 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-15 11:37:37,093 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (13/18)
+2025-11-15 11:37:37,093 TRACE [] o.s.s.w.s.HttpSessionRequestCache - matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+2025-11-15 11:37:37,094 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (14/18)
+2025-11-15 11:37:37,094 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (15/18)
+2025-11-15 11:37:37,099 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationCodeGrantFilter (16/18)
+2025-11-15 11:37:37,100 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (17/18)
+2025-11-15 11:37:37,100 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (18/18)
+2025-11-15 11:37:37,100 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /favicon.ico
+2025-11-15 11:37:37,100 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /favicon.ico using org.springframework.security.authorization.AuthenticatedAuthorizationManager@628d49c4
+2025-11-15 11:37:37,101 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - Did not find SecurityContext in HttpSession 6B933312DE9AF351F775400466D05488 using the SPRING_SECURITY_CONTEXT session attribute
+2025-11-15 11:37:37,101 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-15 11:37:37,102 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-15 11:37:37,102 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=6B933312DE9AF351F775400466D05488], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-15 11:37:37,104 TRACE [] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=6B933312DE9AF351F775400466D05488], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationCodeGrantFilter.doFilterInternal(OAuth2AuthorizationCodeGrantFilter.java:183)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-15 11:37:37,112 TRACE [] o.s.s.w.s.HttpSessionRequestCache - Did not save request since it did not match [And [Ant [pattern='/**', GET], Not [Ant [pattern='/**/favicon.*']], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@8b407d5, matchingMediaTypes=[application/json], useEquals=false, ignoredMediaTypes=[*/*]]], Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@8b407d5, matchingMediaTypes=[multipart/form-data], useEquals=false, ignoredMediaTypes=[*/*]]], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@8b407d5, matchingMediaTypes=[text/event-stream], useEquals=false, ignoredMediaTypes=[*/*]]]]]
+2025-11-15 11:37:37,112 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to http://localhost:8080/login
+2025-11-15 11:37:37,112 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:37,120 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:37,123 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login
+2025-11-15 11:37:37,123 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:37,123 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:37,123 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:37,124 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:37,124 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:37,124 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:37,124 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:37,124 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:37,124 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:37,124 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:37,124 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:37,124 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:37,124 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:37,124 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:37,124 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:37,124 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:38,152 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:38,154 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /oauth2/authorization/google
+2025-11-15 11:37:38,154 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:38,154 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:38,154 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:38,154 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:38,154 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:38,154 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:38,154 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:38,154 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:38,156 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:38,156 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:38,198 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com&scope=openid%20profile%20email&state=4ym3-UtAtxUJ6oEIMqGrhc18nKji4iuedADwB48v1aM%3D&redirect_uri=http://localhost:8080/login/oauth2/code/google&nonce=C9NXClqO4QoI5rp4rPrSDCYzuJiMe-GHVz1QywuOAsA
+2025-11-15 11:37:38,200 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:44,239 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login/oauth2/code/google?state=4ym3-UtAtxUJ6oEIMqGrhc18nKji4iuedADwB48v1aM%3D&code=4%2F0Ab32j92doSRjkzpjC5i06vSrRaisP5AMIgKgplW9xiFUzSaNSvNlvMx1aVttV6sNpQPI3Q&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:44,239 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:44,239 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:44,239 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:44,254 TRACE [] o.s.s.authentication.ProviderManager - Authenticating request with OAuth2LoginAuthenticationProvider (1/4)
+2025-11-15 11:37:44,254 TRACE [] o.s.s.authentication.ProviderManager - Authenticating request with OidcAuthorizationCodeAuthenticationProvider (2/4)
+2025-11-15 11:37:44,439 DEBUG [] o.s.web.client.RestTemplate - HTTP POST https://www.googleapis.com/oauth2/v4/token
+2025-11-15 11:37:44,452 DEBUG [] o.s.web.client.RestTemplate - Accept=[application/json, application/*+json]
+2025-11-15 11:37:44,452 DEBUG [] o.s.web.client.RestTemplate - Writing [{grant_type=[authorization_code], code=[4/0Ab32j92doSRjkzpjC5i06vSrRaisP5AMIgKgplW9xiFUzSaNSvNlvMx1aVttV6sNpQPI3Q], redirect_uri=[http://localhost:8080/login/oauth2/code/google]}] as "application/x-www-form-urlencoded;charset=UTF-8"
+2025-11-15 11:37:45,053 DEBUG [] o.s.web.client.RestTemplate - Response 200 OK
+2025-11-15 11:37:45,056 DEBUG [] o.s.web.client.RestTemplate - Reading to [org.springframework.security.oauth2.core.endpoint.OAuth2AccessTokenResponse] as "application/json;charset=utf-8"
+2025-11-15 11:37:45,416 DEBUG [] o.s.web.client.RestTemplate - HTTP GET https://www.googleapis.com/oauth2/v3/certs
+2025-11-15 11:37:45,419 DEBUG [] o.s.web.client.RestTemplate - Accept=[text/plain, application/json, application/yaml, application/*+json, */*]
+2025-11-15 11:37:45,439 DEBUG [] o.s.web.client.RestTemplate - Response 200 OK
+2025-11-15 11:37:45,439 DEBUG [] o.s.web.client.RestTemplate - Reading to [java.lang.String] as "application/json;charset=UTF-8"
+2025-11-15 11:37:45,480 TRACE [] o.s.s.w.a.s.CompositeSessionAuthenticationStrategy - Preparing session with ChangeSessionIdAuthenticationStrategy (1/2)
+2025-11-15 11:37:45,482 DEBUG [] o.s.s.w.a.s.ChangeSessionIdAuthenticationStrategy - Changed session id from 6B933312DE9AF351F775400466D05488
+2025-11-15 11:37:45,485 TRACE [] o.s.s.w.a.s.CompositeSessionAuthenticationStrategy - Preparing session with CsrfAuthenticationStrategy (2/2)
+2025-11-15 11:37:45,486 DEBUG [] o.s.s.w.c.HttpSessionSecurityContextRepository - Stored SecurityContextImpl [Authentication=OAuth2AuthenticationToken [Principal=Name: [113584856290158944722], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=YjNErFKZ1iS5SkMgrXAZQQ, sub=113584856290158944722, email_verified=true, iss=https://accounts.google.com, given_name=Ashish, nonce=C9NXClqO4QoI5rp4rPrSDCYzuJiMe-GHVz1QywuOAsA, picture=https://lh3.googleusercontent.com/a/ACg8ocJo7k7YqrPgztMU_GS9Qwoumegfg90IM0ULH36tG58UuKeGslk=s96-c, aud=[140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com], azp=140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com, name=Ashish Jha, exp=2025-11-15T07:07:45Z, family_name=Jha, iat=2025-11-15T06:07:45Z, email=ajha5645@gmail.com}], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=6B933312DE9AF351F775400466D05488], Granted Authorities=[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]]] to HttpSession [org.apache.catalina.session.StandardSessionFacade@1614121]
+2025-11-15 11:37:45,486 DEBUG [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Set SecurityContextHolder to OAuth2AuthenticationToken [Principal=Name: [113584856290158944722], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=YjNErFKZ1iS5SkMgrXAZQQ, sub=113584856290158944722, email_verified=true, iss=https://accounts.google.com, given_name=Ashish, nonce=C9NXClqO4QoI5rp4rPrSDCYzuJiMe-GHVz1QywuOAsA, picture=https://lh3.googleusercontent.com/a/ACg8ocJo7k7YqrPgztMU_GS9Qwoumegfg90IM0ULH36tG58UuKeGslk=s96-c, aud=[140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com], azp=140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com, name=Ashish Jha, exp=2025-11-15T07:07:45Z, family_name=Jha, iat=2025-11-15T06:07:45Z, email=ajha5645@gmail.com}], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=6B933312DE9AF351F775400466D05488], Granted Authorities=[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]]
+2025-11-15 11:37:45,488 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to http://localhost:8080/health?continue
+2025-11-15 11:37:45,488 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:45,495 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:45,495 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /health?continue
+2025-11-15 11:37:45,495 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:45,497 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:45,497 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:45,497 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:45,497 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:45,497 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:45,497 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:45,497 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:45,497 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:45,497 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:45,497 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:45,497 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:45,500 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:45,500 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:45,500 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:45,500 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (12/18)
+2025-11-15 11:37:45,502 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-15 11:37:45,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (13/18)
+2025-11-15 11:37:45,502 TRACE [] o.s.s.w.s.HttpSessionRequestCache - Removing DefaultSavedRequest from session if present
+2025-11-15 11:37:45,503 DEBUG [] o.s.s.w.s.HttpSessionRequestCache - Loaded matching saved request http://localhost:8080/health?continue
+2025-11-15 11:37:45,503 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (14/18)
+2025-11-15 11:37:45,503 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (15/18)
+2025-11-15 11:37:45,503 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationCodeGrantFilter (16/18)
+2025-11-15 11:37:45,503 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (17/18)
+2025-11-15 11:37:45,503 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (18/18)
+2025-11-15 11:37:45,503 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /health?continue
+2025-11-15 11:37:45,503 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /health?continue using org.springframework.security.authorization.AuthenticatedAuthorizationManager@628d49c4
+2025-11-15 11:37:45,503 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - Retrieved SecurityContextImpl [Authentication=OAuth2AuthenticationToken [Principal=Name: [113584856290158944722], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=YjNErFKZ1iS5SkMgrXAZQQ, sub=113584856290158944722, email_verified=true, iss=https://accounts.google.com, given_name=Ashish, nonce=C9NXClqO4QoI5rp4rPrSDCYzuJiMe-GHVz1QywuOAsA, picture=https://lh3.googleusercontent.com/a/ACg8ocJo7k7YqrPgztMU_GS9Qwoumegfg90IM0ULH36tG58UuKeGslk=s96-c, aud=[140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com], azp=140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com, name=Ashish Jha, exp=2025-11-15T07:07:45Z, family_name=Jha, iat=2025-11-15T06:07:45Z, email=ajha5645@gmail.com}], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=6B933312DE9AF351F775400466D05488], Granted Authorities=[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]]] from SPRING_SECURITY_CONTEXT
+2025-11-15 11:37:45,503 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Did not set SecurityContextHolder since already authenticated OAuth2AuthenticationToken [Principal=Name: [113584856290158944722], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=YjNErFKZ1iS5SkMgrXAZQQ, sub=113584856290158944722, email_verified=true, iss=https://accounts.google.com, given_name=Ashish, nonce=C9NXClqO4QoI5rp4rPrSDCYzuJiMe-GHVz1QywuOAsA, picture=https://lh3.googleusercontent.com/a/ACg8ocJo7k7YqrPgztMU_GS9Qwoumegfg90IM0ULH36tG58UuKeGslk=s96-c, aud=[140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com], azp=140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com, name=Ashish Jha, exp=2025-11-15T07:07:45Z, family_name=Jha, iat=2025-11-15T06:07:45Z, email=ajha5645@gmail.com}], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=6B933312DE9AF351F775400466D05488], Granted Authorities=[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]]
+2025-11-15 11:37:45,503 DEBUG [] o.s.security.web.FilterChainProxy - Secured GET /health?continue
+2025-11-15 11:37:45,511 DEBUG [01a7e2c2-a3f1-4848-95ce-e059fddf3ba6] o.s.web.servlet.DispatcherServlet - GET "/health?continue", parameters={masked}
+2025-11-15 11:37:45,511 DEBUG [01a7e2c2-a3f1-4848-95ce-e059fddf3ba6] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.reputeai.server.reputeai.HealthController#health()
+2025-11-15 11:37:45,710 DEBUG [01a7e2c2-a3f1-4848-95ce-e059fddf3ba6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8] and supported [application/json, application/*+json, application/yaml]
+2025-11-15 11:37:45,714 DEBUG [01a7e2c2-a3f1-4848-95ce-e059fddf3ba6] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [{status=UP}]
+2025-11-15 11:37:45,722 TRACE [01a7e2c2-a3f1-4848-95ce-e059fddf3ba6] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:45,737 DEBUG [01a7e2c2-a3f1-4848-95ce-e059fddf3ba6] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-15 11:37:46,208 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'oauth2SecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/oauth2/client/servlet/OAuth2ClientWebSecurityAutoConfiguration$OAuth2SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, OAuth2AuthorizationRequestRedirect, OAuth2AuthorizationRequestRedirect, OAuth2LoginAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, OAuth2AuthorizationCodeGrant, ExceptionTranslation, Authorization] (1/1)
+2025-11-15 11:37:46,210 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /favicon.ico
+2025-11-15 11:37:46,210 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/18)
+2025-11-15 11:37:46,210 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/18)
+2025-11-15 11:37:46,211 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/18)
+2025-11-15 11:37:46,211 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/18)
+2025-11-15 11:37:46,211 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/18)
+2025-11-15 11:37:46,211 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-15 11:37:46,211 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-15 11:37:46,211 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/18)
+2025-11-15 11:37:46,211 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-15 11:37:46,211 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (7/18)
+2025-11-15 11:37:46,213 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationRequestRedirectFilter (8/18)
+2025-11-15 11:37:46,213 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2LoginAuthenticationFilter (9/18)
+2025-11-15 11:37:46,213 TRACE [] o.s.s.o.c.w.OAuth2LoginAuthenticationFilter - Did not match request to Ant [pattern='/login/oauth2/code/*']
+2025-11-15 11:37:46,213 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (10/18)
+2025-11-15 11:37:46,213 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (11/18)
+2025-11-15 11:37:46,213 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (12/18)
+2025-11-15 11:37:46,213 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-15 11:37:46,213 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (13/18)
+2025-11-15 11:37:46,213 TRACE [] o.s.s.w.s.HttpSessionRequestCache - matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+2025-11-15 11:37:46,213 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (14/18)
+2025-11-15 11:37:46,215 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (15/18)
+2025-11-15 11:37:46,215 TRACE [] o.s.security.web.FilterChainProxy - Invoking OAuth2AuthorizationCodeGrantFilter (16/18)
+2025-11-15 11:37:46,215 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (17/18)
+2025-11-15 11:37:46,215 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (18/18)
+2025-11-15 11:37:46,215 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /favicon.ico
+2025-11-15 11:37:46,215 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /favicon.ico using org.springframework.security.authorization.AuthenticatedAuthorizationManager@628d49c4
+2025-11-15 11:37:46,215 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - Retrieved SecurityContextImpl [Authentication=OAuth2AuthenticationToken [Principal=Name: [113584856290158944722], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=YjNErFKZ1iS5SkMgrXAZQQ, sub=113584856290158944722, email_verified=true, iss=https://accounts.google.com, given_name=Ashish, nonce=C9NXClqO4QoI5rp4rPrSDCYzuJiMe-GHVz1QywuOAsA, picture=https://lh3.googleusercontent.com/a/ACg8ocJo7k7YqrPgztMU_GS9Qwoumegfg90IM0ULH36tG58UuKeGslk=s96-c, aud=[140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com], azp=140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com, name=Ashish Jha, exp=2025-11-15T07:07:45Z, family_name=Jha, iat=2025-11-15T06:07:45Z, email=ajha5645@gmail.com}], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=6B933312DE9AF351F775400466D05488], Granted Authorities=[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]]] from SPRING_SECURITY_CONTEXT
+2025-11-15 11:37:46,215 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Did not set SecurityContextHolder since already authenticated OAuth2AuthenticationToken [Principal=Name: [113584856290158944722], Granted Authorities: [[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{at_hash=YjNErFKZ1iS5SkMgrXAZQQ, sub=113584856290158944722, email_verified=true, iss=https://accounts.google.com, given_name=Ashish, nonce=C9NXClqO4QoI5rp4rPrSDCYzuJiMe-GHVz1QywuOAsA, picture=https://lh3.googleusercontent.com/a/ACg8ocJo7k7YqrPgztMU_GS9Qwoumegfg90IM0ULH36tG58UuKeGslk=s96-c, aud=[140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com], azp=140928397074-fsquspd3tldcodjpvnh9q8ear58t05k2.apps.googleusercontent.com, name=Ashish Jha, exp=2025-11-15T07:07:45Z, family_name=Jha, iat=2025-11-15T06:07:45Z, email=ajha5645@gmail.com}], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=6B933312DE9AF351F775400466D05488], Granted Authorities=[OIDC_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]]
+2025-11-15 11:37:46,215 DEBUG [] o.s.security.web.FilterChainProxy - Secured GET /favicon.ico
+2025-11-15 11:37:46,217 DEBUG [91939920-5007-49ba-bb05-54de0962a45b] o.s.web.servlet.DispatcherServlet - GET "/favicon.ico", parameters={}
+2025-11-15 11:37:46,218 DEBUG [91939920-5007-49ba-bb05-54de0962a45b] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-11-15 11:37:46,220 DEBUG [91939920-5007-49ba-bb05-54de0962a45b] o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+2025-11-15 11:37:46,225 DEBUG [91939920-5007-49ba-bb05-54de0962a45b] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Using @ExceptionHandler com.reputeai.server.reputeai.exception.GlobalExceptionHandler#handleGenericException(Exception)
+2025-11-15 11:37:46,225 ERROR [91939920-5007-49ba-bb05-54de0962a45b] c.r.s.r.e.GlobalExceptionHandler - Unhandled exception
+org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.
+	at org.springframework.web.servlet.resource.ResourceHttpRequestHandler.handleRequest(ResourceHttpRequestHandler.java:585)
+	at org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter.handle(HttpRequestHandlerAdapter.java:52)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at com.reputeai.server.reputeai.config.RequestIdFilter.doFilterInternal(RequestIdFilter.java:25)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationCodeGrantFilter.doFilterInternal(OAuth2AuthorizationCodeGrantFilter.java:183)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:198)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-15 11:37:46,253 DEBUG [91939920-5007-49ba-bb05-54de0962a45b] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json, application/yaml]
+2025-11-15 11:37:46,264 DEBUG [91939920-5007-49ba-bb05-54de0962a45b] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [ErrorResponse[traceId=91939920-5007-49ba-bb05-54de0962a45b, errorCode=INTERNAL_ERROR, message=Intern (truncated)...]
+2025-11-15 11:37:46,280 TRACE [91939920-5007-49ba-bb05-54de0962a45b] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-15 11:37:46,280 WARN  [91939920-5007-49ba-bb05-54de0962a45b] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2025-11-15 11:37:46,280 DEBUG [91939920-5007-49ba-bb05-54de0962a45b] o.s.web.servlet.DispatcherServlet - Completed 500 INTERNAL_SERVER_ERROR
+2025-11-15 13:50:29,198 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@5ceeb109 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 13:50:29,304 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6c8327a3 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 13:50:29,314 WARN  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=50m29s986ms415µs800ns).
+2025-11-15 13:50:29,339 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4b6550f6 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 13:50:29,341 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@62aad66a (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 13:50:29,358 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6e5ca383 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 13:50:29,387 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1b172fd4 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 13:50:29,412 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7a143ea0 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 13:50:29,441 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4e39ae0e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 13:50:29,457 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@45f25cf1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 13:50:29,462 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@67b9a214 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-15 15:51:59,106 INFO  [] n.d.b.g.s.s.GrpcServerLifecycle - Completed gRPC server shutdown
+2025-11-15 15:51:59,110 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-15 15:51:59,120 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-15 15:51:59,172 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 15:51:59,179 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-15 15:51:59,282 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-15 15:55:33,478 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-15 15:55:33,536 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 1988 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-15 15:55:33,538 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-15 15:55:33,538 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-15 15:55:33,575 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-15 15:55:33,576 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-15 15:55:34,569 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-15 15:55:34,571 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-15 15:55:34,595 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 JPA repository interfaces.
+2025-11-15 15:55:34,613 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-15 15:55:34,615 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-15 15:55:34,630 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2025-11-15 15:55:35,452 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-15 15:55:35,464 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-15 15:55:35,466 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-15 15:55:35,466 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-15 15:55:35,528 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-15 15:55:35,528 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1952 ms
+2025-11-15 15:55:35,571 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-15 15:55:35,697 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-15 15:55:35,770 INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-15 15:55:35,814 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-15 15:55:36,098 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-15 15:55:36,135 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-15 15:55:38,109 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@274e72b4
+2025-11-15 15:55:38,111 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-15 15:55:39,010 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-15 15:55:40,026 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-15 15:55:46,003 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 15:55:46,297 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-15 15:55:46,400 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 14 mappings in 'requestMappingHandlerMapping'
+2025-11-15 15:55:46,439 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-15 15:55:46,473 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-15 15:55:46,550 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-15 15:55:46,597 INFO  [] n.d.b.g.s.a.GrpcServerFactoryAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyGrpcServerFactory
+2025-11-15 15:55:46,672 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration$WebSecurityEnablerConfiguration=org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration$WebSecurityEnablerConfiguration@5b842667}
+2025-11-15 15:55:46,674 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-15 15:55:46,814 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2LoginAuthenticationFilter, DefaultResourcesFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, OAuth2AuthorizationCodeGrantFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-15 15:55:47,501 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-15 15:55:47,536 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-15 15:55:47,547 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-15 15:55:47,645 INFO  [] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.health.v1.Health, bean: grpcHealthService, class: io.grpc.protobuf.services.HealthServiceImpl
+2025-11-15 15:55:47,645 INFO  [] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
+2025-11-15 15:55:47,829 INFO  [] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
+2025-11-15 15:55:47,840 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 15.052 seconds (process running for 15.981)
