@@ -35,6 +35,5 @@ public class AuthenticatedUser extends User {
         return jti;
     }
     
-    // Add convenience methods here for ABAC: 
-    // public boolean hasPlatformAccount(Long accountId) { ... }
+
 }

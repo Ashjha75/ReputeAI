@@ -1335,3 +1335,9 @@ org.springframework.web.servlet.resource.NoResourceFoundException: No static res
 2025-11-15 15:55:47,645 INFO  [] n.d.b.g.s.s.AbstractGrpcServerFactory - Registered gRPC service: grpc.reflection.v1alpha.ServerReflection, bean: protoReflectionService, class: io.grpc.protobuf.services.ProtoReflectionService
 2025-11-15 15:55:47,829 INFO  [] n.d.b.g.s.s.GrpcServerLifecycle - gRPC Server started, listening on address: *, port: 9090
 2025-11-15 15:55:47,840 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 15.052 seconds (process running for 15.981)
+2025-11-15 16:22:33,854 INFO  [] n.d.b.g.s.s.GrpcServerLifecycle - Completed gRPC server shutdown
+2025-11-15 16:22:33,856 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-15 16:22:33,866 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-15 16:22:33,897 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 16:22:33,901 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-15 16:22:34,088 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
