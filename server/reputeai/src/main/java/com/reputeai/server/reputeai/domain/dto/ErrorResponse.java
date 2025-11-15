@@ -1,4 +1,4 @@
-package com.reputeai.server.reputeai.dto;
+package com.reputeai.server.reputeai.domain.dto;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.reputeai.server.reputeai.exception;
 
-import com.reputeai.server.reputeai.dto.ErrorResponse;
+import com.reputeai.server.reputeai.domain.dto.ErrorResponse;
 import jakarta.validation.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
