@@ -8,13 +8,16 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
-import java.util.stream.Collectors;
+import java.util.stream.Collectors; // <-- Import here so the `imports` attribute can find it
 
 /**
  * MapStruct interface for mapping all DTOs to Entities and vice-versa.
- * RENAMED to ApplicationMapper to avoid name collision with the @Mapper annotation.
  */
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(
+        componentModel = "spring",
+        unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        imports = {Collectors.class} // <-- THIS IS THE FIX
+)
 public interface ApplicationMapper {
 
     /**
