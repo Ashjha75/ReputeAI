@@ -6,7 +6,7 @@ import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.service.UserService;
-import com.reputeai.server.reputeai.util.Mapper;
+import com.reputeai.server.reputeai.util.ApplicationMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final Mapper mapper;
+    private final ApplicationMapper mapper;
 // In com.reputeai.security.SecurityConfig.java
 
     @Bean

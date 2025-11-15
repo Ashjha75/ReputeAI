@@ -6,6 +6,7 @@ import com.reputeai.server.reputeai.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -14,38 +15,33 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    private final AuthenticationManager authenticationManager;
-//    private final JwtProvider jwtProvider;
-    // You would also inject a RefreshTokenService here
+    // Obtain AuthenticationManager from configuration to avoid early autowire issues
+    private final AuthenticationConfiguration authenticationConfiguration;
+
+    private AuthenticationManager authenticationManager() throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
 
     @Override
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
-        // 1. Authenticate user credentials
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequestDto.getEmail(),
-                        loginRequestDto.getPassword()
-                )
-        );
-
-        // 2. Set the authentication in the security context
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        // 3. Generate JWT
-        // Note: The logic to get the full User object and roles would be here to pass to jwtProvider
-//        String accessToken = jwtProvider.generateAccessToken(authentication);
-        
-        // 4. Generate Refresh Token (logic from a RefreshTokenService)
-        String refreshToken = "dummy-refresh-token"; // Placeholder
-
-        return new LoginResponseDto("accessToken", refreshToken);
+        try {
+            Authentication authentication = authenticationManager().authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            loginRequestDto.getEmail(),
+                            loginRequestDto.getPassword()
+                    )
+            );
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            String accessToken = "accessToken"; // TODO generate real JWT
+            String refreshToken = "dummy-refresh-token"; // TODO generate refresh token
+            return new LoginResponseDto(accessToken, refreshToken);
+        } catch (Exception ex) {
+            throw new RuntimeException("Authentication failed", ex);
+        }
     }
-    
+
     @Override
     public LoginResponseDto refreshToken(String refreshToken) {
-        // 1. Validate the refresh token
-        // 2. Generate a new access token
-        // 3. Return the new token
         throw new UnsupportedOperationException("Refresh token logic not yet implemented.");
     }
 }
