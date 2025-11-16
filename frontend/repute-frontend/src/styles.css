@@ -11,58 +11,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 /* Material icons helper */
 .material-icon { font-family: 'Material Icons'; }
 
-/* Snackbar Success */
-.snack-success {
-  background-color: #10b981 !important;
-  color: white !important;
+/* Snackbar Base Styles */
+.mat-mdc-snack-bar-container {
+  --mat-snack-bar-button-color: #000;
+  --mdc-snackbar-container-color: #fff;
+  --mdc-snackbar-supporting-text-color: #374151;
 }
 
-.snack-success .mat-mdc-snack-bar-label {
-  color: white !important;
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 8px !important;
+  padding: 0 !important;
 }
 
-.snack-success .mat-mdc-button {
-  color: white !important;
-}
-
-/* Snackbar Error */
-.snack-error {
-  background-color: #ef4444 !important;
-  color: white !important;
-}
-
-.snack-error .mat-mdc-snack-bar-label {
-  color: white !important;
-}
-
-.snack-error .mat-mdc-button {
-  color: white !important;
-}
-
-/* Snackbar Warning */
-.snack-warning {
-  background-color: #f59e0b !important;
-  color: white !important;
-}
-
-.snack-warning .mat-mdc-snack-bar-label {
-  color: white !important;
-}
-
-.snack-warning .mat-mdc-button {
-  color: white !important;
-}
-
-/* Snackbar Info */
-.snack-info {
-  background-color: #3b82f6 !important;
-  color: white !important;
-}
-
-.snack-info .mat-mdc-snack-bar-label {
-  color: white !important;
-}
-
-.snack-info .mat-mdc-button {
-  color: white !important;
-}
+/* Unified snackbar variants (new component) */
+.snack { --mdc-snackbar-container-color:#fff !important; --mdc-snackbar-supporting-text-color:#374151 !important; }
+.snack-success { border-left:4px solid #10b981 !important; }
+.snack-error { border-left:4px solid #ef4444 !important; }
+.snack-warning { border-left:4px solid #f59e0b !important; }
+.snack-info { border-left:4px solid #3b82f6 !important; }
+/* Ensure surface has no extra padding for component layout */
+.snack .mdc-snackbar__surface { padding:0 !important; }

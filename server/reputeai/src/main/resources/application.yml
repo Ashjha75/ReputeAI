@@ -16,6 +16,11 @@ spring:
       hibernate:
         format_sql: true
 
+  flyway:
+    enabled: true
+    baseline-version: 1
+    baseline-on-migrate: true
+
 server:
   error:
     include-message: always
@@ -24,15 +29,16 @@ app:
   # common defaults; environment-specific values live in profile files
   cookieName: TOKEN
 
+cors:
+  allowed-origins:
+    - http://localhost:4200
+    - http://localhost:8080
+    - https://ashjha75.github.io
+
 springdoc:
   swagger-ui:
     path: /api/v1/docs
     use-root-path: true
-
-grpc:
-  server:
-    security:
-      enabled: false
 
 logging:
   level:

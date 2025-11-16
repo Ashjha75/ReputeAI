@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map, retry } from 'rxjs/operators';
+import { catchError, map, retry, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
+import { NotificationService } from './notification.service';
 
 export interface ApiResponse<T> {
   success: boolean;
@@ -18,6 +19,7 @@ export interface ApiResponse<T> {
 export class BaseApiService {
   protected baseUrl: string = environment.apiUrl || 'http://localhost:8080/api';
   private defaultHeaders: HttpHeaders;
+  private notificationService = inject(NotificationService);
 
   constructor(protected http: HttpClient) {
     this.defaultHeaders = new HttpHeaders({
@@ -53,7 +55,8 @@ export class BaseApiService {
   protected get<T>(
     endpoint: string, 
     params?: HttpParams | { [param: string]: string | string[] },
-    requireAuth: boolean = false
+    requireAuth: boolean = false,
+    showNotification: boolean = false
   ): Observable<ApiResponse<T>> {
     const headers = requireAuth ? this.getAuthHeaders() : this.defaultHeaders;
     
@@ -61,9 +64,9 @@ export class BaseApiService {
       headers, 
       params 
     }).pipe(
-      map(response => this.handleSuccess<T>(response)),
+      map(response => this.handleSuccess<T>(response, showNotification)),
       retry(2), // Retry failed requests twice
-      catchError(this.handleError.bind(this))
+      catchError(error => this.handleError(error, showNotification))
     );
   }
 
@@ -73,15 +76,16 @@ export class BaseApiService {
   protected post<T>(
     endpoint: string, 
     body: any,
-    requireAuth: boolean = false
+    requireAuth: boolean = false,
+    showNotification: boolean = true
   ): Observable<ApiResponse<T>> {
     const headers = requireAuth ? this.getAuthHeaders() : this.defaultHeaders;
     
     return this.http.post<T>(`${this.baseUrl}${endpoint}`, body, { 
       headers 
     }).pipe(
-      map(response => this.handleSuccess<T>(response)),
-      catchError(this.handleError.bind(this))
+      map(response => this.handleSuccess<T>(response, showNotification)),
+      catchError(error => this.handleError(error, showNotification))
     );
   }
 
@@ -91,15 +95,16 @@ export class BaseApiService {
   protected put<T>(
     endpoint: string, 
     body: any,
-    requireAuth: boolean = true
+    requireAuth: boolean = true,
+    showNotification: boolean = true
   ): Observable<ApiResponse<T>> {
     const headers = requireAuth ? this.getAuthHeaders() : this.defaultHeaders;
     
     return this.http.put<T>(`${this.baseUrl}${endpoint}`, body, { 
       headers 
     }).pipe(
-      map(response => this.handleSuccess<T>(response)),
-      catchError(this.handleError.bind(this))
+      map(response => this.handleSuccess<T>(response, showNotification)),
+      catchError(error => this.handleError(error, showNotification))
     );
   }
 
@@ -109,15 +114,16 @@ export class BaseApiService {
   protected patch<T>(
     endpoint: string, 
     body: any,
-    requireAuth: boolean = true
+    requireAuth: boolean = true,
+    showNotification: boolean = true
   ): Observable<ApiResponse<T>> {
     const headers = requireAuth ? this.getAuthHeaders() : this.defaultHeaders;
     
     return this.http.patch<T>(`${this.baseUrl}${endpoint}`, body, { 
       headers 
     }).pipe(
-      map(response => this.handleSuccess<T>(response)),
-      catchError(this.handleError.bind(this))
+      map(response => this.handleSuccess<T>(response, showNotification)),
+      catchError(error => this.handleError(error, showNotification))
     );
   }
 
@@ -126,25 +132,33 @@ export class BaseApiService {
    */
   protected delete<T>(
     endpoint: string,
-    requireAuth: boolean = true
+    requireAuth: boolean = true,
+    showNotification: boolean = true
   ): Observable<ApiResponse<T>> {
     const headers = requireAuth ? this.getAuthHeaders() : this.defaultHeaders;
     
     return this.http.delete<T>(`${this.baseUrl}${endpoint}`, { 
       headers 
     }).pipe(
-      map(response => this.handleSuccess<T>(response)),
-      catchError(this.handleError.bind(this))
+      map(response => this.handleSuccess<T>(response, showNotification)),
+      catchError(error => this.handleError(error, showNotification))
     );
   }
 
   /**
    * Handle successful response
    */
-  private handleSuccess<T>(response: any): ApiResponse<T> {
+  private handleSuccess<T>(response: any, showNotification: boolean = false): ApiResponse<T> {
+    // Backend returns { success: true, message: "..." } or { Message: "..." }
+    const message = response?.message || response?.Message || 'Operation successful';
+    
+    if (showNotification) {
+      this.notificationService.success(message);
+    }
     return {
       success: true,
       data: response,
+      message: message,
       statusCode: 200
     };
   }
@@ -152,7 +166,7 @@ export class BaseApiService {
   /**
    * Handle error response
    */
-  private handleError(error: HttpErrorResponse): Observable<never> {
+  private handleError(error: HttpErrorResponse, showNotification: boolean = true): Observable<never> {
     let errorMessage = 'An error occurred';
     let statusCode = error.status || 500;
 
@@ -185,6 +199,11 @@ export class BaseApiService {
     }
 
     console.error('API Error:', errorMessage, error);
+
+    // Show error notification
+    if (showNotification) {
+      this.notificationService.error(errorMessage);
+    }
 
     return throwError(() => ({
       success: false,

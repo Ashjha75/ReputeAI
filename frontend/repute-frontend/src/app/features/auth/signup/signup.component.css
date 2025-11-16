@@ -46,12 +46,12 @@
 ::ng-deep .mat-mdc-text-field-wrapper {
   background: linear-gradient(135deg, #e0f7f7 0%, #ebf4f4 100%);
   border-radius: 12px;
-  box-shadow: 0 1px 3px #b6e2e2;
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
 ::ng-deep .mat-mdc-form-field:hover .mat-mdc-text-field-wrapper {
-  box-shadow: 0 2px 8px #b6e2e2;
+  box-shadow: none;
 }
 
 ::ng-deep .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading,
@@ -143,16 +143,7 @@ button:active:not(:disabled) {
   box-shadow: 0 4px 12px rgba(199, 232, 253, 0.3);
 }
 
-/* Loading animation */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
+/* Loader styles moved to shared LoaderComponent */
 
 /* Card animation */
 

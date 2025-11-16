@@ -1,8 +1,6 @@
 <app-header></app-header>
 <app-loader
-	[loading]="(loading$ | async) ?? false"
-	[fullscreen]="true"
-	message="ReputeAI is getting things ready"
-	subtext="Fetching personalized intelligence and syncing secure context"
+	[show]="(loading$ | async) ?? false"
+	[message]="'ReputeAI is getting things ready'"
 ></app-loader>
 <router-outlet />

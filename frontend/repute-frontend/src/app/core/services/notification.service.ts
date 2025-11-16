@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { NotificationSnackComponent, NotificationType } from '../../core/components/notification-snack/notification-snack.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,49 +14,19 @@ export class NotificationService {
 
   constructor(private snackBar: MatSnackBar) {}
 
-  /**
-   * Show success message
-   */
-  success(message: string, duration?: number): void {
-    this.snackBar.open(message, '✓', {
+  private open(type: NotificationType, message: string, duration?: number): void {
+    this.snackBar.openFromComponent(NotificationSnackComponent, {
       ...this.defaultConfig,
       duration: duration || this.defaultConfig.duration,
-      panelClass: ['snack-success']
+      data: { type, message },
+      panelClass: ['snack', `snack-${type}`]
     });
   }
 
-  /**
-   * Show error message
-   */
-  error(message: string, duration?: number): void {
-    this.snackBar.open(message, '✕', {
-      ...this.defaultConfig,
-      duration: duration || this.defaultConfig.duration,
-      panelClass: ['snack-error']
-    });
-  }
-
-  /**
-   * Show warning message
-   */
-  warning(message: string, duration?: number): void {
-    this.snackBar.open(message, '⚠', {
-      ...this.defaultConfig,
-      duration: duration || this.defaultConfig.duration,
-      panelClass: ['snack-warning']
-    });
-  }
-
-  /**
-   * Show info message
-   */
-  info(message: string, duration?: number): void {
-    this.snackBar.open(message, 'i', {
-      ...this.defaultConfig,
-      duration: duration || this.defaultConfig.duration,
-      panelClass: ['snack-info']
-    });
-  }
+  success(message: string, duration?: number): void { this.open('success', message, duration); }
+  error(message: string, duration?: number): void { this.open('error', message, duration); }
+  warning(message: string, duration?: number): void { this.open('warning', message, duration); }
+  info(message: string, duration?: number): void { this.open('info', message, duration); }
 
   /**
    * Dismiss all notifications

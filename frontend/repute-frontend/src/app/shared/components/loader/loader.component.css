@@ -1,181 +1,93 @@
-:host {
-  display: block;
-  --loader-accent: var(--mat-sys-primary, #2563eb);
-  --loader-accent-muted: rgba(37, 99, 235, 0.3);
-  --loader-accent-strong: rgba(37, 99, 235, 0.85);
-  --loader-surface: var(--mat-sys-surface-container-high, #0f172a);
-  --loader-surface-contrast: var(--mat-sys-inverse-surface, #020617);
-  --loader-text: var(--mat-sys-on-surface, #e5edff);
-  --loader-text-muted: var(--mat-sys-on-surface-variant, #98a7c7);
-}
+/* Glassmorphism Loading Overlay */
 
-.loader-shell {
-  display: grid;
-  place-items: center;
-  width: 100%;
-}
-
-.loader-shell.fullscreen {
+.loading-overlay {
   position: fixed;
-  inset: 0;
-  z-index: 1080;
-  padding: 2rem;
-  background: radial-gradient(circle at 20% 20%, rgba(15, 23, 42, 0.85), rgba(3, 7, 18, 0.95));
-  backdrop-filter: blur(18px) saturate(140%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px) saturate(250%);
+  -webkit-backdrop-filter: blur(16px) saturate(250%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.loader-card {
-  position: relative;
-  width: min(420px, 90vw);
-  padding: 2.5rem 2.75rem;
-  border-radius: 32px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)), var(--loader-surface);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 35px 120px rgba(2, 6, 23, 0.65);
-  overflow: hidden;
-  isolation: isolate;
-  color: var(--loader-text);
-  text-align: center;
-}
-
-.loader-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.35), transparent 55%);
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.loader-card.surface {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-    color-mix(in srgb, var(--loader-surface) 88%, var(--loader-text) 12%);
-}
-
-.loader-card.contrast {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.85)), var(--loader-surface-contrast);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-.loader-signal {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 1.5rem;
-  display: grid;
-  place-items: center;
-}
-
-.pulse-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  border: 1.5px solid var(--loader-accent-muted);
-  animation: ripple 2.6s infinite ease-out;
-}
-
-.pulse-ring.ring-2 {
-  animation-delay: 0.3s;
-}
-
-.pulse-ring.ring-3 {
-  animation-delay: 0.6s;
-}
-
-.loader-icon {
-  font-size: 44px;
-  color: var(--loader-accent);
-  text-shadow: 0 15px 45px rgba(37, 99, 235, 0.45);
-  animation: float 2.2s ease-in-out infinite;
-}
-
-.loader-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.35rem;
-}
-
-.loader-subtext {
-  font-size: 0.95rem;
-  color: var(--loader-text-muted);
-  margin: 0 auto;
-  max-width: 26ch;
-}
-
-.loader-progress {
-  margin-top: 1.75rem;
+.loading-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   align-items: center;
+  gap: 32px;
 }
 
-.progress-track {
-  width: 100%;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  overflow: hidden;
-}
 
-.progress-fill {
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(37, 99, 235, 0.1), var(--loader-accent));
-  transition: width 280ms ease;
+/* New Circular Loader with 5 Dots */
+.rotating-dots {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  animation: loader-rotate 1.2s linear infinite;
 }
-
-.progress-label {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--loader-text-muted);
-  letter-spacing: 0.04em;
+.rotating-dots .dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: #111;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-24px);
+  opacity: 0.8;
+  animation: loader-dot-fade 1.2s linear infinite;
 }
+.rotating-dots .dot:nth-child(1) { --angle: 0deg;   animation-delay: 0s; }
+.rotating-dots .dot:nth-child(2) { --angle: 72deg;  animation-delay: 0.24s; }
+.rotating-dots .dot:nth-child(3) { --angle: 144deg; animation-delay: 0.48s; }
+.rotating-dots .dot:nth-child(4) { --angle: 216deg; animation-delay: 0.72s; }
+.rotating-dots .dot:nth-child(5) { --angle: 288deg; animation-delay: 0.96s; }
 
-@keyframes ripple {
-  0% {
-    transform: scale(0.4);
-    opacity: 0.9;
+@keyframes loader-rotate {
+  100% { transform: rotate(360deg); }
+}
+@keyframes loader-dot-fade {
+  0%, 100% {
+    opacity: 1;
+    background: #181818;
   }
-  80% {
-    opacity: 0.25;
+  50% {
+    opacity: 0.2;
+    background: #111;
   }
-  100% {
-    transform: scale(1.45);
+}
+
+.loading-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: textFloat 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
     opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes float {
-  0% {
+@keyframes textFloat {
+  0%, 100% {
+    opacity: 1;
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-6px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@media (max-width: 540px) {
-  .loader-card {
-    padding: 2rem 1.75rem;
-  }
-
-  .loader-title {
-    font-size: 1.1rem;
-  }
-
-  .loader-shell.fullscreen {
-    padding: 1.5rem;
-  }
-}
-
-@supports not (color: color-mix(in srgb, var(--loader-accent), #000)) {
-  .loader-card.surface {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
-      var(--loader-surface);
+    opacity: 0.7;
+    transform: translateY(-5px);
   }
 }
