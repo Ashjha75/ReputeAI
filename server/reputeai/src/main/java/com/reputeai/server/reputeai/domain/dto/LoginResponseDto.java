@@ -16,6 +16,18 @@ import java.util.Set;
 public class LoginResponseDto {
 
     /**
+     * Indicates whether the login was successful.
+     * Always true in successful responses (errors use different DTOs).
+     */
+    private boolean success;
+
+    /**
+     * A user-friendly message about the login result.
+     * Example: "Login successful! Welcome back, John."
+     */
+    private String message;
+
+    /**
      * The short-lived JWT access token.
      * The client must send this in the 'Authorization: Bearer <token>' header for all subsequent secure API calls.
      */
