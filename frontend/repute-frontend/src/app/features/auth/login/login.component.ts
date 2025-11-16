@@ -61,16 +61,25 @@ export class LoginComponent {
     this.authService.login(payload).subscribe({
       next: (res: any) => {
         this.isLoading = false;
-        // backend may return { success, data: { token, user }, message }
-        if (res?.success && res?.data?.token) {
+        // Normalize token & user from wrapped ApiResponse or direct response
+        // BaseApiService wraps responses as { success: true, data: <originalResponse>, message }
+        const original = res?.data ?? res;
+        const token = original?.token ?? original?.data?.token ?? original?.data?.accessToken ?? original?.accessToken;
+        const user = original?.user ?? original?.data?.user ?? original?.data?.profile ?? null;
+
+        if (token) {
           // Save auth data and navigate
-          this.authService.saveAuthData(res.data.token, res.data.user);
-          this.notificationService.success(res.data?.message || res.message || 'Logged in successfully');
+          this.authService.saveAuthData(token, user);
+          // Prefer backend message if available
+          const successMsg = original?.message || res?.message || 'Logged in successfully';
+          this.notificationService.success(successMsg);
+          // Redirect to home
           this.router.navigate(['/']);
-        } else {
-          const msg = res?.message || 'Login failed';
-          this.notificationService.error(msg);
+          return;
         }
+
+        const msg = res?.message || 'Login failed';
+        this.notificationService.error(msg);
       },
       error: (err) => {
         this.isLoading = false;
