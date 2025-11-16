@@ -1,19 +1,21 @@
-import { Component, HostListener, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService, UserProfile } from '../../../core/services/auth.service';
 import { NotificationService } from '../../../core/services/notification.service';
 import { Subscription } from 'rxjs';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatIconModule],
+  imports: [CommonModule, RouterModule, MatIconModule, ConfirmModalComponent],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
 export class Header implements OnDestroy {
+  @ViewChild(ConfirmModalComponent) confirmModal!: ConfirmModalComponent;
   isScrolled = false;
   openDropdown: string | null = null;
   isMobileMenuOpen = false;
@@ -97,7 +99,6 @@ export class Header implements OnDestroy {
 
   logout() {
     const refreshToken = this.authService.getRefreshToken?.() ?? undefined;
-    alert('logout called from header with refresh token: ' + refreshToken);
     this.authService.logout(refreshToken).subscribe({
       next: (res: any) => {
         if (res?.success) {

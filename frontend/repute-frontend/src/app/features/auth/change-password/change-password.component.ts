@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
+import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
   selector: 'app-change-password',
@@ -36,7 +37,8 @@ export class ChangePasswordComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private notificationService: NotificationService
   ) {
     this.changePasswordForm = this.fb.group({
       currentPassword: ['', [Validators.required]],
@@ -108,46 +110,41 @@ export class ChangePasswordComponent {
       this.changePasswordForm.markAllAsTouched();
       return;
     }
+
+    // Show confirmation modal before changing password
+    this.confirmModal.applyConfig({
+      title: 'Change Password',
+      message: 'Are you sure you want to change your password?',
+      variant: 'warning',
+      confirmLabel: 'Confirm',
+      cancelLabel: 'Cancel'
+    });
+    this.confirmModal.open();
+
+    // Handle user confirmation
+    this.confirmModal.confirm.subscribe(() => {
+      this.changePassword();
+    });
+  }
+
+  private changePassword() {
     this.isLoading = true;
     const { currentPassword, newPassword, confirmPassword } = this.changePasswordForm.value;
     this.authService.changePassword(currentPassword, newPassword, confirmPassword).subscribe({
       next: (res: any) => {
         this.isLoading = false;
         if (res?.success) {
-          // Show success and redirect
-          this.confirmModal.applyConfig({
-            title: 'Success',
-            message: res?.message || 'Password changed successfully',
-            variant: 'update',
-            confirmLabel: 'OK',
-            cancelLabel: ''
-          });
-          this.confirmModal.open();
-          this.confirmModal.confirm.subscribe(() => {
-            this.router.navigate(['/']);
-          });
+          // Show success snackbar and redirect
+          this.notificationService.success(res?.message || 'Password changed successfully');
+          this.router.navigate(['/']);
         } else {
-          this.confirmModal.applyConfig({
-            title: 'Failed',
-            message: res?.message || 'Password change failed',
-            variant: 'warning',
-            confirmLabel: 'OK',
-            cancelLabel: ''
-          });
-          this.confirmModal.open();
+          this.notificationService.error(res?.message || 'Password change failed');
         }
       },
       error: (err) => {
         this.isLoading = false;
-        // Show backend error message if present
-        this.confirmModal.applyConfig({
-          title: 'Error',
-          message: err?.error?.message || err?.message || 'Password change failed',
-          variant: 'warning',
-          confirmLabel: 'OK',
-          cancelLabel: ''
-        });
-        this.confirmModal.open();
+        // Show error snackbar
+        this.notificationService.error(err?.error?.message || err?.message || 'Password change failed');
       }
     });
   }
