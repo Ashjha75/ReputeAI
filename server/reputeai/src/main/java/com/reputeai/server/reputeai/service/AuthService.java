@@ -3,11 +3,21 @@ package com.reputeai.server.reputeai.service;
 
 import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
+import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
 
 /**
  * Service interface for handling authentication operations.
  */
 public interface AuthService {
+
+    /**
+     * Register a user .
+     *
+     * @param registerRequestDto DTO containing register body.
+     * @return A message please verify your email.
+     */
+    String register(RegisterRequestDto registerRequestDto);
+
 
     /**
      * Authenticates a user and returns a JWT.

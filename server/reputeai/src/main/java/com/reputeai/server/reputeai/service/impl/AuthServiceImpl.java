@@ -2,6 +2,7 @@ package com.reputeai.server.reputeai.service.impl;
 
 import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
+import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
 import com.reputeai.server.reputeai.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,6 +21,11 @@ public class AuthServiceImpl implements AuthService {
 
     private AuthenticationManager authenticationManager() throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Override
+    public String register(RegisterRequestDto registerRequestDto) {
+        return "";
     }
 
     @Override

@@ -29,11 +29,6 @@ springdoc:
     path: /api/v1/docs
     use-root-path: true
 
-grpc:
-  server:
-    security:
-      enabled: false
-
 logging:
   level:
     root: INFO
