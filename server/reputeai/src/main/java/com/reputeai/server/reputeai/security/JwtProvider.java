@@ -17,13 +17,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 import javax.crypto.SecretKey;
 
 @Component
@@ -39,6 +39,7 @@ public class JwtProvider {
 
     private final RefreshTokenRepository refreshTokenRepository;
     private final UserRepository userRepository;
+    private final SecureRandom secureRandom;
 
     public JwtProvider(@Value("${jwt.private-key}") String privateKeyStr,
                        @Value("${jwt.public-key}") String publicKeyStr,
@@ -84,6 +85,7 @@ public class JwtProvider {
         this.rsaMode = useRsa;
         this.refreshTokenRepository = refreshTokenRepository;
         this.userRepository = userRepository;
+        this.secureRandom = new SecureRandom();
     }
 
     private String padToMinLength(String secret) {
@@ -154,11 +156,25 @@ public class JwtProvider {
     // ========== Refresh Token Methods ==========
 
     /**
+     * Generates a cryptographically secure random token string.
+     * Uses 32 bytes (256 bits) of random data encoded as base64.
+     *
+     * @return A secure random token string
+     */
+    private String generateSecureToken() {
+        byte[] randomBytes = new byte[32]; // 256 bits
+        secureRandom.nextBytes(randomBytes);
+        return Base64.getUrlEncoder().withoutPadding().encodeToString(randomBytes);
+    }
+
+    /**
      * Creates a new refresh token for the given user.
      * Deletes any existing refresh token for the user before creating a new one.
+     * Uses cryptographically secure random token generation.
      *
      * @param userId The ID of the user
      * @return The created RefreshToken entity
+     * @throws RuntimeException if user not found
      */
     @Transactional
     public RefreshToken createRefreshToken(Long userId) {
@@ -174,7 +190,7 @@ public class JwtProvider {
         RefreshToken refreshToken = RefreshToken.builder()
                 .user(user)
                 .expiryDate(Instant.now().plusMillis(refreshTokenDurationMs))
-                .token(UUID.randomUUID().toString())
+                .token(generateSecureToken())
                 .build();
 
         RefreshToken saved = refreshTokenRepository.save(refreshToken);
@@ -190,6 +206,7 @@ public class JwtProvider {
      * @return The same token if valid
      * @throws RuntimeException if the token is expired
      */
+    @Transactional
     public RefreshToken verifyExpiration(RefreshToken token) {
         if (token.getExpiryDate().compareTo(Instant.now()) < 0) {
             refreshTokenRepository.delete(token);
@@ -204,9 +221,82 @@ public class JwtProvider {
      *
      * @param tokenString The token string to search for
      * @return The RefreshToken entity if found
+     * @throws RuntimeException if token not found
      */
     public RefreshToken findByToken(String tokenString) {
         return refreshTokenRepository.findByToken(tokenString)
                 .orElseThrow(() -> new RuntimeException("Refresh token not found: " + tokenString));
+    }
+
+    /**
+     * Deletes a refresh token (for logout functionality).
+     *
+     * @param tokenString The refresh token string to delete
+     */
+    @Transactional
+    public void deleteRefreshToken(String tokenString) {
+        refreshTokenRepository.findByToken(tokenString).ifPresent(token -> {
+            refreshTokenRepository.delete(token);
+            log.info("Deleted refresh token for user ID: {}", token.getUser().getId());
+        });
+    }
+
+    /**
+     * Deletes all refresh tokens for a user (for logout from all devices).
+     *
+     * @param userId The user ID
+     */
+    @Transactional
+    public void deleteAllRefreshTokensForUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
+        refreshTokenRepository.deleteByUser(user);
+        log.info("Deleted all refresh tokens for user ID: {}", userId);
+    }
+
+    /**
+     * Validates and refreshes an access token using a refresh token.
+     * Returns a new access token if the refresh token is valid.
+     *
+     * @param refreshTokenString The refresh token string
+     * @return A new access token
+     * @throws RuntimeException if refresh token is invalid or expired
+     */
+    @Transactional
+    public String refreshAccessToken(String refreshTokenString) {
+        RefreshToken refreshToken = findByToken(refreshTokenString);
+        verifyExpiration(refreshToken);
+
+        User user = refreshToken.getUser();
+
+        // Generate new access token
+        // Create a minimal Authentication object for token generation
+        List<String> authorities = user.getRoles().stream()
+                .flatMap(role -> role.getPermissions().stream())
+                .map(permission -> permission.getName())
+                .distinct()
+                .toList();
+
+        // Add role names as well
+        List<String> roles = user.getRoles().stream()
+                .map(role -> "ROLE_" + role.getName())
+                .toList();
+
+        List<String> allAuthorities = new java.util.ArrayList<>(authorities);
+        allAuthorities.addAll(roles);
+
+        // Create Authentication object for token generation
+        Authentication auth = new org.springframework.security.authentication.UsernamePasswordAuthenticationToken(
+                user.getEmail(),
+                null,
+                allAuthorities.stream()
+                        .map(org.springframework.security.core.authority.SimpleGrantedAuthority::new)
+                        .collect(java.util.stream.Collectors.toList())
+        );
+
+        String newAccessToken = generateAccessToken(auth);
+        log.info("Refreshed access token for user ID: {}", user.getId());
+
+        return newAccessToken;
     }
 }

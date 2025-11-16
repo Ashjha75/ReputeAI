@@ -119,9 +119,18 @@ public class AuthServiceImpl implements AuthService {
             RefreshToken refreshTokenEntity = jwtProvider.createRefreshToken(user.getId());
             String refreshToken = refreshTokenEntity.getToken();
 
+            // Create personalized welcome message
+            String userName = user.getFirstName() != null && !user.getFirstName().isBlank()
+                    ? user.getFirstName()
+                    : user.getEmail();
+            String welcomeMessage = String.format("Login successful! Welcome back, %s.", userName);
+
             LoginResponseDto response = new LoginResponseDto(
+                    true,  // success
+                    welcomeMessage,  // message
                     accessToken,
                     refreshToken,
+                    "Bearer",  // tokenType
                     user.getId(),
                     user.getEmail(),
                     user.getRoles().stream().map(Role::getName).collect(Collectors.toSet())
