@@ -96,6 +96,44 @@ button:hover svg {
   transition: transform 0.2s ease-out;
 }
 
+.user-avatar,
+.user-avatar-lg {
+  color: #ffffff;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ff0066, #ff4d7a, #ff50bc, #eb9b4c, #b15bfc, #c084fc);
+  background-size: 400% 400%;
+  animation: avatarGradientShift 6s ease infinite;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+}
+
+.user-avatar-lg {
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+}
+
+@keyframes avatarGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Mobile menu button animation */
 .mobile-menu-button svg {
   transition: transform 0.3s ease-in-out;

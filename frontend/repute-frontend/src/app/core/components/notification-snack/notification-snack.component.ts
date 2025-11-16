@@ -15,7 +15,7 @@ export interface NotificationSnackData {
   standalone: true,
   imports: [NgClass, MatButtonModule],
   template: `
-    <div class="notification-snack">
+    <div class="notification-snack" [ngClass]="data.type">
       <span class="icon material-icons" [ngClass]="data.type">{{ icon }}</span>
       <span class="message">{{ data.message }}</span>
       <button mat-icon-button class="close-btn" aria-label="Close" (click)="close()">
@@ -23,13 +23,18 @@ export interface NotificationSnackData {
       </button>
     </div>
   `,
-  styles: [`
+  styles: [
+`
     .notification-snack { display: flex; align-items: center; gap: 12px; padding: 12px 16px; }
+    .notification-snack.success { border-left: 4px solid #10b981; }
+    .notification-snack.error { border-left: 4px solid #ef4444; }
+    .notification-snack.warning { border-left: 4px solid #f59e0b; }
+    .notification-snack.info { border-left: 4px solid #3b82f6; }
     .icon { font-size: 22px; }
-    .icon.success { color: #10b981; }
-    .icon.error { color: #ef4444; }
-    .icon.warning { color: #f59e0b; }
-    .icon.info { color: #3b82f6; }
+    .notification-snack.success .icon { color: #10b981; }
+    .notification-snack.error .icon { color: #ef4444; }
+    .notification-snack.warning .icon { color: #f59e0b; }
+    .notification-snack.info .icon { color: #3b82f6; }
     .message { flex: 1; font-size: 14px; font-weight: 500; color: #374151; }
     .close-btn { margin-left: 4px; }
     .close-btn .material-icons { font-size: 20px; }

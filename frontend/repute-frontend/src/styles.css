@@ -27,9 +27,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 
 /* Unified snackbar variants (new component) */
 .snack { --mdc-snackbar-container-color:#fff !important; --mdc-snackbar-supporting-text-color:#374151 !important; }
-.snack-success { border-left:4px solid #10b981 !important; }
-.snack-error { border-left:4px solid #ef4444 !important; }
-.snack-warning { border-left:4px solid #f59e0b !important; }
-.snack-info { border-left:4px solid #3b82f6 !important; }
+.snack-success { /* kept for backward compatibility - visual handled inside component */ }
+.snack-error { }
+.snack-warning { }
+.snack-info { }
 /* Ensure surface has no extra padding for component layout */
 .snack .mdc-snackbar__surface { padding:0 !important; }

@@ -45,6 +45,9 @@ public class User implements UserDetails {
     @Builder.Default
     private boolean isEnabled = true;
 
+    @Column(name = "is_email_verified", nullable = false)
+    @Builder.Default
+    private boolean isEmailVerified = false;
     // --- Authorization (RBAC) ---
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",

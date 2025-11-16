@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../../../core/services/auth.service';
+import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -24,28 +26,129 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ForgotPasswordComponent {
   forgotPasswordForm: FormGroup;
+  emailForm: FormGroup;
   isLoading = false;
-  emailSent = false;
+  resetSuccess = false;
+  apiMessage?: string;
+  confirmError?: string;
+  showNewPassword = false;
+  showConfirmPassword = false;
+  showEmailCard = true;
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private notificationService: NotificationService
   ) {
     this.forgotPasswordForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      token: ['', [Validators.required]],
+      newPassword: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required]]
+    });
+    this.emailForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
+    });
+    const queryEmail = this.route.snapshot.queryParamMap.get('email') ?? '';
+    const queryToken = this.route.snapshot.queryParamMap.get('token') ?? '';
+    if (queryEmail && queryToken) {
+      this.forgotPasswordForm.patchValue({ email: queryEmail, token: queryToken });
+      this.showEmailCard = false;
+    } else {
+      this.showEmailCard = true;
+    }
+  }
+
+  onSendEmail() {
+    if (this.emailForm.invalid) {
+      this.emailForm.markAllAsTouched();
+      return;
+    }
+    this.isLoading = true;
+    this.apiMessage = undefined;
+    this.authService.forgotPassword({ email: this.emailForm.value.email }).subscribe({
+      next: (res: any) => {
+        this.isLoading = false;
+        const msg = res?.message || 'Password reset link generated (simulated).';
+        this.apiMessage = msg;
+        this.notificationService.success(msg, 5000);
+      },
+      error: (err) => {
+        this.isLoading = false;
+        const msg = err?.error?.message || err?.message || 'Failed to send reset link.';
+        this.apiMessage = msg;
+        this.notificationService.error(msg, 5000);
+      }
     });
   }
 
   onSubmit() {
-    if (this.forgotPasswordForm.valid) {
-      this.isLoading = true;
-      // Simulate API call
-      setTimeout(() => {
-        this.isLoading = false;
-        this.emailSent = true;
-      }, 1500);
+    if (this.forgotPasswordForm.invalid) {
+      this.forgotPasswordForm.markAllAsTouched();
+      return;
     }
+    const payload = this.forgotPasswordForm.getRawValue();
+    const newPass = payload.newPassword;
+    const confirm = payload.confirmPassword;
+    if (newPass !== confirm) {
+      this.confirmError = 'New password and confirmation must match';
+      return;
+    }
+    this.confirmError = undefined;
+    this.notificationService.dismiss();
+    this.setLoadingState(true);
+    this.authService.resetPassword({
+      email: payload.email,
+      token: payload.token,
+      newPassword: newPass,
+      confirmPassword: confirm
+    }).subscribe({
+      next: (res: any) => {
+        this.setLoadingState(false);
+        this.resetSuccess = true;
+        const message = res?.data?.message ?? res?.message ?? 'Password has been reset successfully.';
+        this.apiMessage = message;
+        this.notificationService.success(message, 5000);
+      },
+      error: (err) => {
+        this.setLoadingState(false);
+        const message = err?.error?.message || err?.message || 'Password reset failed';
+        this.apiMessage = message;
+        this.notificationService.error(message, 5000);
+      }
+    });
   }
 
   get email() { return this.forgotPasswordForm.get('email'); }
+  get token() { return this.forgotPasswordForm.get('token'); }
+  get newPassword() { return this.forgotPasswordForm.get('newPassword'); }
+  get confirmPassword() { return this.forgotPasswordForm.get('confirmPassword'); }
+
+  get passwordsMismatch(): boolean {
+    const newPass = this.newPassword?.value;
+    const confirm = this.confirmPassword?.value;
+    return !!newPass && !!confirm && newPass !== confirm;
+  }
+
+  togglePasswordVisibility(field: 'new' | 'confirm') {
+    if (field === 'new') {
+      this.showNewPassword = !this.showNewPassword;
+    } else {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
+  }
+
+  private setLoadingState(value: boolean) {
+    this.isLoading = value;
+    ['newPassword', 'confirmPassword'].forEach(key => {
+      const control = this.forgotPasswordForm.get(key);
+      if (!control) return;
+      if (value && control.enabled) {
+        control.disable({ emitEvent: false });
+      } else if (!value && control.disabled) {
+        control.enable({ emitEvent: false });
+      }
+    });
+  }
 }

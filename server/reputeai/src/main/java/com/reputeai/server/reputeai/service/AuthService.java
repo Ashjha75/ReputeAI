@@ -1,10 +1,8 @@
 package com.reputeai.server.reputeai.service;
 
 
-import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
-import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
-import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
-import com.reputeai.server.reputeai.domain.dto.RegisterResponseDto;
+import com.reputeai.server.reputeai.domain.dto.*; // wildcard import for DTOs
+import org.springframework.http.ResponseEntity;
 
 /**
  * Service interface for handling authentication operations.
@@ -26,13 +24,17 @@ public interface AuthService {
      * @param loginRequestDto DTO containing login credentials.
      * @return A DTO containing the access token and refresh token.
      */
-    LoginResponseDto login(LoginRequestDto loginRequestDto);
+    ResponseEntity<LoginResponseDto> login(LoginRequestDto loginRequestDto);
 
-    /**
-     * Refreshes an access token using a valid refresh token.
-     *
-     * @param refreshToken The refresh token.
-     * @return A DTO containing a new access token.
-     */
-    LoginResponseDto refreshToken(String refreshToken);
+    // Request OTP for email verification (public)
+    SimpleSuccessResponseDto requestEmailVerification(String email);
+
+    // Verify OTP and mark email as verified (public)
+    SimpleSuccessResponseDto verifyEmailOtp(VerifyEmailRequestDto request);
+
+    // Initiate forgot password (public)
+    SimpleSuccessResponseDto forgotPassword(ForgotPasswordRequestDto request);
+
+    // Perform password reset with token (public)
+    SimpleSuccessResponseDto resetPassword(ResetPasswordRequestDto request);
 }
