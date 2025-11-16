@@ -76,7 +76,7 @@
             (click)="toggleUserDropdown()"
             class="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-full transition-all duration-200">
             <a routerLink="/" class="block">
-              <img [src]="currentUser?.avatar || '/assets/repute-logo.png'" alt="avatar" class="w-10 h-10 rounded-full object-cover shadow-sm" />
+              <div class="user-avatar" [style.background]="gradientBackground">{{ userInitial }}</div>
             </a>
           </button>
 
@@ -89,7 +89,7 @@
               <div class="flex items-center gap-3">
                 <div class="">
                   <a routerLink="/" class="flex items-center gap-3">
-                    <img [src]="currentUser?.avatar || '/assets/repute-logo.png'" alt="avatar" class="w-12 h-12 rounded-full object-cover shadow-sm" />
+                    <div class="user-avatar user-avatar-lg" [style.background]="gradientBackground">{{ userInitial }}</div>
                     <div>
                       <div class="text-sm font-medium text-gray-900">{{ currentUser?.firstName ? (currentUser?.firstName + (currentUser?.lastName ? ' ' + currentUser?.lastName : '')) : (currentUser?.username || 'User') }}</div>
                       <div class="text-xs text-gray-500">{{ currentUser?.email }}</div>

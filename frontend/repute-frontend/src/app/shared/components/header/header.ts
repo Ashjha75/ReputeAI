@@ -23,6 +23,7 @@ export class Header implements OnDestroy {
   userDropdownOpen = false;
   currentUser: UserProfile | null = null;
   private authSub: Subscription | null = null;
+  private readonly avatarGradient = 'linear-gradient(135deg, #1d4ed8 0%, #7c3aed 65%, #f472b6 100%)';
 
   navItems = [
     {
@@ -95,6 +96,15 @@ export class Header implements OnDestroy {
       this.currentUser = this.authService.getCurrentUser();
     });
     console.log('Header initialized. isAuthenticated:', this.authService);
+  }
+
+  get userInitial(): string {
+    const name = this.currentUser?.firstName?.trim() || this.currentUser?.username || 'U';
+    return name.charAt(0).toUpperCase();
+  }
+
+  get gradientBackground(): string {
+    return this.avatarGradient;
   }
 
   logout() {
