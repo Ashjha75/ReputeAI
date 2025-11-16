@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,7 +33,7 @@ export class ForgotPasswordComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router,
+    private route: ActivatedRoute,
     private authService: AuthService,
     private notificationService: NotificationService
   ) {
@@ -43,6 +43,12 @@ export class ForgotPasswordComponent {
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]]
     });
+    const queryEmail = this.route.snapshot.queryParamMap.get('email') ?? '';
+    const queryToken = this.route.snapshot.queryParamMap.get('token') ?? '';
+    this.forgotPasswordForm.patchValue({ email: queryEmail, token: queryToken });
+    if (!queryEmail || !queryToken) {
+      this.apiMessage = 'The reset link is missing required parameters. Please use the link sent to your email.';
+    }
   }
 
   onSubmit() {
@@ -85,4 +91,10 @@ export class ForgotPasswordComponent {
   get token() { return this.forgotPasswordForm.get('token'); }
   get newPassword() { return this.forgotPasswordForm.get('newPassword'); }
   get confirmPassword() { return this.forgotPasswordForm.get('confirmPassword'); }
+
+  get passwordsMismatch(): boolean {
+    const newPass = this.newPassword?.value;
+    const confirm = this.confirmPassword?.value;
+    return !!newPass && !!confirm && newPass !== confirm;
+  }
 }
