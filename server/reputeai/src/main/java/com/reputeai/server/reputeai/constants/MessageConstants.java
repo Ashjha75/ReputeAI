@@ -19,6 +19,16 @@ public final class MessageConstants {
     public static final String ERROR_PASSWORD_SAME_AS_CURRENT = "New password must be different from current password";
     public static final String ERROR_CURRENT_PASSWORD_INCORRECT = "Current password is incorrect";
 
+    // Email Verification & Forgot Password
+    public static final String ERROR_OTP_INVALID = "Invalid or expired OTP";
+    public static final String ERROR_EMAIL_ALREADY_VERIFIED = "Email already verified";
+    public static final String ERROR_RESET_TOKEN_INVALID = "Invalid or expired password reset token";
+
+    public static final String SUCCESS_VERIFICATION_EMAIL_SENT = "Verification OTP generated and sent (simulated).";
+    public static final String SUCCESS_EMAIL_VERIFIED = "Email verified successfully.";
+    public static final String SUCCESS_PASSWORD_RESET_REQUESTED = "Password reset link generated (simulated).";
+    public static final String SUCCESS_PASSWORD_RESET = "Password has been reset successfully.";
+
     // Log Messages
     public static final String LOG_LOADING_USER = "Executing loadUserByUsername for {}.";
     public static final String LOG_AUTHORITIES_LOADED = "Final authorities loaded for user {}: {}";
@@ -29,4 +39,8 @@ public final class MessageConstants {
     public static final String LOG_PASSWORD_SAME = "Password change failed for {}: New password must be different from current password";
     public static final String LOG_PASSWORD_INCORRECT = "Password change failed for {}: Current password is incorrect";
     public static final String LOG_PASSWORD_CHANGED = "Password changed successfully for user: {}";
+    public static final String LOG_REQUESTING_EMAIL_VERIFICATION = "Requesting email verification OTP for {}";
+    public static final String LOG_EMAIL_VERIFIED = "Email verified for {}";
+    public static final String LOG_FORGOT_PASSWORD_REQUEST = "Forgot password request for {}";
+    public static final String LOG_RESET_PASSWORD_SUCCESS = "Password reset successful for {}";
 }

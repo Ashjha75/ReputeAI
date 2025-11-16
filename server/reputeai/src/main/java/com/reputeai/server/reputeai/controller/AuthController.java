@@ -10,10 +10,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -81,5 +78,29 @@ public class AuthController {
     public ResponseEntity<RegisterResponseDto> logout(@Valid @RequestBody LogoutRequestDto request) {
         jwtProvider.deleteRefreshToken(request.getRefreshToken());
         return ResponseEntity.ok(new RegisterResponseDto(true, "Logout successful"));
+    }
+
+    @PostMapping("/request-email-verification")
+    @Operation(summary = "Request email verification OTP", description = "Generates and sends (simulated) an OTP to verify email.")
+    public ResponseEntity<SimpleSuccessResponseDto> requestEmailVerification(@RequestParam("email") String email) {
+        return ResponseEntity.ok(authService.requestEmailVerification(email));
+    }
+
+    @PostMapping("/verify-email")
+    @Operation(summary = "Verify email via OTP", description = "Verifies email using a valid OTP.")
+    public ResponseEntity<SimpleSuccessResponseDto> verifyEmail(@Valid @RequestBody VerifyEmailRequestDto request) {
+        return ResponseEntity.ok(authService.verifyEmailOtp(request));
+    }
+
+    @PostMapping("/forgot-password")
+    @Operation(summary = "Forgot password", description = "Initiate password reset by generating a token (simulated)")
+    public ResponseEntity<SimpleSuccessResponseDto> forgotPassword(@Valid @RequestBody ForgotPasswordRequestDto request) {
+        return ResponseEntity.ok(authService.forgotPassword(request));
+    }
+
+    @PostMapping("/reset-password")
+    @Operation(summary = "Reset password", description = "Reset password using provided token.")
+    public ResponseEntity<SimpleSuccessResponseDto> resetPassword(@Valid @RequestBody ResetPasswordRequestDto request) {
+        return ResponseEntity.ok(authService.resetPassword(request));
     }
 }

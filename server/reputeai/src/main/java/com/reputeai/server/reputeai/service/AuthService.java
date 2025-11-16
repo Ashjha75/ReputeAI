@@ -5,6 +5,10 @@ import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterResponseDto;
+import com.reputeai.server.reputeai.domain.dto.VerifyEmailRequestDto;
+import com.reputeai.server.reputeai.domain.dto.SimpleSuccessResponseDto;
+import com.reputeai.server.reputeai.domain.dto.ForgotPasswordRequestDto;
+import com.reputeai.server.reputeai.domain.dto.ResetPasswordRequestDto;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -29,4 +33,15 @@ public interface AuthService {
      */
     ResponseEntity<LoginResponseDto> login(LoginRequestDto loginRequestDto);
 
+    // Request OTP for email verification (public)
+    SimpleSuccessResponseDto requestEmailVerification(String email);
+
+    // Verify OTP and mark email as verified (public)
+    SimpleSuccessResponseDto verifyEmailOtp(VerifyEmailRequestDto request);
+
+    // Initiate forgot password (public)
+    SimpleSuccessResponseDto forgotPassword(ForgotPasswordRequestDto request);
+
+    // Perform password reset with token (public)
+    SimpleSuccessResponseDto resetPassword(ResetPasswordRequestDto request);
 }
