@@ -14975,3 +14975,962 @@ Caused by: org.springframework.util.PlaceholderResolutionException: Could not re
 2025-11-16 19:39:44,027 TRACE [aed76576-39f7-4bda-89ec-031363cf5577] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
 2025-11-16 19:39:44,027 WARN  [aed76576-39f7-4bda-89ec-031363cf5577] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.reputeai.server.reputeai.exception.ConflictException: Email already in use]
 2025-11-16 19:39:44,028 DEBUG [aed76576-39f7-4bda-89ec-031363cf5577] o.s.web.servlet.DispatcherServlet - Completed 409 CONFLICT
+2025-11-16 20:30:35,303 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 20:30:35,401 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 26020 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 20:30:35,403 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 20:30:35,404 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 20:30:35,461 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 20:30:35,461 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 20:30:36,594 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:30:36,595 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 20:30:36,731 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 127 ms. Found 2 JPA repository interfaces.
+2025-11-16 20:30:36,749 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:30:36,751 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 20:30:36,773 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:30:36,774 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:30:36,774 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2025-11-16 20:30:37,666 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 20:30:37,682 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 20:30:37,685 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 20:30:37,685 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 20:30:37,754 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 20:30:37,755 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2292 ms
+2025-11-16 20:30:37,777 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 20:30:37,781 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 20:30:38,003 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-16 20:30:39,645 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68c2bad7
+2025-11-16 20:30:39,647 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-16 20:30:39,959 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 20:30:41,795 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.810s)
+2025-11-16 20:30:43,228 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 20:30:43,335 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 20:30:44,181 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 20:30:44,268 INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-16 20:30:44,316 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 20:30:44,653 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 20:30:45,098 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 20:30:46,149 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 20:30:48,350 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 20:30:48,776 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 20:30:48,777 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 20:30:49,348 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 20:30:49,460 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 16 mappings in 'requestMappingHandlerMapping'
+2025-11-16 20:30:49,516 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-16 20:30:49,540 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.reputeai.server.reputeai.security.SecurityConfig$$SpringCGLIB$$0@79433eda}
+2025-11-16 20:30:49,543 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-16 20:30:49,667 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-16 20:30:49,687 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:30:49,687 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]
+2025-11-16 20:30:49,687 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:30:49,687 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]
+2025-11-16 20:30:49,688 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:30:49,688 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]
+2025-11-16 20:30:49,688 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:30:49,688 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]
+2025-11-16 20:30:49,688 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:30:49,688 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]
+2025-11-16 20:30:49,689 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:30:49,689 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]
+2025-11-16 20:30:49,689 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:30:49,689 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]
+2025-11-16 20:30:49,689 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:30:49,690 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]
+2025-11-16 20:30:49,890 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-16 20:30:49,975 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-16 20:30:50,755 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-16 20:30:50,809 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 20:30:50,825 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-16 20:30:50,844 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 16.76 seconds (process running for 19.004)
+2025-11-16 20:30:50,849 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-16 20:30:50,850 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /api/v1/docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-16 20:40:09,205 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 20:40:09,216 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 20:40:09,251 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 20:40:09,254 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-16 20:40:09,410 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-16 20:40:18,389 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 20:40:18,440 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 26216 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 20:40:18,442 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 20:40:18,443 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 20:40:18,487 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 20:40:18,487 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 20:40:20,054 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:40:20,056 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 20:40:20,213 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 147 ms. Found 2 JPA repository interfaces.
+2025-11-16 20:40:20,227 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:40:20,229 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 20:40:20,245 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:40:20,246 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:40:20,246 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-11-16 20:40:21,077 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 20:40:21,089 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 20:40:21,091 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 20:40:21,091 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 20:40:21,352 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 20:40:21,354 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2866 ms
+2025-11-16 20:40:21,387 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 20:40:21,393 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 20:40:21,778 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-16 20:40:24,145 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2ce845bf
+2025-11-16 20:40:24,147 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-16 20:40:24,554 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 20:40:26,806 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:01.226s)
+2025-11-16 20:40:27,727 INFO  [] org.flywaydb.core.Flyway - All configured schemas are empty; baseline operation skipped. A baseline or migration script with a lower version than the baseline version may execute if available. Check the Schemas parameter if this is not intended.
+2025-11-16 20:40:28,239 INFO  [] o.f.c.i.s.JdbcTableSchemaHistory - Creating Schema History table `defaultdb`.`flyway_schema_history` ...
+2025-11-16 20:40:35,100 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 20:40:35,205 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 20:40:36,119 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 20:40:36,169 INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-16 20:40:36,204 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 20:40:36,546 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 20:40:37,017 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 20:40:39,310 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 20:40:44,522 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 20:40:44,868 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 20:40:44,868 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 20:40:45,389 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 20:40:45,493 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 16 mappings in 'requestMappingHandlerMapping'
+2025-11-16 20:40:45,560 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-16 20:40:45,600 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.reputeai.server.reputeai.security.SecurityConfig$$SpringCGLIB$$0@22b43e52}
+2025-11-16 20:40:45,602 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-16 20:40:45,742 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-16 20:40:45,759 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:40:45,760 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]
+2025-11-16 20:40:45,760 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:40:45,760 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]
+2025-11-16 20:40:45,760 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:40:45,760 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]
+2025-11-16 20:40:45,760 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:40:45,760 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]
+2025-11-16 20:40:45,760 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:40:45,760 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]
+2025-11-16 20:40:45,760 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:40:45,760 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]
+2025-11-16 20:40:45,760 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:40:45,760 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]
+2025-11-16 20:40:45,760 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 20:40:45,761 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]
+2025-11-16 20:40:45,918 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-16 20:40:45,993 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-16 20:40:46,419 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-16 20:40:46,455 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 20:40:46,466 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-16 20:40:46,475 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 29.08 seconds (process running for 30.7)
+2025-11-16 20:40:46,478 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-16 20:40:46,479 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /api/v1/docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-16 20:41:13,689 INFO  [] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (0 additions, 2 deletions, 0 modifications)
+2025-11-16 20:41:13,705 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 20:41:13,707 INFO  [] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-11-16 20:41:13,728 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 20:41:13,730 INFO  [] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-11-16 20:41:13,820 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 20:41:13,822 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-16 20:41:13,982 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-16 20:41:14,302 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 26216 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 20:41:14,302 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 20:41:14,304 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 20:41:15,386 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:41:15,386 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 20:41:15,426 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: java.lang.TypeNotPresentException: Type com.reputeai.server.reputeai.domain.entity.User not present
+2025-11-16 20:41:15,441 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 20:41:15,526 ERROR [] o.s.boot.SpringApplication - Application run failed
+java.lang.TypeNotPresentException: Type com.reputeai.server.reputeai.domain.entity.User not present
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:117)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:125)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.visitor.Reifier.reifyTypeArguments(Reifier.java:68)
+	at java.base/sun.reflect.generics.visitor.Reifier.visitClassTypeSignature(Reifier.java:138)
+	at java.base/sun.reflect.generics.tree.ClassTypeSignature.accept(ClassTypeSignature.java:49)
+	at java.base/sun.reflect.generics.repository.ClassRepository.computeSuperInterfaces(ClassRepository.java:117)
+	at java.base/sun.reflect.generics.repository.ClassRepository.getSuperInterfaces(ClassRepository.java:95)
+	at java.base/java.lang.Class.getGenericInterfaces(Class.java:1298)
+	at org.springframework.core.ResolvableType.getInterfaces(ResolvableType.java:553)
+	at org.springframework.core.ResolvableType.as(ResolvableType.java:501)
+	at org.springframework.data.util.TypeDiscoverer.getSuperTypeInformation(TypeDiscoverer.java:263)
+	at org.springframework.data.util.ClassTypeInformation.getSuperTypeInformation(ClassTypeInformation.java:37)
+	at org.springframework.data.util.TypeInformation.getRequiredSuperTypeInformation(TypeInformation.java:327)
+	at org.springframework.data.repository.core.support.DefaultRepositoryMetadata.<init>(DefaultRepositoryMetadata.java:55)
+	at org.springframework.data.repository.core.support.AbstractRepositoryMetadata.getMetadata(AbstractRepositoryMetadata.java:79)
+	at org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport.getRepositoryConfigurations(RepositoryConfigurationExtensionSupport.java:93)
+	at org.springframework.data.repository.config.RepositoryConfigurationDelegate.registerRepositoriesIn(RepositoryConfigurationDelegate.java:170)
+	at org.springframework.boot.autoconfigure.data.AbstractRepositoryConfigurationSourceSupport.registerBeanDefinitions(AbstractRepositoryConfigurationSourceSupport.java:62)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1(ConfigurationClassBeanDefinitionReader.java:409)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:986)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars(ConfigurationClassBeanDefinitionReader.java:408)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass(ConfigurationClassBeanDefinitionReader.java:148)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(ConfigurationClassBeanDefinitionReader.java:120)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:430)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.reputeai.server.reputeai.ReputeaiApplication.main(ReputeaiApplication.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.ClassNotFoundException: com.reputeai.server.reputeai.domain.entity.User
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:536)
+	at java.base/java.lang.Class.forName(Class.java:515)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:536)
+	at java.base/java.lang.Class.forName(Class.java:515)
+	at java.base/sun.reflect.generics.factory.CoreReflectionFactory.makeNamedType(CoreReflectionFactory.java:114)
+	... 39 common frames omitted
+2025-11-16 20:41:19,251 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 26216 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 20:41:19,253 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 20:41:19,253 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 20:41:20,292 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:41:20,294 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 20:41:20,358 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 59 ms. Found 2 JPA repository interfaces.
+2025-11-16 20:41:20,371 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:41:20,371 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 20:41:20,393 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:41:20,394 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:41:20,396 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+2025-11-16 20:41:21,768 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 20:41:21,768 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 20:41:21,768 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 20:41:21,768 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 20:41:21,856 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 20:41:21,859 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2606 ms
+2025-11-16 20:41:21,889 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 20:41:21,890 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 20:41:22,032 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-11-16 20:41:24,859 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c234a17
+2025-11-16 20:41:24,860 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-11-16 20:41:25,695 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 20:41:28,451 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 2 migrations (execution time 00:00.868s)
+2025-11-16 20:41:30,439 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: << Empty Schema >>
+2025-11-16 20:41:31,113 INFO  [] o.f.core.internal.command.DbMigrate - Migrating schema `defaultdb` to version "1 - Init Schema"
+2025-11-16 20:41:31,577 ERROR [] o.f.core.internal.command.DbMigrate - Migration of schema `defaultdb` to version "1 - Init Schema" failed! Please restore backups and roll back database and code!
+2025-11-16 20:41:33,324 ERROR [] o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+2025-11-16 20:41:33,325 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 20:41:33,329 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-2:housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1797)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 20:41:33,330 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-2:connection-adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/sun.nio.ch.Net.poll(Native Method)
+ java.base/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:191)
+ java.base/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:201)
+ java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:309)
+ java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+ java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+ java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+ java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
+ java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483)
+ java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
+ java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
+ java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1066)
+ java.base/java.io.FilterInputStream.read(FilterInputStream.java:119)
+ com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:55)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeaderLocal(SimplePacketReader.java:72)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:54)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:36)
+ com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:43)
+ com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:32)
+ com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:45)
+ com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:35)
+ com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:586)
+ com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:769)
+ com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:708)
+ com.mysql.cj.NativeCharsetSettings.lambda$configurePostHandshake$1(NativeCharsetSettings.java:358)
+ com.mysql.cj.NativeCharsetSettings.telemetryWrapSendCommand(NativeCharsetSettings.java:442)
+ com.mysql.cj.NativeCharsetSettings.configurePostHandshake(NativeCharsetSettings.java:357)
+ com.mysql.cj.protocol.a.NativeProtocol.initServerSession(NativeProtocol.java:2248)
+ com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1316)
+ com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:974)
+ com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:827)
+ com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:415)
+ com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237)
+ com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180)
+ com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144)
+ com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370)
+ com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207)
+ com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:752)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:731)
+ java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 20:41:33,333 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-11-16 20:41:33,333 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-11-16 20:41:33,848 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-11-16 20:41:33,854 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 20:41:33,861 ERROR [] o.s.boot.SpringApplication - Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.reputeai.server.reputeai.ReputeaiApplication.main(ReputeaiApplication.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:230)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:184)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:179)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:164)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:96)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4452)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:770)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:868)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:436)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 57 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1725)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1474)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 71 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaSharedEM_entityManagerFactory': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 84 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Script V1__Init_Schema.sql failed
+---------------------------------
+SQL State  : 42S01
+Error Code : 1050
+Message    : Table 'role' already exists
+Location   : db/migration/V1__Init_Schema.sql (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\db\migration\V1__Init_Schema.sql)
+Line       : 4
+Statement  : Run Flyway with -X option to see the actual statement causing the problem
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 96 common frames omitted
+Caused by: org.flywaydb.core.internal.exception.FlywayMigrateException: Script V1__Init_Schema.sql failed
+---------------------------------
+SQL State  : 42S01
+Error Code : 1050
+Message    : Table 'role' already exists
+Location   : db/migration/V1__Init_Schema.sql (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\db\migration\V1__Init_Schema.sql)
+Line       : 4
+Statement  : Run Flyway with -X option to see the actual statement causing the problem
+
+	at org.flywaydb.core.internal.command.DbMigrate.doMigrateGroup(DbMigrate.java:399)
+	at org.flywaydb.core.internal.command.DbMigrate.lambda$applyMigrations$1(DbMigrate.java:283)
+	at org.flywaydb.core.internal.jdbc.TransactionalExecutionTemplate.execute(TransactionalExecutionTemplate.java:59)
+	at org.flywaydb.core.internal.command.DbMigrate.applyMigrations(DbMigrate.java:282)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateGroup(DbMigrate.java:255)
+	at org.flywaydb.core.internal.command.DbMigrate.lambda$migrateAll$0(DbMigrate.java:153)
+	at org.flywaydb.database.mysql.MySQLNamedLockTemplate.execute(MySQLNamedLockTemplate.java:62)
+	at org.flywaydb.database.mysql.MySQLConnection.lock(MySQLConnection.java:159)
+	at org.flywaydb.core.internal.schemahistory.JdbcTableSchemaHistory.lock(JdbcTableSchemaHistory.java:164)
+	at org.flywaydb.core.internal.command.DbMigrate.migrateAll(DbMigrate.java:153)
+	at org.flywaydb.core.internal.command.DbMigrate.migrate(DbMigrate.java:104)
+	at org.flywaydb.core.Flyway.lambda$migrate$1(Flyway.java:247)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:210)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:188)
+	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:66)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	... 105 common frames omitted
+Caused by: org.flywaydb.core.internal.sqlscript.FlywaySqlScriptException: Script V1__Init_Schema.sql failed
+---------------------------------
+SQL State  : 42S01
+Error Code : 1050
+Message    : Table 'role' already exists
+Location   : db/migration/V1__Init_Schema.sql (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\db\migration\V1__Init_Schema.sql)
+Line       : 4
+Statement  : Run Flyway with -X option to see the actual statement causing the problem
+
+	at org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor.handleException(DefaultSqlScriptExecutor.java:256)
+	at org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor.executeStatement(DefaultSqlScriptExecutor.java:217)
+	at org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor.execute(DefaultSqlScriptExecutor.java:137)
+	at org.flywaydb.core.internal.resolver.sql.SqlMigrationExecutor.executeOnce(SqlMigrationExecutor.java:75)
+	at org.flywaydb.core.internal.resolver.sql.SqlMigrationExecutor.lambda$execute$0(SqlMigrationExecutor.java:66)
+	at org.flywaydb.core.internal.database.DefaultExecutionStrategy.execute(DefaultExecutionStrategy.java:31)
+	at org.flywaydb.core.internal.resolver.sql.SqlMigrationExecutor.execute(SqlMigrationExecutor.java:65)
+	at org.flywaydb.core.internal.command.DbMigrate.doMigrateGroup(DbMigrate.java:391)
+	... 121 common frames omitted
+Caused by: java.sql.SQLSyntaxErrorException: Table 'role' already exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:837)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:685)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.flywaydb.core.internal.jdbc.JdbcTemplate.executeStatement(JdbcTemplate.java:215)
+	at org.flywaydb.core.internal.sqlscript.ParsedSqlStatement.execute(ParsedSqlStatement.java:88)
+	at org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor.executeStatement(DefaultSqlScriptExecutor.java:212)
+	... 127 common frames omitted
+2025-11-16 20:41:59,718 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 26216 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 20:41:59,719 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 20:41:59,720 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 20:42:00,136 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:42:00,137 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 20:42:00,154 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2025-11-16 20:42:00,158 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:42:00,158 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 20:42:00,162 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:42:00,163 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:42:00,163 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 3 ms. Found 0 Redis repository interfaces.
+2025-11-16 20:42:00,345 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 20:42:00,347 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 20:42:00,347 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 20:42:00,348 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 20:42:00,385 INFO  [] o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 20:42:00,386 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 659 ms
+2025-11-16 20:42:00,399 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 20:42:00,400 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 20:42:00,445 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2025-11-16 20:42:02,038 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3cddaebe
+2025-11-16 20:42:02,038 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2025-11-16 20:42:02,346 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 20:42:05,114 ERROR [] o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+2025-11-16 20:42:05,125 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 20:42:05,129 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-3:housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1797)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 20:42:05,130 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-3:connection-adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/sun.nio.ch.Net.poll(Native Method)
+ java.base/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:191)
+ java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:280)
+ java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:304)
+ java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+ java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+ java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+ java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
+ java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483)
+ java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
+ java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
+ java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1066)
+ java.base/java.io.FilterInputStream.read(FilterInputStream.java:119)
+ com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:55)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeaderLocal(SimplePacketReader.java:72)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:54)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:36)
+ com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:43)
+ com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:32)
+ com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:45)
+ com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:35)
+ com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:586)
+ com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:769)
+ com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:708)
+ com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:148)
+ com.mysql.cj.NativeSession.queryServerVariable(NativeSession.java:745)
+ com.mysql.cj.jdbc.ConnectionImpl.isReadOnly(ConnectionImpl.java:1399)
+ com.mysql.cj.jdbc.ConnectionImpl.isReadOnly(ConnectionImpl.java:1392)
+ com.zaxxer.hikari.pool.PoolBase.setupConnection(PoolBase.java:423)
+ com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:375)
+ com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207)
+ com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:752)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:731)
+ java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 20:42:05,133 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-11-16 20:42:05,134 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2025-11-16 20:42:05,964 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2025-11-16 20:42:05,974 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 20:42:05,987 ERROR [] o.s.boot.SpringApplication - Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.reputeai.server.reputeai.ReputeaiApplication.main(ReputeaiApplication.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:230)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:184)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:179)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:164)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:96)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4452)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:770)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:868)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:436)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 57 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1725)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1474)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 71 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaSharedEM_entityManagerFactory': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 84 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Validate failed: Migrations have failed validation
+Detected failed migration to version 1 (Init Schema).
+Please remove any half-completed changes then run repair to fix the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 96 common frames omitted
+Caused by: org.flywaydb.core.api.exception.FlywayValidateException: Validate failed: Migrations have failed validation
+Detected failed migration to version 1 (Init Schema).
+Please remove any half-completed changes then run repair to fix the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.flywaydb.core.Flyway.lambda$migrate$1(Flyway.java:201)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:210)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:188)
+	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:66)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	... 105 common frames omitted
+2025-11-16 20:45:01,565 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 20:45:01,617 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 1712 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 20:45:01,618 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 20:45:01,619 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 20:45:01,660 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 20:45:01,660 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 20:45:02,565 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:45:02,567 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 20:45:02,704 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 128 ms. Found 3 JPA repository interfaces.
+2025-11-16 20:45:02,717 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 20:45:02,719 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 20:45:02,733 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:45:02,734 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:45:02,735 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 20:45:02,735 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-11-16 20:45:03,590 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 20:45:03,602 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 20:45:03,604 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 20:45:03,604 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 20:45:03,659 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 20:45:03,660 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1999 ms
+2025-11-16 20:45:03,680 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 20:45:03,684 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 20:45:03,910 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-16 20:45:05,543 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73fc6a49
+2025-11-16 20:45:05,551 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-16 20:45:05,935 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 20:45:08,718 ERROR [] o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+2025-11-16 20:45:08,739 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 20:45:08,742 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1:housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1797)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 20:45:08,742 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1:connection-adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/sun.nio.ch.Net.poll(Native Method)
+ java.base/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:191)
+ java.base/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:201)
+ java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:309)
+ java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+ java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+ java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+ java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
+ java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483)
+ java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
+ java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
+ java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1066)
+ java.base/java.io.FilterInputStream.read(FilterInputStream.java:119)
+ com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:55)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeaderLocal(SimplePacketReader.java:72)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:54)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:36)
+ com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:43)
+ com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:32)
+ com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:45)
+ com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:35)
+ com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:586)
+ com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:769)
+ com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:708)
+ com.mysql.cj.protocol.a.NativeProtocol.sendQueryPacket(NativeProtocol.java:940)
+ com.mysql.cj.NativeSession.execSQL(NativeSession.java:817)
+ com.mysql.cj.jdbc.ConnectionImpl.setupServerForTruncationChecks(ConnectionImpl.java:2449)
+ com.mysql.cj.jdbc.ConnectionImpl.initializePropsFromServer(ConnectionImpl.java:1326)
+ com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:974)
+ com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:827)
+ com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:415)
+ com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237)
+ com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180)
+ com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144)
+ com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370)
+ com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207)
+ com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:752)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:731)
+ java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 20:45:08,744 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-11-16 20:45:08,745 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-16 20:45:09,022 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-16 20:45:09,042 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 20:45:09,083 ERROR [] o.s.boot.SpringApplication - Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.reputeai.server.reputeai.ReputeaiApplication.main(ReputeaiApplication.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:230)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:184)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:179)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:164)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:96)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4452)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:770)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:868)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:436)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 57 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.reputeai.server.reputeai.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1725)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1474)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 71 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaSharedEM_entityManagerFactory': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 84 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Validate failed: Migrations have failed validation
+Detected failed migration to version 1 (Init Schema).
+Please remove any half-completed changes then run repair to fix the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365)
+	... 96 common frames omitted
+Caused by: org.flywaydb.core.api.exception.FlywayValidateException: Validate failed: Migrations have failed validation
+Detected failed migration to version 1 (Init Schema).
+Please remove any half-completed changes then run repair to fix the schema history.
+Need more flexibility with validation rules? Learn more: https://rd.gt/3AbJUZE
+	at org.flywaydb.core.Flyway.lambda$migrate$1(Flyway.java:201)
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:210)
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:188)
+	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:66)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	... 105 common frames omitted
