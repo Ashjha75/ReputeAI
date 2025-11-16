@@ -3,9 +3,9 @@ package com.reputeai.server.reputeai.service.impl;
 import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
+import com.reputeai.server.reputeai.domain.dto.RegisterResponseDto;
 import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
-import com.reputeai.server.reputeai.exception.BadRequestException;
 import com.reputeai.server.reputeai.exception.ConflictException;
 import com.reputeai.server.reputeai.repository.RoleRepository;
 import com.reputeai.server.reputeai.repository.UserRepository;
@@ -41,7 +41,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     @Transactional
-    public RegisterResponse register(RegisterRequestDto registerRequestDto) {
+    public RegisterResponseDto register(RegisterRequestDto registerRequestDto) {
         final String email = registerRequestDto.getEmail() == null ? null : registerRequestDto.getEmail().trim().toLowerCase(Locale.ROOT);
 
         if (userRepository.existsByEmail(email)) {
@@ -72,7 +72,7 @@ public class AuthServiceImpl implements AuthService {
         // Avoid logging PII; log only the id
         log.info("User registered: id={}", newUser.getId());
         // TODO: trigger verification email asynchronously (outbox or event)
-        return new RegisterResponse(true, "Registration successful. Please check your email to verify your account.");
+        return new RegisterResponseDto(true, "Registration successful. Please check your email to verify your account.");
     }
 
 

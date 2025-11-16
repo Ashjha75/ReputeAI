@@ -4,7 +4,7 @@ package com.reputeai.server.reputeai.service;
 import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
-import com.reputeai.server.reputeai.service.impl.AuthServiceImpl;
+import com.reputeai.server.reputeai.domain.dto.RegisterResponseDto;
 
 /**
  * Service interface for handling authentication operations.
@@ -15,9 +15,9 @@ public interface AuthService {
      * Register a user .
      *
      * @param registerRequestDto DTO containing register body.
-     * @return A message please verify your email.
+     * @return A DTO containing success status and message.
      */
-    AuthServiceImpl.RegisterResponse register(RegisterRequestDto registerRequestDto);
+    RegisterResponseDto register(RegisterRequestDto registerRequestDto);
 
 
     /**
