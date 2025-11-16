@@ -1,13 +1,7 @@
 
 # JWT Security System - Complete Documentation
 
-## 📚 Table of Contents
 
-1.  [System Overview](https://claude.ai/chat/89ccd2f4-3b36-4fc0-8d6f-c76cace1ab83#system-overview)
-2.  [Security Flow Diagram](https://claude.ai/chat/89ccd2f4-3b36-4fc0-8d6f-c76cace1ab83#security-flow-diagram)
-3.  [File Documentation (In Flow Order)](https://claude.ai/chat/89ccd2f4-3b36-4fc0-8d6f-c76cace1ab83#file-documentation)
-4.  [Complete Authentication Flow](https://claude.ai/chat/89ccd2f4-3b36-4fc0-8d6f-c76cace1ab83#complete-authentication-flow)
-5.  [Quick Reference Guide](https://claude.ai/chat/89ccd2f4-3b36-4fc0-8d6f-c76cace1ab83#quick-reference-guide)
 
 ----------
 
