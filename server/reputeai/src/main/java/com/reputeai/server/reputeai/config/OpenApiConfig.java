@@ -21,7 +21,7 @@ public class OpenApiConfig {
                         .contact(new Contact()
                                 .name("Ashish Jha")
                                 .email("ajha5645@gmail.com")
-                                .url("https://github.com/Ashjha75/-Patient-Management-System"))
+                                .url("https://github.com/Ashjha75/ReputeAI"))
                 )
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
                 .components(new Components().addSecuritySchemes("bearerAuth",

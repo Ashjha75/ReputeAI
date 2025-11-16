@@ -12918,3 +12918,163 @@ org.springframework.security.authorization.AuthorizationDeniedException: Access 
 2025-11-16 18:06:51,721 TRACE [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
 2025-11-16 18:06:51,722 WARN  [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.reputeai.server.reputeai.exception.ConflictException: Email already in use]
 2025-11-16 18:06:51,722 DEBUG [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.web.servlet.DispatcherServlet - Completed 409 CONFLICT
+2025-11-16 18:10:32,426 INFO  [] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-11-16 18:10:32,429 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 18:10:32,429 INFO  [] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:10:32,444 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 18:10:32,444 INFO  [] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:10:32,446 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:10:32,453 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2025-11-16 18:10:32,456 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
+2025-11-16 18:10:32,650 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 3936 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 18:10:32,650 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 18:10:32,650 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 18:10:33,302 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:10:33,303 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 18:10:33,334 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 29 ms. Found 2 JPA repository interfaces.
+2025-11-16 18:10:33,342 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:10:33,343 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 18:10:33,352 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:10:33,353 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:10:33,353 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-11-16 18:10:33,837 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 18:10:33,841 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:10:33,842 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 18:10:33,842 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 18:10:33,909 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 18:10:33,910 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1257 ms
+2025-11-16 18:10:33,953 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 18:10:33,954 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 18:10:34,069 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Starting...
+2025-11-16 18:10:35,774 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2bcfd11
+2025-11-16 18:10:35,775 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Start completed.
+2025-11-16 18:10:36,389 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 18:10:39,154 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:01.126s)
+2025-11-16 18:10:41,509 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 18:10:41,614 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 18:10:42,892 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 18:10:42,901 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 18:10:42,916 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 18:10:43,049 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 18:10:43,284 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 18:10:45,677 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:10:45,940 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 18:10:45,940 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 18:10:46,237 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 18:10:46,320 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 16 mappings in 'requestMappingHandlerMapping'
+2025-11-16 18:10:46,365 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-16 18:10:46,397 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.reputeai.server.reputeai.security.SecurityConfig$$SpringCGLIB$$0@e7b020e}
+2025-11-16 18:10:46,397 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-16 18:10:46,504 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-16 18:10:46,523 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:46,523 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]
+2025-11-16 18:10:46,523 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:46,523 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]
+2025-11-16 18:10:46,523 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:46,523 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]
+2025-11-16 18:10:46,523 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:46,523 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]
+2025-11-16 18:10:46,523 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:46,523 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]
+2025-11-16 18:10:46,523 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:46,523 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]
+2025-11-16 18:10:46,523 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:46,523 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]
+2025-11-16 18:10:46,523 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:46,523 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]
+2025-11-16 18:10:46,635 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-16 18:10:46,651 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-16 18:10:46,952 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-16 18:10:46,971 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:10:46,971 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-16 18:10:46,971 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 14.412 seconds (process running for 7425.88)
+2025-11-16 18:10:46,971 INFO  [] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-16 18:10:46,971 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-16 18:10:46,971 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /api/v1/docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-16 18:10:48,432 INFO  [] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-11-16 18:10:48,432 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 18:10:48,438 INFO  [] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:10:48,448 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 18:10:48,448 INFO  [] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:10:48,451 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:10:48,451 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown initiated...
+2025-11-16 18:10:48,576 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-6 - Shutdown completed.
+2025-11-16 18:10:48,783 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 3936 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 18:10:48,783 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 18:10:48,783 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 18:10:49,332 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:10:49,332 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 18:10:49,359 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 2 JPA repository interfaces.
+2025-11-16 18:10:49,366 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:10:49,366 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 18:10:49,374 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:10:49,375 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:10:49,375 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-11-16 18:10:49,728 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 18:10:49,731 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:10:49,734 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 18:10:49,734 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 18:10:49,799 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 18:10:49,799 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1016 ms
+2025-11-16 18:10:49,818 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 18:10:49,819 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 18:10:49,861 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Starting...
+2025-11-16 18:10:51,002 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5fec9393
+2025-11-16 18:10:51,002 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Start completed.
+2025-11-16 18:10:51,339 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 18:10:53,175 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.717s)
+2025-11-16 18:10:54,615 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 18:10:54,712 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 18:10:55,509 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 18:10:55,509 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 18:10:55,521 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 18:10:55,641 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-7)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 18:10:55,755 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 18:10:56,970 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:10:57,146 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 18:10:57,146 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 18:10:57,338 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 18:10:57,399 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 16 mappings in 'requestMappingHandlerMapping'
+2025-11-16 18:10:57,465 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-16 18:10:57,497 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.reputeai.server.reputeai.security.SecurityConfig$$SpringCGLIB$$0@30187bfc}
+2025-11-16 18:10:57,498 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-16 18:10:57,585 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-16 18:10:57,606 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:57,606 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]
+2025-11-16 18:10:57,606 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:57,606 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]
+2025-11-16 18:10:57,606 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:57,606 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]
+2025-11-16 18:10:57,606 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:57,606 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]
+2025-11-16 18:10:57,606 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:57,606 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]
+2025-11-16 18:10:57,606 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:57,606 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]
+2025-11-16 18:10:57,608 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:57,608 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]
+2025-11-16 18:10:57,608 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:10:57,608 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]
+2025-11-16 18:10:57,698 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-16 18:10:57,722 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-16 18:10:57,953 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-16 18:10:57,972 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:10:57,977 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-16 18:10:57,982 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 9.26 seconds (process running for 7436.885)
+2025-11-16 18:10:57,984 INFO  [] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-16 18:10:57,984 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-16 18:10:57,984 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /api/v1/docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'

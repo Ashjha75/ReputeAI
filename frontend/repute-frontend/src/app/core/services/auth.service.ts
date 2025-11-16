@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseApiService } from './base-api.service';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 export interface LoginRequest {
@@ -49,14 +50,14 @@ export interface ResetPasswordRequest {
 })
 export class AuthService extends BaseApiService {
   private readonly AUTH_ENDPOINTS = {
-    LOGIN: '/auth/login',
-    SIGNUP: '/auth/signup',
-    LOGOUT: '/auth/logout',
-    REFRESH: '/auth/refresh',
-    FORGOT_PASSWORD: '/auth/forgot-password',
-    RESET_PASSWORD: '/auth/reset-password',
-    VERIFY_EMAIL: '/auth/verify-email',
-    PROFILE: '/auth/profile'
+    LOGIN: '/v1/auth/login',
+    SIGNUP: '/v1/auth/signup',
+    LOGOUT: '/v1/auth/logout',
+    REFRESH: '/v1/auth/refresh',
+    FORGOT_PASSWORD: '/v1/auth/forgot-password',
+    RESET_PASSWORD: '/v1/auth/reset-password',
+    VERIFY_EMAIL: '/v1/auth/verify-email',
+    PROFILE: '/v1/auth/profile'
   };
 
   constructor(http: HttpClient) {
@@ -72,9 +73,48 @@ export class AuthService extends BaseApiService {
 
   /**
    * Signup new user
+   * @param userData - User signup data
+   * @returns Observable with auth response
    */
   signup(userData: SignupRequest): Observable<any> {
-    return this.post<AuthResponse>(this.AUTH_ENDPOINTS.SIGNUP, userData);
+    return this.post<AuthResponse>(this.AUTH_ENDPOINTS.SIGNUP, userData, false, true).pipe(
+      tap(response => {
+        if (response.success && response.data) {
+          // Store token and user data
+          if (response.data.token) {
+            this.storeAuthData(response.data.token, response.data.user);
+          }
+        }
+      })
+    );
+  }
+
+  /**
+   * Store authentication data
+   */
+  private storeAuthData(token: string, user: UserProfile): void {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('user', JSON.stringify(user));
+    }
+  }
+
+  /**
+   * Get current user from storage
+   */
+  getCurrentUser(): UserProfile | null {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const userStr = localStorage.getItem('user');
+      return userStr ? JSON.parse(userStr) : null;
+    }
+    return null;
+  }
+
+  /**
+   * Check if user is authenticated
+   */
+  isAuthenticated(): boolean {
+    return !!this.getToken();
   }
 
   /**
