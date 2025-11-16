@@ -5,6 +5,7 @@ import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterResponseDto;
+import com.reputeai.server.reputeai.domain.entity.RefreshToken;
 import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
 import com.reputeai.server.reputeai.exception.ApiException;
@@ -12,6 +13,7 @@ import com.reputeai.server.reputeai.exception.ConflictException;
 import com.reputeai.server.reputeai.exception.ErrorCode;
 import com.reputeai.server.reputeai.repository.RoleRepository;
 import com.reputeai.server.reputeai.repository.UserRepository;
+import com.reputeai.server.reputeai.security.JwtProvider;
 import com.reputeai.server.reputeai.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,6 +42,7 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtProvider jwtProvider;
 
     @Override
     @Transactional
@@ -58,7 +61,7 @@ public class AuthServiceImpl implements AuthService {
                 .lastName(registerRequestDto.getLastName() == null ? null : registerRequestDto.getLastName().trim())
                 .email(email)
                 .passwordHash(passwordEncoder.encode(registerRequestDto.getPassword()))
-                .isEnabled(false) // disabled until verification
+                .isEnabled(true)
                 .roles(Set.of(userRole))
                 .build();
 
@@ -105,23 +108,16 @@ public class AuthServiceImpl implements AuthService {
         User user = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new RuntimeException(MessageConstants.ERROR_USER_NOT_FOUND + authentication.getName()));
 
-        // Extra checks — these are defensive. Disabled accounts normally fail during authenticate() above.
-//        if (!user.isEnabled()) {
-//            throw new ApiException(ErrorCode.FORBIDDEN, MessageConstants.ERROR_ACCOUNT_DISABLED);
-//        }
-//        if (!user.isEmailVerified()) {
-//            throw new ApiException(ErrorCode.BAD_REQUEST, MessageConstants.ERROR_EMAIL_NOT_VERIFIED);
-//        }
-
         // put user_id into MDC so subsequent logs include it
         if (user.getId() != null) {
             MDC.put("user_id", String.valueOf(user.getId()));
         }
 
         try {
-            // Replace with real JWT generation when available
-            String accessToken = "access-" + user.getId() + "-" + System.currentTimeMillis();
-            String refreshToken = "refresh-" + user.getId() + "-" + System.currentTimeMillis();
+            // Generate real JWT access token and refresh token
+            String accessToken = jwtProvider.generateAccessToken(authentication);
+            RefreshToken refreshTokenEntity = jwtProvider.createRefreshToken(user.getId());
+            String refreshToken = refreshTokenEntity.getToken();
 
             LoginResponseDto response = new LoginResponseDto(
                     accessToken,
@@ -130,12 +126,11 @@ public class AuthServiceImpl implements AuthService {
                     user.getEmail(),
                     user.getRoles().stream().map(Role::getName).collect(Collectors.toSet())
             );
+
+            log.info("User logged in successfully: userId={}, email={}", user.getId(), user.getEmail());
             return ResponseEntity.ok(response);
         } finally {
-            // ensure MDC cleaned up after request processing
-            if (user.getId() != null) {
-                MDC.remove("user_id");
-            }
+            MDC.remove("user_id");
         }
     }
 }

@@ -1,5 +1,9 @@
 package com.reputeai.server.reputeai.security;
 
+import com.reputeai.server.reputeai.domain.entity.RefreshToken;
+import com.reputeai.server.reputeai.domain.entity.User;
+import com.reputeai.server.reputeai.repository.RefreshTokenRepository;
+import com.reputeai.server.reputeai.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -8,15 +12,18 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import javax.crypto.SecretKey;
 
 @Component
@@ -27,12 +34,19 @@ public class JwtProvider {
     private final PublicKey publicKey;   // nullable if HS256 fallback
     private final SecretKey hmacKey;     // used when RSA not available
     private final long jwtExpirationMs;
+    private final long refreshTokenDurationMs;
     private final boolean rsaMode;
+
+    private final RefreshTokenRepository refreshTokenRepository;
+    private final UserRepository userRepository;
 
     public JwtProvider(@Value("${jwt.private-key}") String privateKeyStr,
                        @Value("${jwt.public-key}") String publicKeyStr,
                        @Value("${jwt.expiration-ms}") long jwtExpirationMs,
-                       @Value("${app.jwtSecret:}") String hmacSecret) {
+                       @Value("${jwt.refresh-token.expiration-ms}") long refreshTokenDurationMs,
+                       @Value("${app.jwtSecret:}") String hmacSecret,
+                       RefreshTokenRepository refreshTokenRepository,
+                       UserRepository userRepository) {
         PrivateKey pk = null;
         PublicKey pub = null;
         SecretKey hk = null;
@@ -66,7 +80,10 @@ public class JwtProvider {
         this.publicKey = pub;
         this.hmacKey = hk;
         this.jwtExpirationMs = jwtExpirationMs;
+        this.refreshTokenDurationMs = refreshTokenDurationMs;
         this.rsaMode = useRsa;
+        this.refreshTokenRepository = refreshTokenRepository;
+        this.userRepository = userRepository;
     }
 
     private String padToMinLength(String secret) {
@@ -132,5 +149,61 @@ public class JwtProvider {
         } else {
             return Jwts.parser().verifyWith(hmacKey).build().parseSignedClaims(token).getPayload();
         }
+    }
+
+    // ========== Refresh Token Methods ==========
+
+    /**
+     * Creates a new refresh token for the given user.
+     * Deletes any existing refresh token for the user before creating a new one.
+     *
+     * @param userId The ID of the user
+     * @return The created RefreshToken entity
+     */
+    @Transactional
+    public RefreshToken createRefreshToken(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
+
+        // Delete existing refresh token for this user
+        refreshTokenRepository.deleteByUser(user);
+
+        RefreshToken refreshToken = RefreshToken.builder()
+                .user(user)
+                .expiryDate(Instant.now().plusMillis(refreshTokenDurationMs))
+                .token(UUID.randomUUID().toString())
+                .build();
+
+        RefreshToken saved = refreshTokenRepository.save(refreshToken);
+        log.info("Created refresh token for user ID: {}", userId);
+        return saved;
+    }
+
+    /**
+     * Verifies that the refresh token has not expired.
+     * If expired, deletes the token and throws an exception.
+     *
+     * @param token The RefreshToken entity to verify
+     * @return The same token if valid
+     * @throws RuntimeException if the token is expired
+     */
+    public RefreshToken verifyExpiration(RefreshToken token) {
+        if (token.getExpiryDate().compareTo(Instant.now()) < 0) {
+            refreshTokenRepository.delete(token);
+            log.warn("Refresh token expired for user ID: {}", token.getUser().getId());
+            throw new RuntimeException("Refresh token was expired. Please make a new signin request.");
+        }
+        return token;
+    }
+
+    /**
+     * Finds a refresh token by its token string.
+     *
+     * @param tokenString The token string to search for
+     * @return The RefreshToken entity if found
+     */
+    public RefreshToken findByToken(String tokenString) {
+        return refreshTokenRepository.findByToken(tokenString)
+                .orElseThrow(() -> new RuntimeException("Refresh token not found: " + tokenString));
     }
 }
