@@ -4546,3 +4546,1484 @@ org.springframework.security.authorization.AuthorizationDeniedException: Access 
 2025-11-16 15:07:41,365 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
 2025-11-16 15:07:41,380 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
 2025-11-16 15:07:41,393 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 17.081 seconds (process running for 19.089)
+2025-11-16 15:08:01,356 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-16 15:08:01,356 INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-16 15:08:01,356 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-11-16 15:08:01,356 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-11-16 15:08:01,356 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-11-16 15:08:01,356 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@318bf22
+2025-11-16 15:08:01,356 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@4675e50f
+2025-11-16 15:08:01,362 DEBUG [] o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-11-16 15:08:01,362 INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2025-11-16 15:08:01,394 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:01,394 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login?error
+2025-11-16 15:08:01,400 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:01,400 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:01,406 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:01,409 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:01,409 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:01,409 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:01,409 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:01,418 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:01,419 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:01,419 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:01,419 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:01,419 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:01,422 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:01,461 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:01,531 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:01,532 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /default-ui.css
+2025-11-16 15:08:01,533 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:01,533 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:01,533 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:01,535 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:01,535 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:01,535 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:01,535 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:01,535 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:01,535 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:01,535 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:01,537 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:01,537 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:01,539 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:01,766 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:01,768 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /favicon.ico
+2025-11-16 15:08:01,768 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:01,768 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:01,768 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:01,768 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:01,770 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:01,770 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:01,770 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:01,771 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:01,771 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:01,771 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:01,771 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:01,771 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:01,772 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:01,772 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (10/16)
+2025-11-16 15:08:01,772 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-16 15:08:01,772 TRACE [] o.s.security.web.FilterChainProxy - Invoking BasicAuthenticationFilter (11/16)
+2025-11-16 15:08:01,772 TRACE [] o.s.s.w.a.w.BasicAuthenticationFilter - Did not process authentication request since failed to find username and password in Basic Authorization header
+2025-11-16 15:08:01,774 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (12/16)
+2025-11-16 15:08:01,774 TRACE [] o.s.s.w.s.HttpSessionRequestCache - matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+2025-11-16 15:08:01,774 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (13/16)
+2025-11-16 15:08:01,777 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (14/16)
+2025-11-16 15:08:01,779 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (15/16)
+2025-11-16 15:08:01,780 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (16/16)
+2025-11-16 15:08:01,781 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /favicon.ico
+2025-11-16 15:08:01,783 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /favicon.ico using org.springframework.security.authorization.AuthenticatedAuthorizationManager@6740644d
+2025-11-16 15:08:01,783 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - Did not find SecurityContext in HttpSession DDCE417501A41932347ADDBC01C78AAB using the SPRING_SECURITY_CONTEXT session attribute
+2025-11-16 15:08:01,783 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 15:08:01,785 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 15:08:01,787 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=DDCE417501A41932347ADDBC01C78AAB], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-16 15:08:01,789 TRACE [] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=DDCE417501A41932347ADDBC01C78AAB], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 15:08:01,797 TRACE [] o.s.s.w.s.HttpSessionRequestCache - Did not save request since it did not match [And [Ant [pattern='/**', GET], Not [Ant [pattern='/**/favicon.*']], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[application/json], useEquals=false, ignoredMediaTypes=[*/*]]], Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[multipart/form-data], useEquals=false, ignoredMediaTypes=[*/*]]], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[text/event-stream], useEquals=false, ignoredMediaTypes=[*/*]]]]]
+2025-11-16 15:08:01,799 DEBUG [] o.s.s.w.a.DelegatingAuthenticationEntryPoint - Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2025-11-16 15:08:01,800 DEBUG [] o.s.s.w.a.DelegatingAuthenticationEntryPoint - Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@3e3dd62f
+2025-11-16 15:08:01,802 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to http://localhost:8080/login
+2025-11-16 15:08:01,802 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:01,851 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:01,851 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login
+2025-11-16 15:08:01,851 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:01,851 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:01,855 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:01,855 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:01,855 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:01,855 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:01,856 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:01,856 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:01,856 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:01,856 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:01,857 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:01,857 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:01,857 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:01,858 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:03,304 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:03,304 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login?error
+2025-11-16 15:08:03,304 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:03,306 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:03,306 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:03,306 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:03,306 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:03,306 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:03,308 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:03,308 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:03,308 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:03,308 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:03,308 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:03,310 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:03,310 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:03,310 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:03,385 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:03,385 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /default-ui.css
+2025-11-16 15:08:03,385 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:03,385 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:03,385 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:03,385 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:03,387 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:03,387 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:03,387 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:03,387 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:03,387 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:03,387 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:03,387 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:03,387 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:03,387 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:03,484 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:03,486 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /favicon.ico
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (10/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking BasicAuthenticationFilter (11/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.s.w.a.w.BasicAuthenticationFilter - Did not process authentication request since failed to find username and password in Basic Authorization header
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (12/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.s.w.s.HttpSessionRequestCache - matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (13/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (14/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (15/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (16/16)
+2025-11-16 15:08:03,486 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /favicon.ico
+2025-11-16 15:08:03,486 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /favicon.ico using org.springframework.security.authorization.AuthenticatedAuthorizationManager@6740644d
+2025-11-16 15:08:03,491 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - Did not find SecurityContext in HttpSession DDCE417501A41932347ADDBC01C78AAB using the SPRING_SECURITY_CONTEXT session attribute
+2025-11-16 15:08:03,491 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 15:08:03,491 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 15:08:03,494 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=DDCE417501A41932347ADDBC01C78AAB], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-16 15:08:03,494 TRACE [] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=DDCE417501A41932347ADDBC01C78AAB], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 15:08:03,494 TRACE [] o.s.s.w.s.HttpSessionRequestCache - Did not save request since it did not match [And [Ant [pattern='/**', GET], Not [Ant [pattern='/**/favicon.*']], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[application/json], useEquals=false, ignoredMediaTypes=[*/*]]], Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[multipart/form-data], useEquals=false, ignoredMediaTypes=[*/*]]], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[text/event-stream], useEquals=false, ignoredMediaTypes=[*/*]]]]]
+2025-11-16 15:08:03,494 DEBUG [] o.s.s.w.a.DelegatingAuthenticationEntryPoint - Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2025-11-16 15:08:03,496 DEBUG [] o.s.s.w.a.DelegatingAuthenticationEntryPoint - Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@3e3dd62f
+2025-11-16 15:08:03,496 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to http://localhost:8080/login
+2025-11-16 15:08:03,496 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:03,502 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:03,502 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login
+2025-11-16 15:08:03,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:03,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:03,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:03,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:03,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:03,502 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:03,502 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:03,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:03,502 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:03,502 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:03,502 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:03,508 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:03,508 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:03,510 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:09,886 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:09,886 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /api/v1/docs
+2025-11-16 15:08:09,886 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:09,886 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:09,886 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (10/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking BasicAuthenticationFilter (11/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.a.w.BasicAuthenticationFilter - Did not process authentication request since failed to find username and password in Basic Authorization header
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (12/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.s.HttpSessionRequestCache - matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (13/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (14/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (15/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (16/16)
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /api/v1/docs
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /api/v1/docs using org.springframework.security.authorization.AuthenticatedAuthorizationManager@6740644d
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - Did not find SecurityContext in HttpSession DDCE417501A41932347ADDBC01C78AAB using the SPRING_SECURITY_CONTEXT session attribute
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=DDCE417501A41932347ADDBC01C78AAB], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-16 15:08:09,889 TRACE [] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=DDCE417501A41932347ADDBC01C78AAB], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 15:08:09,906 DEBUG [] o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/api/v1/docs?continue to session
+2025-11-16 15:08:09,906 DEBUG [] o.s.s.w.a.DelegatingAuthenticationEntryPoint - Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2025-11-16 15:08:09,906 DEBUG [] o.s.s.w.a.DelegatingAuthenticationEntryPoint - Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@3e3dd62f
+2025-11-16 15:08:09,906 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to http://localhost:8080/login
+2025-11-16 15:08:09,906 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:09,915 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:09,915 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:09,915 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:09,915 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:09,915 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:09,923 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:09,985 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:09,987 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /default-ui.css
+2025-11-16 15:08:09,987 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:09,987 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:09,987 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:09,987 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:09,990 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:09,990 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:09,990 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:09,990 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:09,990 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:09,990 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:09,990 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:09,990 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:09,992 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:10,081 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:10,083 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /favicon.ico
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLogoutPageGeneratingFilter (10/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.s.w.a.u.DefaultLogoutPageGeneratingFilter - Did not render default logout page since request did not match [PathPattern [GET /logout]]
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking BasicAuthenticationFilter (11/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.s.w.a.w.BasicAuthenticationFilter - Did not process authentication request since failed to find username and password in Basic Authorization header
+2025-11-16 15:08:10,083 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (12/16)
+2025-11-16 15:08:10,083 TRACE [] o.s.s.w.s.HttpSessionRequestCache - matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+2025-11-16 15:08:10,087 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (13/16)
+2025-11-16 15:08:10,087 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (14/16)
+2025-11-16 15:08:10,087 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (15/16)
+2025-11-16 15:08:10,087 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (16/16)
+2025-11-16 15:08:10,087 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing GET /favicon.ico
+2025-11-16 15:08:10,087 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on GET /favicon.ico using org.springframework.security.authorization.AuthenticatedAuthorizationManager@6740644d
+2025-11-16 15:08:10,087 TRACE [] o.s.s.w.c.HttpSessionSecurityContextRepository - Did not find SecurityContext in HttpSession DDCE417501A41932347ADDBC01C78AAB using the SPRING_SECURITY_CONTEXT session attribute
+2025-11-16 15:08:10,088 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 15:08:10,088 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 15:08:10,088 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=DDCE417501A41932347ADDBC01C78AAB], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-16 15:08:10,088 TRACE [] o.s.s.w.a.ExceptionTranslationFilter - Sending AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=DDCE417501A41932347ADDBC01C78AAB], Granted Authorities=[ROLE_ANONYMOUS]] to authentication entry point since access is denied
+org.springframework.security.authorization.AuthorizationDeniedException: Access Denied
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:99)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:125)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:181)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1774)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 15:08:10,090 TRACE [] o.s.s.w.s.HttpSessionRequestCache - Did not save request since it did not match [And [Ant [pattern='/**', GET], Not [Ant [pattern='/**/favicon.*']], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[application/json], useEquals=false, ignoredMediaTypes=[*/*]]], Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[multipart/form-data], useEquals=false, ignoredMediaTypes=[*/*]]], Not [MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[text/event-stream], useEquals=false, ignoredMediaTypes=[*/*]]]]]
+2025-11-16 15:08:10,091 DEBUG [] o.s.s.w.a.DelegatingAuthenticationEntryPoint - Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@18c50128, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]
+2025-11-16 15:08:10,091 DEBUG [] o.s.s.w.a.DelegatingAuthenticationEntryPoint - Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@3e3dd62f
+2025-11-16 15:08:10,092 DEBUG [] o.s.s.web.DefaultRedirectStrategy - Redirecting to http://localhost:8080/login
+2025-11-16 15:08:10,092 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:08:10,097 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'defaultSecurityFilterChain' in [class path resource [org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Csrf, Logout, UsernamePasswordAuthentication, DefaultResources, DefaultLoginPageGenerating, DefaultLogoutPageGenerating, BasicAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, ExceptionTranslation, Authorization] (1/1)
+2025-11-16 15:08:10,099 DEBUG [] o.s.security.web.FilterChainProxy - Securing GET /login
+2025-11-16 15:08:10,099 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/16)
+2025-11-16 15:08:10,099 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/16)
+2025-11-16 15:08:10,099 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/16)
+2025-11-16 15:08:10,099 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/16)
+2025-11-16 15:08:10,099 TRACE [] o.s.security.web.FilterChainProxy - Invoking CsrfFilter (5/16)
+2025-11-16 15:08:10,099 TRACE [] o.s.s.w.c.CsrfTokenRequestAttributeHandler - Wrote a CSRF token to the following request attributes: [_csrf, org.springframework.security.web.csrf.CsrfToken]
+2025-11-16 15:08:10,099 TRACE [] o.s.security.web.csrf.CsrfFilter - Did not protect against CSRF since request did not match CsrfNotRequired [TRACE, HEAD, GET, OPTIONS]
+2025-11-16 15:08:10,101 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/16)
+2025-11-16 15:08:10,101 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Ant [pattern='/logout', POST]
+2025-11-16 15:08:10,101 TRACE [] o.s.security.web.FilterChainProxy - Invoking UsernamePasswordAuthenticationFilter (7/16)
+2025-11-16 15:08:10,101 TRACE [] o.s.s.w.a.UsernamePasswordAuthenticationFilter - Did not match request to Ant [pattern='/login', POST]
+2025-11-16 15:08:10,101 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultResourcesFilter (8/16)
+2025-11-16 15:08:10,101 TRACE [] o.s.security.web.FilterChainProxy - Invoking DefaultLoginPageGeneratingFilter (9/16)
+2025-11-16 15:08:10,103 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 15:16:08,292 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 15:16:08,307 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 15:16:08,333 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 15:16:08,335 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-16 15:16:08,483 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-16 15:32:22,632 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 15:32:22,703 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 27740 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 15:32:22,705 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 15:32:22,706 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 15:32:22,775 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 15:32:22,775 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 15:32:24,097 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:32:24,099 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 15:32:24,268 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 158 ms. Found 2 JPA repository interfaces.
+2025-11-16 15:32:24,290 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:32:24,292 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 15:32:24,311 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:32:24,312 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:32:24,313 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2025-11-16 15:32:25,273 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 15:32:25,289 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 15:32:25,292 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 15:32:25,293 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 15:32:25,373 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 15:32:25,374 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2598 ms
+2025-11-16 15:32:25,398 ERROR [] o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+2025-11-16 15:32:25,483 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 15:32:25,496 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-11-16 15:32:25,508 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 15:32:25,569 ERROR [] o.s.boot.SpringApplication - Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.reputeai.server.reputeai.ReputeaiApplication.main(ReputeaiApplication.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:230)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:184)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:179)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:164)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:96)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4452)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:770)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:868)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:436)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:321)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:309)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 57 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:223)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:318)
+	... 70 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load JWT keys
+	at com.reputeai.server.reputeai.security.JwtProvider.<init>(JwtProvider.java:38)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:210)
+	... 72 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Illegal base64 character 2e
+	at java.base/java.util.Base64$Decoder.decode0(Base64.java:852)
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:570)
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:593)
+	at com.reputeai.server.reputeai.security.JwtProvider.<init>(JwtProvider.java:34)
+	... 76 common frames omitted
+2025-11-16 15:34:14,290 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 15:34:14,369 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 8848 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 15:34:14,371 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 15:34:14,372 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 15:34:14,432 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 15:34:14,432 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 15:34:15,656 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:34:15,658 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 15:34:15,822 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 154 ms. Found 2 JPA repository interfaces.
+2025-11-16 15:34:15,840 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:34:15,841 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 15:34:15,865 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:34:15,867 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:34:15,868 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+2025-11-16 15:34:16,846 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 15:34:16,866 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 15:34:16,868 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 15:34:16,869 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 15:34:16,939 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 15:34:16,940 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2507 ms
+2025-11-16 15:34:16,970 ERROR [] o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+2025-11-16 15:34:17,035 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 15:34:17,049 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-11-16 15:34:17,060 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 15:34:17,085 ERROR [] o.s.boot.SpringApplication - Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.reputeai.server.reputeai.ReputeaiApplication.main(ReputeaiApplication.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:230)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:184)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:179)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:164)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:96)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4452)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:770)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:868)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:436)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:321)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:309)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 57 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:223)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:318)
+	... 70 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load JWT keys
+	at com.reputeai.server.reputeai.security.JwtProvider.<init>(JwtProvider.java:38)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:210)
+	... 72 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Illegal base64 character 2e
+	at java.base/java.util.Base64$Decoder.decode0(Base64.java:852)
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:570)
+	at java.base/java.util.Base64$Decoder.decode(Base64.java:593)
+	at com.reputeai.server.reputeai.security.JwtProvider.<init>(JwtProvider.java:34)
+	... 76 common frames omitted
+2025-11-16 15:35:52,202 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 15:35:52,274 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 9008 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 15:35:52,276 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 15:35:52,277 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 15:35:52,337 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 15:35:52,338 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 15:35:53,559 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:35:53,561 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 15:35:53,727 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 155 ms. Found 2 JPA repository interfaces.
+2025-11-16 15:35:53,748 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:35:53,749 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 15:35:53,768 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:35:53,770 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:35:53,771 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2025-11-16 15:35:54,720 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 15:35:54,739 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 15:35:54,742 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 15:35:54,743 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 15:35:54,810 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 15:35:54,811 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2473 ms
+2025-11-16 15:35:54,857 ERROR [] o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+2025-11-16 15:35:54,951 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 15:35:54,971 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-11-16 15:35:54,986 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 15:35:55,013 ERROR [] o.s.boot.SpringApplication - Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.reputeai.server.reputeai.ReputeaiApplication.main(ReputeaiApplication.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:230)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:184)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:179)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:164)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:96)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4452)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:770)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:868)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:436)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:321)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:309)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 57 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:223)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:318)
+	... 70 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load JWT keys
+	at com.reputeai.server.reputeai.security.JwtProvider.<init>(JwtProvider.java:38)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:210)
+	... 72 common frames omitted
+Caused by: java.security.spec.InvalidKeySpecException: java.security.InvalidKeyException: Unable to decode key
+	at java.base/sun.security.rsa.RSAKeyFactory.engineGeneratePrivate(RSAKeyFactory.java:253)
+	at java.base/java.security.KeyFactory.generatePrivate(KeyFactory.java:389)
+	at com.reputeai.server.reputeai.security.JwtProvider.<init>(JwtProvider.java:34)
+	... 76 common frames omitted
+Caused by: java.security.InvalidKeyException: Unable to decode key
+	at java.base/sun.security.pkcs.PKCS8Key.<init>(PKCS8Key.java:98)
+	at java.base/sun.security.rsa.RSAPrivateCrtKeyImpl.<init>(RSAPrivateCrtKeyImpl.java:162)
+	at java.base/sun.security.rsa.RSAPrivateCrtKeyImpl.newKey(RSAPrivateCrtKeyImpl.java:92)
+	at java.base/sun.security.rsa.RSAKeyFactory.generatePrivate(RSAKeyFactory.java:348)
+	at java.base/sun.security.rsa.RSAKeyFactory.engineGeneratePrivate(RSAKeyFactory.java:249)
+	... 78 common frames omitted
+Caused by: java.io.IOException: Invalid lenByte
+	at java.base/sun.security.util.DerValue.<init>(DerValue.java:406)
+	at java.base/sun.security.util.DerValue.<init>(DerValue.java:344)
+	at java.base/sun.security.pkcs.PKCS8Key.<init>(PKCS8Key.java:96)
+	... 82 common frames omitted
+2025-11-16 15:36:01,076 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 15:36:01,150 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 4188 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 15:36:01,152 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 15:36:01,153 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 15:36:01,229 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 15:36:01,229 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 15:36:02,490 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:36:02,492 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 15:36:02,652 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 150 ms. Found 2 JPA repository interfaces.
+2025-11-16 15:36:02,671 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:36:02,672 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 15:36:02,689 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:36:02,690 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:36:02,691 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2025-11-16 15:36:03,649 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 15:36:03,665 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 15:36:03,667 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 15:36:03,667 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 15:36:03,736 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 15:36:03,736 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2506 ms
+2025-11-16 15:36:03,765 ERROR [] o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+2025-11-16 15:36:03,807 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 15:36:03,821 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-11-16 15:36:03,831 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 15:36:03,852 ERROR [] o.s.boot.SpringApplication - Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.reputeai.server.reputeai.ReputeaiApplication.main(ReputeaiApplication.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167)
+	... 11 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:230)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:184)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:179)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:164)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:96)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4452)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:770)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:868)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:436)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	... 16 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtProvider' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtProvider.class]: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:321)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:309)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1708)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 57 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.reputeai.server.reputeai.security.JwtProvider]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:223)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:318)
+	... 70 common frames omitted
+Caused by: java.lang.RuntimeException: Failed to load JWT keys
+	at com.reputeai.server.reputeai.security.JwtProvider.<init>(JwtProvider.java:38)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:210)
+	... 72 common frames omitted
+Caused by: java.security.spec.InvalidKeySpecException: java.security.InvalidKeyException: Unable to decode key
+	at java.base/sun.security.rsa.RSAKeyFactory.engineGeneratePrivate(RSAKeyFactory.java:253)
+	at java.base/java.security.KeyFactory.generatePrivate(KeyFactory.java:389)
+	at com.reputeai.server.reputeai.security.JwtProvider.<init>(JwtProvider.java:34)
+	... 76 common frames omitted
+Caused by: java.security.InvalidKeyException: Unable to decode key
+	at java.base/sun.security.pkcs.PKCS8Key.<init>(PKCS8Key.java:98)
+	at java.base/sun.security.rsa.RSAPrivateCrtKeyImpl.<init>(RSAPrivateCrtKeyImpl.java:162)
+	at java.base/sun.security.rsa.RSAPrivateCrtKeyImpl.newKey(RSAPrivateCrtKeyImpl.java:92)
+	at java.base/sun.security.rsa.RSAKeyFactory.generatePrivate(RSAKeyFactory.java:348)
+	at java.base/sun.security.rsa.RSAKeyFactory.engineGeneratePrivate(RSAKeyFactory.java:249)
+	... 78 common frames omitted
+Caused by: java.io.IOException: Invalid lenByte
+	at java.base/sun.security.util.DerValue.<init>(DerValue.java:406)
+	at java.base/sun.security.util.DerValue.<init>(DerValue.java:344)
+	at java.base/sun.security.pkcs.PKCS8Key.<init>(PKCS8Key.java:96)
+	... 82 common frames omitted
+2025-11-16 15:39:51,254 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 15:39:51,328 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 29252 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 15:39:51,330 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 15:39:51,331 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 15:39:51,392 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 15:39:51,393 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 15:39:52,608 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:39:52,611 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 15:39:52,775 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 156 ms. Found 2 JPA repository interfaces.
+2025-11-16 15:39:52,794 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:39:52,796 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 15:39:52,819 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:39:52,820 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:39:52,821 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2025-11-16 15:39:53,801 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 15:39:53,813 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 15:39:53,815 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 15:39:53,817 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 15:39:53,891 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 15:39:53,892 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2498 ms
+2025-11-16 15:39:53,919 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 15:39:53,945 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 15:39:54,250 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-16 15:39:56,188 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@ba7553c
+2025-11-16 15:39:56,191 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-16 15:39:56,614 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 15:39:58,654 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.764s)
+2025-11-16 15:40:00,191 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 15:40:00,288 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 15:40:01,107 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 15:40:01,260 INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-16 15:40:01,313 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 15:40:01,675 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 15:40:02,069 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 15:40:03,221 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 15:40:05,315 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 15:40:05,750 ERROR [] o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'securityConfig' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\SecurityConfig.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'jwtAuthenticationFilter': Requested bean is currently in creation: Is there an unresolvable circular reference or an asynchronous initialization dependency?
+2025-11-16 15:40:05,792 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 15:40:05,797 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1:housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1797)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 15:40:05,797 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1:connection-adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/sun.nio.ch.Net.poll(Native Method)
+ java.base/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:191)
+ java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:280)
+ java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:304)
+ java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+ java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+ java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+ java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
+ java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483)
+ java.base/sun.security.ssl.SSLSocketInputRecord.bytesInCompletePacket(SSLSocketInputRecord.java:70)
+ java.base/sun.security.ssl.SSLSocketImpl.readApplicationRecord(SSLSocketImpl.java:1461)
+ java.base/sun.security.ssl.SSLSocketImpl$AppInputStream.read(SSLSocketImpl.java:1066)
+ java.base/java.io.FilterInputStream.read(FilterInputStream.java:119)
+ com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:55)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeaderLocal(SimplePacketReader.java:72)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:54)
+ com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:36)
+ com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:43)
+ com.mysql.cj.protocol.a.TimeTrackingPacketReader.readHeader(TimeTrackingPacketReader.java:32)
+ com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:45)
+ com.mysql.cj.protocol.a.MultiPacketReader.readHeader(MultiPacketReader.java:35)
+ com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:586)
+ com.mysql.cj.protocol.a.NativeProtocol.checkErrorMessage(NativeProtocol.java:769)
+ com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:708)
+ com.mysql.cj.protocol.a.NativeProtocol.sendCommand(NativeProtocol.java:148)
+ com.mysql.cj.NativeSession.queryServerVariable(NativeSession.java:745)
+ com.mysql.cj.jdbc.ConnectionImpl.isReadOnly(ConnectionImpl.java:1399)
+ com.mysql.cj.jdbc.ConnectionImpl.isReadOnly(ConnectionImpl.java:1392)
+ com.zaxxer.hikari.pool.PoolBase.setupConnection(PoolBase.java:423)
+ com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:375)
+ com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207)
+ com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:752)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:731)
+ java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 15:40:05,800 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-11-16 15:40:05,800 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 15:40:05,803 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-16 15:40:05,898 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-16 15:40:05,929 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 15:40:05,959 ERROR [] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+┌─────┐
+|  jwtAuthenticationFilter defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]
+↑     ↓
+|  userServiceImpl defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]
+↑     ↓
+|  securityConfig defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\SecurityConfig.class]
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2025-11-16 15:42:11,690 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 15:42:11,764 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 11464 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 15:42:11,767 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 15:42:11,768 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 15:42:11,834 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 15:42:11,834 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 15:42:13,141 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:42:13,144 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 15:42:13,314 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 159 ms. Found 2 JPA repository interfaces.
+2025-11-16 15:42:13,329 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:42:13,331 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 15:42:13,349 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:42:13,351 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:42:13,351 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+2025-11-16 15:42:14,350 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 15:42:14,362 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 15:42:14,367 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 15:42:14,367 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 15:42:14,441 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 15:42:14,441 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2606 ms
+2025-11-16 15:42:14,466 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 15:42:14,473 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 15:42:14,728 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-16 15:42:16,422 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@31dae75e
+2025-11-16 15:42:16,432 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-16 15:42:16,802 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 15:42:18,786 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.889s)
+2025-11-16 15:42:20,375 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 15:42:20,464 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 15:42:21,321 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 15:42:21,375 INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-16 15:42:21,415 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 15:42:21,763 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 15:42:22,317 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 15:42:23,432 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 15:42:24,988 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 15:42:25,370 ERROR [] o.s.b.w.e.tomcat.TomcatStarter - Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthenticationFilter' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\security\JwtAuthenticationFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'userServiceImpl' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\service\impl\UserServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 2: No qualifying bean of type 'org.springframework.security.crypto.password.PasswordEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-11-16 15:42:25,411 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 15:42:25,416 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1:housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1797)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 15:42:25,417 WARN  [] o.a.c.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [HikariPool-1:connection-adder] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/sun.nio.ch.Net.poll(Native Method)
+ java.base/sun.nio.ch.NioSocketImpl.park(NioSocketImpl.java:191)
+ java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:280)
+ java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:304)
+ java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+ java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+ java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099)
+ java.base/sun.security.ssl.SSLSocketInputRecord.read(SSLSocketInputRecord.java:489)
+ java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(SSLSocketInputRecord.java:483)
+ java.base/sun.security.ssl.SSLSocketInputRecord.decode(SSLSocketInputRecord.java:160)
+ java.base/sun.security.ssl.SSLTransport.decode(SSLTransport.java:111)
+ java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506)
+ java.base/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1421)
+ java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455)
+ java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426)
+ com.mysql.cj.protocol.ExportControlled.performTlsHandshake(ExportControlled.java:208)
+ com.mysql.cj.protocol.StandardSocketFactory.performTlsHandshake(StandardSocketFactory.java:183)
+ com.mysql.cj.protocol.a.NativeSocketConnection.performTlsHandshake(NativeSocketConnection.java:91)
+ com.mysql.cj.protocol.a.NativeProtocol.negotiateSSLConnection(NativeProtocol.java:357)
+ com.mysql.cj.protocol.a.NativeAuthenticationProvider.connect(NativeAuthenticationProvider.java:199)
+ com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1333)
+ com.mysql.cj.NativeSession.connect(NativeSession.java:155)
+ com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:963)
+ com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:827)
+ com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:415)
+ com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237)
+ com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180)
+ com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144)
+ com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:370)
+ com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:207)
+ com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:752)
+ com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:731)
+ java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1583)
+2025-11-16 15:42:25,419 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
+2025-11-16 15:42:25,421 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 15:42:25,423 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-16 15:42:26,420 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-16 15:42:26,458 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 15:42:26,506 ERROR [] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 2 of constructor in com.reputeai.server.reputeai.service.impl.UserServiceImpl required a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' in your configuration.
+
+2025-11-16 15:44:30,873 INFO  [] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2025-11-16 15:44:30,944 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 19452 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 15:44:30,947 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 15:44:30,948 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 15:44:31,012 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-16 15:44:31,013 INFO  [] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-16 15:44:32,307 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:44:32,309 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 15:44:32,503 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 185 ms. Found 2 JPA repository interfaces.
+2025-11-16 15:44:32,524 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 15:44:32,526 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 15:44:32,544 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:44:32,545 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 15:44:32,545 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2025-11-16 15:44:33,538 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 15:44:33,552 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 15:44:33,553 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 15:44:33,554 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 15:44:33,622 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 15:44:33,623 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2609 ms
+2025-11-16 15:44:33,650 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 15:44:33,655 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 15:44:33,917 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-16 15:44:35,742 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e1eb0a
+2025-11-16 15:44:35,745 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-16 15:44:36,060 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 15:44:38,001 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.808s)
+2025-11-16 15:44:39,537 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 15:44:39,619 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 15:44:40,460 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 15:44:40,521 INFO  [] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-11-16 15:44:40,567 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 15:44:40,952 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 15:44:41,355 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 15:44:42,519 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 15:44:44,146 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 15:44:44,772 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 15:44:44,773 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 15:44:45,396 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 15:44:45,533 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 16 mappings in 'requestMappingHandlerMapping'
+2025-11-16 15:44:45,599 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-16 15:44:45,630 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.reputeai.server.reputeai.security.SecurityConfig$$SpringCGLIB$$0@12f21f99}
+2025-11-16 15:44:45,631 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-16 15:44:45,750 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-16 15:44:45,943 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-16 15:44:46,025 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-16 15:44:46,445 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-16 15:44:46,483 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 15:44:46,497 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-16 15:44:46,510 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 16.566 seconds (process running for 17.564)
