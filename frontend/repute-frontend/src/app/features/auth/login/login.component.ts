@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthService } from '../../../core/services/auth.service';
+import { UserProfileService } from '../../../core/services/user-profile.service';
 import { NotificationService } from '../../../core/services/notification.service';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 
@@ -35,6 +36,7 @@ export class LoginComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private authService = inject(AuthService);
+  private userProfileService = inject(UserProfileService);
   private notificationService = inject(NotificationService);
 
   constructor() {
@@ -83,17 +85,29 @@ export class LoginComponent {
         console.debug('Login response (normalized):', { res, original, token, refreshToken, user });
 
         if (token) {
-          // Save auth data (include refresh token if available) and navigate
+          // Save auth data (include refresh token if available)
           if (refreshToken) {
             this.authService.saveAuthDataWithRefresh(token, user, refreshToken);
           } else {
             this.authService.saveAuthData(token, user);
           }
-          // Prefer backend message if available
-          const successMsg = original?.message || res?.message || 'Logged in successfully';
-          this.notificationService.success(successMsg);
-          // Redirect to home
-          this.router.navigate(['/']);
+          // Fetch user profile and store in UserProfileService
+          this.authService.getUserProfile().subscribe({
+            next: (profileRes: any) => {
+              const profile = profileRes?.data ?? profileRes;
+              this.userProfileService.setUserProfile(profile);
+              // Prefer backend message if available
+              const successMsg = original?.message || res?.message || 'Logged in successfully';
+              this.notificationService.success(successMsg);
+              // Redirect to home
+              this.router.navigate(['/']);
+            },
+            error: (err) => {
+              // Still log in, but warn user
+              this.notificationService.error('Logged in, but failed to fetch user info');
+              this.router.navigate(['/']);
+            }
+          });
           return;
         }
 

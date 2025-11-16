@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -31,7 +32,8 @@ export class ChangePasswordComponent {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.changePasswordForm = this.fb.group({
       currentPassword: ['', [Validators.required]],
@@ -45,19 +47,19 @@ export class ChangePasswordComponent {
       const current = this.changePasswordForm.get('currentPassword')?.value;
       const newP = this.changePasswordForm.get('newPassword')?.value;
 
-      const currentCtrl = this.changePasswordForm.get('currentPassword');
-      if (currentCtrl) {
-        if (current && newP && current !== newP) {
-          currentCtrl.setErrors({ ...currentCtrl.errors, oldMismatch: true });
+      const newCtrl = this.changePasswordForm.get('newPassword');
+      if (newCtrl) {
+        if (current && newP && current === newP) {
+          newCtrl.setErrors({ ...newCtrl.errors, sameAsCurrent: true });
         } else {
-          // remove oldMismatch but keep other errors
-          const errors = { ...currentCtrl.errors };
+          // remove sameAsCurrent but keep other errors
+          const errors = { ...newCtrl.errors };
           if (errors) {
-            delete errors['oldMismatch'];
+            delete errors['sameAsCurrent'];
             if (Object.keys(errors).length === 0) {
-              currentCtrl.setErrors(null);
+              newCtrl.setErrors(null);
             } else {
-              currentCtrl.setErrors(errors);
+              newCtrl.setErrors(errors);
             }
           }
         }
@@ -74,22 +76,36 @@ export class ChangePasswordComponent {
     if (newPassword !== confirmPassword) {
       errors['mismatch'] = true;
     }
-    if (currentPassword && newPassword && currentPassword !== newPassword) {
-      errors['oldMismatch'] = true;
+    if (currentPassword && newPassword && currentPassword === newPassword) {
+      errors['sameAsCurrent'] = true;
     }
     return Object.keys(errors).length ? errors : null;
   }
 
   onSubmit() {
-    if (this.changePasswordForm.valid) {
-      this.isLoading = true;
-      // Simulate API call
-      setTimeout(() => {
-        this.isLoading = false;
-        // Navigate to home or show success
-        this.router.navigate(['/']);
-      }, 1500);
+    if (this.changePasswordForm.invalid) {
+      this.changePasswordForm.markAllAsTouched();
+      return;
     }
+    this.isLoading = true;
+    const { currentPassword, newPassword, confirmPassword } = this.changePasswordForm.value;
+    this.authService.changePassword(currentPassword, newPassword, confirmPassword).subscribe({
+      next: (res: any) => {
+        this.isLoading = false;
+        if (res?.success) {
+          // Show success and redirect
+          alert(res?.message || 'Password changed successfully');
+          this.router.navigate(['/']);
+        } else {
+          alert(res?.message || 'Password change failed');
+        }
+      },
+      error: (err) => {
+        this.isLoading = false;
+        // Show backend error message if present
+        alert(err?.error?.message || err?.message || 'Password change failed');
+      }
+    });
   }
 
   get currentPassword() { return this.changePasswordForm.get('currentPassword'); }

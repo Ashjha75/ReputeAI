@@ -61,8 +61,16 @@ export class AuthService extends BaseApiService {
     FORGOT_PASSWORD: '/v1/auth/forgot-password',
     RESET_PASSWORD: '/v1/auth/reset-password',
     VERIFY_EMAIL: '/v1/auth/verify-email',
-    PROFILE: '/v1/auth/profile'
+    PROFILE: '/v1/users/info',
+    CHANGE_PASSWORD: '/v1/users/change-password'
   };
+  /**
+   * Change password for current user
+   */
+  changePassword(currentPassword: string, newPassword: string, confirmPassword: string): Observable<any> {
+    const body = { currentPassword, newPassword, confirmPassword };
+    return this.put<any>(this.AUTH_ENDPOINTS.CHANGE_PASSWORD, body, true, false);
+  }
 
   constructor(http: HttpClient) {
     super(http);
@@ -157,7 +165,7 @@ export class AuthService extends BaseApiService {
    * Get user profile
    */
   getUserProfile(): Observable<any> {
-    return this.get<UserProfile>(this.AUTH_ENDPOINTS.PROFILE, undefined, true);
+    return this.get<any>(this.AUTH_ENDPOINTS.PROFILE, undefined, true);
   }
 
   /**
