@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthService, SignupRequest } from '../../../core/services/auth.service';
 import { NotificationService } from '../../../core/services/notification.service';
+import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +22,8 @@ import { NotificationService } from '../../../core/services/notification.service
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    LoaderComponent
   ],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']

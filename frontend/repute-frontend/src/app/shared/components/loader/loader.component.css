@@ -1,33 +1,25 @@
-:host {
-  display: block;
-  --loader-accent: var(--mat-sys-primary, #2563eb);
-  --loader-accent-muted: rgba(37, 99, 235, 0.3);
-  --loader-accent-strong: rgba(37, 99, 235, 0.85);
-  --loader-surface: var(--mat-sys-surface-container-high, #0f172a);
-  --loader-surface-contrast: var(--mat-sys-inverse-surface, #020617);
-  --loader-text: var(--mat-sys-on-surface, #e5edff);
-  --loader-text-muted: var(--mat-sys-on-surface-variant, #98a7c7);
-}
-
-.loader-shell {
-  display: grid;
-  place-items: center;
-  width: 100%;
-}
-
-.loader-shell.fullscreen {
+/* Glassmorphism Loading Overlay */
+.loading-overlay {
   position: fixed;
-  inset: 0;
-  z-index: 1080;
-  padding: 2rem;
-  background: radial-gradient(circle at 20% 20%, rgba(15, 23, 42, 0.85), rgba(3, 7, 18, 0.95));
-  backdrop-filter: blur(18px) saturate(140%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.loader-card {
-  position: relative;
-  width: min(420px, 90vw);
-  padding: 2.5rem 2.75rem;
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
   border-radius: 32px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)), var(--loader-surface);
   border: 1px solid rgba(255, 255, 255, 0.08);

@@ -116,11 +116,7 @@
           type="submit" 
           [disabled]="isLoading"
           class="w-full bg-black text-white py-3.5 rounded-xl font-medium hover:bg-gray-700 transition-all duration-200 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-sm hover:shadow-md">
-          <span *ngIf="!isLoading">Create Account</span>
-          <span *ngIf="isLoading" class="flex items-center gap-2">
-            <span>Creating Account</span>
-            <div class="loader"></div>
-          </span>
+          <span>Create Account</span>
         </button>
       </form>
 
@@ -134,4 +130,7 @@
 
     </div>
   </div>
+
+  <!-- Loader Component -->
+  <app-loader [show]="isLoading" [message]="'Creating your account...'"></app-loader>
 </div>

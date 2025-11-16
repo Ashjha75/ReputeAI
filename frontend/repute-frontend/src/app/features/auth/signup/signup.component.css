@@ -143,21 +143,7 @@ button:active:not(:disabled) {
   box-shadow: 0 4px 12px rgba(199, 232, 253, 0.3);
 }
 
-/* Smooth Loading Animation */
-.loader {
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* Loader styles moved to shared LoaderComponent */
 
 /* Card animation */
 
