@@ -25,102 +25,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   padding: 0 !important;
 }
 
-/* Snackbar Success */
-.snack-success {
-  --mdc-snackbar-container-color: #fff !important;
-  --mdc-snackbar-supporting-text-color: #374151 !important;
-  border-left: 4px solid #10b981 !important;
-}
-
-.snack-success .mat-mdc-snack-bar-label {
-  color: #374151 !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-}
-
-.snack-success .mat-mdc-snack-bar-label::before {
-  content: 'check_circle';
-  font-family: 'Material Icons';
-  color: #10b981;
-  font-size: 20px;
-}
-
-.snack-success .mat-mdc-button {
-  color: #10b981 !important;
-}
-
-/* Snackbar Error */
-.snack-error {
-  --mdc-snackbar-container-color: #fff !important;
-  --mdc-snackbar-supporting-text-color: #374151 !important;
-  border-left: 4px solid #ef4444 !important;
-}
-
-.snack-error .mat-mdc-snack-bar-label {
-  color: #374151 !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-}
-
-.snack-error .mat-mdc-snack-bar-label::before {
-  content: 'error';
-  font-family: 'Material Icons';
-  color: #ef4444;
-  font-size: 20px;
-}
-
-.snack-error .mat-mdc-button {
-  color: #ef4444 !important;
-}
-
-/* Snackbar Warning */
-.snack-warning {
-  --mdc-snackbar-container-color: #fff !important;
-  --mdc-snackbar-supporting-text-color: #374151 !important;
-  border-left: 4px solid #f59e0b !important;
-}
-
-.snack-warning .mat-mdc-snack-bar-label {
-  color: #374151 !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-}
-
-.snack-warning .mat-mdc-snack-bar-label::before {
-  content: 'warning';
-  font-family: 'Material Icons';
-  color: #f59e0b;
-  font-size: 20px;
-}
-
-.snack-warning .mat-mdc-button {
-  color: #f59e0b !important;
-}
-
-/* Snackbar Info */
-.snack-info {
-  --mdc-snackbar-container-color: #fff !important;
-  --mdc-snackbar-supporting-text-color: #374151 !important;
-  border-left: 4px solid #3b82f6 !important;
-}
-
-.snack-info .mat-mdc-snack-bar-label {
-  color: #374151 !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 8px !important;
-}
-
-.snack-info .mat-mdc-snack-bar-label::before {
-  content: 'info';
-  font-family: 'Material Icons';
-  color: #3b82f6;
-  font-size: 20px;
-}
-
-.snack-info .mat-mdc-button {
-  color: #3b82f6 !important;
-}
+/* Unified snackbar variants (new component) */
+.snack { --mdc-snackbar-container-color:#fff !important; --mdc-snackbar-supporting-text-color:#374151 !important; }
+.snack-success { border-left:4px solid #10b981 !important; }
+.snack-error { border-left:4px solid #ef4444 !important; }
+.snack-warning { border-left:4px solid #f59e0b !important; }
+.snack-info { border-left:4px solid #3b82f6 !important; }
+/* Ensure surface has no extra padding for component layout */
+.snack .mdc-snackbar__surface { padding:0 !important; }
