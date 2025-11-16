@@ -1,14 +1,7 @@
 package com.reputeai.server.reputeai.service;
 
 
-import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
-import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
-import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
-import com.reputeai.server.reputeai.domain.dto.RegisterResponseDto;
-import com.reputeai.server.reputeai.domain.dto.VerifyEmailRequestDto;
-import com.reputeai.server.reputeai.domain.dto.SimpleSuccessResponseDto;
-import com.reputeai.server.reputeai.domain.dto.ForgotPasswordRequestDto;
-import com.reputeai.server.reputeai.domain.dto.ResetPasswordRequestDto;
+import com.reputeai.server.reputeai.domain.dto.*; // wildcard import for DTOs
 import org.springframework.http.ResponseEntity;
 
 /**
