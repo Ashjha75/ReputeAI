@@ -100,10 +100,7 @@
           <mat-error *ngIf="signupForm.hasError('mismatch')">Passwords do not match</mat-error>
         </mat-form-field>
 
-        <!-- Terms Checkbox -->
-        <mat-checkbox formControlName="terms" class="text-sm">
-          <span class="text-gray-700">I agree to the <a href="#" class="text-black hover:text-gray-700 font-medium">Terms of Service</a> and <a href="#" class="text-black hover:text-gray-700 font-medium">Privacy Policy</a></span>
-        </mat-checkbox>
+        <!-- Terms checkbox removed per request -->
 
         <!-- Password Match Hint -->
         <div *ngIf="showPasswordMismatch" class="text-sm text-red-600 flex items-center gap-2 -mt-3">

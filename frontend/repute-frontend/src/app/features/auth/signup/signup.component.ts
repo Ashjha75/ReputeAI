@@ -22,7 +22,6 @@ import { LoaderComponent } from '../../../shared/components/loader/loader.compon
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatCheckboxModule,
     LoaderComponent
   ],
   templateUrl: './signup.component.html',
@@ -45,8 +44,7 @@ export class SignupComponent {
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required]],
-      terms: [false, [Validators.requiredTrue]]
+      confirmPassword: ['', [Validators.required]]
     }, { validators: this.passwordMatchValidator });
   }
 
@@ -134,5 +132,4 @@ export class SignupComponent {
   get email() { return this.signupForm.get('email'); }
   get password() { return this.signupForm.get('password'); }
   get confirmPassword() { return this.signupForm.get('confirmPassword'); }
-  get terms() { return this.signupForm.get('terms'); }
 }
