@@ -1,5 +1,6 @@
 package com.reputeai.server.reputeai.service.impl;
 
+import com.reputeai.server.reputeai.constants.MessageConstants;
 import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.Authentication;
@@ -24,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Locale;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -76,23 +79,43 @@ public class AuthServiceImpl implements AuthService {
     }
 
 
-
     @Override
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
+        Authentication authentication;
         try {
-            Authentication authentication = authenticationManager().authenticate(
-                    new UsernamePasswordAuthenticationToken(
-                            loginRequestDto.getEmail(),
-                            loginRequestDto.getPassword()
-                    )
+            AuthenticationManager authManager = authenticationConfiguration.getAuthenticationManager();
+            authentication = authManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequestDto.getEmail(), loginRequestDto.getPassword())
             );
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            String accessToken = "accessToken"; // TODO generate real JWT
-            String refreshToken = "dummy-refresh-token"; // TODO generate refresh token
-            return new LoginResponseDto(accessToken, refreshToken);
-        } catch (Exception ex) {
-            throw new RuntimeException("Authentication failed", ex);
+        } catch (BadCredentialsException e) {
+            throw new BadCredentialsException(MessageConstants.ERROR_BAD_CREDENTIALS);
+        } catch (Exception e) {
+            throw new RuntimeException("Authentication failed", e);
         }
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        User user = userRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RuntimeException(MessageConstants.ERROR_USER_NOT_FOUND + authentication.getName()));
+
+        if (!user.isEnabled()) {
+            throw new RuntimeException(MessageConstants.ERROR_ACCOUNT_DISABLED);
+        }
+        if (!user.isEmailVerified()) {
+            throw new RuntimeException(MessageConstants.ERROR_EMAIL_NOT_VERIFIED);
+        }
+
+        // Temporary token generation placeholders until JWT / refresh services are available
+        String accessToken = "access-" + user.getId() + "-" + System.currentTimeMillis();
+        String refreshToken = "refresh-" + user.getId() + "-" + System.currentTimeMillis();
+
+        return new LoginResponseDto(
+                accessToken,
+                refreshToken,
+                user.getId(),
+                user.getEmail(),
+                user.getRoles().stream().map(Role::getName).collect(Collectors.toSet())
+        );
     }
 
     @Override
