@@ -1,5 +1,6 @@
 package com.reputeai.server.reputeai.security;
 
+import com.reputeai.server.reputeai.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.context.annotation.Bean;
@@ -81,5 +82,11 @@ public class SecurityConfig {
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(passwordEncoder);
         return new ProviderManager(provider);
+    }
+
+    // Adapter bean: expose the UserService implementation as a UserDetailsService bean
+    @Bean
+    public UserDetailsService userDetailsService(UserService userService) {
+        return userService;
     }
 }

@@ -5,6 +5,7 @@ import com.reputeai.server.reputeai.domain.dto.LoginRequestDto;
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterResponseDto;
+import org.springframework.http.ResponseEntity;
 
 /**
  * Service interface for handling authentication operations.
@@ -26,6 +27,6 @@ public interface AuthService {
      * @param loginRequestDto DTO containing login credentials.
      * @return A DTO containing the access token and refresh token.
      */
-    LoginResponseDto login(LoginRequestDto loginRequestDto);
+    ResponseEntity<LoginResponseDto> login(LoginRequestDto loginRequestDto);
 
 }

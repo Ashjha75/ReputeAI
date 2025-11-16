@@ -14,6 +14,7 @@ import com.reputeai.server.reputeai.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -75,7 +76,7 @@ public class AuthServiceImpl implements AuthService {
 
 
     @Override
-    public LoginResponseDto login(LoginRequestDto loginRequestDto) {
+    public ResponseEntity<LoginResponseDto> login(LoginRequestDto loginRequestDto) {
         Authentication authentication;
         try {
             authentication = authenticationManager.authenticate(
@@ -92,24 +93,25 @@ public class AuthServiceImpl implements AuthService {
         User user = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new RuntimeException(MessageConstants.ERROR_USER_NOT_FOUND + authentication.getName()));
 
-        if (!user.isEnabled()) {
-            throw new RuntimeException(MessageConstants.ERROR_ACCOUNT_DISABLED);
-        }
-        if (!user.isEmailVerified()) {
-            throw new RuntimeException(MessageConstants.ERROR_EMAIL_NOT_VERIFIED);
-        }
+//        if (!user.isEnabled()) {
+//            throw new RuntimeException(MessageConstants.ERROR_ACCOUNT_DISABLED);
+//        }
+//        if (!user.isEmailVerified()) {
+//            throw new RuntimeException(MessageConstants.ERROR_EMAIL_NOT_VERIFIED);
+//        }
 
         // Temporary token generation placeholders until JWT / refresh services are available
         String accessToken = "access-" + user.getId() + "-" + System.currentTimeMillis();
         String refreshToken = "refresh-" + user.getId() + "-" + System.currentTimeMillis();
 
-        return new LoginResponseDto(
+        LoginResponseDto response= new LoginResponseDto(
                 accessToken,
                 refreshToken,
                 user.getId(),
                 user.getEmail(),
                 user.getRoles().stream().map(Role::getName).collect(Collectors.toSet())
         );
+        return ResponseEntity.ok(response);
     }
 
 
