@@ -1,6 +1,8 @@
 package com.reputeai.server.reputeai.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -13,10 +15,12 @@ import java.util.List;
 /**
  * Central CORS configuration allowing Swagger UI, Postman, and Angular dev origins.
  */
+@Setter
+@Getter
 @Configuration
+@ConfigurationProperties(prefix = "cors")// used to get value of cors.allowed-origins
 public class CorsConfig {
 
-    @Value("${cors.allowed-origins}")
     private List<String> allowedOrigins;
 
     @Bean
