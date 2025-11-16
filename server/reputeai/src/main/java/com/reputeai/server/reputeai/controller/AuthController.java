@@ -8,6 +8,7 @@ import com.reputeai.server.reputeai.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,8 +44,8 @@ public class AuthController {
 
     @PostMapping("/login")
     @Operation(summary = "Authenticate user and obtain JWT tokens")
-    public ResponseEntity<LoginResponseDto> login(@Validated @RequestBody LoginRequestDto request) {
-        return ResponseEntity.ok(authService.login(request));
+    public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginRequestDto request) {
+        return authService.login(request);
     }
 }
 

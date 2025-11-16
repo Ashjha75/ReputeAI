@@ -28,11 +28,4 @@ public interface AuthService {
      */
     LoginResponseDto login(LoginRequestDto loginRequestDto);
 
-    /**
-     * Refreshes an access token using a valid refresh token.
-     *
-     * @param refreshToken The refresh token.
-     * @return A DTO containing a new access token.
-     */
-    LoginResponseDto refreshToken(String refreshToken);
 }
