@@ -12418,3 +12418,503 @@ org.springframework.security.authorization.AuthorizationDeniedException: Access 
 2025-11-16 16:08:12,088 TRACE [693b80cf-a63e-4891-a734-8758e1c24197] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
 2025-11-16 16:08:12,088 WARN  [693b80cf-a63e-4891-a734-8758e1c24197] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.reputeai.server.reputeai.exception.ConflictException: Email already in use]
 2025-11-16 16:08:12,088 DEBUG [693b80cf-a63e-4891-a734-8758e1c24197] o.s.web.servlet.DispatcherServlet - Completed 409 CONFLICT
+2025-11-16 17:57:18,387 WARN  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h30m9s66ms183µs400ns).
+2025-11-16 17:57:18,398 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@5a32a144 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 17:57:18,400 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@23df79d8 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 17:57:18,400 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6ca8c466 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 17:57:18,402 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@40be354c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 17:57:18,403 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@53479127 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 17:57:18,404 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@b8e232e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 17:57:18,405 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@212f5dcd (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 17:57:18,406 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@100a18f1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 17:57:18,407 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2863547b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 17:57:18,407 WARN  [] com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7f2b7d7e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value.
+2025-11-16 18:03:56,616 INFO  [] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-11-16 18:03:56,626 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 18:03:56,626 INFO  [] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:03:56,640 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 18:03:56,642 INFO  [] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:03:56,703 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:03:56,708 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-16 18:03:56,828 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-11-16 18:03:57,020 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 3936 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 18:03:57,021 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 18:03:57,021 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 18:03:57,717 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:03:57,717 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 18:03:57,750 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 2 JPA repository interfaces.
+2025-11-16 18:03:57,750 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:03:57,750 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 18:03:57,766 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:03:57,768 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:03:57,768 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2025-11-16 18:03:58,214 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 18:03:58,230 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:03:58,230 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 18:03:58,230 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 18:03:58,338 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 18:03:58,338 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1313 ms
+2025-11-16 18:03:58,366 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 18:03:58,366 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 18:03:58,468 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-11-16 18:03:59,896 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4d54337f
+2025-11-16 18:03:59,896 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-11-16 18:04:00,408 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 18:04:02,861 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:01.227s)
+2025-11-16 18:04:04,402 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 18:04:04,497 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 18:04:05,266 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 18:04:05,278 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 18:04:05,291 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 18:04:05,370 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 18:04:05,521 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 18:04:07,470 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:04:07,632 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 18:04:07,632 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 18:04:07,886 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 18:04:07,982 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 16 mappings in 'requestMappingHandlerMapping'
+2025-11-16 18:04:08,043 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-16 18:04:08,076 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.reputeai.server.reputeai.security.SecurityConfig$$SpringCGLIB$$0@625bde55}
+2025-11-16 18:04:08,077 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-16 18:04:08,148 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-16 18:04:08,163 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:08,163 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]
+2025-11-16 18:04:08,163 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:08,165 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]
+2025-11-16 18:04:08,165 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:08,165 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]
+2025-11-16 18:04:08,165 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:08,165 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]
+2025-11-16 18:04:08,165 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:08,165 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]
+2025-11-16 18:04:08,165 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:08,165 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]
+2025-11-16 18:04:08,165 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:08,165 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]
+2025-11-16 18:04:08,165 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:08,166 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]
+2025-11-16 18:04:08,313 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-16 18:04:08,346 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-16 18:04:08,646 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-16 18:04:08,662 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:08,667 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-16 18:04:08,675 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 11.741 seconds (process running for 7027.577)
+2025-11-16 18:04:08,678 INFO  [] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-16 18:04:08,678 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-16 18:04:08,678 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /api/v1/docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-16 18:04:10,084 INFO  [] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-11-16 18:04:10,085 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 18:04:10,086 INFO  [] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:10,097 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 18:04:10,097 INFO  [] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:10,103 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:04:10,104 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-11-16 18:04:10,183 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-11-16 18:04:10,351 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 3936 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 18:04:10,353 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 18:04:10,353 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 18:04:11,070 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:04:11,071 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 18:04:11,130 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 58 ms. Found 2 JPA repository interfaces.
+2025-11-16 18:04:11,138 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:04:11,138 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 18:04:11,148 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:04:11,149 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:04:11,149 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2025-11-16 18:04:11,493 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 18:04:11,496 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:11,497 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 18:04:11,497 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 18:04:11,604 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 18:04:11,604 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1247 ms
+2025-11-16 18:04:11,629 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 18:04:11,631 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 18:04:11,700 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2025-11-16 18:04:13,618 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@77e22f85
+2025-11-16 18:04:13,618 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2025-11-16 18:04:14,146 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 18:04:17,203 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:01.296s)
+2025-11-16 18:04:19,460 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 18:04:19,582 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 18:04:21,121 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 18:04:21,124 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 18:04:21,133 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 18:04:21,403 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 18:04:21,472 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 18:04:23,550 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:04:23,655 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 18:04:23,655 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 18:04:23,772 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 18:04:23,812 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 16 mappings in 'requestMappingHandlerMapping'
+2025-11-16 18:04:23,845 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-16 18:04:23,857 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.reputeai.server.reputeai.security.SecurityConfig$$SpringCGLIB$$0@3bdc7b31}
+2025-11-16 18:04:23,857 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-16 18:04:23,897 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-16 18:04:23,908 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:23,908 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]
+2025-11-16 18:04:23,908 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:23,908 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]
+2025-11-16 18:04:23,908 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:23,908 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]
+2025-11-16 18:04:23,908 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:23,908 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]
+2025-11-16 18:04:23,909 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:23,909 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]
+2025-11-16 18:04:23,909 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:23,909 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]
+2025-11-16 18:04:23,909 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:23,909 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]
+2025-11-16 18:04:23,909 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:23,909 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]
+2025-11-16 18:04:23,969 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-16 18:04:23,985 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-16 18:04:24,136 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-16 18:04:24,147 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:24,151 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-16 18:04:24,154 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 13.879 seconds (process running for 7043.055)
+2025-11-16 18:04:24,155 INFO  [] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-16 18:04:24,155 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-16 18:04:24,155 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /api/v1/docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-16 18:04:26,603 INFO  [] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-11-16 18:04:26,607 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 18:04:26,609 INFO  [] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:26,625 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 18:04:26,625 INFO  [] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:26,635 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:04:26,635 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2025-11-16 18:04:26,830 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2025-11-16 18:04:26,989 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 3936 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 18:04:26,991 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 18:04:26,991 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 18:04:27,629 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:04:27,631 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 18:04:27,673 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 36 ms. Found 2 JPA repository interfaces.
+2025-11-16 18:04:27,681 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:04:27,681 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 18:04:27,693 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:04:27,694 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:04:27,694 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-11-16 18:04:28,106 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 18:04:28,110 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:28,110 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 18:04:28,116 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 18:04:28,192 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 18:04:28,194 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1201 ms
+2025-11-16 18:04:28,221 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 18:04:28,221 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 18:04:28,300 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2025-11-16 18:04:29,487 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@77d12a8b
+2025-11-16 18:04:29,487 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2025-11-16 18:04:29,789 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 18:04:31,633 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.818s)
+2025-11-16 18:04:33,585 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 18:04:33,688 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 18:04:34,466 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 18:04:34,471 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 18:04:34,483 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 18:04:34,610 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 18:04:34,677 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 18:04:36,249 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:04:36,361 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 18:04:36,361 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 18:04:36,472 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 18:04:36,514 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 16 mappings in 'requestMappingHandlerMapping'
+2025-11-16 18:04:36,552 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-16 18:04:36,571 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.reputeai.server.reputeai.security.SecurityConfig$$SpringCGLIB$$0@35ddcbca}
+2025-11-16 18:04:36,572 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-16 18:04:36,634 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-16 18:04:36,647 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:36,647 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]
+2025-11-16 18:04:36,647 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:36,647 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]
+2025-11-16 18:04:36,647 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:36,647 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]
+2025-11-16 18:04:36,647 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:36,647 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]
+2025-11-16 18:04:36,647 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:36,647 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]
+2025-11-16 18:04:36,647 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:36,647 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]
+2025-11-16 18:04:36,647 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:36,647 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]
+2025-11-16 18:04:36,648 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:04:36,648 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]
+2025-11-16 18:04:36,732 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-16 18:04:36,750 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-16 18:04:36,894 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-16 18:04:36,909 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:36,913 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-16 18:04:36,917 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 10.005 seconds (process running for 7055.819)
+2025-11-16 18:04:36,919 INFO  [] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-16 18:04:36,919 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-16 18:04:36,919 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /api/v1/docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-16 18:04:55,536 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-16 18:04:55,536 INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-16 18:04:55,536 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-11-16 18:04:55,538 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-11-16 18:04:55,538 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-11-16 18:04:55,540 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2aa8cffd
+2025-11-16 18:04:55,542 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@5cbfc681
+2025-11-16 18:04:55,542 DEBUG [] o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-11-16 18:04:55,542 INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2025-11-16 18:04:55,544 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:04:55,544 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:04:55,544 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:04:55,544 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:04:55,544 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:04:55,546 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /api/v1/swagger-ui/index.html
+2025-11-16 18:04:55,546 DEBUG [79c25bc1-5568-4149-91e2-9397a2c2008f] o.s.web.servlet.DispatcherServlet - GET "/api/v1/swagger-ui/index.html", parameters={}
+2025-11-16 18:04:55,548 DEBUG [79c25bc1-5568-4149-91e2-9397a2c2008f] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-11-16 18:04:55,561 DEBUG [79c25bc1-5568-4149-91e2-9397a2c2008f] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:04:55,627 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:04:55,627 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:04:55,628 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:04:55,629 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:04:55,631 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:04:55,631 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:04:55,631 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:04:55,630 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:04:55,631 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:04:55,631 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:04:55,631 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /api/v1/swagger-ui/swagger-ui.css
+2025-11-16 18:04:55,631 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:04:55,631 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /api/v1/swagger-ui/swagger-ui-bundle.js
+2025-11-16 18:04:55,631 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:04:55,632 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /api/v1/swagger-ui/swagger-ui-standalone-preset.js
+2025-11-16 18:04:55,632 DEBUG [8e9600b6-b169-4ce7-8ae5-36cb64304026] o.s.web.servlet.DispatcherServlet - GET "/api/v1/swagger-ui/swagger-ui.css", parameters={}
+2025-11-16 18:04:55,632 DEBUG [bcfec1f9-9451-4ec3-a61a-5a582adf9349] o.s.web.servlet.DispatcherServlet - GET "/api/v1/swagger-ui/swagger-ui-standalone-preset.js", parameters={}
+2025-11-16 18:04:55,632 DEBUG [6268a1ab-7981-4b5c-958b-8bcaea4130b5] o.s.web.servlet.DispatcherServlet - GET "/api/v1/swagger-ui/swagger-ui-bundle.js", parameters={}
+2025-11-16 18:04:55,633 DEBUG [bcfec1f9-9451-4ec3-a61a-5a582adf9349] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-11-16 18:04:55,634 DEBUG [6268a1ab-7981-4b5c-958b-8bcaea4130b5] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-11-16 18:04:55,634 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:04:55,634 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /api/v1/swagger-ui/swagger-initializer.js
+2025-11-16 18:04:55,634 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:04:55,635 DEBUG [c3454962-a839-4769-9588-30e952b2fab8] o.s.web.servlet.DispatcherServlet - GET "/api/v1/swagger-ui/swagger-initializer.js", parameters={}
+2025-11-16 18:04:55,635 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /api/v1/swagger-ui/index.css
+2025-11-16 18:04:55,635 DEBUG [c3454962-a839-4769-9588-30e952b2fab8] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-11-16 18:04:55,635 DEBUG [8e9600b6-b169-4ce7-8ae5-36cb64304026] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-11-16 18:04:55,635 DEBUG [8869523d-91cd-4aab-a86a-02a3175d4fa3] o.s.web.servlet.DispatcherServlet - GET "/api/v1/swagger-ui/index.css", parameters={}
+2025-11-16 18:04:55,636 DEBUG [8869523d-91cd-4aab-a86a-02a3175d4fa3] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-11-16 18:04:55,641 DEBUG [c3454962-a839-4769-9588-30e952b2fab8] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:04:55,643 DEBUG [8869523d-91cd-4aab-a86a-02a3175d4fa3] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:04:55,646 DEBUG [8e9600b6-b169-4ce7-8ae5-36cb64304026] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:04:55,647 DEBUG [bcfec1f9-9451-4ec3-a61a-5a582adf9349] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:04:55,661 DEBUG [6268a1ab-7981-4b5c-958b-8bcaea4130b5] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:04:56,483 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:04:56,484 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /v3/api-docs/swagger-config
+2025-11-16 18:04:56,485 DEBUG [a4e89187-f989-443b-b66d-a11ffada6555] o.s.web.servlet.DispatcherServlet - GET "/v3/api-docs/swagger-config", parameters={}
+2025-11-16 18:04:56,486 DEBUG [a4e89187-f989-443b-b66d-a11ffada6555] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2025-11-16 18:04:56,492 DEBUG [a4e89187-f989-443b-b66d-a11ffada6555] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json]
+2025-11-16 18:04:56,494 DEBUG [a4e89187-f989-443b-b66d-a11ffada6555] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [{configUrl=/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8080/api/v1/swagger-ui/oa (truncated)...]
+2025-11-16 18:04:56,497 DEBUG [a4e89187-f989-443b-b66d-a11ffada6555] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:04:56,505 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:04:56,506 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:04:56,506 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:04:56,507 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:04:56,507 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:04:56,507 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /api/v1/swagger-ui/favicon-32x32.png
+2025-11-16 18:04:56,508 DEBUG [bae48dc6-2955-43f4-891c-ac70df83d259] o.s.web.servlet.DispatcherServlet - GET "/api/v1/swagger-ui/favicon-32x32.png", parameters={}
+2025-11-16 18:04:56,509 DEBUG [bae48dc6-2955-43f4-891c-ac70df83d259] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-11-16 18:04:56,517 DEBUG [bae48dc6-2955-43f4-891c-ac70df83d259] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:04:56,527 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:04:56,527 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /v3/api-docs
+2025-11-16 18:04:56,527 DEBUG [60d3844b-fae5-4d0a-8e8c-37eeaeaafb33] o.s.web.servlet.DispatcherServlet - GET "/v3/api-docs", parameters={}
+2025-11-16 18:04:56,529 DEBUG [60d3844b-fae5-4d0a-8e8c-37eeaeaafb33] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2025-11-16 18:04:56,820 INFO  [60d3844b-fae5-4d0a-8e8c-37eeaeaafb33] o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 284 ms
+2025-11-16 18:04:56,825 DEBUG [60d3844b-fae5-4d0a-8e8c-37eeaeaafb33] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, */*] and supported [application/json]
+2025-11-16 18:04:56,827 DEBUG [60d3844b-fae5-4d0a-8e8c-37eeaeaafb33] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 49, 46, 48, 34, 44, 34, 105, 110, 10 (truncated)...]
+2025-11-16 18:04:56,827 DEBUG [60d3844b-fae5-4d0a-8e8c-37eeaeaafb33] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:04:58,935 INFO  [] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-11-16 18:04:58,935 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 18:04:58,935 INFO  [] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:58,948 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 18:04:58,949 INFO  [] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:04:58,953 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:04:58,955 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2025-11-16 18:04:58,955 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2025-11-16 18:04:59,105 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 3936 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 18:04:59,105 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 18:04:59,105 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 18:04:59,646 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:04:59,646 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 18:04:59,676 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 27 ms. Found 2 JPA repository interfaces.
+2025-11-16 18:04:59,683 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:04:59,684 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 18:04:59,693 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:04:59,693 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:04:59,693 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+2025-11-16 18:05:00,083 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 18:05:00,083 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:05:00,083 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 18:05:00,083 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 18:05:00,150 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 18:05:00,150 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1045 ms
+2025-11-16 18:05:00,158 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 18:05:00,158 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 18:05:00,237 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2025-11-16 18:05:01,746 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1eca5
+2025-11-16 18:05:01,746 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2025-11-16 18:05:02,260 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 18:05:04,203 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.816s)
+2025-11-16 18:05:05,936 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 18:05:06,034 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 18:05:07,144 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 18:05:07,144 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 18:05:07,176 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 18:05:07,369 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 18:05:07,592 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 18:05:09,118 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:05:09,577 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 18:05:09,577 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 18:05:09,911 WARN  [] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 18:05:10,019 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerMapping - 16 mappings in 'requestMappingHandlerMapping'
+2025-11-16 18:05:10,134 DEBUG [] o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**, /api/v1/swagger-ui*/*swagger-initializer.js, /api/v1/swagger-ui*/**] in 'resourceHandlerMapping'
+2025-11-16 18:05:10,186 TRACE [] o.s.s.c.a.a.c.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer - Eagerly initializing {securityConfig=com.reputeai.server.reputeai.security.SecurityConfig$$SpringCGLIB$$0@36847a85}
+2025-11-16 18:05:10,190 DEBUG [] o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-11-16 18:05:10,303 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-11-16 18:05:10,321 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:05:10,321 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]
+2025-11-16 18:05:10,321 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:05:10,321 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]
+2025-11-16 18:05:10,321 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:05:10,321 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]
+2025-11-16 18:05:10,321 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:05:10,321 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]
+2025-11-16 18:05:10,321 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:05:10,321 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]
+2025-11-16 18:05:10,321 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:05:10,321 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]
+2025-11-16 18:05:10,321 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:05:10,321 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]
+2025-11-16 18:05:10,321 WARN  [] o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2025-11-16 18:05:10,321 DEBUG [] o.s.s.web.DefaultSecurityFilterChain - Will not secure Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]
+2025-11-16 18:05:10,487 DEBUG [] o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-11-16 18:05:10,522 DEBUG [] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-11-16 18:05:10,751 INFO  [] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-16 18:05:10,764 INFO  [] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:05:10,764 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-11-16 18:05:10,784 INFO  [] c.r.s.reputeai.ReputeaiApplication - Started ReputeaiApplication in 11.738 seconds (process running for 7089.686)
+2025-11-16 18:05:10,786 INFO  [] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-16 18:05:10,786 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2025-11-16 18:05:10,786 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /api/v1/docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-16 18:05:49,835 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-16 18:05:49,835 INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-16 18:05:49,836 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-11-16 18:05:49,836 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-11-16 18:05:49,836 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-11-16 18:05:49,837 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3c70b5b5
+2025-11-16 18:05:49,837 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@3605a744
+2025-11-16 18:05:49,837 DEBUG [] o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-11-16 18:05:49,837 INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-11-16 18:05:49,837 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:05:49,837 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:05:49,837 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:05:49,837 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:05:49,837 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:05:49,837 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /api/v1/swagger-ui/index.html
+2025-11-16 18:05:49,837 DEBUG [a2c3b07c-a9c1-4861-8e05-f8fa819ead27] o.s.web.servlet.DispatcherServlet - GET "/api/v1/swagger-ui/index.html", parameters={}
+2025-11-16 18:05:49,837 DEBUG [a2c3b07c-a9c1-4861-8e05-f8fa819ead27] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-11-16 18:05:49,837 DEBUG [a2c3b07c-a9c1-4861-8e05-f8fa819ead27] o.s.web.servlet.DispatcherServlet - Completed 304 NOT_MODIFIED
+2025-11-16 18:05:49,896 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:05:49,896 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:05:49,896 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:05:49,896 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:05:49,897 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:05:49,897 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /api/v1/swagger-ui/swagger-initializer.js
+2025-11-16 18:05:49,897 DEBUG [6cc0d29d-9346-4d25-9fb2-5dd5281f24ca] o.s.web.servlet.DispatcherServlet - GET "/api/v1/swagger-ui/swagger-initializer.js", parameters={}
+2025-11-16 18:05:49,898 DEBUG [6cc0d29d-9346-4d25-9fb2-5dd5281f24ca] o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2025-11-16 18:05:49,901 DEBUG [6cc0d29d-9346-4d25-9fb2-5dd5281f24ca] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:05:50,076 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:05:50,077 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /v3/api-docs/swagger-config
+2025-11-16 18:05:50,077 DEBUG [6cce707e-d6c3-4231-b0af-53639f7d3030] o.s.web.servlet.DispatcherServlet - GET "/v3/api-docs/swagger-config", parameters={}
+2025-11-16 18:05:50,078 DEBUG [6cce707e-d6c3-4231-b0af-53639f7d3030] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springdoc.webmvc.ui.SwaggerConfigResource#openapiJson(HttpServletRequest)
+2025-11-16 18:05:50,081 DEBUG [6cce707e-d6c3-4231-b0af-53639f7d3030] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json]
+2025-11-16 18:05:50,082 DEBUG [6cce707e-d6c3-4231-b0af-53639f7d3030] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [{configUrl=/v3/api-docs/swagger-config, oauth2RedirectUrl=http://localhost:8080/api/v1/swagger-ui/oa (truncated)...]
+2025-11-16 18:05:50,085 DEBUG [6cce707e-d6c3-4231-b0af-53639f7d3030] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:05:50,093 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:05:50,093 TRACE [] o.s.security.web.FilterChainProxy - No security for GET /v3/api-docs
+2025-11-16 18:05:50,093 DEBUG [d916ce96-69fb-47f4-94fa-2dc983446279] o.s.web.servlet.DispatcherServlet - GET "/v3/api-docs", parameters={}
+2025-11-16 18:05:50,093 DEBUG [d916ce96-69fb-47f4-94fa-2dc983446279] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springdoc.webmvc.api.OpenApiWebMvcResource#openapiJson(HttpServletRequest, String, Locale)
+2025-11-16 18:05:50,304 INFO  [d916ce96-69fb-47f4-94fa-2dc983446279] o.s.api.AbstractOpenApiResource - Init duration for springdoc-openapi is: 207 ms
+2025-11-16 18:05:50,312 DEBUG [d916ce96-69fb-47f4-94fa-2dc983446279] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json, */*] and supported [application/json]
+2025-11-16 18:05:50,314 DEBUG [d916ce96-69fb-47f4-94fa-2dc983446279] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Writing [{123, 34, 111, 112, 101, 110, 97, 112, 105, 34, 58, 34, 51, 46, 49, 46, 48, 34, 44, 34, 105, 110, 10 (truncated)...]
+2025-11-16 18:05:50,316 DEBUG [d916ce96-69fb-47f4-94fa-2dc983446279] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:06:50,740 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]] and having filters [] (6/9)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]] and having filters [] (7/9)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]] and having filters [] (8/9)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/reputeai/server/reputeai/security/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, JwtAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (9/9)
+2025-11-16 18:06:50,741 DEBUG [] o.s.security.web.FilterChainProxy - Securing POST /api/v1/auth/signup
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [Ant [pattern='/logout', GET], Ant [pattern='/logout', POST], Ant [pattern='/logout', PUT], Ant [pattern='/logout', DELETE]]
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking JwtAuthenticationFilter (7/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (8/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (9/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (10/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (11/13)
+2025-11-16 18:06:50,741 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 18:06:50,744 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-16 18:06:50,744 DEBUG [] o.s.s.w.s.SessionManagementFilter - Request requested invalid session id DDCE417501A41932347ADDBC01C78AAB
+2025-11-16 18:06:50,744 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (12/13)
+2025-11-16 18:06:50,744 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (13/13)
+2025-11-16 18:06:50,744 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing POST /api/v1/auth/signup
+2025-11-16 18:06:50,744 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on POST /api/v1/auth/signup using org.springframework.security.authorization.SingleResultAuthorizationManager@614ccd34
+2025-11-16 18:06:50,744 DEBUG [] o.s.security.web.FilterChainProxy - Secured POST /api/v1/auth/signup
+2025-11-16 18:06:50,744 DEBUG [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.web.servlet.DispatcherServlet - POST "/api/v1/auth/signup", parameters={}
+2025-11-16 18:06:50,744 DEBUG [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.reputeai.server.reputeai.controller.AuthController#signUp(RegisterRequestDto)
+2025-11-16 18:06:50,752 DEBUG [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [RegisterRequestDto(firstName=string, lastName=string, email=user@example.com, password=stringst)]
+2025-11-16 18:06:51,709 DEBUG [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Using @ExceptionHandler com.reputeai.server.reputeai.exception.GlobalExceptionHandler#handleApiException(ApiException)
+2025-11-16 18:06:51,709 WARN  [bbb272df-9a10-4673-93dd-5c766638cdd7] c.r.s.r.e.GlobalExceptionHandler - API error: CONFLICT - Email already in use
+2025-11-16 18:06:51,711 DEBUG [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json, application/yaml]
+2025-11-16 18:06:51,719 DEBUG [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [ErrorResponse[traceId=bbb272df-9a10-4673-93dd-5c766638cdd7, errorCode=CONFLICT, message=Email alread (truncated)...]
+2025-11-16 18:06:51,721 TRACE [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 18:06:51,722 WARN  [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.reputeai.server.reputeai.exception.ConflictException: Email already in use]
+2025-11-16 18:06:51,722 DEBUG [bbb272df-9a10-4673-93dd-5c766638cdd7] o.s.web.servlet.DispatcherServlet - Completed 409 CONFLICT
