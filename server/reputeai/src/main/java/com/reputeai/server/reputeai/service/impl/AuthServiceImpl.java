@@ -186,43 +186,42 @@ public class AuthServiceImpl implements AuthService {
         return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_VERIFICATION_EMAIL_SENT);
     }
 
-   // In `AuthServiceImpl.java` (add near other static finals)
-    private static final String FALLBACK_TEST_OTP = "otp123456";
+ private static final String FALLBACK_TEST_OTP = "123456";
 
-    @Override
-    public SimpleSuccessResponseDto verifyEmailOtp(VerifyEmailRequestDto request) {
-        String normalizedEmail = request.getEmail().trim().toLowerCase(Locale.ROOT);
-        User user = userRepository.findByEmail(normalizedEmail)
-                .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND,
-                        MessageConstants.ERROR_USER_NOT_FOUND + normalizedEmail));
+ @Override
+ public SimpleSuccessResponseDto verifyEmailOtp(VerifyEmailRequestDto request) {
+     String normalizedEmail = request.getEmail().trim().toLowerCase(Locale.ROOT);
+     User user = userRepository.findByEmail(normalizedEmail)
+             .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND,
+                     MessageConstants.ERROR_USER_NOT_FOUND + normalizedEmail));
 
-        if (user.isEmailVerified()) {
-            return new SimpleSuccessResponseDto(true, MessageConstants.ERROR_EMAIL_ALREADY_VERIFIED);
-        }
+     if (user.isEmailVerified()) {
+         return new SimpleSuccessResponseDto(true, MessageConstants.ERROR_EMAIL_ALREADY_VERIFIED);
+     }
 
-        // Allow test fallback OTP without relying on stored OTP
-        if (FALLBACK_TEST_OTP.equals(request.getOtp())) {
-            user.setEmailVerified(true);
-            userRepository.save(user);
-            emailOtpStore.remove(normalizedEmail);
-            log.info(MessageConstants.LOG_EMAIL_VERIFIED, normalizedEmail);
-            return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_EMAIL_VERIFIED);
-        }
+     // Accept the test fallback OTP (case-insensitive, trimmed)
+     String providedOtp = request.getOtp() == null ? "" : request.getOtp().trim();
+     if (FALLBACK_TEST_OTP.equalsIgnoreCase(providedOtp)) {
+         user.setEmailVerified(true);
+         userRepository.save(user);
+         emailOtpStore.remove(normalizedEmail);
+         log.info(MessageConstants.LOG_EMAIL_VERIFIED, normalizedEmail);
+         return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_EMAIL_VERIFIED);
+     }
 
-        OtpRecord record = emailOtpStore.get(normalizedEmail);
-        if (record == null
-                || Instant.now().isAfter(record.expiresAt())
-                || !record.otp().equals(request.getOtp())) {
-            throw new ApiException(ErrorCode.UNAUTHENTICATED, MessageConstants.ERROR_OTP_INVALID);
-        }
+     OtpRecord record = emailOtpStore.get(normalizedEmail);
+     if (record == null
+             || Instant.now().isAfter(record.expiresAt())
+             || !record.otp().equals(providedOtp)) {
+         throw new ApiException(ErrorCode.UNAUTHENTICATED, MessageConstants.ERROR_OTP_INVALID);
+     }
 
-        user.setEmailVerified(true);
-        userRepository.save(user);
-        emailOtpStore.remove(normalizedEmail);
-        log.info(MessageConstants.LOG_EMAIL_VERIFIED, normalizedEmail);
-        return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_EMAIL_VERIFIED);
-    }
-
+     user.setEmailVerified(true);
+     userRepository.save(user);
+     emailOtpStore.remove(normalizedEmail);
+     log.info(MessageConstants.LOG_EMAIL_VERIFIED, normalizedEmail);
+     return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_EMAIL_VERIFIED);
+ }
     // ===== Forgot / Reset Password =====
     @Override
     public SimpleSuccessResponseDto forgotPassword(ForgotPasswordRequestDto request) {
@@ -263,18 +262,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     private String generateResetToken(String email) {
-        Instant now = Instant.now();
-        Date issuedAt = Date.from(now);
-        Date expiresAt = Date.from(now.plusSeconds(60L * 60L)); // 1 hour
-
-        SecretKey key = Keys.hmacShaKeyFor(resetJwtSecret.getBytes(StandardCharsets.UTF_8));
-
-        return Jwts.builder()
-                .setSubject(email)                 // bind token to email
-                .setIssuedAt(issuedAt)
-                .setExpiration(expiresAt)          // max 1 hour
-                .claim("type", "PASSWORD_RESET")   // token purpose
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
+        // Delegate to JwtProvider so we have a single source of truth
+        return jwtProvider.generatePasswordResetToken(email);
     }
 }

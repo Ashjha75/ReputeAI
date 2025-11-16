@@ -35,6 +35,7 @@ public class JwtProvider {
     private final SecretKey hmacKey;     // used when RSA not available
     private final long jwtExpirationMs;
     private final long refreshTokenDurationMs;
+    private final long resetTokenDurationMs; // new: reset token TTL
     private final boolean rsaMode;
 
     private final RefreshTokenRepository refreshTokenRepository;
@@ -45,6 +46,7 @@ public class JwtProvider {
                        @Value("${jwt.public-key}") String publicKeyStr,
                        @Value("${jwt.expiration-ms}") long jwtExpirationMs,
                        @Value("${jwt.refresh-token.expiration-ms}") long refreshTokenDurationMs,
+                       @Value("${jwt.reset-token.expiration-ms:3600000}") long resetTokenDurationMs,
                        @Value("${app.jwtSecret:}") String hmacSecret,
                        RefreshTokenRepository refreshTokenRepository,
                        UserRepository userRepository) {
@@ -82,6 +84,7 @@ public class JwtProvider {
         this.hmacKey = hk;
         this.jwtExpirationMs = jwtExpirationMs;
         this.refreshTokenDurationMs = refreshTokenDurationMs;
+        this.resetTokenDurationMs = resetTokenDurationMs;
         this.rsaMode = useRsa;
         this.refreshTokenRepository = refreshTokenRepository;
         this.userRepository = userRepository;
@@ -117,6 +120,25 @@ public class JwtProvider {
                 .issuedAt(now)
                 .expiration(expiryDate);
 
+        if (rsaMode) {
+            return builder.signWith(privateKey, Jwts.SIG.RS256).compact();
+        } else {
+            return builder.signWith(hmacKey, Jwts.SIG.HS256).compact();
+        }
+    }
+
+    /**
+     * Generates a signed password-reset JWT bound to the user's email.
+     * Default TTL is 1 hour (configurable via jwt.reset-token.expiration-ms).
+     */
+    public String generatePasswordResetToken(String email) {
+        Date now = new Date();
+        Date exp = new Date(now.getTime() + resetTokenDurationMs);
+        var builder = Jwts.builder()
+                .subject(email)
+                .claim("type", "PASSWORD_RESET")
+                .issuedAt(now)
+                .expiration(exp);
         if (rsaMode) {
             return builder.signWith(privateKey, Jwts.SIG.RS256).compact();
         } else {
