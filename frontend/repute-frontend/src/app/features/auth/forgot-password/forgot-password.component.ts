@@ -70,14 +70,17 @@ export class ForgotPasswordComponent {
     this.authService.forgotPassword({ email: this.emailForm.value.email }).subscribe({
       next: (res: any) => {
         this.isLoading = false;
-        this.apiMessage = res?.message || 'Reset link sent to your email.';
+        const msg = res?.message || 'Password reset link generated (simulated).';
+        this.apiMessage = msg;
+        this.notificationService.success(msg);
       },
       error: (err) => {
         this.isLoading = false;
-        this.apiMessage = err?.error?.message || err?.message || 'Failed to send reset link.';
+        const msg = err?.error?.message || err?.message || 'Failed to send reset link.';
+        this.apiMessage = msg;
+        this.notificationService.error(msg);
       }
     });
-  }
   }
 
   onSubmit() {

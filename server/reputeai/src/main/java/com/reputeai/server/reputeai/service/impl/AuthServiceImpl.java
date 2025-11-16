@@ -230,6 +230,7 @@ public class AuthServiceImpl implements AuthService {
         userRepository.findByEmail(normalizedEmail)
                 .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND, MessageConstants.ERROR_USER_NOT_FOUND + normalizedEmail));
         String token = generateResetToken(normalizedEmail);
+        log.info(token,"⛈️⛈️🎂");
         passwordResetStore.put(normalizedEmail, new ResetRecord(token, Instant.now().plusSeconds(RESET_TTL_MINUTES * 60L)));
         log.info(MessageConstants.LOG_FORGOT_PASSWORD_REQUEST, normalizedEmail);
         log.debug("Generated reset token {} for email {} (expires {} minutes)", token, normalizedEmail, RESET_TTL_MINUTES);
