@@ -1,19 +1,19 @@
 package com.reputeai.server.reputeai.service.impl;
 
+import com.reputeai.server.reputeai.constants.MessageConstants;
 import com.reputeai.server.reputeai.domain.dto.ChangePasswordRequestDto;
 import com.reputeai.server.reputeai.domain.dto.UserDto;
 import com.reputeai.server.reputeai.domain.dto.UserProfileDto;
 import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
+import com.reputeai.server.reputeai.exception.ApiException;
 import com.reputeai.server.reputeai.exception.BadRequestException;
-import com.reputeai.server.reputeai.exception.UnauthorizedException;
-import com.reputeai.server.reputeai.repository.RoleRepository;
+import com.reputeai.server.reputeai.exception.ErrorCode;
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.service.UserService;
 import com.reputeai.server.reputeai.util.ApplicationMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.MDC;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,22 +32,21 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
     private final ApplicationMapper mapper;
     private final PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        log.info("Executing loadUserByUsername for {}.", email);
+        log.info(MessageConstants.LOG_LOADING_USER, email);
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+                .orElseThrow(() -> new UsernameNotFoundException(MessageConstants.ERROR_USER_NOT_FOUND + email));
 
         Collection<? extends GrantedAuthority> authorities = getAuthorities(user.getRoles());
 
         // debug-friendly log: authorities should be strings, not entity toString()
-        log.info("Final authorities loaded for user {}: {}", email, authorities.stream()
+        log.info(MessageConstants.LOG_AUTHORITIES_LOADED, email, authorities.stream()
                 .map(GrantedAuthority::getAuthority).collect(Collectors.toList()));
 
         // Use the actual fields on your entity. Adjust if your entity uses different names.
@@ -88,17 +87,17 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public UserDto findUserById(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
+                .orElseThrow(() -> new RuntimeException(MessageConstants.ERROR_USER_NOT_FOUND_BY_ID + id));
         return mapper.toUserDto(user);
     }
 
     @Override
     @Transactional(readOnly = true)
     public UserProfileDto getUserProfile(String email) {
-        log.info("Fetching user profile for email: {}", email);
+        log.info(MessageConstants.LOG_FETCHING_PROFILE, email);
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+                .orElseThrow(() -> new UsernameNotFoundException(MessageConstants.ERROR_USER_NOT_FOUND + email));
 
         // Map to UserProfileDto (excluding sensitive information)
         UserProfileDto profile = new UserProfileDto();
@@ -134,41 +133,41 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toSet());
         profile.setPermissions(permissionNames);
 
-        log.info("Successfully fetched profile for user: {}", email);
+        log.info(MessageConstants.LOG_PROFILE_FETCHED, email);
         return profile;
     }
 
     @Override
     @Transactional
     public void changePassword(String userEmail, ChangePasswordRequestDto request) {
-        log.info("Attempting to change password for user: {}", userEmail);
+        log.info(MessageConstants.LOG_PASSWORD_CHANGE_ATTEMPT, userEmail);
 
         // 1. Validate that new password and confirmation match
         if (!request.getNewPassword().equals(request.getConfirmPassword())) {
-            log.warn("Password change failed for {}: New password and confirmation do not match", userEmail);
-            throw new BadRequestException("New password and confirmation do not match");
+            log.warn(MessageConstants.LOG_PASSWORD_MISMATCH, userEmail);
+            throw new BadRequestException(MessageConstants.ERROR_PASSWORD_MISMATCH);
         }
 
         // 2. Validate that new password is different from current password
         if (request.getCurrentPassword().equals(request.getNewPassword())) {
-            log.warn("Password change failed for {}: New password must be different from current password", userEmail);
-            throw new BadRequestException("New password must be different from current password");
+            log.warn(MessageConstants.LOG_PASSWORD_SAME, userEmail);
+            throw new BadRequestException(MessageConstants.ERROR_PASSWORD_SAME_AS_CURRENT);
         }
 
         // 3. Find the user by email
         User user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new RuntimeException("User not found with email: " + userEmail));
+                .orElseThrow(() -> new RuntimeException(MessageConstants.ERROR_USER_NOT_FOUND + userEmail));
 
         // 4. Verify current password
         if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPasswordHash())) {
-            log.warn("Password change failed for {}: Current password is incorrect", userEmail);
-            throw new UnauthorizedException("Current password is incorrect");
+            log.warn(MessageConstants.LOG_PASSWORD_INCORRECT, userEmail);
+            throw new ApiException(ErrorCode.RESOURCE_NOT_FOUND, MessageConstants.ERROR_CURRENT_PASSWORD_INCORRECT);
         }
 
         // 5. Update password with new hashed password
         user.setPasswordHash(passwordEncoder.encode(request.getNewPassword()));
         userRepository.save(user);
 
-        log.info("Password changed successfully for user: {}", userEmail);
+        log.info(MessageConstants.LOG_PASSWORD_CHANGED, userEmail);
     }
 }
