@@ -165,8 +165,11 @@ public class JwtProvider {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
 
-        // Delete existing refresh token for this user
-        refreshTokenRepository.deleteByUser(user);
+        // Find and delete existing refresh token for this user
+        refreshTokenRepository.findByUser(user).ifPresent(existingToken -> {
+            refreshTokenRepository.delete(existingToken);
+            refreshTokenRepository.flush(); // Force delete to complete before insert
+        });
 
         RefreshToken refreshToken = RefreshToken.builder()
                 .user(user)
