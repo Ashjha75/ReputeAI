@@ -1,13 +1,14 @@
 /* Glassmorphism Loading Overlay */
+
 .loading-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(16px) saturate(250%);
+  -webkit-backdrop-filter: blur(16px) saturate(250%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,71 +20,56 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
-/* Rotating Squares Animation */
-.rotating-squares {
+
+/* New Circular Loader with 5 Dots */
+.rotating-dots {
   position: relative;
-  width: 60px;
-  height: 60px;
-  transform: rotate(45deg);
+  width: 64px;
+  height: 64px;
+  animation: loader-rotate 1.2s linear infinite;
 }
-
-.rotating-squares .square {
+.rotating-dots .dot {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  background: #000;
-  border-radius: 4px;
-  animation: rotateSquares 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: #111;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-24px);
+  opacity: 0.8;
+  animation: loader-dot-fade 1.2s linear infinite;
 }
+.rotating-dots .dot:nth-child(1) { --angle: 0deg;   animation-delay: 0s; }
+.rotating-dots .dot:nth-child(2) { --angle: 72deg;  animation-delay: 0.24s; }
+.rotating-dots .dot:nth-child(3) { --angle: 144deg; animation-delay: 0.48s; }
+.rotating-dots .dot:nth-child(4) { --angle: 216deg; animation-delay: 0.72s; }
+.rotating-dots .dot:nth-child(5) { --angle: 288deg; animation-delay: 0.96s; }
 
-.rotating-squares .square:nth-child(1) {
-  top: 0;
-  left: 0;
-  animation-delay: 0s;
+@keyframes loader-rotate {
+  100% { transform: rotate(360deg); }
 }
-
-.rotating-squares .square:nth-child(2) {
-  top: 0;
-  right: 0;
-  animation-delay: 0.3s;
-}
-
-.rotating-squares .square:nth-child(3) {
-  bottom: 0;
-  right: 0;
-  animation-delay: 0.6s;
-}
-
-.rotating-squares .square:nth-child(4) {
-  bottom: 0;
-  left: 0;
-  animation-delay: 0.9s;
-}
-
-@keyframes rotateSquares {
-  0% {
-    transform: scale(1) rotate(0deg);
+@keyframes loader-dot-fade {
+  0%, 100% {
     opacity: 1;
+    background: #181818;
   }
   50% {
-    transform: scale(0.6) rotate(180deg);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1) rotate(360deg);
-    opacity: 1;
+    opacity: 0.2;
+    background: #111;
   }
 }
 
 .loading-text {
-  font-size: 16px;
-  font-weight: 500;
-  color: #1f2937;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
   letter-spacing: 0.5px;
-  animation: pulse 1.5s ease-in-out infinite;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: textFloat 2s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
@@ -95,11 +81,13 @@
   }
 }
 
-@keyframes pulse {
+@keyframes textFloat {
   0%, 100% {
     opacity: 1;
+    transform: translateY(0);
   }
   50% {
-    opacity: 0.6;
+    opacity: 0.7;
+    transform: translateY(-5px);
   }
 }
