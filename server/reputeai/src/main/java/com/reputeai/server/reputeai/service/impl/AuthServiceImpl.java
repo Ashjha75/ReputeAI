@@ -118,8 +118,5 @@ public class AuthServiceImpl implements AuthService {
         );
     }
 
-    @Override
-    public LoginResponseDto refreshToken(String refreshToken) {
-        throw new UnsupportedOperationException("Refresh token logic not yet implemented.");
-    }
+
 }
