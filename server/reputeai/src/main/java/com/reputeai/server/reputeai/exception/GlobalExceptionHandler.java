@@ -1,113 +1,117 @@
 package com.reputeai.server.reputeai.exception;
 
+import com.reputeai.server.reputeai.domain.dto.ErrorDetail;
 import com.reputeai.server.reputeai.domain.dto.ErrorResponse;
-import jakarta.validation.ConstraintViolationException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.stream.Collectors;
 
-/**
- * Global exception handler for all API exceptions.
- * Centralizes error mapping, logging, and response formatting.
- */
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    /**
-     * Build standardized error response with traceId from MDC.
-     */
-    private ErrorResponse build(ErrorCode code, String message, List<String> details) {
-        String traceId = MDC.get("traceId");
-        return new ErrorResponse(
-            traceId != null ? traceId : "N/A",
-            code.name(),
-            message,
-            details == null ? List.of() : details,
-            Instant.now().toEpochMilli()
-        );
+    // Validation errors (400) — returns list of field errors
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handleValidationException(MethodArgumentNotValidException ex,
+                                                                   HttpServletRequest request) {
+        List<ErrorDetail> details = ex.getBindingResult()
+                .getFieldErrors()
+                .stream()
+                .map(fe -> new ErrorDetail(fe.getField(), fe.getDefaultMessage()))
+                .collect(Collectors.toList());
+
+        log.warn("Validation failed for {}: {}", request.getRequestURI(), details);
+        ErrorResponse body = build(ErrorCode.VALIDATION_ERROR, "Request validation failed", details);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
 
-    /**
-     * Handle all custom ApiException subtypes (NotFoundException, ConflictException, etc.).
-     */
+    // Malformed JSON (400)
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleMalformedJson(HttpMessageNotReadableException ex,
+                                                             HttpServletRequest request) {
+        log.warn("Malformed JSON for {}: {}", request.getRequestURI(), ex.getMessage());
+        ErrorResponse body = build(ErrorCode.BAD_REQUEST, "Request body is malformed or contains invalid JSON", null);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
+    // Bad credentials (401)
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleBadCredentials(BadCredentialsException ex,
+                                                              HttpServletRequest request) {
+        log.warn("Authentication failed for {}: {}", request.getRequestURI(), ex.getMessage());
+        ErrorResponse body = build(ErrorCode.UNAUTHORIZED, "Invalid credentials", null);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
+    }
+
+    // Access denied (403)
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ErrorResponse> handleAccessDenied(AccessDeniedException ex,
+                                                            HttpServletRequest request) {
+        log.warn("Access denied for {}: {}", request.getRequestURI(), ex.getMessage());
+        ErrorResponse body = build(ErrorCode.FORBIDDEN, "You do not have permission to access this resource", null);
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(body);
+    }
+
+    // DB constraint or explicit conflict (409)
+//    @ExceptionHandler({DataIntegrityViolationException.class, EmailAlreadyExistsException.class})
+//    public ResponseEntity<ErrorResponse> handleConflict(Exception ex, HttpServletRequest request) {
+//        log.warn("Data conflict for {}: {}", request.getRequestURI(), ex.getMessage());
+//        ErrorResponse body = build(ErrorCode.DATABASE_ERROR, "Resource conflict: the resource likely already exists", null);
+//        return ResponseEntity.status(HttpStatus.CONFLICT).body(body);
+//    }
+
+    // Application-specific ApiException — map to appropriate HTTP status
     @ExceptionHandler(ApiException.class)
-    public ResponseEntity<ErrorResponse> handleApiException(ApiException ex) {
-        ErrorResponse body = build(ex.getCode(), ex.getMessage(), null);
-        HttpStatus status = mapStatus(ex.getCode());
-        log.warn("API error: {} - {}", ex.getCode(), ex.getMessage());
+    public ResponseEntity<ErrorResponse> handleApiException(ApiException ex, HttpServletRequest request) {
+        ErrorCode code = ex.getCode();
+        HttpStatus status = mapToHttpStatus(code);
+        log.warn("API exception for {}: code={}, message={}", request.getRequestURI(), code, ex.getMessage());
+        ErrorResponse body = build(code, ex.getMessage(), null);
         return ResponseEntity.status(status).body(body);
     }
 
-    /**
-     * Handle Spring validation errors (@Valid on DTOs).
-     * Returns field-level validation messages.
-     */
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponse> handleValidationException(MethodArgumentNotValidException ex) {
-        List<String> details = ex.getBindingResult().getFieldErrors()
-            .stream()
-            .map(f -> f.getField() + ": " + f.getDefaultMessage())
-            .toList();
-        ErrorResponse body = build(ErrorCode.VALIDATION_ERROR, "Validation failed", details);
-        log.info("Validation failed: {}", details);
-        return ResponseEntity.badRequest().body(body);
-    }
-
-    /**
-     * Handle malformed JSON and constraint violations.
-     */
-    @ExceptionHandler({HttpMessageNotReadableException.class, ConstraintViolationException.class})
-    public ResponseEntity<ErrorResponse> handleBadRequest(Exception ex) {
-        ErrorResponse body = build(ErrorCode.BAD_REQUEST, ex.getMessage(), null);
-        log.info("Bad request: {}", ex.getMessage());
-        return ResponseEntity.badRequest().body(body);
-    }
-
-    /**
-     * Handle database/data access errors.
-     */
-    @ExceptionHandler(DataAccessException.class)
-    public ResponseEntity<ErrorResponse> handleDataAccessException(DataAccessException ex) {
-        List<String> details = List.of(ex.getMostSpecificCause().getMessage());
-        ErrorResponse body = build(ErrorCode.DATA_ACCESS_ERROR, "Data error", details);
-        log.error("Data access error", ex);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
-    }
-
-    /**
-     * Catch-all for unexpected exceptions.
-     * Never expose internal details to clients.
-     */
+    // Catch-all (500)
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleGenericException(Exception ex) {
-        ErrorResponse body = build(ErrorCode.INTERNAL_ERROR, "Internal server error", null);
-        log.error("Unhandled exception", ex);
+    public ResponseEntity<ErrorResponse> handleGenericException(Exception ex, HttpServletRequest request) {
+        log.error("Unhandled exception for {}: {}", request.getRequestURI(), ex.getMessage(), ex);
+        ErrorResponse body = build(ErrorCode.INTERNAL_ERROR,
+                "An unexpected internal error occurred. Provide the traceId to support.",
+                null);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
     }
 
-    /**
-     * Map ErrorCode to HTTP status code.
-     */
-    private HttpStatus mapStatus(ErrorCode code) {
+    /* Helper: create ErrorResponse and attach traceId from MDC */
+    private ErrorResponse build(ErrorCode code, String message, List<ErrorDetail> details) {
+        return new ErrorResponse(
+                MDC.get("traceId"),
+                code.name(),
+                message,
+                details,
+                Instant.now()
+        );
+    }
+
+    /* Helper: map ErrorCode -> HttpStatus for ApiException cases */
+    private HttpStatus mapToHttpStatus(ErrorCode code) {
         return switch (code) {
             case VALIDATION_ERROR, BAD_REQUEST -> HttpStatus.BAD_REQUEST;
-            case RESOURCE_NOT_FOUND -> HttpStatus.NOT_FOUND;
             case CONFLICT -> HttpStatus.CONFLICT;
             case UNAUTHORIZED -> HttpStatus.UNAUTHORIZED;
             case FORBIDDEN -> HttpStatus.FORBIDDEN;
-            case DATA_ACCESS_ERROR, INTERNAL_ERROR -> HttpStatus.INTERNAL_SERVER_ERROR;
+            case RESOURCE_NOT_FOUND -> HttpStatus.NOT_FOUND;
+            case INTERNAL_ERROR, DATA_ACCESS_ERROR -> HttpStatus.INTERNAL_SERVER_ERROR;
         };
     }
 }
-
