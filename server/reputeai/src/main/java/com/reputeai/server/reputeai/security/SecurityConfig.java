@@ -25,16 +25,20 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(AbstractHttpConfigurer::disable) // Or configure with your CorsConfigurationSource bean
+                .cors(AbstractHttpConfigurer::disable)
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // Public endpoints for authentication and documentation
+                        // Public endpoints for authentication, documentation, actuator, and static resources
                         .requestMatchers(
                                 "/api/v1/auth/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
-                                "/swagger-ui.html"
+                                "/swagger-ui.html",
+                                "/api/v1/docs/**",
+                                "/actuator/health",
+                                "/favicon.ico",
+                                "/error"
                         ).permitAll()
                         // All other requests must be authenticated
                         .anyRequest().authenticated()
