@@ -38,12 +38,46 @@ export class ChangePasswordComponent {
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]]
     }, { validators: this.passwordMatchValidator });
-  }
+    
+    // Update validity as user types so UI messages are realtime
+    this.changePasswordForm.valueChanges.subscribe(() => {
+      // Trigger validations and update control errors for current/new equality
+      const current = this.changePasswordForm.get('currentPassword')?.value;
+      const newP = this.changePasswordForm.get('newPassword')?.value;
+
+      const currentCtrl = this.changePasswordForm.get('currentPassword');
+      if (currentCtrl) {
+        if (current && newP && current !== newP) {
+          currentCtrl.setErrors({ ...currentCtrl.errors, oldMismatch: true });
+        } else {
+          // remove oldMismatch but keep other errors
+          const errors = { ...currentCtrl.errors };
+          if (errors) {
+            delete errors['oldMismatch'];
+            if (Object.keys(errors).length === 0) {
+              currentCtrl.setErrors(null);
+            } else {
+              currentCtrl.setErrors(errors);
+            }
+          }
+        }
+      }
+    });
+    }
 
   passwordMatchValidator(g: FormGroup) {
     const newPassword = g.get('newPassword')?.value;
     const confirmPassword = g.get('confirmPassword')?.value;
-    return newPassword === confirmPassword ? null : { mismatch: true };
+    const currentPassword = g.get('currentPassword')?.value;
+
+    const errors: any = {};
+    if (newPassword !== confirmPassword) {
+      errors['mismatch'] = true;
+    }
+    if (currentPassword && newPassword && currentPassword !== newPassword) {
+      errors['oldMismatch'] = true;
+    }
+    return Object.keys(errors).length ? errors : null;
   }
 
   onSubmit() {
@@ -61,4 +95,20 @@ export class ChangePasswordComponent {
   get currentPassword() { return this.changePasswordForm.get('currentPassword'); }
   get newPassword() { return this.changePasswordForm.get('newPassword'); }
   get confirmPassword() { return this.changePasswordForm.get('confirmPassword'); }
+
+  // Password requirement checks (used by template for realtime UI)
+  pwHasMinLength(): boolean {
+    const v = this.newPassword?.value ?? '';
+    return v?.length >= 8;
+  }
+
+  pwHasLettersAndNumbers(): boolean {
+    const v = this.newPassword?.value ?? '';
+    return /[A-Za-z]/.test(v) && /\d/.test(v);
+  }
+
+  pwHasSpecialChar(): boolean {
+    const v = this.newPassword?.value ?? '';
+    return /[!@#$%^&*(),.?":{}|<>\[\]\\/;`~_+=-]/.test(v);
+  }
 }
