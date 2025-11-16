@@ -2,6 +2,7 @@ package com.reputeai.server.reputeai.service.impl;
 
 import com.reputeai.server.reputeai.domain.dto.ChangePasswordRequestDto;
 import com.reputeai.server.reputeai.domain.dto.UserDto;
+import com.reputeai.server.reputeai.domain.dto.UserProfileDto;
 import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
 import com.reputeai.server.reputeai.exception.BadRequestException;
@@ -89,6 +90,52 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
         return mapper.toUserDto(user);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public UserProfileDto getUserProfile(String email) {
+        log.info("Fetching user profile for email: {}", email);
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+
+        // Map to UserProfileDto (excluding sensitive information)
+        UserProfileDto profile = new UserProfileDto();
+        profile.setId(user.getId());
+        profile.setEmail(user.getEmail());
+        profile.setFirstName(user.getFirstName());
+        profile.setLastName(user.getLastName());
+
+        // Compute full name
+        String fullName = "";
+        if (user.getFirstName() != null && !user.getFirstName().isBlank()) {
+            fullName = user.getFirstName();
+            if (user.getLastName() != null && !user.getLastName().isBlank()) {
+                fullName += " " + user.getLastName();
+            }
+        } else if (user.getLastName() != null && !user.getLastName().isBlank()) {
+            fullName = user.getLastName();
+        }
+        profile.setFullName(fullName.isBlank() ? null : fullName);
+
+        profile.setCreatedAt(user.getCreatedAt());
+
+        // Extract role names
+        Set<String> roleNames = user.getRoles().stream()
+                .map(Role::getName)
+                .collect(Collectors.toSet());
+        profile.setRoles(roleNames);
+
+        // Extract permission names
+        Set<String> permissionNames = user.getRoles().stream()
+                .flatMap(role -> role.getPermissions().stream())
+                .map(permission -> permission.getName())
+                .collect(Collectors.toSet());
+        profile.setPermissions(permissionNames);
+
+        log.info("Successfully fetched profile for user: {}", email);
+        return profile;
     }
 
     @Override
