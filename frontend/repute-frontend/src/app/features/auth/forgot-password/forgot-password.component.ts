@@ -27,42 +27,62 @@ import { NotificationService } from '../../../core/services/notification.service
 export class ForgotPasswordComponent {
   forgotPasswordForm: FormGroup;
   isLoading = false;
-  emailSent = false;
-  successMessage?: string;
-  errorMessage?: string;
+  resetSuccess = false;
+  apiMessage?: string;
+  confirmError?: string;
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
     private authService: AuthService,
     private notificationService: NotificationService
   ) {
     this.forgotPasswordForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
+      token: ['', [Validators.required]],
+      newPassword: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required]]
     });
   }
 
   onSubmit() {
-    if (this.forgotPasswordForm.valid) {
-      this.isLoading = true;
-      this.errorMessage = undefined;
-      this.authService.forgotPassword({ email: this.email?.value }).subscribe({
-        next: (res: any) => {
-          this.isLoading = false;
-          this.emailSent = true;
-          const message = res?.data?.message ?? res?.message ?? 'Password reset link generated.';
-          this.successMessage = message;
-          this.notificationService.success(message);
-        },
-        error: (err) => {
-          this.isLoading = false;
-          const message = err?.error?.message || err?.message || 'Failed to send reset link';
-          this.errorMessage = message;
-          this.notificationService.error(message);
-        }
-      });
+    if (this.forgotPasswordForm.invalid) {
+      this.forgotPasswordForm.markAllAsTouched();
+      return;
     }
+    const newPass = this.forgotPasswordForm.value.newPassword;
+    const confirm = this.forgotPasswordForm.value.confirmPassword;
+    if (newPass !== confirm) {
+      this.confirmError = 'New password and confirmation must match';
+      return;
+    }
+    this.confirmError = undefined;
+    this.isLoading = true;
+    this.notificationService.dismiss();
+    this.authService.resetPassword({
+      email: this.forgotPasswordForm.value.email,
+      token: this.forgotPasswordForm.value.token,
+      newPassword: newPass,
+      confirmPassword: confirm
+    }).subscribe({
+      next: (res: any) => {
+        this.isLoading = false;
+        this.resetSuccess = true;
+        const message = res?.data?.message ?? res?.message ?? 'Password has been reset successfully.';
+        this.apiMessage = message;
+        this.notificationService.success(message);
+      },
+      error: (err) => {
+        this.isLoading = false;
+        const message = err?.error?.message || err?.message || 'Password reset failed';
+        this.apiMessage = message;
+        this.notificationService.error(message);
+      }
+    });
   }
 
   get email() { return this.forgotPasswordForm.get('email'); }
+  get token() { return this.forgotPasswordForm.get('token'); }
+  get newPassword() { return this.forgotPasswordForm.get('newPassword'); }
+  get confirmPassword() { return this.forgotPasswordForm.get('confirmPassword'); }
 }
