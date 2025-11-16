@@ -26,12 +26,14 @@ import { NotificationService } from '../../../core/services/notification.service
 })
 export class ForgotPasswordComponent {
   forgotPasswordForm: FormGroup;
+  emailForm: FormGroup;
   isLoading = false;
   resetSuccess = false;
   apiMessage?: string;
   confirmError?: string;
   showNewPassword = false;
   showConfirmPassword = false;
+  showEmailCard = true;
 
   constructor(
     private fb: FormBuilder,
@@ -45,12 +47,37 @@ export class ForgotPasswordComponent {
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]]
     });
+    this.emailForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
     const queryEmail = this.route.snapshot.queryParamMap.get('email') ?? '';
     const queryToken = this.route.snapshot.queryParamMap.get('token') ?? '';
-    this.forgotPasswordForm.patchValue({ email: queryEmail, token: queryToken });
-    if (!queryEmail || !queryToken) {
-      this.apiMessage = 'The reset link is missing required parameters. Please use the link sent to your email.';
+    if (queryEmail && queryToken) {
+      this.forgotPasswordForm.patchValue({ email: queryEmail, token: queryToken });
+      this.showEmailCard = false;
+    } else {
+      this.showEmailCard = true;
     }
+  }
+
+  onSendEmail() {
+    if (this.emailForm.invalid) {
+      this.emailForm.markAllAsTouched();
+      return;
+    }
+    this.isLoading = true;
+    this.apiMessage = undefined;
+    this.authService.forgotPassword({ email: this.emailForm.value.email }).subscribe({
+      next: (res: any) => {
+        this.isLoading = false;
+        this.apiMessage = res?.message || 'Reset link sent to your email.';
+      },
+      error: (err) => {
+        this.isLoading = false;
+        this.apiMessage = err?.error?.message || err?.message || 'Failed to send reset link.';
+      }
+    });
+  }
   }
 
   onSubmit() {
