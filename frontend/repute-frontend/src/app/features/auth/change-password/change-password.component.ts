@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ConfirmModalComponent } from '../../../shared/components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-change-password',
@@ -18,12 +19,14 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    ConfirmModalComponent
   ],
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent {
+  @ViewChild(ConfirmModalComponent) confirmModal!: ConfirmModalComponent;
   changePasswordForm: FormGroup;
   hideCurrentPassword = true;
   hideNewPassword = true;
@@ -73,8 +76,26 @@ export class ChangePasswordComponent {
     const currentPassword = g.get('currentPassword')?.value;
 
     const errors: any = {};
+    // Check for mismatch
     if (newPassword !== confirmPassword) {
       errors['mismatch'] = true;
+      // Set error on confirmPassword control for direct access in template
+      const confirmCtrl = g.get('confirmPassword');
+      if (confirmCtrl && !confirmCtrl.hasError('required')) {
+        confirmCtrl.setErrors({ ...(confirmCtrl.errors || {}), mismatch: true });
+      }
+    } else {
+      // Remove mismatch error if present
+      const confirmCtrl = g.get('confirmPassword');
+      if (confirmCtrl && confirmCtrl.errors && confirmCtrl.errors['mismatch']) {
+        const newErrors = { ...confirmCtrl.errors };
+        delete newErrors['mismatch'];
+        if (Object.keys(newErrors).length === 0) {
+          confirmCtrl.setErrors(null);
+        } else {
+          confirmCtrl.setErrors(newErrors);
+        }
+      }
     }
     if (currentPassword && newPassword && currentPassword === newPassword) {
       errors['sameAsCurrent'] = true;
@@ -94,16 +115,39 @@ export class ChangePasswordComponent {
         this.isLoading = false;
         if (res?.success) {
           // Show success and redirect
-          alert(res?.message || 'Password changed successfully');
-          this.router.navigate(['/']);
+          this.confirmModal.applyConfig({
+            title: 'Success',
+            message: res?.message || 'Password changed successfully',
+            variant: 'update',
+            confirmLabel: 'OK',
+            cancelLabel: ''
+          });
+          this.confirmModal.open();
+          this.confirmModal.confirm.subscribe(() => {
+            this.router.navigate(['/']);
+          });
         } else {
-          alert(res?.message || 'Password change failed');
+          this.confirmModal.applyConfig({
+            title: 'Failed',
+            message: res?.message || 'Password change failed',
+            variant: 'warning',
+            confirmLabel: 'OK',
+            cancelLabel: ''
+          });
+          this.confirmModal.open();
         }
       },
       error: (err) => {
         this.isLoading = false;
         // Show backend error message if present
-        alert(err?.error?.message || err?.message || 'Password change failed');
+        this.confirmModal.applyConfig({
+          title: 'Error',
+          message: err?.error?.message || err?.message || 'Password change failed',
+          variant: 'warning',
+          confirmLabel: 'OK',
+          cancelLabel: ''
+        });
+        this.confirmModal.open();
       }
     });
   }
