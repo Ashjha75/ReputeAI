@@ -86,7 +86,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGenericException(Exception ex, HttpServletRequest request) {
         log.error("Unhandled exception for {}: {}", request.getRequestURI(), ex.getMessage(), ex);
-        ErrorResponse body = build(ErrorCode.INTERNAL_ERROR,
+        ErrorResponse body = build(ErrorCode.INTERNAL_SERVER_ERROR,
                 "An unexpected internal error occurred. Provide the traceId to support.",
                 null);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
@@ -99,7 +99,8 @@ public class GlobalExceptionHandler {
                 code.name(),
                 message,
                 details,
-                Instant.now()
+                Instant.now(),
+                false
         );
     }
 
@@ -108,10 +109,10 @@ public class GlobalExceptionHandler {
         return switch (code) {
             case VALIDATION_ERROR, BAD_REQUEST -> HttpStatus.BAD_REQUEST;
             case CONFLICT -> HttpStatus.CONFLICT;
-            case UNAUTHORIZED -> HttpStatus.UNAUTHORIZED;
+            case UNAUTHORIZED,UNAUTHENTICATED -> HttpStatus.UNAUTHORIZED;
             case FORBIDDEN -> HttpStatus.FORBIDDEN;
             case RESOURCE_NOT_FOUND -> HttpStatus.NOT_FOUND;
-            case INTERNAL_ERROR, DATA_ACCESS_ERROR -> HttpStatus.INTERNAL_SERVER_ERROR;
+            case INTERNAL_SERVER_ERROR, DATA_ACCESS_ERROR -> HttpStatus.INTERNAL_SERVER_ERROR;
         };
     }
 }

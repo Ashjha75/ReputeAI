@@ -9,16 +9,15 @@ import com.reputeai.server.reputeai.service.UserService;
 import com.reputeai.server.reputeai.util.ApplicationMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
+import org.slf4j.MDC;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -29,64 +28,55 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final PasswordEncoder passwordEncoder;
     private final ApplicationMapper mapper;
 
-    /**
-     * This is the core method for Spring Security. It loads a user by their email (username)
-     * and aggregates all their roles and permissions into a list of authorities.
-     * The result is cached for performance.
-     */
     @Override
-    @Cacheable(value = "userDetailsByEmail", key = "#email") // Caching the UserDetails object
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        log.info("Executing loadUserByUsername for {} - Cache was missed.", email);
+        log.info("Executing loadUserByUsername for {}.", email);
 
-        // 1. Fetch the user by email using our defined repository method.
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
 
-        // 2. Get all authorities (roles AND permissions) using our corrected aggregation logic.
         Collection<? extends GrantedAuthority> authorities = getAuthorities(user.getRoles());
-        log.info("Final authorities loaded for user {}: {}", email, authorities);
 
-        // 3. Return a standard Spring Security User object, using the fields from our User entity.
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(), // This is user.getEmail()
-                user.getPassword(), // This is user.getPasswordHash()
-                user.isEnabled(),
-                true, // isAccountNonExpired
-                true, // isCredentialsNonExpired
-                true, // isAccountNonLocked
-                authorities
-        );
+        // debug-friendly log: authorities should be strings, not entity toString()
+        log.info("Final authorities loaded for user {}: {}", email, authorities.stream()
+                .map(GrantedAuthority::getAuthority).collect(Collectors.toList()));
+
+        // Use the actual fields on your entity. Adjust if your entity uses different names.
+        String username = user.getEmail(); // canonical username for spring security
+        String passwordHash = user.getPasswordHash(); // ensure this matches your entity
+
+        return org.springframework.security.core.userdetails.User.withUsername(username)
+                .password(passwordHash)
+                .authorities(authorities)
+                .accountExpired(false)
+                .accountLocked(!user.isAccountNonLocked())   // adapt to your entity if different
+                .credentialsExpired(false)
+                .disabled(!user.isEnabled())                 // disabled = !enabled
+                .build();
     }
 
     /**
-     * Aggregates all Roles and their unique Permissions into a single collection
-     * of GrantedAuthority objects for Spring Security.
-     * THIS IS THE CORRECTED LOGIC.
+     * Map Role and Permission entities to GrantedAuthority string values.
+     * Roles and permissions are mapped to SimpleGrantedAuthority by name only.
      */
     private Collection<? extends GrantedAuthority> getAuthorities(Set<Role> roles) {
-        Set<GrantedAuthority> authorities = new HashSet<>();
-
-        // 1. Add Roles as authorities (e.g., "ROLE_ADMIN")
-        authorities.addAll(roles);
-
-        // 2. Add all unique Permissions from those roles as authorities (e.g., "post:delete")
-        // We use flatMap to correctly stream the Set<Permission> from each Role.
-        Set<GrantedAuthority> permissions = roles.stream()
-                .flatMap(role -> role.getPermissions().stream())
-                .map(permission -> new org.springframework.security.core.authority.SimpleGrantedAuthority(permission.getName()))
+        // map role names
+        Set<SimpleGrantedAuthority> roleAuthorities = roles.stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toSet());
 
-        authorities.addAll(permissions);
+        // map permissions (if role.getPermissions() returns Permission entities with getName())
+        Set<SimpleGrantedAuthority> permissionAuthorities = roles.stream()
+                .flatMap(role -> role.getPermissions().stream())
+                .map(permission -> new SimpleGrantedAuthority(permission.getName()))
+                .collect(Collectors.toSet());
 
-        return authorities;
+        roleAuthorities.addAll(permissionAuthorities);
+        return roleAuthorities;
     }
-
-
 
     @Override
     @Transactional(readOnly = true)
