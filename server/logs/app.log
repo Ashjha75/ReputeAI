@@ -13078,3 +13078,245 @@ org.springframework.security.authorization.AuthorizationDeniedException: Access 
 2025-11-16 18:10:57,984 INFO  [] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
 2025-11-16 18:10:57,984 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
 2025-11-16 18:10:57,984 WARN  [] o.s.c.events.SpringDocAppInitializer - SpringDoc /api/v1/docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2025-11-16 18:30:12,770 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-16 18:30:12,771 INFO  [] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-16 18:30:12,772 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2025-11-16 18:30:12,772 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2025-11-16 18:30:12,772 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2025-11-16 18:30:12,775 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@57dd6579
+2025-11-16 18:30:12,775 DEBUG [] o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@746118e9
+2025-11-16 18:30:12,775 DEBUG [] o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-11-16 18:30:12,775 INFO  [] o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-11-16 18:30:12,777 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:30:12,777 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:30:12,777 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:30:12,777 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:30:12,777 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:30:12,780 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]] and having filters [] (6/9)
+2025-11-16 18:30:12,780 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]] and having filters [] (7/9)
+2025-11-16 18:30:12,780 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]] and having filters [] (8/9)
+2025-11-16 18:30:12,780 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/reputeai/server/reputeai/security/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, JwtAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (9/9)
+2025-11-16 18:30:12,780 DEBUG [] o.s.security.web.FilterChainProxy - Securing OPTIONS /api/v1/auth/signup
+2025-11-16 18:30:12,780 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2025-11-16 18:30:12,780 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2025-11-16 18:30:12,780 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2025-11-16 18:30:12,780 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2025-11-16 18:30:12,780 TRACE [] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/13)
+2025-11-16 18:30:12,782 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]] and having filters [] (6/9)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]] and having filters [] (7/9)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]] and having filters [] (8/9)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/reputeai/server/reputeai/security/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, JwtAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (9/9)
+2025-11-16 18:30:12,790 DEBUG [] o.s.security.web.FilterChainProxy - Securing POST /api/v1/auth/signup
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2025-11-16 18:30:12,790 TRACE [] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/13)
+2025-11-16 18:30:12,792 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/13)
+2025-11-16 18:30:12,792 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [Ant [pattern='/logout', GET], Ant [pattern='/logout', POST], Ant [pattern='/logout', PUT], Ant [pattern='/logout', DELETE]]
+2025-11-16 18:30:12,792 TRACE [] o.s.security.web.FilterChainProxy - Invoking JwtAuthenticationFilter (7/13)
+2025-11-16 18:30:12,792 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (8/13)
+2025-11-16 18:30:12,792 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (9/13)
+2025-11-16 18:30:12,792 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (10/13)
+2025-11-16 18:30:12,792 TRACE [] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (11/13)
+2025-11-16 18:30:12,792 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 18:30:12,792 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-16 18:30:12,792 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (12/13)
+2025-11-16 18:30:12,792 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (13/13)
+2025-11-16 18:30:12,792 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing POST /api/v1/auth/signup
+2025-11-16 18:30:12,792 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on POST /api/v1/auth/signup using org.springframework.security.authorization.SingleResultAuthorizationManager@614ccd34
+2025-11-16 18:30:12,792 DEBUG [] o.s.security.web.FilterChainProxy - Secured POST /api/v1/auth/signup
+2025-11-16 18:30:12,792 DEBUG [6ed2ea52-96bf-4cb8-9ba9-b99858377271] o.s.web.servlet.DispatcherServlet - POST "/api/v1/auth/signup", parameters={}
+2025-11-16 18:30:12,792 DEBUG [6ed2ea52-96bf-4cb8-9ba9-b99858377271] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.reputeai.server.reputeai.controller.AuthController#signUp(RegisterRequestDto)
+2025-11-16 18:30:12,807 DEBUG [6ed2ea52-96bf-4cb8-9ba9-b99858377271] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [RegisterRequestDto(firstName=ashish, lastName=jha, email=taxiger212@gyknife.com, password=taxiger212 (truncated)...]
+2025-11-16 18:30:15,422 INFO  [6ed2ea52-96bf-4cb8-9ba9-b99858377271] c.r.s.r.service.impl.AuthServiceImpl - User registered: id=3
+2025-11-16 18:30:16,038 DEBUG [6ed2ea52-96bf-4cb8-9ba9-b99858377271] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [application/json] and supported [text/plain, */*, application/json, application/*+json, application/yaml]
+2025-11-16 18:30:16,038 DEBUG [6ed2ea52-96bf-4cb8-9ba9-b99858377271] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing ["Registration successful. Please check your email to verify your account."]
+2025-11-16 18:30:16,040 TRACE [6ed2ea52-96bf-4cb8-9ba9-b99858377271] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 18:30:16,042 DEBUG [6ed2ea52-96bf-4cb8-9ba9-b99858377271] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:30:38,761 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:30:38,761 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:30:38,761 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:30:38,761 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:30:38,761 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:30:38,761 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]] and having filters [] (6/9)
+2025-11-16 18:30:38,762 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]] and having filters [] (7/9)
+2025-11-16 18:30:38,762 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]] and having filters [] (8/9)
+2025-11-16 18:30:38,762 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/reputeai/server/reputeai/security/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, JwtAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (9/9)
+2025-11-16 18:30:38,762 DEBUG [] o.s.security.web.FilterChainProxy - Securing OPTIONS /api/v1/auth/signup
+2025-11-16 18:30:38,762 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2025-11-16 18:30:38,762 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2025-11-16 18:30:38,762 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2025-11-16 18:30:38,763 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2025-11-16 18:30:38,763 TRACE [] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/13)
+2025-11-16 18:30:38,764 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 18:30:38,770 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:30:38,772 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:30:38,773 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:30:38,773 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:30:38,773 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:30:38,773 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]] and having filters [] (6/9)
+2025-11-16 18:30:38,774 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]] and having filters [] (7/9)
+2025-11-16 18:30:38,774 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]] and having filters [] (8/9)
+2025-11-16 18:30:38,774 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/reputeai/server/reputeai/security/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, JwtAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (9/9)
+2025-11-16 18:30:38,774 DEBUG [] o.s.security.web.FilterChainProxy - Securing POST /api/v1/auth/signup
+2025-11-16 18:30:38,774 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2025-11-16 18:30:38,774 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2025-11-16 18:30:38,774 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2025-11-16 18:30:38,775 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2025-11-16 18:30:38,775 TRACE [] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/13)
+2025-11-16 18:30:38,776 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/13)
+2025-11-16 18:30:38,776 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [Ant [pattern='/logout', GET], Ant [pattern='/logout', POST], Ant [pattern='/logout', PUT], Ant [pattern='/logout', DELETE]]
+2025-11-16 18:30:38,776 TRACE [] o.s.security.web.FilterChainProxy - Invoking JwtAuthenticationFilter (7/13)
+2025-11-16 18:30:38,776 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (8/13)
+2025-11-16 18:30:38,776 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (9/13)
+2025-11-16 18:30:38,776 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (10/13)
+2025-11-16 18:30:38,776 TRACE [] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (11/13)
+2025-11-16 18:30:38,776 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 18:30:38,776 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-16 18:30:38,777 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (12/13)
+2025-11-16 18:30:38,777 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (13/13)
+2025-11-16 18:30:38,777 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing POST /api/v1/auth/signup
+2025-11-16 18:30:38,777 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on POST /api/v1/auth/signup using org.springframework.security.authorization.SingleResultAuthorizationManager@614ccd34
+2025-11-16 18:30:38,777 DEBUG [] o.s.security.web.FilterChainProxy - Secured POST /api/v1/auth/signup
+2025-11-16 18:30:38,777 DEBUG [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] o.s.web.servlet.DispatcherServlet - POST "/api/v1/auth/signup", parameters={}
+2025-11-16 18:30:38,778 DEBUG [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.reputeai.server.reputeai.controller.AuthController#signUp(RegisterRequestDto)
+2025-11-16 18:30:38,779 DEBUG [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [RegisterRequestDto(firstName=ashish, lastName=jha, email=taxiger212@gyknife.com, password=taxiger212 (truncated)...]
+2025-11-16 18:30:39,284 DEBUG [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Using @ExceptionHandler com.reputeai.server.reputeai.exception.GlobalExceptionHandler#handleApiException(ApiException)
+2025-11-16 18:30:39,289 WARN  [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] c.r.s.r.e.GlobalExceptionHandler - API error: CONFLICT - Email already in use
+2025-11-16 18:30:39,293 DEBUG [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [application/json] and supported [application/json, application/*+json, application/yaml]
+2025-11-16 18:30:39,293 DEBUG [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [ErrorResponse[traceId=5c43f6d6-1247-4ca5-800e-8a0f4f8ee003, errorCode=CONFLICT, message=Email alread (truncated)...]
+2025-11-16 18:30:39,293 TRACE [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 18:30:39,293 WARN  [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.reputeai.server.reputeai.exception.ConflictException: Email already in use]
+2025-11-16 18:30:39,300 DEBUG [5c43f6d6-1247-4ca5-800e-8a0f4f8ee003] o.s.web.servlet.DispatcherServlet - Completed 409 CONFLICT
+2025-11-16 18:30:57,845 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:30:57,845 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:30:57,845 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:30:57,846 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:30:57,846 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:30:57,846 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]] and having filters [] (6/9)
+2025-11-16 18:30:57,846 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]] and having filters [] (7/9)
+2025-11-16 18:30:57,846 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]] and having filters [] (8/9)
+2025-11-16 18:30:57,846 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/reputeai/server/reputeai/security/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, JwtAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (9/9)
+2025-11-16 18:30:57,846 DEBUG [] o.s.security.web.FilterChainProxy - Securing OPTIONS /api/v1/auth/signup
+2025-11-16 18:30:57,848 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2025-11-16 18:30:57,848 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2025-11-16 18:30:57,848 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2025-11-16 18:30:57,848 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2025-11-16 18:30:57,848 TRACE [] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/13)
+2025-11-16 18:30:57,849 TRACE [] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 18:30:57,855 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/v3/api-docs/**'], Ant [pattern='/v3/api-docs/**']]] and having filters [] (1/9)
+2025-11-16 18:30:57,856 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/v3/api-docs/**'], Ant [pattern='/api/v1/v3/api-docs/**']]] and having filters [] (2/9)
+2025-11-16 18:30:57,856 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui/**'], Ant [pattern='/swagger-ui/**']]] and having filters [] (3/9)
+2025-11-16 18:30:57,856 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/swagger-ui.html'], Ant [pattern='/swagger-ui.html']]] and having filters [] (4/9)
+2025-11-16 18:30:57,856 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui/**'], Ant [pattern='/api/v1/swagger-ui/**']]] and having filters [] (5/9)
+2025-11-16 18:30:57,856 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/api/v1/swagger-ui.html'], Ant [pattern='/api/v1/swagger-ui.html']]] and having filters [] (6/9)
+2025-11-16 18:30:57,856 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/webjars/**'], Ant [pattern='/webjars/**']]] and having filters [] (7/9)
+2025-11-16 18:30:57,856 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain matching [Deferred [Mvc [pattern='/favicon.ico'], Ant [pattern='/favicon.ico']]] and having filters [] (8/9)
+2025-11-16 18:30:57,856 TRACE [] o.s.security.web.FilterChainProxy - Trying to match request against DefaultSecurityFilterChain defined as 'securityFilterChain' in [class path resource [com/reputeai/server/reputeai/security/SecurityConfig.class]] matching [any request] and having filters [DisableEncodeUrl, WebAsyncManagerIntegration, SecurityContextHolder, HeaderWriter, Cors, Logout, JwtAuthentication, RequestCacheAware, SecurityContextHolderAwareRequest, AnonymousAuthentication, SessionManagement, ExceptionTranslation, Authorization] (9/9)
+2025-11-16 18:30:57,857 DEBUG [] o.s.security.web.FilterChainProxy - Securing POST /api/v1/auth/signup
+2025-11-16 18:30:57,857 TRACE [] o.s.security.web.FilterChainProxy - Invoking DisableEncodeUrlFilter (1/13)
+2025-11-16 18:30:57,857 TRACE [] o.s.security.web.FilterChainProxy - Invoking WebAsyncManagerIntegrationFilter (2/13)
+2025-11-16 18:30:57,857 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderFilter (3/13)
+2025-11-16 18:30:57,857 TRACE [] o.s.security.web.FilterChainProxy - Invoking HeaderWriterFilter (4/13)
+2025-11-16 18:30:57,857 TRACE [] o.s.security.web.FilterChainProxy - Invoking CorsFilter (5/13)
+2025-11-16 18:30:57,858 TRACE [] o.s.security.web.FilterChainProxy - Invoking LogoutFilter (6/13)
+2025-11-16 18:30:57,858 TRACE [] o.s.s.w.a.logout.LogoutFilter - Did not match request to Or [Ant [pattern='/logout', GET], Ant [pattern='/logout', POST], Ant [pattern='/logout', PUT], Ant [pattern='/logout', DELETE]]
+2025-11-16 18:30:57,858 TRACE [] o.s.security.web.FilterChainProxy - Invoking JwtAuthenticationFilter (7/13)
+2025-11-16 18:30:57,859 TRACE [] o.s.security.web.FilterChainProxy - Invoking RequestCacheAwareFilter (8/13)
+2025-11-16 18:30:57,859 TRACE [] o.s.security.web.FilterChainProxy - Invoking SecurityContextHolderAwareRequestFilter (9/13)
+2025-11-16 18:30:57,859 TRACE [] o.s.security.web.FilterChainProxy - Invoking AnonymousAuthenticationFilter (10/13)
+2025-11-16 18:30:57,859 TRACE [] o.s.security.web.FilterChainProxy - Invoking SessionManagementFilter (11/13)
+2025-11-16 18:30:57,860 TRACE [] o.s.s.w.c.SupplierDeferredSecurityContext - Created SecurityContextImpl [Null authentication]
+2025-11-16 18:30:57,860 TRACE [] o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to AnonymousAuthenticationToken [Principal=anonymousUser, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=null], Granted Authorities=[ROLE_ANONYMOUS]]
+2025-11-16 18:30:57,860 TRACE [] o.s.security.web.FilterChainProxy - Invoking ExceptionTranslationFilter (12/13)
+2025-11-16 18:30:57,860 TRACE [] o.s.security.web.FilterChainProxy - Invoking AuthorizationFilter (13/13)
+2025-11-16 18:30:57,860 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Authorizing POST /api/v1/auth/signup
+2025-11-16 18:30:57,860 TRACE [] o.s.s.w.a.i.RequestMatcherDelegatingAuthorizationManager - Checking authorization on POST /api/v1/auth/signup using org.springframework.security.authorization.SingleResultAuthorizationManager@614ccd34
+2025-11-16 18:30:57,860 DEBUG [] o.s.security.web.FilterChainProxy - Secured POST /api/v1/auth/signup
+2025-11-16 18:30:57,860 DEBUG [1381a99a-3a7c-400a-b0fa-3392ab660497] o.s.web.servlet.DispatcherServlet - POST "/api/v1/auth/signup", parameters={}
+2025-11-16 18:30:57,861 DEBUG [1381a99a-3a7c-400a-b0fa-3392ab660497] o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.reputeai.server.reputeai.controller.AuthController#signUp(RegisterRequestDto)
+2025-11-16 18:30:57,862 DEBUG [1381a99a-3a7c-400a-b0fa-3392ab660497] o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [RegisterRequestDto(firstName=ashish, lastName=jha, email=taxiger212@gnyknife.com, password=taxiger21 (truncated)...]
+2025-11-16 18:30:59,187 INFO  [1381a99a-3a7c-400a-b0fa-3392ab660497] c.r.s.r.service.impl.AuthServiceImpl - User registered: id=4
+2025-11-16 18:30:59,555 DEBUG [1381a99a-3a7c-400a-b0fa-3392ab660497] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json', given [application/json] and supported [text/plain, */*, application/json, application/*+json, application/yaml]
+2025-11-16 18:30:59,555 DEBUG [1381a99a-3a7c-400a-b0fa-3392ab660497] o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing ["Registration successful. Please check your email to verify your account."]
+2025-11-16 18:30:59,555 TRACE [1381a99a-3a7c-400a-b0fa-3392ab660497] o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match request to [Is Secure]
+2025-11-16 18:30:59,559 DEBUG [1381a99a-3a7c-400a-b0fa-3392ab660497] o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2025-11-16 18:37:54,394 INFO  [] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-11-16 18:37:54,397 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-16 18:37:54,398 INFO  [] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:37:54,408 INFO  [] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-16 18:37:54,408 INFO  [] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:37:54,415 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:37:54,416 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown initiated...
+2025-11-16 18:37:54,419 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-7 - Shutdown completed.
+2025-11-16 18:37:54,581 INFO  [] c.r.s.reputeai.ReputeaiApplication - Starting ReputeaiApplication using Java 21.0.9 with PID 3936 (C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes started by Ashish_jha in C:\Users\Ashish jha\Desktop\project1\ReputeAI\server)
+2025-11-16 18:37:54,582 DEBUG [] c.r.s.reputeai.ReputeaiApplication - Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-11-16 18:37:54,582 INFO  [] c.r.s.reputeai.ReputeaiApplication - The following 1 profile is active: "dev"
+2025-11-16 18:37:55,150 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:37:55,150 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 18:37:55,171 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 2 JPA repository interfaces.
+2025-11-16 18:37:55,176 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2025-11-16 18:37:55,176 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-11-16 18:37:55,181 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.RoleRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:37:55,181 INFO  [] o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.reputeai.server.reputeai.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-11-16 18:37:55,182 INFO  [] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2025-11-16 18:37:55,441 INFO  [] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-11-16 18:37:55,448 INFO  [] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 18:37:55,450 INFO  [] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 18:37:55,450 INFO  [] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-11-16 18:37:55,515 INFO  [] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 18:37:55,516 INFO  [] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 930 ms
+2025-11-16 18:37:55,536 WARN  [] c.r.s.reputeai.security.JwtProvider - Failed to parse RSA keys, falling back to HS256: Last unit does not have enough valid bits
+2025-11-16 18:37:55,536 INFO  [] c.r.s.reputeai.security.JwtProvider - JWT Provider initialized in HS256 mode using app.jwtSecret
+2025-11-16 18:37:55,608 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Starting...
+2025-11-16 18:37:57,247 INFO  [] com.zaxxer.hikari.pool.HikariPool - HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42171c37
+2025-11-16 18:37:57,248 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Start completed.
+2025-11-16 18:37:57,554 INFO  [] org.flywaydb.core.FlywayExecutor - Database: jdbc:mysql://mysql-30238ef1-rjha15363-1c83.f.aivencloud.com:16125/defaultdb?ssl-mode=REQUIRED (MySQL 8.0)
+2025-11-16 18:37:59,295 INFO  [] o.f.core.internal.command.DbValidate - Successfully validated 3 migrations (execution time 00:00.731s)
+2025-11-16 18:38:01,036 INFO  [] o.f.core.internal.command.DbMigrate - Current version of schema `defaultdb`: 2
+2025-11-16 18:38:01,138 INFO  [] o.f.core.internal.command.DbMigrate - Schema `defaultdb` is up to date. No migration necessary.
+2025-11-16 18:38:02,086 INFO  [] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 18:38:02,091 INFO  [] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-16 18:38:02,099 INFO  [] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 18:38:02,266 INFO  [] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-8)']
+	Database driver: undefined/unknown
+	Database version: 8.0.35
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-16 18:38:02,360 INFO  [] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 18:38:04,108 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:38:04,217 DEBUG [] c.r.s.r.s.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-11-16 18:38:04,217 DEBUG [] c.r.s.r.config.RequestIdFilter - Filter 'requestIdFilter' configured for use
+2025-11-16 18:38:04,252 WARN  [] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authController' defined in file [C:\Users\Ashish jha\Desktop\project1\ReputeAI\server\reputeai\target\classes\com\reputeai\server\reputeai\controller\AuthController.class]: Unsatisfied dependency expressed through constructor parameter 0: No qualifying bean of type 'com.reputeai.server.reputeai.service.AuthService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-11-16 18:38:04,252 INFO  [] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 18:38:04,252 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Shutdown initiated...
+2025-11-16 18:38:05,269 INFO  [] com.zaxxer.hikari.HikariDataSource - HikariPool-8 - Shutdown completed.
+2025-11-16 18:38:05,270 INFO  [] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-16 18:38:05,275 INFO  [] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-16 18:38:05,301 ERROR [] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.reputeai.server.reputeai.controller.AuthController required a bean of type 'com.reputeai.server.reputeai.service.AuthService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.reputeai.server.reputeai.service.AuthService' in your configuration.
+

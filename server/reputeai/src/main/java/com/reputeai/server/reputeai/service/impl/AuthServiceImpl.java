@@ -41,7 +41,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     @Transactional
-    public String register(RegisterRequestDto registerRequestDto) {
+    public RegisterResponse register(RegisterRequestDto registerRequestDto) {
         final String email = registerRequestDto.getEmail() == null ? null : registerRequestDto.getEmail().trim().toLowerCase(Locale.ROOT);
 
         if (userRepository.existsByEmail(email)) {
@@ -72,8 +72,9 @@ public class AuthServiceImpl implements AuthService {
         // Avoid logging PII; log only the id
         log.info("User registered: id={}", newUser.getId());
         // TODO: trigger verification email asynchronously (outbox or event)
-        return "Registration successful. Please check your email to verify your account.";
+        return new RegisterResponse(true, "Registration successful. Please check your email to verify your account.");
     }
+
 
 
     @Override

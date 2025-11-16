@@ -51,7 +51,25 @@ export class SignupComponent {
   passwordMatchValidator(g: FormGroup) {
     const password = g.get('password')?.value;
     const confirmPassword = g.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { mismatch: true };
+    
+    // Only show error if both fields have values and they don't match
+    if (password && confirmPassword && password !== confirmPassword) {
+      return { mismatch: true };
+    }
+    return null;
+  }
+
+  get passwordsMatch(): boolean {
+    const password = this.signupForm.get('password')?.value;
+    const confirmPassword = this.signupForm.get('confirmPassword')?.value;
+    return password === confirmPassword;
+  }
+
+  get showPasswordMismatch(): boolean {
+    const password = this.signupForm.get('password')?.value;
+    const confirmPassword = this.signupForm.get('confirmPassword')?.value;
+    const confirmPasswordTouched = this.signupForm.get('confirmPassword')?.touched;
+    return !!(password && confirmPassword && password !== confirmPassword && confirmPasswordTouched);
   }
 
   onSubmit() {
@@ -81,9 +99,10 @@ export class SignupComponent {
     this.authService.signup(signupData).subscribe({
       next: (response) => {
         this.isLoading = false;
-        // Success notification already shown by BaseApiService
-        // Additional custom success message
-        this.notificationService.success('Account created successfully! Please verify your email.');
+        
+        // Show success message from backend or default
+        const successMessage = response.data?.message || response.message || 'Registration successful. Please check your email to verify your account.';
+        this.notificationService.success(successMessage);
         
         // Navigate to OTP verification page
         this.router.navigate(['/auth/otp'], { 

@@ -98,23 +98,9 @@ export class AuthService extends BaseApiService {
     }
   }
 
-  /**
-   * Get current user from storage
-   */
-  getCurrentUser(): UserProfile | null {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const userStr = localStorage.getItem('user');
-      return userStr ? JSON.parse(userStr) : null;
-    }
-    return null;
-  }
 
-  /**
-   * Check if user is authenticated
-   */
-  isAuthenticated(): boolean {
-    return !!this.getToken();
-  }
+
+
 
   /**
    * Logout user

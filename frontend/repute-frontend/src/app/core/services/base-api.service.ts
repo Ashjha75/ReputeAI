@@ -149,14 +149,16 @@ export class BaseApiService {
    * Handle successful response
    */
   private handleSuccess<T>(response: any, showNotification: boolean = false): ApiResponse<T> {
+    // Backend returns { success: true, message: "..." } or { Message: "..." }
+    const message = response?.message || response?.Message || 'Operation successful';
+    
     if (showNotification) {
-      const message = response?.message || 'Operation successful';
       this.notificationService.success(message);
     }
     return {
       success: true,
       data: response,
-      message: response?.message,
+      message: message,
       statusCode: 200
     };
   }
