@@ -1,8 +1,11 @@
 package com.reputeai.server.reputeai.service.impl;
 
+import com.reputeai.server.reputeai.domain.dto.ChangePasswordRequestDto;
 import com.reputeai.server.reputeai.domain.dto.UserDto;
 import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
+import com.reputeai.server.reputeai.exception.BadRequestException;
+import com.reputeai.server.reputeai.exception.UnauthorizedException;
 import com.reputeai.server.reputeai.repository.RoleRepository;
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.service.UserService;
@@ -14,6 +17,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,6 +33,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final ApplicationMapper mapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional(readOnly = true)
@@ -84,5 +89,39 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
         return mapper.toUserDto(user);
+    }
+
+    @Override
+    @Transactional
+    public void changePassword(String userEmail, ChangePasswordRequestDto request) {
+        log.info("Attempting to change password for user: {}", userEmail);
+
+        // 1. Validate that new password and confirmation match
+        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
+            log.warn("Password change failed for {}: New password and confirmation do not match", userEmail);
+            throw new BadRequestException("New password and confirmation do not match");
+        }
+
+        // 2. Validate that new password is different from current password
+        if (request.getCurrentPassword().equals(request.getNewPassword())) {
+            log.warn("Password change failed for {}: New password must be different from current password", userEmail);
+            throw new BadRequestException("New password must be different from current password");
+        }
+
+        // 3. Find the user by email
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("User not found with email: " + userEmail));
+
+        // 4. Verify current password
+        if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPasswordHash())) {
+            log.warn("Password change failed for {}: Current password is incorrect", userEmail);
+            throw new UnauthorizedException("Current password is incorrect");
+        }
+
+        // 5. Update password with new hashed password
+        user.setPasswordHash(passwordEncoder.encode(request.getNewPassword()));
+        userRepository.save(user);
+
+        log.info("Password changed successfully for user: {}", userEmail);
     }
 }
