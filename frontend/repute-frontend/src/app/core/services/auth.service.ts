@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { NotificationService } from './notification.service';
 import { BehaviorSubject } from 'rxjs';
 import { BaseApiService } from './base-api.service';
 import { Observable } from 'rxjs';
@@ -67,6 +69,10 @@ export class AuthService extends BaseApiService {
     this.authState = new BehaviorSubject<boolean>(this.isAuthenticated());
   }
 
+  // inject router & notification lazily
+  private router = inject(Router);
+  private notifService = inject(NotificationService);
+
   /**
    * Login user
    */
@@ -95,10 +101,13 @@ export class AuthService extends BaseApiService {
   /**
    * Store authentication data
    */
-  private storeAuthData(token: string, user: UserProfile): void {
+  private storeAuthData(token: string, user: UserProfile, refreshToken?: string): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('authToken', token);
       localStorage.setItem('user', JSON.stringify(user));
+      if (refreshToken) {
+        localStorage.setItem('refreshToken', refreshToken);
+      }
       // notify subscribers
       try { this.authState.next(true); } catch {}
     }
@@ -111,8 +120,9 @@ export class AuthService extends BaseApiService {
   /**
    * Logout user
    */
-  logout(): Observable<any> {
-    return this.post(this.AUTH_ENDPOINTS.LOGOUT, {}, true);
+  logout(refreshToken?: string): Observable<any> {
+    const body = refreshToken ? { refreshToken } : {};
+    return this.post(this.AUTH_ENDPOINTS.LOGOUT, body, true);
   }
 
   /**
@@ -196,6 +206,26 @@ export class AuthService extends BaseApiService {
     }
   }
 
+  /** Save auth data with optional refresh token */
+  saveAuthDataWithRefresh(token: string, user: UserProfile, refreshToken?: string): void {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      if (refreshToken) {
+        localStorage.setItem('refreshToken', refreshToken);
+      }
+      try { this.authState.next(true); } catch {}
+    }
+  }
+
+  /** Get stored refresh token */
+  getRefreshToken(): string | null {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return localStorage.getItem('refreshToken');
+    }
+    return null;
+  }
+
   /**
    * Clear authentication data
    */
@@ -203,8 +233,41 @@ export class AuthService extends BaseApiService {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.removeItem('authToken');
       localStorage.removeItem('user');
+      localStorage.removeItem('refreshToken');
       try { this.authState.next(false); } catch {}
     }
+  }
+
+  /**
+   * Try to refresh session using a refresh token.
+   * On success: save new auth data and show success notification.
+   * On failure: clear auth and redirect to login.
+   */
+  performRefresh(refreshToken: string): Observable<any> {
+    const req$ = this.post(this.AUTH_ENDPOINTS.REFRESH, { refreshToken }, false, false);
+    req$.subscribe({
+      next: (res: any) => {
+        const original = res?.data ?? res;
+        if (res?.success && original) {
+          const token = original?.token ?? original?.accessToken ?? original?.data?.token ?? null;
+          const user = original?.user ?? original?.data?.user ?? null;
+          if (token) {
+            this.saveAuthData(token, user);
+            this.notifService.success(original?.message || res?.message || 'Session refreshed');
+            return;
+          }
+        }
+        this.notifService.error(res?.message || 'Session refresh failed. Please login again.');
+        try { this.clearAuthData(); } catch {}
+        this.router.navigate(['/auth/login']);
+      },
+      error: (err) => {
+        this.notifService.error(err?.error?.message || err?.message || 'Session refresh failed. Please login again.');
+        try { this.clearAuthData(); } catch {}
+        this.router.navigate(['/auth/login']);
+      }
+    });
+    return req$;
   }
 
   /**

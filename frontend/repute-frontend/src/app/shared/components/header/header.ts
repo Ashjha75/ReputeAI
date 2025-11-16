@@ -95,18 +95,21 @@ export class Header implements OnDestroy {
   }
 
   logout() {
-    // Call backend logout then clear local data and redirect
-    this.authService.logout().subscribe({
-      next: () => {
-        this.authService.clearAuthData();
-        this.notificationService.success('Logged out successfully');
-        this.router.navigate(['/auth/login']);
+    // Call backend logout and include refresh token when available.
+    const refreshToken = this.authService.getRefreshToken?.() ?? undefined;
+    this.authService.logout(refreshToken).subscribe({
+      next: (res: any) => {
+        if (res?.success) {
+          this.authService.clearAuthData();
+          this.notificationService.success(res?.message || 'Logged out successfully');
+          this.router.navigate(['/auth/login']);
+        } else {
+          this.notificationService.error(res?.message || 'Logout failed');
+        }
       },
-      error: () => {
-        // Even if API logout fails, clear local data
-        this.authService.clearAuthData();
-        this.notificationService.info('You have been logged out');
-        this.router.navigate(['/auth/login']);
+      error: (err) => {
+        // Don't redirect automatically on error; show message so user can retry
+        this.notificationService.error(err?.error?.message || err?.message || 'Logout failed');
       }
     });
   }

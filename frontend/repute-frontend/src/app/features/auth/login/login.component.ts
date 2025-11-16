@@ -65,11 +65,16 @@ export class LoginComponent {
         // BaseApiService wraps responses as { success: true, data: <originalResponse>, message }
         const original = res?.data ?? res;
         const token = original?.token ?? original?.data?.token ?? original?.data?.accessToken ?? original?.accessToken;
+        const refreshToken = original?.refreshToken ?? original?.data?.refreshToken ?? original?.data?.refresh_token ?? null;
         const user = original?.user ?? original?.data?.user ?? original?.data?.profile ?? null;
 
         if (token) {
-          // Save auth data and navigate
-          this.authService.saveAuthData(token, user);
+          // Save auth data (include refresh token if available) and navigate
+          if (refreshToken) {
+            this.authService.saveAuthDataWithRefresh(token, user, refreshToken);
+          } else {
+            this.authService.saveAuthData(token, user);
+          }
           // Prefer backend message if available
           const successMsg = original?.message || res?.message || 'Logged in successfully';
           this.notificationService.success(successMsg);
