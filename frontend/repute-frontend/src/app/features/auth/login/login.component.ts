@@ -63,61 +63,50 @@ export class LoginComponent {
     this.authService.login(payload).subscribe({
       next: (res: any) => {
         this.isLoading = false;
-        // Normalize token & user from wrapped ApiResponse or direct response
-        // BaseApiService wraps responses as { success: true, data: <originalResponse>, message }
-        const original = res?.data ?? res;
+        const original = res?.data ;
         const token = original?.token ?? original?.data?.token ?? original?.data?.accessToken ?? original?.accessToken;
-        // Try multiple common locations for refresh token (handles wrappers and naming variations)
         const refreshToken = original?.refreshToken
-          ?? original?.data?.refreshToken
-          ?? original?.data?.data?.refreshToken
-          ?? original?.data?.refresh_token
-          ?? original?.data?.data?.refresh_token
-          ?? original?.tokens?.refreshToken
-          ?? original?.tokens?.refresh_token
-          ?? original?.data?.tokens?.refreshToken
-          ?? original?.data?.tokens?.refresh_token
           ?? null;
-        // Debug: log shape of backend response to help diagnose missing refresh token
-        // Remove or guard this log for production
-        const user = original?.user ?? original?.data?.user ?? original?.data?.profile ?? null;
-        // eslint-disable-next-line no-console
-        console.debug('Login response (normalized):', { res, original, token, refreshToken, user });
+        const user = original?.userId ;
 
         if (token) {
-          // Save auth data (include refresh token if available)
           if (refreshToken) {
             this.authService.saveAuthDataWithRefresh(token, user, refreshToken);
           } else {
             this.authService.saveAuthData(token, user);
           }
-          // Fetch user profile and store in UserProfileService
           this.authService.getUserProfile().subscribe({
             next: (profileRes: any) => {
               const profile = profileRes?.data ?? profileRes;
               this.userProfileService.setUserProfile(profile);
-              // Prefer backend message if available
               const successMsg = original?.message || res?.message || 'Logged in successfully';
-              this.notificationService.success(successMsg);
-              // Redirect to home
+              this.notificationService.success(successMsg, 5000);
               this.router.navigate(['/']);
             },
             error: (err) => {
-              // Still log in, but warn user
-              this.notificationService.error('Logged in, but failed to fetch user info');
+              const msg = err?.error?.message || err?.message || 'Logged in, but failed to fetch user info';
+              this.notificationService.error(msg, 5000);
               this.router.navigate(['/']);
             }
           });
           return;
         }
-
-        const msg = res?.message || 'Login failed';
-        this.notificationService.error(msg);
+        let failMsg = 'Login failed1';
+         if (original?.message) {
+          failMsg = original.message;
+        }
+        this.notificationService.error(failMsg, 5000);
       },
       error: (err) => {
+        console.log(err,"⛈️");
         this.isLoading = false;
-        const msg = err?.error?.message || err?.message || 'Login failed';
-        this.notificationService.error(msg);
+        let msg = 'Login failed2';
+        if (err?.error?.message) {
+          msg = err.error.message;
+        } else if (err?.message) {
+          msg = err.message;
+        }
+        this.notificationService.error(msg, 5000);
       }
     });
   }

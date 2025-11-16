@@ -72,13 +72,13 @@ export class ForgotPasswordComponent {
         this.isLoading = false;
         const msg = res?.message || 'Password reset link generated (simulated).';
         this.apiMessage = msg;
-        this.notificationService.success(msg);
+        this.notificationService.success(msg, 5000);
       },
       error: (err) => {
         this.isLoading = false;
         const msg = err?.error?.message || err?.message || 'Failed to send reset link.';
         this.apiMessage = msg;
-        this.notificationService.error(msg);
+        this.notificationService.error(msg, 5000);
       }
     });
   }
@@ -109,13 +109,13 @@ export class ForgotPasswordComponent {
         this.resetSuccess = true;
         const message = res?.data?.message ?? res?.message ?? 'Password has been reset successfully.';
         this.apiMessage = message;
-        this.notificationService.success(message);
+        this.notificationService.success(message, 5000);
       },
       error: (err) => {
         this.setLoadingState(false);
         const message = err?.error?.message || err?.message || 'Password reset failed';
         this.apiMessage = message;
-        this.notificationService.error(message);
+        this.notificationService.error(message, 5000);
       }
     });
   }

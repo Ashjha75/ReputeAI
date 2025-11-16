@@ -12,9 +12,6 @@ import com.reputeai.server.reputeai.repository.RoleRepository;
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.security.JwtProvider;
 import com.reputeai.server.reputeai.service.AuthService;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
@@ -29,10 +26,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
@@ -131,7 +125,9 @@ public class AuthServiceImpl implements AuthService {
                 .orElseThrow(() -> new RuntimeException(MessageConstants.ERROR_USER_NOT_FOUND + authentication.getName()));
 
         if (!user.isEmailVerified()) {
-            throw new ApiException(ErrorCode.FORBIDDEN, MessageConstants.ERROR_EMAIL_NOT_VERIFIED);
+            log.warn("Login blocked: email not verified for {}. Auto-sending OTP.", user.getEmail());
+            requestEmailVerification(user.getEmail());
+            throw new ApiException(ErrorCode.FORBIDDEN, MessageConstants.ERROR_EMAIL_VERIFICATION_REQUIRED);
         }
 
         // put user_id into MDC so subsequent logs include it
@@ -230,7 +226,6 @@ public class AuthServiceImpl implements AuthService {
         userRepository.findByEmail(normalizedEmail)
                 .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND, MessageConstants.ERROR_USER_NOT_FOUND + normalizedEmail));
         String token = generateResetToken(normalizedEmail);
-        log.info(token,"⛈️⛈️🎂");
         passwordResetStore.put(normalizedEmail, new ResetRecord(token, Instant.now().plusSeconds(RESET_TTL_MINUTES * 60L)));
         log.info(MessageConstants.LOG_FORGOT_PASSWORD_REQUEST, normalizedEmail);
         log.debug("Generated reset token {} for email {} (expires {} minutes)", token, normalizedEmail, RESET_TTL_MINUTES);
