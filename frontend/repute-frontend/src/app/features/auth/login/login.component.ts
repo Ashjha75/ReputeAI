@@ -65,8 +65,22 @@ export class LoginComponent {
         // BaseApiService wraps responses as { success: true, data: <originalResponse>, message }
         const original = res?.data ?? res;
         const token = original?.token ?? original?.data?.token ?? original?.data?.accessToken ?? original?.accessToken;
-        const refreshToken = original?.refreshToken ?? original?.data?.refreshToken ?? original?.data?.refresh_token ?? null;
+        // Try multiple common locations for refresh token (handles wrappers and naming variations)
+        const refreshToken = original?.refreshToken
+          ?? original?.data?.refreshToken
+          ?? original?.data?.data?.refreshToken
+          ?? original?.data?.refresh_token
+          ?? original?.data?.data?.refresh_token
+          ?? original?.tokens?.refreshToken
+          ?? original?.tokens?.refresh_token
+          ?? original?.data?.tokens?.refreshToken
+          ?? original?.data?.tokens?.refresh_token
+          ?? null;
+        // Debug: log shape of backend response to help diagnose missing refresh token
+        // Remove or guard this log for production
         const user = original?.user ?? original?.data?.user ?? original?.data?.profile ?? null;
+        // eslint-disable-next-line no-console
+        console.debug('Login response (normalized):', { res, original, token, refreshToken, user });
 
         if (token) {
           // Save auth data (include refresh token if available) and navigate

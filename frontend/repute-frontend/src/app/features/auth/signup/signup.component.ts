@@ -107,8 +107,20 @@ export class SignupComponent {
         // If response contains token/refresh, store it
         const original = response?.data ?? response;
         const token = original?.token ?? original?.data?.token ?? original?.accessToken ?? null;
-        const refreshToken = original?.refreshToken ?? original?.data?.refreshToken ?? null;
+        // Try multiple possible locations for refresh token
+        const refreshToken = original?.refreshToken
+          ?? original?.data?.refreshToken
+          ?? original?.data?.data?.refreshToken
+          ?? original?.data?.refresh_token
+          ?? original?.data?.data?.refresh_token
+          ?? original?.tokens?.refreshToken
+          ?? original?.tokens?.refresh_token
+          ?? original?.data?.tokens?.refreshToken
+          ?? original?.data?.tokens?.refresh_token
+          ?? null;
         const user = original?.user ?? original?.data?.user ?? null;
+        // eslint-disable-next-line no-console
+        console.debug('Signup response (normalized):', { response, original, token, refreshToken, user });
         if (token) {
           if (refreshToken) {
             this.authService.saveAuthDataWithRefresh(token, user, refreshToken);

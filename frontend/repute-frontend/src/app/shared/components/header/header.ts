@@ -92,11 +92,12 @@ export class Header implements OnDestroy {
       this.isAuthenticated = isAuth;
       this.currentUser = this.authService.getCurrentUser();
     });
+    console.log('Header initialized. isAuthenticated:', this.authService);
   }
 
   logout() {
-    // Call backend logout and include refresh token when available.
     const refreshToken = this.authService.getRefreshToken?.() ?? undefined;
+    alert('logout called from header with refresh token: ' + refreshToken);
     this.authService.logout(refreshToken).subscribe({
       next: (res: any) => {
         if (res?.success) {
