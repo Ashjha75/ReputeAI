@@ -1,7 +1,10 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService, UserProfile } from '../../../core/services/auth.service';
+import { NotificationService } from '../../../core/services/notification.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +13,14 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {
+export class Header implements OnDestroy {
   isScrolled = false;
   openDropdown: string | null = null;
   isMobileMenuOpen = false;
   isAuthenticated = false; // This should be connected to your auth service
   userDropdownOpen = false;
+  currentUser: UserProfile | null = null;
+  private authSub: Subscription | null = null;
 
   navItems = [
     {
@@ -79,11 +84,34 @@ export class Header {
     this.userDropdownOpen = false;
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService, private notificationService: NotificationService) {
+    // initialize auth state and subscribe to changes
+    this.isAuthenticated = this.authService.isAuthenticated();
+    this.currentUser = this.authService.getCurrentUser();
+    this.authSub = this.authService.authState.subscribe(isAuth => {
+      this.isAuthenticated = isAuth;
+      this.currentUser = this.authService.getCurrentUser();
+    });
+  }
 
   logout() {
-    // Add logout logic here (clear tokens, etc.)
-    this.isAuthenticated = false;
-    this.router.navigate(['/auth/login']);
+    // Call backend logout then clear local data and redirect
+    this.authService.logout().subscribe({
+      next: () => {
+        this.authService.clearAuthData();
+        this.notificationService.success('Logged out successfully');
+        this.router.navigate(['/auth/login']);
+      },
+      error: () => {
+        // Even if API logout fails, clear local data
+        this.authService.clearAuthData();
+        this.notificationService.info('You have been logged out');
+        this.router.navigate(['/auth/login']);
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.authSub) { this.authSub.unsubscribe(); }
   }
 }

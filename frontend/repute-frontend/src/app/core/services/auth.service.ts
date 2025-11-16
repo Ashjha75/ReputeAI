@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { BaseApiService } from './base-api.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -48,6 +49,8 @@ export interface ResetPasswordRequest {
   providedIn: 'root'
 })
 export class AuthService extends BaseApiService {
+  // Public auth state observable for UI to react to login/logout
+  public authState: BehaviorSubject<boolean>;
   private readonly AUTH_ENDPOINTS = {
     LOGIN: '/v1/auth/login',
     SIGNUP: '/v1/auth/signup',
@@ -61,6 +64,7 @@ export class AuthService extends BaseApiService {
 
   constructor(http: HttpClient) {
     super(http);
+    this.authState = new BehaviorSubject<boolean>(this.isAuthenticated());
   }
 
   /**
@@ -95,6 +99,8 @@ export class AuthService extends BaseApiService {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('authToken', token);
       localStorage.setItem('user', JSON.stringify(user));
+      // notify subscribers
+      try { this.authState.next(true); } catch {}
     }
   }
 
@@ -186,6 +192,7 @@ export class AuthService extends BaseApiService {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('authToken', token);
       localStorage.setItem('user', JSON.stringify(user));
+      try { this.authState.next(true); } catch {}
     }
   }
 
@@ -196,6 +203,7 @@ export class AuthService extends BaseApiService {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.removeItem('authToken');
       localStorage.removeItem('user');
+      try { this.authState.next(false); } catch {}
     }
   }
 

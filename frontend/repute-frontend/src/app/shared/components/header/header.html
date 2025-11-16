@@ -9,8 +9,8 @@
       
       <!-- Logo -->
       <div class="flex items-center gap-2 cursor-pointer">
-        <span class="text-xl font-normal text-gray-900">Android</span>
-        <span class="text-2xl">🤖</span>
+        <span class="text-2xl"><img src="assets/logo.png" alt="ReputeAI Logo"></span>
+        <span class="text-xl font-normal text-gray-900">ReputeAI</span>
       </div>
 
       <!-- Desktop Navigation -->
@@ -73,22 +73,41 @@
           <button 
             (click)="toggleUserDropdown()"
             class="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-full transition-all duration-200">
-            <div class="w-8 h-8 bg-gray-900 text-white rounded-full flex items-center justify-center">
-              <mat-icon class="text-sm">person</mat-icon>
-            </div>
+            <a routerLink="/" class="block">
+              <img [src]="currentUser?.avatar || '/assets/repute-logo.png'" alt="avatar" class="w-10 h-10 rounded-full object-cover shadow-sm" />
+            </a>
           </button>
 
           <!-- User Dropdown -->
           <div 
             *ngIf="userDropdownOpen"
             (mouseleave)="closeUserDropdown()"
-            class="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
+            class="absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
+            <div class="px-4 py-3 border-b border-gray-100">
+              <div class="flex items-center gap-3">
+                <div class="">
+                  <a routerLink="/" class="flex items-center gap-3">
+                    <img [src]="currentUser?.avatar || '/assets/repute-logo.png'" alt="avatar" class="w-12 h-12 rounded-full object-cover shadow-sm" />
+                    <div>
+                      <div class="text-sm font-medium text-gray-900">{{ currentUser?.firstName ? (currentUser?.firstName + (currentUser?.lastName ? ' ' + currentUser?.lastName : '')) : (currentUser?.username || 'User') }}</div>
+                      <div class="text-xs text-gray-500">{{ currentUser?.email }}</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <a routerLink="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+              Account Settings
+            </a>
             <a routerLink="/auth/change-password" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">
               Change Password
             </a>
-            <button (click)="logout()" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-50 transition-colors duration-200">
-              Logout
-            </button>
+            <div class="px-3 py-2">
+              <button (click)="logout()" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-50 transition-colors duration-200">
+                Logout
+              </button>
+            </div>
           </div>
         </div>
 

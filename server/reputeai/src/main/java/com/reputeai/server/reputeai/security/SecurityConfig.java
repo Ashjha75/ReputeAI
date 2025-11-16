@@ -30,7 +30,6 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
 
-    // Added: single source of truth for publicly accessible endpoints
     // /api/v1/auth/** covers: /login, /signup, /refresh, /logout
     private static final String[] PUBLIC_ENDPOINTS = {
             "/api/v1/auth/**",
