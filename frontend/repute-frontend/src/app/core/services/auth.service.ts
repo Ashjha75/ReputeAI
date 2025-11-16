@@ -61,6 +61,7 @@ export class AuthService extends BaseApiService {
     FORGOT_PASSWORD: '/v1/auth/forgot-password',
     RESET_PASSWORD: '/v1/auth/reset-password',
     VERIFY_EMAIL: '/v1/auth/verify-email',
+    VERIFY_EMAIL_CONFIRM: '/v1/auth/verify-email/confirm',
     PROFILE: '/v1/users/info',
     CHANGE_PASSWORD: '/v1/users/change-password'
   };
@@ -170,6 +171,11 @@ export class AuthService extends BaseApiService {
    */
   verifyEmail(token: string): Observable<any> {
     return this.post(this.AUTH_ENDPOINTS.VERIFY_EMAIL, { token });
+  }
+
+  verifyEmailConfirmation(email: string, otp: string): Observable<any> {
+    const body = { email, otp };
+    return this.post(this.AUTH_ENDPOINTS.VERIFY_EMAIL_CONFIRM, body, false, false);
   }
 
   /**

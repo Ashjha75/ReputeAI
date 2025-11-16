@@ -7,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../../../core/services/auth.service';
+import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
   selector: 'app-otp',
@@ -30,11 +32,16 @@ export class OtpComponent implements OnInit {
   resendTimer = 60;
   canResend = false;
   timerInterval: any;
+  verificationComplete = false;
+  verificationMessage?: string;
+  errorMessage?: string;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private authService: AuthService,
+    private notificationService: NotificationService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.otpForm = this.fb.group({
@@ -113,14 +120,23 @@ export class OtpComponent implements OnInit {
   onSubmit() {
     if (this.otpForm.valid) {
       this.isLoading = true;
+      this.errorMessage = undefined;
       const otp = Object.values(this.otpForm.value).join('');
-      
-      // Simulate API call
-      setTimeout(() => {
-        this.isLoading = false;
-        // Navigate to login or home
-        this.router.navigate(['/auth/login']);
-      }, 1500);
+      this.authService.verifyEmailConfirmation(this.email, otp).subscribe({
+        next: (res: any) => {
+          this.isLoading = false;
+          this.verificationComplete = true;
+          const message = res?.data?.message ?? res?.message ?? 'Email verified successfully.';
+          this.verificationMessage = message;
+          this.notificationService.success(message);
+        },
+        error: (err) => {
+          this.isLoading = false;
+          const message = err?.error?.message || err?.message || 'OTP validation failed.';
+          this.errorMessage = message;
+          this.notificationService.error(message);
+        }
+      });
     }
   }
 
