@@ -99,9 +99,7 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException(MessageConstants.ERROR_USER_NOT_FOUND + email));
 
-        // Map to UserProfileDto (excluding sensitive information)
         UserProfileDto profile = new UserProfileDto();
-        profile.setId(user.getId());
         profile.setEmail(user.getEmail());
         profile.setFirstName(user.getFirstName());
         profile.setLastName(user.getLastName());

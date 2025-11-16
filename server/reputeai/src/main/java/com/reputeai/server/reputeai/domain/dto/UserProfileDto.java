@@ -17,7 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class UserProfileDto {
 
-    private Long id;
+    // removed id per requirement; email is the unique identifier
     private String email;
     private String firstName;
     private String lastName;
@@ -26,4 +26,3 @@ public class UserProfileDto {
     private Set<String> roles;
     private Set<String> permissions;
 }
-
