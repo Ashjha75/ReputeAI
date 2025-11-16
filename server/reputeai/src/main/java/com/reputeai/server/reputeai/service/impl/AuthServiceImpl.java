@@ -12,6 +12,9 @@ import com.reputeai.server.reputeai.repository.RoleRepository;
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.security.JwtProvider;
 import com.reputeai.server.reputeai.service.AuthService;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
@@ -26,7 +29,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
@@ -224,7 +230,7 @@ public class AuthServiceImpl implements AuthService {
         // ensure user exists
         userRepository.findByEmail(normalizedEmail)
                 .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND, MessageConstants.ERROR_USER_NOT_FOUND + normalizedEmail));
-        String token = generateResetToken();
+        String token = generateResetToken(normalizedEmail);
         passwordResetStore.put(normalizedEmail, new ResetRecord(token, Instant.now().plusSeconds(RESET_TTL_MINUTES * 60L)));
         log.info(MessageConstants.LOG_FORGOT_PASSWORD_REQUEST, normalizedEmail);
         log.debug("Generated reset token {} for email {} (expires {} minutes)", token, normalizedEmail, RESET_TTL_MINUTES);
@@ -256,8 +262,19 @@ public class AuthServiceImpl implements AuthService {
         return String.valueOf(code);
     }
 
-    private String generateResetToken() {
-        // Simple random token; replace with secure UUID or JWT in production
-        return Long.toHexString(Double.doubleToLongBits(Math.random())) + Long.toHexString(System.nanoTime());
+    private String generateResetToken(String email) {
+        Instant now = Instant.now();
+        Date issuedAt = Date.from(now);
+        Date expiresAt = Date.from(now.plusSeconds(60L * 60L)); // 1 hour
+
+        SecretKey key = Keys.hmacShaKeyFor(resetJwtSecret.getBytes(StandardCharsets.UTF_8));
+
+        return Jwts.builder()
+                .setSubject(email)                 // bind token to email
+                .setIssuedAt(issuedAt)
+                .setExpiration(expiresAt)          // max 1 hour
+                .claim("type", "PASSWORD_RESET")   // token purpose
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
     }
 }

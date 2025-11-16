@@ -62,7 +62,7 @@ export class AuthService extends BaseApiService {
     FORGOT_PASSWORD: '/v1/auth/forgot-password',
     RESET_PASSWORD: '/v1/auth/reset-password',
     VERIFY_EMAIL: '/v1/auth/verify-email',
-    VERIFY_EMAIL_CONFIRM: '/v1/auth/verify-email/confirm',
+    VERIFY_EMAIL_CONFIRM: '/v1/auth/verify-email',
     PROFILE: '/v1/users/info',
     CHANGE_PASSWORD: '/v1/users/change-password'
   };

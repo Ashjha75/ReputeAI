@@ -30,6 +30,8 @@ export class ForgotPasswordComponent {
   resetSuccess = false;
   apiMessage?: string;
   confirmError?: string;
+  showNewPassword = false;
+  showConfirmPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -56,30 +58,31 @@ export class ForgotPasswordComponent {
       this.forgotPasswordForm.markAllAsTouched();
       return;
     }
-    const newPass = this.forgotPasswordForm.value.newPassword;
-    const confirm = this.forgotPasswordForm.value.confirmPassword;
+    const payload = this.forgotPasswordForm.getRawValue();
+    const newPass = payload.newPassword;
+    const confirm = payload.confirmPassword;
     if (newPass !== confirm) {
       this.confirmError = 'New password and confirmation must match';
       return;
     }
     this.confirmError = undefined;
-    this.isLoading = true;
     this.notificationService.dismiss();
+    this.setLoadingState(true);
     this.authService.resetPassword({
-      email: this.forgotPasswordForm.value.email,
-      token: this.forgotPasswordForm.value.token,
+      email: payload.email,
+      token: payload.token,
       newPassword: newPass,
       confirmPassword: confirm
     }).subscribe({
       next: (res: any) => {
-        this.isLoading = false;
+        this.setLoadingState(false);
         this.resetSuccess = true;
         const message = res?.data?.message ?? res?.message ?? 'Password has been reset successfully.';
         this.apiMessage = message;
         this.notificationService.success(message);
       },
       error: (err) => {
-        this.isLoading = false;
+        this.setLoadingState(false);
         const message = err?.error?.message || err?.message || 'Password reset failed';
         this.apiMessage = message;
         this.notificationService.error(message);
@@ -96,5 +99,26 @@ export class ForgotPasswordComponent {
     const newPass = this.newPassword?.value;
     const confirm = this.confirmPassword?.value;
     return !!newPass && !!confirm && newPass !== confirm;
+  }
+
+  togglePasswordVisibility(field: 'new' | 'confirm') {
+    if (field === 'new') {
+      this.showNewPassword = !this.showNewPassword;
+    } else {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
+  }
+
+  private setLoadingState(value: boolean) {
+    this.isLoading = value;
+    ['newPassword', 'confirmPassword'].forEach(key => {
+      const control = this.forgotPasswordForm.get(key);
+      if (!control) return;
+      if (value && control.enabled) {
+        control.disable({ emitEvent: false });
+      } else if (!value && control.disabled) {
+        control.enable({ emitEvent: false });
+      }
+    });
   }
 }
