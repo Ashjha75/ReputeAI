@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../../../core/services/auth.service';
+import { NotificationService } from '../../../core/services/notification.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -26,10 +28,14 @@ export class ForgotPasswordComponent {
   forgotPasswordForm: FormGroup;
   isLoading = false;
   emailSent = false;
+  successMessage?: string;
+  errorMessage?: string;
 
   constructor(
     private fb: FormBuilder,
     private router: Router
+    private authService: AuthService,
+    private notificationService: NotificationService
   ) {
     this.forgotPasswordForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]]
@@ -39,11 +45,22 @@ export class ForgotPasswordComponent {
   onSubmit() {
     if (this.forgotPasswordForm.valid) {
       this.isLoading = true;
-      // Simulate API call
-      setTimeout(() => {
-        this.isLoading = false;
-        this.emailSent = true;
-      }, 1500);
+      this.errorMessage = undefined;
+      this.authService.forgotPassword({ email: this.email?.value }).subscribe({
+        next: (res: any) => {
+          this.isLoading = false;
+          this.emailSent = true;
+          const message = res?.data?.message ?? res?.message ?? 'Password reset link generated.';
+          this.successMessage = message;
+          this.notificationService.success(message);
+        },
+        error: (err) => {
+          this.isLoading = false;
+          const message = err?.error?.message || err?.message || 'Failed to send reset link';
+          this.errorMessage = message;
+          this.notificationService.error(message);
+        }
+      });
     }
   }
 

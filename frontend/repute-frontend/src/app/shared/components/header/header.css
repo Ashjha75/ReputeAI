@@ -105,7 +105,7 @@ button:hover svg {
   justify-content: center;
   font-weight: 600;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #ff0066, #ff4d7a, #ff7f50, #ffae5c, #ffb7c3, #c084fc);
+  background: linear-gradient(135deg, #ff0066, #ff4d7a, #ff50bc, #eb9b4c, #b15bfc, #c084fc);
   background-size: 400% 400%;
   animation: avatarGradientShift 6s ease infinite;
 }

@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService, UserProfile } from '../../../core/services/auth.service';
 import { NotificationService } from '../../../core/services/notification.service';
+import { UserProfileService } from '../../../core/services/user-profile.service';
 import { Subscription } from 'rxjs';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
@@ -86,15 +87,26 @@ export class Header implements OnDestroy {
     this.userDropdownOpen = false;
   }
 
-  constructor(private router: Router, private authService: AuthService, private notificationService: NotificationService) {
-    // initialize auth state and subscribe to changes
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private notificationService: NotificationService,
+    private userProfileService: UserProfileService
+  ) {
     this.isAuthenticated = this.authService.isAuthenticated();
-    this.currentUser = this.authService.getCurrentUser();
+    this.currentUser = this.loadUser();
     this.authSub = this.authService.authState.subscribe(isAuth => {
       this.isAuthenticated = isAuth;
-      this.currentUser = this.authService.getCurrentUser();
+      this.currentUser = this.loadUser();
     });
-    console.log('Header initialized. isAuthenticated:', this.authService);
+  }
+
+  private loadUser(): UserProfile | null {
+    const profile = this.userProfileService.getUserProfile();
+    if (profile) {
+      return profile;
+    }
+    return this.authService.getCurrentUser();
   }
 
   get userInitial(): string {
@@ -108,6 +120,7 @@ export class Header implements OnDestroy {
       next: (res: any) => {
         if (res?.success) {
           this.authService.clearAuthData();
+          this.userProfileService.clearUserProfile();
           this.notificationService.success(res?.message || 'Logged out successfully');
           this.router.navigate(['/auth/login']);
         } else {

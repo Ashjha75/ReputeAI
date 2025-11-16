@@ -87,7 +87,15 @@ export class AuthService extends BaseApiService {
    * Login user
    */
   login(credentials: LoginRequest): Observable<any> {
-    return this.post<AuthResponse>(this.AUTH_ENDPOINTS.LOGIN, credentials);
+    return this.post<AuthResponse>(this.AUTH_ENDPOINTS.LOGIN, credentials).pipe(
+      tap(response => {
+        if (response?.success && response?.data) {
+          if (response.data.token) {
+            this.storeAuthData(response.data.token, response.data.user, response.data.refreshToken);
+          }
+        }
+      })
+    );
   }
 
   /**
@@ -114,6 +122,7 @@ export class AuthService extends BaseApiService {
   private storeAuthData(token: string, user: UserProfile, refreshToken?: string): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('authToken', token);
+      localStorage.setItem('user', JSON.stringify(user));
       if (refreshToken) {
         localStorage.setItem('refreshToken', refreshToken);
       }
@@ -146,7 +155,7 @@ export class AuthService extends BaseApiService {
    * Forgot password
    */
   forgotPassword(data: ForgotPasswordRequest): Observable<any> {
-    return this.post(this.AUTH_ENDPOINTS.FORGOT_PASSWORD, data);
+    return this.post(this.AUTH_ENDPOINTS.FORGOT_PASSWORD, data, false, false);
   }
 
   /**
