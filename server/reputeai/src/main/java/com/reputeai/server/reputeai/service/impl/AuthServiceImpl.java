@@ -84,8 +84,7 @@ public class AuthServiceImpl implements AuthService {
                     new UsernamePasswordAuthenticationToken(loginRequestDto.getEmail(), loginRequestDto.getPassword())
             );
         } catch (Exception e) {
-            log.error("Authentication failed for input: {}", loginInput, e);
-            throw new ApiException(ErrorCode.RESOURCE_NOT_FOUND,MessageConstants.ERROR_BAD_CREDENTIALS);
+            throw new ApiException(ErrorCode.RESOURCE_NOT_FOUND, MessageConstants.ERROR_BAD_CREDENTIALS);
         }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -94,12 +93,10 @@ public class AuthServiceImpl implements AuthService {
                 .orElseThrow(() -> new RuntimeException(MessageConstants.ERROR_USER_NOT_FOUND + authentication.getName()));
 
         if (!user.isEnabled()) {
-            throw new ApiException(ErrorCode.BAD_REQUEST, MessageConstants.ERROR_ACCOUNT_DISABLED) {
-            };
+            throw new ApiException(ErrorCode.BAD_REQUEST, MessageConstants.ERROR_ACCOUNT_DISABLED);
         }
         if (!user.isEmailVerified()) {
-            throw new ApiException(ErrorCode.BAD_REQUEST, MessageConstants.ERROR_EMAIL_NOT_VERIFIED) {
-            };
+            throw new ApiException(ErrorCode.BAD_REQUEST, MessageConstants.ERROR_EMAIL_NOT_VERIFIED);
         }
 
         // Temporary token generation placeholders until JWT / refresh services are available
