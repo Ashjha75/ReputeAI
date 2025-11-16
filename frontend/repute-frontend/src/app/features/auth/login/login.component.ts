@@ -98,13 +98,20 @@ export class LoginComponent {
         this.notificationService.error(failMsg, 5000);
       },
       error: (err) => {
-        console.log(err,"⛈️");
         this.isLoading = false;
-        let msg = 'Login failed2';
-        if (err?.error?.message) {
-          msg = err.error.message;
-        } else if (err?.message) {
-          msg = err.message;
+        let msg = 'Login failed';
+        let errorCode = err?.errorCode;
+        let backendMsg = err?.message ;
+        if (backendMsg) msg = backendMsg;
+        // Special case: Email not verified, errorCode FORBIDDEN
+        if (
+          errorCode === 'FORBIDDEN' &&
+          typeof backendMsg === 'string' &&
+          backendMsg.toLowerCase().includes('email not verified')
+        ) {
+          this.notificationService.error(msg, 5000);
+          this.router.navigate(['/auth/otp'], { queryParams: { email: this.loginForm.value.email } });
+          return;
         }
         this.notificationService.error(msg, 5000);
       }

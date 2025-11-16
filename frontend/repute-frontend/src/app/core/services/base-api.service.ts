@@ -170,44 +170,33 @@ export class BaseApiService {
     let errorMessage = 'An error occurred';
     let statusCode = error.status || 500;
 
+    let backendError = error.error;
     if (error.error instanceof ErrorEvent) {
       // Client-side error
       errorMessage = `Client Error: ${error.error.message}`;
+      backendError = { message: errorMessage };
+    } else if (typeof error.error === 'string') {
+      // If backend sent a plain string
+      backendError = { message: error.error };
+      errorMessage = error.error;
+    } else if (typeof error.error === 'object' && error.error !== null) {
+      // If backend sent an object, prefer its message
+      errorMessage = error.error.message || error.message || errorMessage;
     } else {
-      // Server-side error
-      errorMessage = error.error?.message || error.message || `Server Error: ${error.status}`;
-      
-      // Handle specific status codes
-      switch (error.status) {
-        case 401:
-          errorMessage = 'Unauthorized. Please login again.';
-          this.handleUnauthorized();
-          break;
-        case 403:
-          errorMessage = 'Access forbidden.';
-          break;
-        case 404:
-          errorMessage = 'Resource not found.';
-          break;
-        case 500:
-          errorMessage = 'Internal server error. Please try again later.';
-          break;
-        case 0:
-          errorMessage = 'Network error. Please check your connection.';
-          break;
-      }
+      // Fallback for unknown error shape
+      backendError = { message: error.message || errorMessage };
+      errorMessage = error.message || errorMessage;
     }
 
-    console.error('API Error:', errorMessage, error);
-
-    // Show error notification
+    // Show notification if needed
     if (showNotification) {
       this.notificationService.error(errorMessage);
     }
 
+    // Always return the backend error object, plus statusCode and success
     return throwError(() => ({
+      ...backendError,
       success: false,
-      error: errorMessage,
       statusCode: statusCode
     }));
   }
