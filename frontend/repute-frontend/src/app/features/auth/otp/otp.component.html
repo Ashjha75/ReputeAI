@@ -2,7 +2,7 @@
   <div class="max-w-md w-full">
     
     <!-- Logo/Brand -->
-    <div class="text-center mb-8">
+    <div class="text-center mb-8" *ngIf="!verificationComplete">
       <h1 class="text-4xl font-bold text-gray-900 mb-2">Verify Your Email</h1>
       <p class="text-gray-600">We've sent a 6-digit code to</p>
       <p class="text-gray-900 font-semibold">{{ email }}</p>
@@ -98,18 +98,12 @@
         </button>
       </form>
 
-      <!-- Back Link -->
-      <div class="mt-6 text-center">
-        <a routerLink="/auth/signup" class="text-gray-600 hover:text-gray-900 transition-colors duration-200 flex items-center justify-center gap-1">
-          <mat-icon>arrow_back</mat-icon>
-          <span>Back to Sign Up</span>
-        </a>
-      </div>
+    
 
       <!-- Success Message -->
       <div *ngIf="verificationComplete" class="text-center space-y-5">
-        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-          <mat-icon class="text-green-600 text-5xl">check_circle</mat-icon>
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+          <mat-icon class="text-green-600  animate-bounce-in scale-150">check_circle</mat-icon>
         </div>
         <h3 class="text-2xl font-bold text-gray-900">Email Verified</h3>
         <p class="text-gray-600 leading-relaxed">
