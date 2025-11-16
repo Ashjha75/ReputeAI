@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
-    // Obtain AuthenticationManager from configuration to avoid early autowire issues
     private final AuthenticationConfiguration authenticationConfiguration;
 
     private AuthenticationManager authenticationManager() throws Exception {
