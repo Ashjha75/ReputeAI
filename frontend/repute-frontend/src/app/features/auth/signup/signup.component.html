@@ -49,13 +49,22 @@
       <!-- Form -->
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-5">
         
-        <!-- Username Field -->
+        <!-- First Name Field -->
         <mat-form-field appearance="outline" class="w-full">
-          <mat-label>Username</mat-label>
-          <input matInput formControlName="username" placeholder="Choose a username">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" placeholder="Enter your first name">
           <mat-icon matPrefix class="text-gray-500">person_outline</mat-icon>
-          <mat-error *ngIf="username?.hasError('required')">Username is required</mat-error>
-          <mat-error *ngIf="username?.hasError('minlength')">Minimum 3 characters required</mat-error>
+          <mat-error *ngIf="firstName?.hasError('required')">First name is required</mat-error>
+          <mat-error *ngIf="firstName?.hasError('minlength')">Minimum 2 characters required</mat-error>
+        </mat-form-field>
+
+        <!-- Last Name Field -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Enter your last name">
+          <mat-icon matPrefix class="text-gray-500">person_outline</mat-icon>
+          <mat-error *ngIf="lastName?.hasError('required')">Last name is required</mat-error>
+          <mat-error *ngIf="lastName?.hasError('minlength')">Minimum 2 characters required</mat-error>
         </mat-form-field>
 
         <!-- Email Field -->
