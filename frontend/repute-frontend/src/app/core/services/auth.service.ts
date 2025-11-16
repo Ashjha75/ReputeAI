@@ -72,6 +72,8 @@ export class AuthService extends BaseApiService {
     return this.put<any>(this.AUTH_ENDPOINTS.CHANGE_PASSWORD, body, true, false);
   }
 
+  private _currentUserCache: UserProfile | null = null;
+
   constructor(http: HttpClient) {
     super(http);
     this.authState = new BehaviorSubject<boolean>(this.isAuthenticated());
@@ -112,12 +114,12 @@ export class AuthService extends BaseApiService {
   private storeAuthData(token: string, user: UserProfile, refreshToken?: string): void {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('authToken', token);
-      localStorage.setItem('user', JSON.stringify(user));
       if (refreshToken) {
         localStorage.setItem('refreshToken', refreshToken);
       }
       // notify subscribers
       try { this.authState.next(true); } catch {}
+      this._currentUserCache = user;
     }
   }
 
@@ -196,11 +198,18 @@ export class AuthService extends BaseApiService {
    * Get current user from storage
    */
   getCurrentUser(): UserProfile | null {
+    return this.loadCachedUser();
+  }
+
+  private loadCachedUser(): UserProfile | null {
+    if (this._currentUserCache) {
+      return this._currentUserCache;
+    }
     if (typeof window !== 'undefined' && window.localStorage) {
       const userStr = localStorage.getItem('user');
-      return userStr ? JSON.parse(userStr) : null;
+      this._currentUserCache = userStr ? JSON.parse(userStr) : null;
     }
-    return null;
+    return this._currentUserCache;
   }
 
   /**
@@ -211,6 +220,7 @@ export class AuthService extends BaseApiService {
       localStorage.setItem('authToken', token);
       localStorage.setItem('user', JSON.stringify(user));
       try { this.authState.next(true); } catch {}
+      this._currentUserCache = user;
     }
   }
 
@@ -223,6 +233,7 @@ export class AuthService extends BaseApiService {
         localStorage.setItem('refreshToken', refreshToken);
       }
       try { this.authState.next(true); } catch {}
+      this._currentUserCache = user;
     }
   }
 
@@ -244,6 +255,7 @@ export class AuthService extends BaseApiService {
       localStorage.removeItem('refreshToken');
       try { this.authState.next(false); } catch {}
     }
+    this._currentUserCache = null;
   }
 
   /**

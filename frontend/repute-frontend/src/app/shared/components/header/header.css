@@ -104,7 +104,10 @@ button:hover svg {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ff0066, #ff4d7a, #ff7f50, #ffae5c, #ffb7c3, #c084fc);
+  background-size: 400% 400%;
+  animation: avatarGradientShift 6s ease infinite;
 }
 
 .user-avatar {
@@ -117,6 +120,18 @@ button:hover svg {
   width: 48px;
   height: 48px;
   font-size: 20px;
+}
+
+@keyframes avatarGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Mobile menu button animation */
