@@ -7,7 +7,9 @@ import com.reputeai.server.reputeai.domain.dto.RegisterRequestDto;
 import com.reputeai.server.reputeai.domain.dto.RegisterResponseDto;
 import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
+import com.reputeai.server.reputeai.exception.ApiException;
 import com.reputeai.server.reputeai.exception.ConflictException;
+import com.reputeai.server.reputeai.exception.ErrorCode;
 import com.reputeai.server.reputeai.repository.RoleRepository;
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.service.AuthService;
@@ -16,7 +18,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -82,10 +83,9 @@ public class AuthServiceImpl implements AuthService {
             authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequestDto.getEmail(), loginRequestDto.getPassword())
             );
-        } catch (BadCredentialsException e) {
-            throw new BadCredentialsException(MessageConstants.ERROR_BAD_CREDENTIALS);
         } catch (Exception e) {
-            throw new RuntimeException("Authentication failed", e);
+            log.error("Authentication failed for input: {}", loginInput, e);
+            throw new ApiException(ErrorCode.RESOURCE_NOT_FOUND,MessageConstants.ERROR_BAD_CREDENTIALS);
         }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -93,18 +93,20 @@ public class AuthServiceImpl implements AuthService {
         User user = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new RuntimeException(MessageConstants.ERROR_USER_NOT_FOUND + authentication.getName()));
 
-//        if (!user.isEnabled()) {
-//            throw new RuntimeException(MessageConstants.ERROR_ACCOUNT_DISABLED);
-//        }
-//        if (!user.isEmailVerified()) {
-//            throw new RuntimeException(MessageConstants.ERROR_EMAIL_NOT_VERIFIED);
-//        }
+        if (!user.isEnabled()) {
+            throw new ApiException(ErrorCode.BAD_REQUEST, MessageConstants.ERROR_ACCOUNT_DISABLED) {
+            };
+        }
+        if (!user.isEmailVerified()) {
+            throw new ApiException(ErrorCode.BAD_REQUEST, MessageConstants.ERROR_EMAIL_NOT_VERIFIED) {
+            };
+        }
 
         // Temporary token generation placeholders until JWT / refresh services are available
         String accessToken = "access-" + user.getId() + "-" + System.currentTimeMillis();
         String refreshToken = "refresh-" + user.getId() + "-" + System.currentTimeMillis();
 
-        LoginResponseDto response= new LoginResponseDto(
+        LoginResponseDto response = new LoginResponseDto(
                 accessToken,
                 refreshToken,
                 user.getId(),
