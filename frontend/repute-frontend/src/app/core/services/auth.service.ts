@@ -122,16 +122,9 @@ export class AuthService extends BaseApiService {
    * Store authentication data
    */
   private storeAuthData(token: string, user: UserProfile, refreshToken?: string): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      if (refreshToken) {
-        localStorage.setItem('refreshToken', refreshToken);
-      }
-      // notify subscribers
-      try { this.authState.next(true); } catch {}
-      this._currentUserCache = user;
-    }
+    // Only store user in memory, not tokens
+    this._currentUserCache = user;
+    try { this.authState.next(true); } catch {}
   }
 
 
@@ -218,13 +211,6 @@ export class AuthService extends BaseApiService {
   }
 
   private loadCachedUser(): UserProfile | null {
-    if (this._currentUserCache) {
-      return this._currentUserCache;
-    }
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const userStr = localStorage.getItem('user');
-      this._currentUserCache = userStr ? JSON.parse(userStr) : null;
-    }
     return this._currentUserCache;
   }
 
@@ -232,32 +218,21 @@ export class AuthService extends BaseApiService {
    * Save authentication data
    */
   saveAuthData(token: string, user: UserProfile): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      try { this.authState.next(true); } catch {}
-      this._currentUserCache = user;
-    }
+    // Only store user in memory, not tokens
+    this._currentUserCache = user;
+    try { this.authState.next(true); } catch {}
   }
 
   /** Save auth data with optional refresh token */
   saveAuthDataWithRefresh(token: string, user: UserProfile, refreshToken?: string): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('authToken', token);
-      localStorage.setItem('user', JSON.stringify(user));
-      if (refreshToken) {
-        localStorage.setItem('refreshToken', refreshToken);
-      }
-      try { this.authState.next(true); } catch {}
-      this._currentUserCache = user;
-    }
+    // Only store user in memory, not tokens
+    this._currentUserCache = user;
+    try { this.authState.next(true); } catch {}
   }
 
   /** Get stored refresh token */
   getRefreshToken(): string | null {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      return localStorage.getItem('refreshToken');
-    }
+    // No longer needed, tokens are in httpOnly cookies
     return null;
   }
 
@@ -265,13 +240,9 @@ export class AuthService extends BaseApiService {
    * Clear authentication data
    */
   clearAuthData(): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.removeItem('authToken');
-      localStorage.removeItem('user');
-      localStorage.removeItem('refreshToken');
-      try { this.authState.next(false); } catch {}
-    }
+    // Only clear user from memory
     this._currentUserCache = null;
+    try { this.authState.next(false); } catch {}
   }
 
   /**
