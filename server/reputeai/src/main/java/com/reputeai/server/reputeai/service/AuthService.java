@@ -24,7 +24,22 @@ public interface AuthService {
      * @param loginRequestDto DTO containing login credentials.
      * @return A DTO containing the access token and refresh token.
      */
-    ResponseEntity<LoginResponseDto> login(LoginRequestDto loginRequestDto);
+    LoginResponseDto login(LoginRequestDto loginRequestDto);
+
+    /**
+     * Refresh access token using refresh token.
+     *
+     * @param refreshToken The refresh token string
+     * @return New access token response
+     */
+    RefreshTokenResponseDto refreshToken(String refreshToken);
+
+    /**
+     * Logout user by invalidating refresh token.
+     *
+     * @param refreshToken The refresh token to invalidate
+     */
+    void logout(String refreshToken);
 
     // Request OTP for email verification (public)
     SimpleSuccessResponseDto requestEmailVerification(String email);

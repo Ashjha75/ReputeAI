@@ -1,11 +1,14 @@
 package com.reputeai.server.reputeai.controller;
 
+import com.reputeai.server.reputeai.constants.MessageConstants;
 import com.reputeai.server.reputeai.domain.dto.*;
-import com.reputeai.server.reputeai.security.JwtProvider;
 import com.reputeai.server.reputeai.service.AuthService;
+import com.reputeai.server.reputeai.util.CookieUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
-    private final JwtProvider jwtProvider;
+    private final CookieUtil cookieUtil;
 
     @PostMapping("/signup")
     @Operation(
@@ -39,45 +42,67 @@ public class AuthController {
     @PostMapping("/login")
     @Operation(
             summary = "Authenticate user and obtain JWT tokens",
-            description = "Login with email and password. Returns access token and refresh token.",
+            description = "Login with email and password. Tokens are set as httpOnly cookies and also returned in response body.",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Login successful"),
                     @ApiResponse(responseCode = "401", description = "Invalid credentials"),
-                    @ApiResponse(responseCode = "403", description = "Account disabled"),
+                    @ApiResponse(responseCode = "403", description = "Account disabled or email not verified"),
                     @ApiResponse(responseCode = "500", description = "Internal Server Error")
             }
     )
-    public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginRequestDto request) {
-        return authService.login(request);
+    public ResponseEntity<LoginResponseDto> login(@Valid @RequestBody LoginRequestDto request, HttpServletResponse response) {
+        LoginResponseDto dto = authService.login(request);
+
+        // Set tokens as secure httpOnly cookies (primary authentication mechanism)
+        cookieUtil.setAuthCookies(response, dto.getAccessToken(), dto.getRefreshToken());
+
+        // Also return in response body (optional, for compatibility with mobile clients)
+        return ResponseEntity.ok(dto);
     }
 
     @PostMapping("/refresh")
     @Operation(
             summary = "Refresh access token",
-            description = "Use a refresh token to obtain a new access token without re-authentication",
+            description = "Use refresh token from cookie to obtain a new access token without re-authentication",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Token refreshed successfully"),
                     @ApiResponse(responseCode = "401", description = "Invalid or expired refresh token"),
                     @ApiResponse(responseCode = "500", description = "Internal Server Error")
             }
     )
-    public ResponseEntity<RefreshTokenResponseDto> refreshToken(@Valid @RequestBody RefreshTokenRequestDto request) {
-        String newAccessToken = jwtProvider.refreshAccessToken(request.getRefreshToken());
-        return ResponseEntity.ok(new RefreshTokenResponseDto(newAccessToken));
+    public ResponseEntity<RefreshTokenResponseDto> refreshToken(HttpServletRequest request, HttpServletResponse response) {
+        // Get refresh token from cookie
+        String refreshToken = cookieUtil.getRefreshTokenFromCookies(request);
+
+        RefreshTokenResponseDto dto = authService.refreshToken(refreshToken);
+
+        // Set new access token as cookie
+        cookieUtil.setAccessTokenCookie(response, dto.getAccessToken());
+
+        // Also return in response body
+        return ResponseEntity.ok(dto);
     }
 
     @PostMapping("/logout")
     @Operation(
             summary = "Logout user",
-            description = "Revoke the refresh token to logout from current device",
+            description = "Revoke the refresh token and clear auth cookies to logout from current device",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Logout successful"),
                     @ApiResponse(responseCode = "500", description = "Internal Server Error")
             }
     )
-    public ResponseEntity<RegisterResponseDto> logout(@Valid @RequestBody LogoutRequestDto request) {
-        jwtProvider.deleteRefreshToken(request.getRefreshToken());
-        return ResponseEntity.ok(new RegisterResponseDto(true, "Logout successful"));
+    public ResponseEntity<SimpleSuccessResponseDto> logout(HttpServletRequest request, HttpServletResponse response) {
+        // Get refresh token from cookie
+        String refreshToken = cookieUtil.getRefreshTokenFromCookies(request);
+
+        // Invalidate refresh token in database
+        authService.logout(refreshToken);
+
+        // Clear auth cookies
+        cookieUtil.clearAuthCookies(response);
+
+        return ResponseEntity.ok(new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_LOGOUT));
     }
 
     @PostMapping("/request-email-verification")

@@ -28,6 +28,9 @@ server:
 app:
   # common defaults; environment-specific values live in profile files
   cookieName: TOKEN
+  cookie:
+    secure: false  # Set to true in production (HTTPS only)
+    domain:  # Leave empty for localhost, set to your domain in production
 
 cors:
   allowed-origins:

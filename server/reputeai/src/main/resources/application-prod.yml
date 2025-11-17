@@ -21,6 +21,9 @@ app:
   expirationTimeMS: 3600000
   jwtRefreshExpirationMs: 604800000
   cookieName: TOKEN
+  cookie:
+    secure: true  # Enable HTTPS-only cookies in production
+    domain: ${COOKIE_DOMAIN:}  # e.g., .example.com for subdomain support
 
 aws:
   region: ${AWS_REGION:ap-south-1}
