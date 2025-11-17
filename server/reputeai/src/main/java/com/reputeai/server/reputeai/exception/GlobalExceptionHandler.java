@@ -87,8 +87,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleRateLimitException(RateLimitException ex, HttpServletRequest request) {
         ErrorCode code = ErrorCode.RATE_LIMIT_EXCEEDED;
         HttpStatus status = mapToHttpStatus(code);
-        log.warn("Rate Limit exception for {}: code={}, message={}", request.getRequestURI(), code, ex.getMessage());
-        ErrorResponse body = build(code, ex.getMessage(), null);
+        log.warn("Rate Limit exception for {} from IP {}: User is blocked for 5 minutes",
+            request.getRequestURI(), request.getRemoteAddr());
+        ErrorResponse body = build(code, "Too many requests. Please try again after 5 minutes.", null);
         return ResponseEntity.status(status).body(body);
     }
 

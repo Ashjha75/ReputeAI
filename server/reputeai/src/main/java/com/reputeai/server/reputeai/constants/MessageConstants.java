@@ -26,6 +26,9 @@ public final class MessageConstants {
     public static final String ERROR_RESET_TOKEN_INVALID = "Invalid or expired password reset token";
     public static final String ERROR_REFRESH_TOKEN_INVALID = "Invalid or expired refresh token";
 
+    // Rate Limiting
+    public static final String ERROR_TOO_MANY_REQUESTS = "Too many requests. Please try again after 5 minutes.";
+
     public static final String SUCCESS_VERIFICATION_EMAIL_SENT = "Verification OTP generated and sent (simulated).";
     public static final String SUCCESS_EMAIL_VERIFIED = "Email verified successfully.";
     public static final String SUCCESS_PASSWORD_RESET_REQUESTED = "Password reset link generated (simulated).";
