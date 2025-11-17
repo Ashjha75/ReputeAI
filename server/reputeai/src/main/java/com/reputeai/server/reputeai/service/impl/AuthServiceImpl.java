@@ -16,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -93,7 +92,7 @@ public class AuthServiceImpl implements AuthService {
 
 
     @Override
-    public ResponseEntity<LoginResponseDto> login(LoginRequestDto loginRequestDto) {
+    public LoginResponseDto login(LoginRequestDto loginRequestDto) {
 
         Authentication authentication;
         try {
@@ -159,9 +158,27 @@ public class AuthServiceImpl implements AuthService {
             );
 
             log.info("User logged in successfully: userId={}, email={}", user.getId(), user.getEmail());
-            return ResponseEntity.ok(response);
+            return response;
         } finally {
             MDC.remove("user_id");
+        }
+    }
+
+    @Override
+    public RefreshTokenResponseDto refreshToken(String refreshToken) {
+        if (refreshToken == null || refreshToken.isBlank()) {
+            throw new ApiException(ErrorCode.UNAUTHENTICATED, MessageConstants.ERROR_REFRESH_TOKEN_INVALID);
+        }
+        String newAccessToken = jwtProvider.refreshAccessToken(refreshToken);
+        log.info("Refresh token used, generated new access token");
+        return new RefreshTokenResponseDto(true, MessageConstants.SUCCESS_TOKEN_REFRESHED, newAccessToken, "Bearer");
+    }
+
+    @Override
+    public void logout(String refreshToken) {
+        if (refreshToken != null && !refreshToken.isBlank()) {
+            jwtProvider.deleteRefreshToken(refreshToken);
+            log.info("User logged out, refresh token invalidated");
         }
     }
 

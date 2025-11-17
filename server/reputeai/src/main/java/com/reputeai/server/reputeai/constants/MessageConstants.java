@@ -24,11 +24,14 @@ public final class MessageConstants {
     public static final String ERROR_OTP_INVALID = "Invalid or expired OTP";
     public static final String ERROR_EMAIL_ALREADY_VERIFIED = "Email already verified";
     public static final String ERROR_RESET_TOKEN_INVALID = "Invalid or expired password reset token";
+    public static final String ERROR_REFRESH_TOKEN_INVALID = "Invalid or expired refresh token";
 
     public static final String SUCCESS_VERIFICATION_EMAIL_SENT = "Verification OTP generated and sent (simulated).";
     public static final String SUCCESS_EMAIL_VERIFIED = "Email verified successfully.";
     public static final String SUCCESS_PASSWORD_RESET_REQUESTED = "Password reset link generated (simulated).";
     public static final String SUCCESS_PASSWORD_RESET = "Password has been reset successfully.";
+    public static final String SUCCESS_TOKEN_REFRESHED = "Access token refreshed successfully";
+    public static final String SUCCESS_LOGOUT = "Logout successful";
 
     // Log Messages
     public static final String LOG_LOADING_USER = "Executing loadUserByUsername for {}.";
