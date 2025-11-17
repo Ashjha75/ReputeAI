@@ -28,13 +28,14 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-
 ### VS Code ###
 .vscode/
 
 # Ignore application.properties and dev YAML for security
 src/main/resources/application.properties
+src/main/resources/application.yml
 src/main/resources/application-dev.yml
+src/main/resources/application-prod.yml
 
 # Ignore log files
 logs/

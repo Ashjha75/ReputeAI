@@ -3,3 +3,4 @@
 # Application logs (frontend/back-end)
 app.log
 app-json.log
+server/reputeai/src/main/resources/application.yml
