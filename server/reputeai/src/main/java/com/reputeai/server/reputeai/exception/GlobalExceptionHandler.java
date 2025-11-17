@@ -1,5 +1,6 @@
 package com.reputeai.server.reputeai.exception;
 
+import com.giffing.bucket4j.spring.boot.starter.context.RateLimitException;
 import com.reputeai.server.reputeai.domain.dto.ErrorDetail;
 import com.reputeai.server.reputeai.domain.dto.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
 import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -81,12 +83,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(body);
     }
 
-    // Rate limit exceeded (429)
-    @ExceptionHandler(RateLimitExceededException.class)
-    public ResponseEntity<ErrorResponse> handleRateLimitExceeded(RateLimitExceededException ex, HttpServletRequest request) {
-        log.warn("Rate limit exceeded for {}: {}", request.getRequestURI(), ex.getMessage());
-        ErrorResponse body = build(ErrorCode.RATE_LIMIT_EXCEEDED, ex.getMessage(), null);
-        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body(body);
+    @ExceptionHandler(RateLimitException.class)
+    public ResponseEntity<ErrorResponse> handleRateLimitException(RateLimitException ex, HttpServletRequest request) {
+        ErrorCode code = ErrorCode.RATE_LIMIT_EXCEEDED;
+        HttpStatus status = mapToHttpStatus(code);
+        log.warn("Rate Limit exception for {}: code={}, message={}", request.getRequestURI(), code, ex.getMessage());
+        ErrorResponse body = build(code, ex.getMessage(), null);
+        return ResponseEntity.status(status).body(body);
     }
 
     // Catch-all (500)
