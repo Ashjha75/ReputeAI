@@ -171,7 +171,11 @@ export class BaseApiService {
     let statusCode = error.status || 500;
 
     let backendError = error.error;
-    if (error.error instanceof ErrorEvent) {
+    if (error.status === 429) {
+      // Rate limit: API only sends status code, no body
+      errorMessage = 'You are being rate limited. Please try again later.';
+      backendError = { message: errorMessage };
+    } else if (error.error instanceof ErrorEvent) {
       // Client-side error
       errorMessage = `Client Error: ${error.error.message}`;
       backendError = { message: errorMessage };

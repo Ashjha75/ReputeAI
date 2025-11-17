@@ -19,14 +19,6 @@
             </PendingDiffInfo>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/reputeai/src/main/java/com/reputeai/server/reputeai/exception/RateLimitException.java">
-          <value>
-            <PendingDiffInfo>
-              <option name="filePath" value="$PROJECT_DIR$/reputeai/src/main/java/com/reputeai/server/reputeai/exception/RateLimitException.java" />
-              <option name="updatedContent" value="package com.reputeai.server.reputeai.exception;&#10;&#10;public class RateLimitException extends ApiException {&#10;    public RateLimitException(ErrorCode code, String message) {&#10;        super(code, message);&#10;    }&#10;}&#10;" />
-            </PendingDiffInfo>
-          </value>
-        </entry>
       </map>
     </option>
   </component>
