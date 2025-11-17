@@ -38,7 +38,7 @@ public class CacheConfig {
         // 2. Define the default cache configuration (for general caching).
         RedisCacheConfiguration defaultCacheConfig = RedisCacheConfiguration.defaultCacheConfig()
                 // Set a default Time-To-Live (TTL) for cache entries.
-                .entryTtl(Duration.ofMinutes(30))
+                .entryTtl(Duration.ofMinutes(10))
                 
                 // Use a String serializer for the cache keys.
                 .serializeKeysWith(
@@ -69,7 +69,7 @@ public class CacheConfig {
         return RedisCacheManager.builder(redisConnectionFactory)
                 .cacheDefaults(defaultCacheConfig)
                 // Register the rate-limit-buckets cache used by Bucket4j
-                .withCacheConfiguration("rate-limit-buckets", rateLimitCacheConfig)
+                .withCacheConfiguration("auth-limit", rateLimitCacheConfig)
                 .build();
     }
 }
