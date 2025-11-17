@@ -85,6 +85,11 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.giffing.bucket4j.spring.boot.starter</groupId>
+            <artifactId>bucket4j-spring-boot-starter</artifactId>
+            <version>0.9.0</version> <!-- A recent, stable version for Spring Boot 3 -->
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>

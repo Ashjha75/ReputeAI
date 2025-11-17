@@ -35,8 +35,8 @@ public class CacheConfig {
         GenericJackson2JsonRedisSerializer jsonRedisSerializer =
                 new GenericJackson2JsonRedisSerializer(objectMapper);
 
-        // 2. Define the default cache configuration.
-        RedisCacheConfiguration redisCacheConfig = RedisCacheConfiguration.defaultCacheConfig()
+        // 2. Define the default cache configuration (for general caching).
+        RedisCacheConfiguration defaultCacheConfig = RedisCacheConfiguration.defaultCacheConfig()
                 // Set a default Time-To-Live (TTL) for cache entries.
                 .entryTtl(Duration.ofMinutes(30))
                 
@@ -53,9 +53,23 @@ public class CacheConfig {
                 // Do not cache null values, which prevents potential issues with some caching strategies.
                 .disableCachingNullValues();
 
-        // 3. Build the RedisCacheManager with the default configuration.
+        // 3. Define specific cache configuration for Bucket4j rate limiting
+        // Rate limit buckets need longer TTL and simpler serialization
+        RedisCacheConfiguration rateLimitCacheConfig = RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofHours(1)) // Rate limit buckets live for 1 hour
+                .serializeKeysWith(
+                        RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer())
+                )
+                .serializeValuesWith(
+                        RedisSerializationContext.SerializationPair.fromSerializer(jsonRedisSerializer)
+                )
+                .disableCachingNullValues();
+
+        // 4. Build the RedisCacheManager with both default and custom cache configurations.
         return RedisCacheManager.builder(redisConnectionFactory)
-                .cacheDefaults(redisCacheConfig)
+                .cacheDefaults(defaultCacheConfig)
+                // Register the rate-limit-buckets cache used by Bucket4j
+                .withCacheConfiguration("rate-limit-buckets", rateLimitCacheConfig)
                 .build();
     }
 }

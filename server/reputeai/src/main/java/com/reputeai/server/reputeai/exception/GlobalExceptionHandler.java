@@ -13,7 +13,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -92,6 +91,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
     }
 
+
     /* Helper: create ErrorResponse and attach traceId from MDC */
     private ErrorResponse build(ErrorCode code, String message, List<ErrorDetail> details) {
         return new ErrorResponse(
@@ -109,9 +109,10 @@ public class GlobalExceptionHandler {
         return switch (code) {
             case VALIDATION_ERROR, BAD_REQUEST -> HttpStatus.BAD_REQUEST;
             case CONFLICT -> HttpStatus.CONFLICT;
-            case UNAUTHORIZED,UNAUTHENTICATED -> HttpStatus.UNAUTHORIZED;
+            case UNAUTHORIZED, UNAUTHENTICATED -> HttpStatus.UNAUTHORIZED;
             case FORBIDDEN -> HttpStatus.FORBIDDEN;
             case RESOURCE_NOT_FOUND -> HttpStatus.NOT_FOUND;
+            case RATE_LIMIT_EXCEEDED -> HttpStatus.TOO_MANY_REQUESTS;
             case INTERNAL_SERVER_ERROR, DATA_ACCESS_ERROR -> HttpStatus.INTERNAL_SERVER_ERROR;
         };
     }
