@@ -171,7 +171,7 @@ export class BaseApiService {
 
     if (error.status === 429) {
       // Rate limit: API only sends status code, no body
-      errorMessage = 'You are being rate limited. Please try again later.';
+      errorMessage = 'Rate limit exceeded. Please try again after 5 minutes.';
       backendError = { message: errorMessage, success: false };
     } else if (error.error instanceof ErrorEvent) {
       // Client-side error
@@ -193,7 +193,7 @@ export class BaseApiService {
     // Always show a clear error message for 429 and unknown errors
     if (showNotification) {
       if (statusCode === 429) {
-        this.notificationService.error('You are being rate limited. Please try again later.');
+        this.notificationService.error('Rate limit exceeded. Please try again after 5 minutes.');
       } else if (errorMessage && errorMessage !== 'An error occurred') {
         this.notificationService.error(errorMessage);
       } else {
