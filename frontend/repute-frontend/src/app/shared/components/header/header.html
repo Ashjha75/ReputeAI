@@ -10,7 +10,8 @@
       <!-- Logo -->
       <div class="flex items-center gap-2 cursor-pointer">
         <a routerLink="/" class="flex items-center gap-2">
-          <img src="/logo.png" alt="ReputeAI Logo" width="50" height="50" class="object-contain" />
+          <!-- Project is configured to copy files from `public/` (see angular.json). Use the public root for static assets. -->
+          <img [src]="logo" alt="ReputeAI Logo" width="50" height="50" class="object-contain" loading="lazy" decoding="async" />
           <span class="text-xl font-normal text-gray-900">ReputeAI</span>
         </a>
       </div>

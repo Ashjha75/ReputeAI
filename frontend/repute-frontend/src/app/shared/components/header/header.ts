@@ -7,6 +7,7 @@ import { NotificationService } from '../../../core/services/notification.service
 import { UserProfileService } from '../../../core/services/user-profile.service';
 import { Subscription } from 'rxjs';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
+import IMAGES from '../../assets/images';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,8 @@ import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component'
 })
 export class Header implements OnDestroy {
   @ViewChild(ConfirmModalComponent) confirmModal!: ConfirmModalComponent;
+  // expose static images to the template
+  public logo = IMAGES.logo;
   isScrolled = false;
   openDropdown: string | null = null;
   isMobileMenuOpen = false;
