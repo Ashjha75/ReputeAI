@@ -119,6 +119,8 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
       if (isPlatformBrowser(this.platformId)) {
         // Start automatic rotation only in browser
         this.startCarousel();
+        // Start typing effect for blue text
+        this.startTyping();
       }
     } catch (err) {
       console.error('SSR/Prerender error in HeroSectionComponent:', err);
@@ -211,5 +213,28 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
   // Fallback for missing icons
   getIcon(icon: string): string {
     return icon ? icon : 'help_outline';
+  }
+
+  // --- Typing animation for the blue part of the title ---
+  fullBlueText = 'Can Trust.';
+  typedBlue = '';
+  private typingInterval: any;
+  private typingIndex = 0;
+  typingSpeed = 80; // ms per character
+
+  private startTyping() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    // reset in case
+    this.typedBlue = '';
+    this.typingIndex = 0;
+    clearInterval(this.typingInterval);
+    this.typingInterval = setInterval(() => {
+      if (this.typingIndex >= this.fullBlueText.length) {
+        clearInterval(this.typingInterval);
+        return;
+      }
+      this.typedBlue += this.fullBlueText.charAt(this.typingIndex);
+      this.typingIndex++;
+    }, this.typingSpeed);
   }
 }
