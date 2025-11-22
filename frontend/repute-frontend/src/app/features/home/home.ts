@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroSectionComponent } from '../hero-section/hero-section.component';
 import { FeaturesCarouselComponent } from '../features-carousel/features-carousel.component';
@@ -6,6 +6,7 @@ import { FeatureGridComponent } from '../feature-grid/feature-grid.component';
 import { SupportFaqComponent } from '../support-faq/support-faq.component';
 import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
+import { isPlatformBrowser } from '@angular/common';
 
 import {
   FeatureCardAction,
@@ -32,7 +33,7 @@ import { PixelDropPromoComponent } from '../../shared/components/pixel-drop-prom
     templateUrl: './home.html',
     styleUrl: './home.css'
 })
-export class Home {
+export class Home implements OnInit {
   // Update copy, media, and actions here to reshuffle spotlight cards without editing the template.
   readonly featureHighlights: FeatureHighlightCard[] = [
     {
@@ -95,6 +96,18 @@ export class Home {
     { level: 'High Risk', range: '70-89', color: 'bg-orange-100 text-orange-800', icon: 'error' },
     { level: 'Critical Risk', range: '90-100', color: 'bg-red-100 text-red-800', icon: 'dangerous' }
   ];
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit(): void {
+    try {
+      if (isPlatformBrowser(this.platformId)) {
+        // Any browser-only logic can go here
+      }
+    } catch (err) {
+      console.error('SSR/Prerender error in Home:', err);
+    }
+  }
 
   handleCardAction(action?: FeatureCardAction): void {
     if (!action) {

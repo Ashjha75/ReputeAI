@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConfirmModalComponent, ConfirmModalConfig } from '../../shared/components/confirm-modal/confirm-modal.component';
 import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
+import { isPlatformBrowser } from '@angular/common';
 
 // Define the structure for our card data
 interface CarouselItem {
@@ -111,16 +112,21 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
   // Fallback image for modal
   fallbackImage = 'assets/fallback.png';
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {
-    // Start automatic rotation
-    this.startCarousel();
+    try {
+      if (isPlatformBrowser(this.platformId)) {
+        // Start automatic rotation only in browser
+        this.startCarousel();
+      }
+    } catch (err) {
+      console.error('SSR/Prerender error in HeroSectionComponent:', err);
+    }
   }
 
   ngOnDestroy(): void {
-    // Stop rotation to prevent memory leaks
-    if (this.carouselInterval) {
+    if (isPlatformBrowser(this.platformId) && this.carouselInterval) {
       clearInterval(this.carouselInterval);
     }
   }
