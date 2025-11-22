@@ -1,7 +1,24 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, PLATFORM_ID, Inject, ViewChild } from '@angular/core';
-import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ConfirmModalComponent, ConfirmModalConfig } from '../../shared/components/confirm-modal/confirm-modal.component';
 import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
+
+// Define the structure for our card data
+interface CarouselItem {
+  icon: string;
+  iconColorClass: string;
+  title: string;
+  subtitle: string;
+  stat1Value: string;
+  stat1Label: string;
+  stat1ColorClass: string;
+  stat2Value: string;
+  stat2Label: string;
+  stat2ColorClass: string;
+  statusLabel: string;
+  statusColorClass: string;
+  statusBgClass: string;
+}
 
 @Component({
   selector: 'app-hero-section',
@@ -10,14 +27,65 @@ import { FeatureModalComponent } from '../../shared/components/feature-modal/fea
   templateUrl: './hero-section.component.html',
   styleUrls: ['./hero-section.component.css'],
 })
-export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
-  
-  private observer?: IntersectionObserver;
+export class HeroSectionComponent implements OnInit, OnDestroy {
 
   @ViewChild('featureModal') featureModal?: FeatureModalComponent;
   @ViewChild('confirmModal') confirmModal?: ConfirmModalComponent;
 
-  // Updated Data for ReputationGuard Theme
+  // --- Carousel State ---
+  currentCardIndex = 0;
+  private carouselInterval: any;
+
+  // --- Carousel Data (The 3 rotating cards) ---
+  carouselItems: CarouselItem[] = [
+    {
+      icon: 'verified_user',
+      iconColorClass: 'text-blue-600',
+      title: 'Reputation Score',
+      subtitle: 'AI Monitoring Active',
+      stat1Value: '12k',
+      stat1Label: 'Posts Scanned',
+      stat1ColorClass: 'text-slate-900',
+      stat2Value: '98%',
+      stat2Label: 'Safety Score',
+      stat2ColorClass: 'text-emerald-600',
+      statusLabel: 'System Operational',
+      statusColorClass: 'text-emerald-700',
+      statusBgClass: 'bg-emerald-50/80 border-emerald-100'
+    },
+    {
+      icon: 'admin_panel_settings',
+      iconColorClass: 'text-violet-600',
+      title: 'Identity Defense',
+      subtitle: 'Dark Web Scan Active',
+      stat1Value: '0',
+      stat1Label: 'Breaches Found',
+      stat1ColorClass: 'text-slate-900',
+      stat2Value: '24/7',
+      stat2Label: 'Protection',
+      stat2ColorClass: 'text-violet-600',
+      statusLabel: 'Identity Secure',
+      statusColorClass: 'text-violet-700',
+      statusBgClass: 'bg-violet-50/80 border-violet-100'
+    },
+    {
+      icon: 'find_in_page',
+      iconColorClass: 'text-amber-600',
+      title: 'Content Audit',
+      subtitle: 'Risk Analysis Running',
+      stat1Value: '3',
+      stat1Label: 'Flags For Review',
+      stat1ColorClass: 'text-amber-600',
+      stat2Value: '100%',
+      stat2Label: 'Audit Complete',
+      stat2ColorClass: 'text-slate-900',
+      statusLabel: 'Action Required',
+      statusColorClass: 'text-amber-700',
+      statusBgClass: 'bg-amber-50/80 border-amber-100'
+    }
+  ];
+
+  // --- Modal Data ---
   featureModalData = {
     badgeLabel: 'AI Analysis',
     badgeContext: 'Deep Scan Technology',
@@ -27,7 +95,7 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
       'Our advanced algorithms scan Twitter/X, LinkedIn, and GitHub to identify potential risks in your digital footprint. We analyze sentiment, keyword history, and brand alignment.',
     ctaLabel: 'View Sample Report',
     ctaIcon: 'analytics',
-    mediaSrc: 'assets/hero-modal-demo.png', // Make sure this image exists or update path
+    mediaSrc: 'assets/hero-modal-demo.png', 
     mediaAlt: 'AI Analysis Dashboard Demo'
   };
 
@@ -35,67 +103,60 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
     title: 'Start Deep Scan?',
     message: 'This will analyze your public profile data.',
     detail: 'The process typically takes 2-3 minutes. You will be notified when complete.',
-    variant: 'info', // Changed from 'delete' to 'info' for a positive action
+    variant: 'info',
     confirmLabel: 'Start Scan',
     cancelLabel: 'Cancel'
   };
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
-  
-  ngOnInit(): void {
-    // Component initialized
-  }
+  constructor() {}
 
-  ngAfterViewInit(): void {
-    // Only run in browser environment to avoid SSR issues
-    if (isPlatformBrowser(this.platformId)) {
-      this.observeElements();
-      
-      // Trigger initial animation
-      setTimeout(() => {
-        this.addVisibleClass();
-      }, 100);
-    }
+  ngOnInit(): void {
+    // Start automatic rotation
+    this.startCarousel();
   }
 
   ngOnDestroy(): void {
-    if (this.observer) {
-      this.observer.disconnect();
+    // Stop rotation to prevent memory leaks
+    if (this.carouselInterval) {
+      clearInterval(this.carouselInterval);
     }
   }
 
-  private observeElements(): void {
-    if (typeof IntersectionObserver === 'undefined') {
-      this.addVisibleClass();
-      return;
+  private startCarousel() {
+    // Rotate every 5 seconds
+    this.carouselInterval = setInterval(() => {
+      this.currentCardIndex = (this.currentCardIndex + 1) % this.carouselItems.length;
+    }, 5000);
+  }
+
+  // --- Visual Logic for 3D Stack ---
+  getCardStyle(index: number) {
+    const itemCount = this.carouselItems.length;
+    
+    // Math to determine how "far" this card is from the current active one
+    // This handles the "wrap around" logic (e.g., going from index 2 back to 0)
+    let relativeIndex = (index - this.currentCardIndex + itemCount) % itemCount;
+
+    // If the card is "behind" the stack (index > 2), keep it hidden/flat at position 3
+    if (relativeIndex > 2) {
+        relativeIndex = 3; 
     }
 
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
+    // Visual Calculation
+    const zIndex = 10 - relativeIndex;                // Active card on top (10), others below
+    const scale = 1 - (relativeIndex * 0.05);         // Shrink cards further back (1 -> 0.95 -> 0.90)
+    const translateY = relativeIndex * 15;            // Push cards further back down (0px -> 15px -> 30px)
+    const opacity = relativeIndex > 2 ? 0 : (1 - (relativeIndex * 0.2)); // Fade out back cards
+
+    return {
+      'z-index': zIndex,
+      'transform': `scale(${scale}) translateY(${translateY}px)`,
+      'opacity': opacity,
+      'pointer-events': relativeIndex === 0 ? 'auto' : 'none' // Only click active card
     };
-
-    this.observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, options);
-
-    const fadeElements = document.querySelectorAll('.fade-in-left, .fade-in-right');
-    fadeElements.forEach(el => this.observer!.observe(el));
   }
 
-  private addVisibleClass(): void {
-    const fadeElements = document.querySelectorAll('.fade-in-left, .fade-in-right');
-    fadeElements.forEach(el => {
-      el.classList.add('visible');
-    });
-  }
-
-  // Modal Actions
+  // --- Modal Actions ---
   openFeatureModal() {
     this.featureModal?.open();
   }
@@ -109,10 +170,7 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
     this.closeFeatureModal();
   }
 
-  openConfirmModal(configPatch?: Partial<ConfirmModalConfig>) {
-    if (configPatch) {
-      this.confirmConfig = { ...this.confirmConfig, ...configPatch };
-    }
+  openConfirmModal() {
     this.confirmModal?.applyConfig(this.confirmConfig);
     this.confirmModal?.open();
   }
@@ -124,6 +182,6 @@ export class HeroSectionComponent implements OnInit, AfterViewInit, OnDestroy {
   confirmAction() {
     console.log('Starting scan...');
     this.closeConfirmModal();
-    // Add logic to trigger service call here
+    // Service call logic goes here
   }
 }
