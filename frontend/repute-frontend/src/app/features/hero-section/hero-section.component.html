@@ -32,50 +32,34 @@
         </div>
       </div>
 
-      <div class="flex items-center justify-center lg:justify-end hero-card-container pr-2 relative h-[500px] sm:h-[500px]">
-        
-        <div *ngFor="let item of carouselItems; let i = index"
-     class="m3-card card-transition absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[480px] aspect-[4/5] sm:aspect-square rounded-[32px] bg-white border border-slate-100 shadow-[0_8px_32px_rgba(0,0,0,0.08)] overflow-hidden group"
-     [ngStyle]="getCardStyle(i)">
-            
-            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-violet-500 to-blue-500 scan-beam opacity-0 transition-opacity duration-300"
-                 [class.group-hover:opacity-100]="i === currentCardIndex"></div>
-            
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-                
-                <div class="w-24 h-24 rounded-[24px] bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center mb-8 shadow-sm animate-float border border-white">
-                   <span class="material-icons text-5xl" [ngClass]="item.iconColorClass">{{ item.icon }}</span>
+      <div class="flex items-center justify-center lg:justify-end hero-card-container pr-2 relative">
+        <div class="card-carousel">
+          <div class="card-deck" [style.transform]="'translateX(' + (-currentCardIndex * 100) + '%)'">
+            <article *ngFor="let item of carouselItems; let i = index" class="hero-card" [class.active]="i === currentCardIndex">
+              <div class="card-header">
+                <span class="material-icons icon-circle" [ngClass]="item.iconColorClass">{{ item.icon }}</span>
+                <span class="status-chip" [ngClass]="[item.statusColorClass, item.statusBgClass]">{{ item.statusLabel }}</span>
+              </div>
+              <div class="card-body">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.subtitle }}</p>
+                <div class="stats">
+                  <div class="stat" [ngClass]="item.stat1ColorClass">
+                    <strong>{{ item.stat1Value }}</strong>
+                    <small>{{ item.stat1Label }}</small>
+                  </div>
+                  <div class="stat" [ngClass]="item.stat2ColorClass">
+                    <strong>{{ item.stat2Value }}</strong>
+                    <small>{{ item.stat2Label }}</small>
+                  </div>
                 </div>
-
-                <h3 class="text-3xl font-bold text-slate-900 mb-2">{{ item.title }}</h3>
-                <p class="text-slate-500 text-sm font-medium tracking-wide uppercase mb-10">{{ item.subtitle }}</p>
-
-                <div class="w-full grid grid-cols-2 gap-4 mb-8 px-4">
-                   <div class="bg-white/70 rounded-2xl p-5 shadow-sm border border-white/50 backdrop-blur-sm">
-                       <div class="text-3xl font-bold" [ngClass]="item.stat1ColorClass">{{ item.stat1Value }}</div>
-                       <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mt-1">{{ item.stat1Label }}</div>
-                   </div>
-                   <div class="bg-white/70 rounded-2xl p-5 shadow-sm border border-white/50 backdrop-blur-sm">
-                       <div class="text-3xl font-bold" [ngClass]="item.stat2ColorClass">{{ item.stat2Value }}</div>
-                       <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mt-1">{{ item.stat2Label }}</div>
-                   </div>
-                </div>
-
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-bold backdrop-blur-sm" [ngClass]="[item.statusColorClass, item.statusBgClass]">
-                   <span class="relative flex h-2.5 w-2.5" *ngIf="i === currentCardIndex">
-                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" [ngClass]="item.statusColorClass.replace('text', 'bg')"></span>
-                     <span class="relative inline-flex rounded-full h-2.5 w-2.5" [ngClass]="item.statusColorClass.replace('text', 'bg')"></span>
-                   </span>
-                   <span class="h-2.5 w-2.5 rounded-full" [ngClass]="item.statusColorClass.replace('text', 'bg')" *ngIf="i !== currentCardIndex"></span>
-                   
-                   {{ item.statusLabel }}
-                </div>
-            </div>
-
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-50/30 pointer-events-none transition-opacity duration-500 opacity-0"
-                 [class.group-hover:opacity-100]="i === currentCardIndex"></div>
+              </div>
+            </article>
+          </div>
         </div>
-      </div> </div>
+      </div>
+    </div>
+  </div>
   </div>
 
   <app-feature-modal #featureModal 

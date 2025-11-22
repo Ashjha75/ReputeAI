@@ -64,8 +64,7 @@
    ========================================= */
 .hero-title, 
 .hero-subtitle, 
-.hero-cta, 
-.hero-card-container {
+.hero-cta {
   opacity: 0; /* Start hidden */
 }
 
@@ -84,11 +83,6 @@
   animation-delay: 0.6s;
 }
 
-.hero-card-container {
-  animation: fadeScaleIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  animation-delay: 0.5s;
-}
-
 @keyframes slideUpFade {
   from {
     opacity: 0;
@@ -100,6 +94,106 @@
   }
 }
 
+.hero-card-container {
+  position: relative;
+  width: min(520px, 90vw);
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeScaleIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+.card-carousel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-deck {
+  display: flex;
+  gap: 1.5rem;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-card {
+  flex: 0 0 100%;
+  min-width: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.7) 100%);
+  border-radius: 30px;
+  box-shadow: 0 35px 70px rgba(15, 23, 42, 0.25);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #0f172a;
+}
+
+.hero-card h3 {
+  font-size: clamp(2rem, 2.4vw, 2.6rem);
+  font-weight: 700;
+  margin: 0;
+}
+
+.hero-card p {
+  margin: 0;
+  color: #475467;
+  font-size: 1rem;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: rgba(59, 130, 246, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.status-chip {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.stat {
+  border-radius: 20px;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat strong {
+  font-size: 1.8rem;
+}
+
+.stat small {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
 @keyframes fadeScaleIn {
   from {
     opacity: 0;
@@ -108,6 +202,19 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+.hero-card.active {
+  box-shadow: 0 45px 85px rgba(15, 23, 42, 0.4);
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 1.75rem;
+  }
+  .stats {
+    grid-template-columns: 1fr;
   }
 }
 
