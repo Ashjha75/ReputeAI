@@ -33,9 +33,9 @@ build/
 
 # Ignore application.properties and dev YAML for security
 src/main/resources/application.properties
-src/main/resources/application.yml
-src/main/resources/application-dev.yml
-src/main/resources/application-prod.yml
+src/main/resources/application-local.yml
+
+# Do NOT ignore dev, prod, or main application config
 
 # Ignore log files
 logs/
@@ -44,3 +44,4 @@ logs/
 
 # Environment overrides
 .env.dev
+.env*

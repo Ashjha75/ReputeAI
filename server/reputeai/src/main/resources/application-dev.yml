@@ -1,0 +1,59 @@
+# Development profile - ALL values come from environment variables for Docker
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:redis}
+      port: ${SPRING_REDIS_PORT:6379}
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 3600000ms
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${OAUTH_GOOGLE_CLIENT_ID:not-configured}
+            client-secret: ${OAUTH_GOOGLE_CLIENT_SECRET:not-configured}
+          github:
+            client-id: ${OAUTH_GITHUB_CLIENT_ID:not-configured}
+            client-secret: ${OAUTH_GITHUB_CLIENT_SECRET:not-configured}
+
+# JWT Configuration - Maps to JwtProvider constructor parameters
+jwt:
+  private-key: ${JWT_PRIVATE_KEY}
+  public-key: ${JWT_PUBLIC_KEY}
+  expiration-ms: ${JWT_EXPIRATION_MS:3600000}
+  refresh-token:
+    expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:604800000}
+  reset-token:
+    expiration-ms: ${JWT_RESET_EXPIRATION_MS:3600000}
+
+# App Configuration
+app:
+  domain: ${APP_DOMAIN}
+  jwtSecret: ${APP_JWTSECRET}
+  cookieName: TOKEN
+
+# AWS Configuration
+aws:
+  accessKeyId: ${AWS_ACCESS_KEY_ID}
+  secretAccessKey: ${AWS_SECRET_ACCESS_KEY}
+  region: ${AWS_REGION}
+  s3:
+    bucket: ${AWS_S3_BUCKET}
+  ses:
+    sender: ${AWS_SES_SENDER}
+
+# External API
+external:
+  api:
+    url: ${EXTERNAL_API_URL}
