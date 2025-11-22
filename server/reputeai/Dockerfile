@@ -14,11 +14,15 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
+# Create a non-root user before persisting logs
+RUN addgroup -S spring && adduser -S spring -G spring
+
+# Ensure log directory exists for Logback with proper ownership
+RUN mkdir -p /app/logs && chown -R spring:spring /app/logs
+
 # Copy the jar from build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Create a non-root user
-RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
 
 # Expose port
