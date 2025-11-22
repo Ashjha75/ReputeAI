@@ -131,6 +131,11 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
     if (isPlatformBrowser(this.platformId) && this.carouselInterval) {
       clearInterval(this.carouselInterval);
     }
+    // Clear typing intervals/timeouts
+    try {
+      if (this.typingInterval) clearInterval(this.typingInterval);
+      if (this.typingRestartTimeout) clearTimeout(this.typingRestartTimeout);
+    } catch (e) { /* ignore */ }
   }
 
   private startCarousel() {
@@ -222,16 +227,30 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
   private typingIndex = 0;
   // Slightly slower typing for a smoother, more natural reveal
   typingSpeed = 140; // ms per character
+  private typingRestartTimeout: any;
 
   private startTyping() {
     if (!isPlatformBrowser(this.platformId)) return;
-    // reset in case
+    // Ensure previous timers are cleared
+    if (this.typingInterval) clearInterval(this.typingInterval);
+    if (this.typingRestartTimeout) clearTimeout(this.typingRestartTimeout);
+
+    // reset
     this.typedBlue = '';
     this.typingIndex = 0;
-    clearInterval(this.typingInterval);
     this.typingInterval = setInterval(() => {
       if (this.typingIndex >= this.fullBlueText.length) {
+        // finished typing; clear interval and schedule restart after a pause
         clearInterval(this.typingInterval);
+        this.typingInterval = null;
+        // pause before restarting (ms)
+        const pause = 1200;
+        this.typingRestartTimeout = setTimeout(() => {
+          // clear typed text with a short fade (handled by CSS if needed) and restart
+          this.typedBlue = '';
+          this.typingIndex = 0;
+          this.startTyping();
+        }, pause);
         return;
       }
       this.typedBlue += this.fullBlueText.charAt(this.typingIndex);
