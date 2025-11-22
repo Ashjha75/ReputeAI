@@ -220,7 +220,8 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
   typedBlue = '';
   private typingInterval: any;
   private typingIndex = 0;
-  typingSpeed = 80; // ms per character
+  // Slightly slower typing for a smoother, more natural reveal
+  typingSpeed = 140; // ms per character
 
   private startTyping() {
     if (!isPlatformBrowser(this.platformId)) return;

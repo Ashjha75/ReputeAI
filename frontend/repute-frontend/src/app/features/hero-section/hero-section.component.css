@@ -88,13 +88,14 @@
   margin-left: 6px;
   background: linear-gradient(90deg, rgba(255,255,255,0.0), rgba(255,255,255,0.12));
   border-radius: 2px;
-  animation: blink 1s steps(2, start) infinite;
+  /* slower, softer blink for a calmer typing feel */
+  animation: blink 1.4s steps(2, start) infinite;
   transform: translateY(-3px);
 }
 
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  50.1%, 100% { opacity: 0; }
+  0%, 45% { opacity: 1; }
+  45.1%, 100% { opacity: 0; }
 }
 
 .hero-subtitle {
