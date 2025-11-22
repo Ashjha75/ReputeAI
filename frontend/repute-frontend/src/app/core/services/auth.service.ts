@@ -120,9 +120,10 @@ export class AuthService extends BaseApiService {
 
   /**
    * Store authentication data
+   * Tokens are stored as httpOnly cookies by backend
    */
   private storeAuthData(token: string, user: UserProfile, refreshToken?: string): void {
-    // Only store user in memory, not tokens
+    // Only store user in memory, tokens are in httpOnly cookies
     this._currentUserCache = user;
     try { this.authState.next(true); } catch {}
   }
@@ -135,15 +136,26 @@ export class AuthService extends BaseApiService {
    * Logout user
    */
   logout(refreshToken?: string): Observable<any> {
-    const body = refreshToken ? { refreshToken } : {};
-    return this.post(this.AUTH_ENDPOINTS.LOGOUT, body, true);
+    // No need to send refresh token in body, it's in httpOnly cookie
+    return this.post(this.AUTH_ENDPOINTS.LOGOUT, {}, true);
   }
 
   /**
    * Refresh authentication token
+   * Token is read from httpOnly cookie by backend
    */
-  refreshToken(refreshToken: string): Observable<any> {
-    return this.post<AuthResponse>(this.AUTH_ENDPOINTS.REFRESH, { refreshToken });
+  refreshToken(): Observable<any> {
+    // No need to send refresh token in body, backend reads it from cookie
+    return this.post<AuthResponse>(this.AUTH_ENDPOINTS.REFRESH, {}).pipe(
+      tap(response => {
+        if (response?.success && response?.data) {
+          // Update user data if returned
+          if (response.data.user) {
+            this._currentUserCache = response.data.user;
+          }
+        }
+      })
+    );
   }
 
   /**
@@ -247,11 +259,13 @@ export class AuthService extends BaseApiService {
 
   /**
    * Try to refresh session using a refresh token.
+   * Refresh token is read from httpOnly cookie by backend.
    * On success: save new auth data and show success notification.
    * On failure: clear auth and redirect to login.
    */
-  performRefresh(refreshToken: string): Observable<any> {
-    const req$ = this.post(this.AUTH_ENDPOINTS.REFRESH, { refreshToken }, false, false);
+  performRefresh(): Observable<any> {
+    // No need to send refresh token in body, backend reads it from cookie
+    const req$ = this.post(this.AUTH_ENDPOINTS.REFRESH, {}, false, false);
     req$.subscribe({
       next: (res: any) => {
         const original = res?.data ?? res;

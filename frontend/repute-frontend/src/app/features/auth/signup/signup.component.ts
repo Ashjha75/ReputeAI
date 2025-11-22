@@ -104,29 +104,13 @@ export class SignupComponent {
         const successMessage = response.data?.message || response.message || 'Registration successful. Please check your email to verify your account.';
         this.notificationService.success(successMessage);
 
-        // If response contains token/refresh, store it
+        // If response contains user data, store it (tokens are in httpOnly cookies)
         const original = response?.data ?? response;
         const token = original?.token ?? original?.data?.token ?? original?.accessToken ?? null;
-        // Try multiple possible locations for refresh token
-        const refreshToken = original?.refreshToken
-          ?? original?.data?.refreshToken
-          ?? original?.data?.data?.refreshToken
-          ?? original?.data?.refresh_token
-          ?? original?.data?.data?.refresh_token
-          ?? original?.tokens?.refreshToken
-          ?? original?.tokens?.refresh_token
-          ?? original?.data?.tokens?.refreshToken
-          ?? original?.data?.tokens?.refresh_token
-          ?? null;
         const user = original?.user ?? original?.data?.user ?? null;
-        // eslint-disable-next-line no-console
-        console.debug('Signup response (normalized):', { response, original, token, refreshToken, user });
-        if (token) {
-          if (refreshToken) {
-            this.authService.saveAuthDataWithRefresh(token, user, refreshToken);
-          } else {
-            this.authService.saveAuthData(token, user);
-          }
+        
+        if (token && user) {
+          this.authService.saveAuthData(token, user);
         }
 
         // Navigate to OTP verification page

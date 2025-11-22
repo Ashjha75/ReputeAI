@@ -31,11 +31,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          // On 401, clear auth and redirect to login
-          this.authService.clearAuthData();
-          this.notificationService.error('Session expired. Please sign in again.');
-          this.router.navigate(['/auth/login']);
+        if (error.status === 401 && !request.url.includes('/auth/login')) {
+          return this.handle401Error(request, next);
         }
         return throwError(() => error);
       })
@@ -43,15 +40,40 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Refresh logic removed: tokens are in httpOnly cookies, so just clear auth and redirect
-    this.authService.clearAuthData();
-    this.notificationService.error('Session expired. Please sign in again.');
-    this.router.navigate(['/auth/login']);
-    return throwError(() => new Error('Session expired. Please sign in again.'));
-  }
+    if (!this.isRefreshing) {
+      this.isRefreshing = true;
+      this.refreshTokenSubject.next(null);
 
-  private addTokenToRequest(request: HttpRequest<any>, token: string): HttpRequest<any> {
-    // No longer needed
-    return request;
+      // Try to refresh token (refresh token is in httpOnly cookie)
+      return this.authService.refreshToken().pipe(
+        switchMap((response: any) => {
+          this.isRefreshing = false;
+          if (response?.success) {
+            this.refreshTokenSubject.next(response);
+            // Retry the original request
+            return next.handle(request);
+          }
+          // Refresh failed, redirect to login
+          this.authService.clearAuthData();
+          this.notificationService.error('Session expired. Please sign in again.');
+          this.router.navigate(['/auth/login']);
+          return throwError(() => new Error('Session expired'));
+        }),
+        catchError((err) => {
+          this.isRefreshing = false;
+          this.authService.clearAuthData();
+          this.notificationService.error('Session expired. Please sign in again.');
+          this.router.navigate(['/auth/login']);
+          return throwError(() => err);
+        })
+      );
+    } else {
+      // Wait for refresh to complete, then retry request
+      return this.refreshTokenSubject.pipe(
+        filter(result => result !== null),
+        take(1),
+        switchMap(() => next.handle(request))
+      );
+    }
   }
 }

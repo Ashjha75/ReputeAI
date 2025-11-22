@@ -115,8 +115,8 @@ export class Header implements OnDestroy {
   }
 
   logout() {
-    const refreshToken = this.authService.getRefreshToken?.() ?? undefined;
-    this.authService.logout(refreshToken).subscribe({
+    // Refresh token is in httpOnly cookie, no need to pass it
+    this.authService.logout().subscribe({
       next: (res: any) => {
         if (res?.success) {
           this.authService.clearAuthData();
