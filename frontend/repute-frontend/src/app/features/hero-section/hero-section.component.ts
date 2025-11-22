@@ -108,6 +108,9 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
     cancelLabel: 'Cancel'
   };
 
+  // Fallback image for modal
+  fallbackImage = 'assets/fallback.png';
+
   constructor() {}
 
   ngOnInit(): void {
@@ -164,30 +167,41 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
 
   // --- Modal Actions ---
   openFeatureModal() {
-    this.featureModal?.open();
+    if (this.featureModal) {
+      this.featureModal.open();
+    }
   }
 
   closeFeatureModal() {
-    this.featureModal?.closeModal();
+    if (this.featureModal) {
+      this.featureModal.closeModal();
+    }
   }
 
   handleFeatureCta() {
-    console.log('Navigate to sample report or detailed analysis page');
     this.closeFeatureModal();
   }
 
   openConfirmModal() {
-    this.confirmModal?.applyConfig(this.confirmConfig);
-    this.confirmModal?.open();
+    if (this.confirmModal) {
+      this.confirmModal.applyConfig(this.confirmConfig);
+      this.confirmModal.open();
+    }
   }
 
   closeConfirmModal() {
-    this.confirmModal?.closeModal();
+    if (this.confirmModal) {
+      this.confirmModal.closeModal();
+    }
   }
 
   confirmAction() {
-    console.log('Starting scan...');
     this.closeConfirmModal();
     // Service call logic goes here
+  }
+
+  // Fallback for missing icons
+  getIcon(icon: string): string {
+    return icon ? icon : 'help_outline';
   }
 }
