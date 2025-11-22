@@ -1,3 +1,4 @@
+
 package com.reputeai.server.reputeai.config;
 
 import org.redisson.Redisson;
@@ -17,10 +18,11 @@ import javax.cache.spi.CachingProvider;
 @EnableCaching
 public class RedissonConfig {
 
-    @Value("${spring.redis.host:${spring.data.redis.host:localhost}}")
+    // Use standard Spring Boot property with fallback to localhost
+    @Value("${spring.data.redis.host:localhost}")
     private String redisHost;
 
-    @Value("${spring.redis.port:${spring.data.redis.port:6379}}")
+    @Value("${spring.data.redis.port:6379}")
     private int redisPort;
 
     @Bean(destroyMethod = "shutdown")
@@ -30,6 +32,8 @@ public class RedissonConfig {
                 .setAddress("redis://" + redisHost + ":" + redisPort);
         return Redisson.create(config);
     }
+
+
 
     @Bean
     public CacheManager jCacheCacheManager(RedissonClient redissonClient) {
