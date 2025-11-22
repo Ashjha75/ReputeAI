@@ -14,6 +14,7 @@ services:
       - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
       - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
+      - SPRING_FLYWAY_ENABLED=${SPRING_FLYWAY_ENABLED:-true}
       - SPRING_REDIS_HOST=redis
       - SPRING_REDIS_PORT=6379
       - APP_DOMAIN=${APP_DOMAIN}
@@ -29,11 +30,29 @@ services:
       - AWS_REGION=${AWS_REGION}
       - AWS_S3_BUCKET=${AWS_S3_BUCKET}
       - AWS_SES_SENDER=${AWS_SES_SENDER}
+      - EXTERNAL_API_URL=${EXTERNAL_API_URL}
+      - APP_COOKIE_SECURE=${APP_COOKIE_SECURE:-false}
+      - COOKIE_DOMAIN=${COOKIE_DOMAIN}
+      - OAUTH_GOOGLE_CLIENT_ID=${OAUTH_GOOGLE_CLIENT_ID}
+      - OAUTH_GOOGLE_CLIENT_SECRET=${OAUTH_GOOGLE_CLIENT_SECRET}
+      - OAUTH_GITHUB_CLIENT_ID=${OAUTH_GITHUB_CLIENT_ID}
+      - OAUTH_GITHUB_CLIENT_SECRET=${OAUTH_GITHUB_CLIENT_SECRET}
     depends_on:
-      - redis
+      redis:
+        condition: service_healthy
     networks:
       - reputeai-net
     restart: unless-stopped
+    # Add DNS to resolve external Aiven database
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
 
   redis:
     image: redis:8.2-alpine
@@ -44,6 +63,7 @@ services:
       - redis-data:/data
     networks:
       - reputeai-net
+    command: redis-server --appendonly yes
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
