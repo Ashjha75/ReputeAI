@@ -68,9 +68,36 @@
   opacity: 0; /* Start hidden */
 }
 
+.title-accent-wrapper {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.title-accent {
+  width: 58px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+  animation: accentAppear 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 0.05s;
+}
+
+.title-accent .accent-bar {
+  width: 48px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(99,102,241,0.95), rgba(99,102,241,0.6));
+  box-shadow: 0 6px 18px rgba(99,102,241,0.08);
+}
+
 .hero-title {
-  animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  animation-delay: 0.2s;
+  animation: titleAppear 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.22s; /* start after accent */
+  opacity: 0;
+  transform: translateY(0) scale(0.998);
 }
 
 /* Blue typing text styling */
@@ -117,6 +144,18 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes accentAppear {
+  0% { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  60% { opacity: 1; transform: translateY(2px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes titleAppear {
+  0% { opacity: 0; transform: translateY(6px) scale(0.998); }
+  60% { opacity: 1; transform: translateY(-2px) scale(1.002); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* =========================================
