@@ -1,22 +1,31 @@
-# Multi-stage Dockerfile for building and running the Spring Boot application
-# Builder stage: builds the fat JAR using Maven
-FROM maven:3.9.4-eclipse-temurin-21 AS builder
-WORKDIR /workspace
-
-# Copy only Maven wrapper and pom first for cached dependency download
-COPY mvnw mvnw.cmd pom.xml ./
-COPY .mvn .mvn
-
-# Copy source and build
-COPY src ./src
-RUN mvn -B -DskipTests package
-
-# Runtime stage: slim Java runtime
-FROM eclipse-temurin:21-jre
+# Multi-stage build for Spring Boot
+FROM maven:3.8.6-eclipse-temurin-17 AS build
 WORKDIR /app
-ARG JAR_FILE=target/*.jar
-COPY --from=builder /workspace/target/*.jar app.jar
 
+# Copy pom.xml and download dependencies
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copy source code and build
+COPY src ./src
+RUN mvn clean package -DskipTests
+
+# Runtime stage
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+
+# Copy the jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Create a non-root user
+RUN addgroup -S spring && adduser -S spring -G spring
+USER spring:spring
+
+# Expose port
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
 
+# Use environment variable for active profile
+ENV SPRING_PROFILES_ACTIVE=dev
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
