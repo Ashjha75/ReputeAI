@@ -129,32 +129,38 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
     }, 5000);
   }
 
-  // --- Visual Logic for 3D Stack ---
+// --- Visual Logic for 3D Stack ---
   getCardStyle(index: number) {
     const itemCount = this.carouselItems.length;
     
-    // Math to determine how "far" this card is from the current active one
-    // This handles the "wrap around" logic (e.g., going from index 2 back to 0)
+    // Calculate relative position
     let relativeIndex = (index - this.currentCardIndex + itemCount) % itemCount;
 
-    // If the card is "behind" the stack (index > 2), keep it hidden/flat at position 3
+    // If the card is "behind" the stack (index > 2), hide it completely
     if (relativeIndex > 2) {
-        relativeIndex = 3; 
+        return { opacity: 0, zIndex: -1, pointerEvents: 'none' };
     }
 
-    // Visual Calculation
-    const zIndex = 10 - relativeIndex;                // Active card on top (10), others below
-    const scale = 1 - (relativeIndex * 0.05);         // Shrink cards further back (1 -> 0.95 -> 0.90)
-    const translateY = relativeIndex * 15;            // Push cards further back down (0px -> 15px -> 30px)
-    const opacity = relativeIndex > 2 ? 0 : (1 - (relativeIndex * 0.2)); // Fade out back cards
+    const isActive = relativeIndex === 0;
+
+    // VISUAL TWEAKS:
+    // 1. Make active card solid (opacity 1).
+    // 2. Make back cards very faint (0.4 and 0.2) so text doesn't clash.
+    // 3. Scale them down more (0.1 difference) to create depth.
+    const zIndex = 10 - relativeIndex;
+    const scale = 1 - (relativeIndex * 0.1);     // 1.0 -> 0.9 -> 0.8
+    const translateY = relativeIndex * 20;       // 0px -> 20px -> 40px
+    const opacity = isActive ? 1 : (0.5 - (relativeIndex * 0.2)); // 1.0 -> 0.3 -> 0.1
 
     return {
       'z-index': zIndex,
       'transform': `scale(${scale}) translateY(${translateY}px)`,
       'opacity': opacity,
-      'pointer-events': relativeIndex === 0 ? 'auto' : 'none' // Only click active card
+      'filter': isActive ? 'none' : 'blur(1px)', // Blur the back cards slightly
+      'pointer-events': isActive ? 'auto' : 'none'
     };
   }
+
 
   // --- Modal Actions ---
   openFeatureModal() {

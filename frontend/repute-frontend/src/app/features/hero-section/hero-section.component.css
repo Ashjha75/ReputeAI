@@ -55,7 +55,19 @@
 .hero-subtitle { animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; animation-delay: 0.4s; opacity: 0; }
 .hero-cta { animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; animation-delay: 0.6s; opacity: 0; }
 .hero-card-container { animation: fadeScaleIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; animation-delay: 0.5s; opacity: 0; }
+/* Update or Add this to your CSS */
+.hero-card-container {
+  /* Ensure enough height for the stack + animations */
+  height: 550px; 
+  perspective: 1000px; /* Adds better 3D depth perception */
+}
 
+/* Refined Shadow for solid white card */
+.m3-card {
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
 @keyframes slideUpFade {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }

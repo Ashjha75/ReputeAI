@@ -1,5 +1,5 @@
 <section class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-50">
-  
+
   <div class="mesh-background absolute inset-0 -z-10">
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
@@ -9,92 +9,92 @@
 
   <div class="max-w-7xl w-full mx-auto px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      
+
       <div class="text-left space-y-8 pl-2">
         <h1 class="hero-title text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] tracking-tight">
           Build a Digital<br />
           Presence You<br />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600">Can Trust.</span>
         </h1>
-        
+
         <p class="hero-subtitle text-lg sm:text-xl text-slate-600 max-w-lg leading-relaxed font-medium">
-          Automatically scan years of social history for hidden risks. 
+          Automatically scan years of social history for hidden risks.
           Our AI helps you clean up your digital footprint so you can focus entirely on your future.
         </p>
-        
+
         <div class="hero-cta pt-4">
-            <button (click)="openConfirmModal()" class="m3-button group relative overflow-hidden inline-flex items-center justify-center px-10 py-4 rounded-full bg-slate-900 text-white text-lg font-medium shadow-lg transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-slate-300">
-                <span class="relative z-10 flex items-center gap-2">
-                  Start Free Scan
-                  <span class="material-icons text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
-                </span>
-            </button>
+          <button (click)="openConfirmModal()"
+            class="m3-button group relative overflow-hidden inline-flex items-center justify-center px-10 py-4 rounded-full bg-slate-900 text-white text-lg font-medium shadow-lg transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-slate-300">
+            <span class="relative z-10 flex items-center gap-2">
+              Start Free Scan
+              <span class="material-icons text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
+            </span>
+          </button>
         </div>
       </div>
 
-      <div class="flex items-center justify-center lg:justify-end hero-card-container pr-2 relative h-[500px] sm:h-[500px]">
-        
+      <div
+        class="flex items-center justify-center lg:justify-end hero-card-container pr-2 relative h-[500px] sm:h-[500px]">
+
         <div *ngFor="let item of carouselItems; let i = index"
-             class="m3-card card-transition absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[480px] aspect-[4/5] sm:aspect-square rounded-[32px] bg-white/60 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)] overflow-hidden group hover:shadow-[0_20px_60px_rgba(0,0,0,0.12)]"
-             [ngStyle]="getCardStyle(i)">
-            
-            <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-violet-500 to-blue-500 scan-beam opacity-0 transition-opacity duration-300"
-                 [class.group-hover:opacity-100]="i === currentCardIndex"></div>
-            
-            <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
-                
-                <div class="w-24 h-24 rounded-[24px] bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center mb-8 shadow-sm animate-float border border-white">
-                   <span class="material-icons text-5xl" [ngClass]="item.iconColorClass">{{ item.icon }}</span>
-                </div>
+          class="m3-card card-transition absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[480px] aspect-[4/5] sm:aspect-square rounded-[32px] bg-white border border-slate-100 shadow-[0_8px_32px_rgba(0,0,0,0.08)] overflow-hidden group"
+          [ngStyle]="getCardStyle(i)">
 
-                <h3 class="text-3xl font-bold text-slate-900 mb-2">{{ item.title }}</h3>
-                <p class="text-slate-500 text-sm font-medium tracking-wide uppercase mb-10">{{ item.subtitle }}</p>
+          <div
+            class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-violet-500 to-blue-500 scan-beam opacity-0 transition-opacity duration-300"
+            [class.group-hover:opacity-100]="i === currentCardIndex"></div>
 
-                <div class="w-full grid grid-cols-2 gap-4 mb-8 px-4">
-                   <div class="bg-white/70 rounded-2xl p-5 shadow-sm border border-white/50 backdrop-blur-sm">
-                       <div class="text-3xl font-bold" [ngClass]="item.stat1ColorClass">{{ item.stat1Value }}</div>
-                       <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mt-1">{{ item.stat1Label }}</div>
-                   </div>
-                   <div class="bg-white/70 rounded-2xl p-5 shadow-sm border border-white/50 backdrop-blur-sm">
-                       <div class="text-3xl font-bold" [ngClass]="item.stat2ColorClass">{{ item.stat2Value }}</div>
-                       <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mt-1">{{ item.stat2Label }}</div>
-                   </div>
-                </div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
 
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-bold backdrop-blur-sm" [ngClass]="[item.statusColorClass, item.statusBgClass]">
-                   <span class="relative flex h-2.5 w-2.5" *ngIf="i === currentCardIndex">
-                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" [ngClass]="item.statusColorClass.replace('text', 'bg')"></span>
-                     <span class="relative inline-flex rounded-full h-2.5 w-2.5" [ngClass]="item.statusColorClass.replace('text', 'bg')"></span>
-                   </span>
-                   <span class="h-2.5 w-2.5 rounded-full" [ngClass]="item.statusColorClass.replace('text', 'bg')" *ngIf="i !== currentCardIndex"></span>
-                   
-                   {{ item.statusLabel }}
-                </div>
+            <div
+              class="w-24 h-24 rounded-[24px] bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center mb-8 shadow-sm animate-float border border-white">
+              <span class="material-icons text-5xl" [ngClass]="item.iconColorClass">{{ item.icon }}</span>
             </div>
 
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-50/30 pointer-events-none transition-opacity duration-500 opacity-0"
-                 [class.group-hover:opacity-100]="i === currentCardIndex"></div>
+            <h3 class="text-3xl font-bold text-slate-900 mb-2">{{ item.title }}</h3>
+            <p class="text-slate-500 text-sm font-medium tracking-wide uppercase mb-10">{{ item.subtitle }}</p>
+
+            <div class="w-full grid grid-cols-2 gap-4 mb-8 px-4">
+              <div class="bg-white/70 rounded-2xl p-5 shadow-sm border border-white/50 backdrop-blur-sm">
+                <div class="text-3xl font-bold" [ngClass]="item.stat1ColorClass">{{ item.stat1Value }}</div>
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mt-1">{{ item.stat1Label }}</div>
+              </div>
+              <div class="bg-white/70 rounded-2xl p-5 shadow-sm border border-white/50 backdrop-blur-sm">
+                <div class="text-3xl font-bold" [ngClass]="item.stat2ColorClass">{{ item.stat2Value }}</div>
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mt-1">{{ item.stat2Label }}</div>
+              </div>
+            </div>
+
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-bold backdrop-blur-sm"
+              [ngClass]="[item.statusColorClass, item.statusBgClass]">
+              <span class="relative flex h-2.5 w-2.5" *ngIf="i === currentCardIndex">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                  [ngClass]="item.statusColorClass.replace('text', 'bg')"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5"
+                  [ngClass]="item.statusColorClass.replace('text', 'bg')"></span>
+              </span>
+              <span class="h-2.5 w-2.5 rounded-full" [ngClass]="item.statusColorClass.replace('text', 'bg')"
+                *ngIf="i !== currentCardIndex"></span>
+
+              {{ item.statusLabel }}
+            </div>
+          </div>
+
+          <div
+            class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blue-50/30 pointer-events-none transition-opacity duration-500 opacity-0"
+            [class.group-hover:opacity-100]="i === currentCardIndex"></div>
         </div>
-      </div> </div>
+      </div>
+    </div>
   </div>
 
-  <app-feature-modal #featureModal 
-    [badgeLabel]="featureModalData.badgeLabel"
-    [badgeContext]="featureModalData.badgeContext"
-    [title]="featureModalData.title"
-    [subtitle]="featureModalData.subtitle"
-    [description]="featureModalData.description"
-    [ctaLabel]="featureModalData.ctaLabel"
-    [ctaIcon]="featureModalData.ctaIcon"
-    [mediaSrc]="featureModalData.mediaSrc"
-    [mediaAlt]="featureModalData.mediaAlt"
-    (cta)="handleFeatureCta()"
-    (close)="closeFeatureModal()">
+  <app-feature-modal #featureModal [badgeLabel]="featureModalData.badgeLabel"
+    [badgeContext]="featureModalData.badgeContext" [title]="featureModalData.title"
+    [subtitle]="featureModalData.subtitle" [description]="featureModalData.description"
+    [ctaLabel]="featureModalData.ctaLabel" [ctaIcon]="featureModalData.ctaIcon" [mediaSrc]="featureModalData.mediaSrc"
+    [mediaAlt]="featureModalData.mediaAlt" (cta)="handleFeatureCta()" (close)="closeFeatureModal()">
   </app-feature-modal>
 
-  <app-confirm-modal #confirmModal 
-    [config]="confirmConfig"
-    (close)="closeConfirmModal()"
-    (confirm)="confirmAction()">
+  <app-confirm-modal #confirmModal [config]="confirmConfig" (close)="closeConfirmModal()" (confirm)="confirmAction()">
   </app-confirm-modal>
 </section>
