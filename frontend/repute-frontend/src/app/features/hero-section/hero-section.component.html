@@ -33,29 +33,32 @@
       </div>
 
       <div class="flex items-center justify-center lg:justify-end hero-card-container pr-2 relative">
-        <div class="card-carousel">
-          <div class="card-deck" [style.transform]="'translateX(' + (-currentCardIndex * 100) + '%)'">
-            <article *ngFor="let item of carouselItems; let i = index" class="hero-card" [class.active]="i === currentCardIndex">
+        <div class="card-stack-wrapper">
+          <article *ngFor="let item of carouselItems; let i = index" 
+                   class="hero-card-stacked" 
+                   [ngStyle]="getCardStyle(i)"
+                   [attr.aria-hidden]="i !== currentCardIndex">
+            <div class="card-inner">
               <div class="card-header">
-                <span class="material-icons icon-circle" [ngClass]="item.iconColorClass">{{ item.icon }}</span>
-                <span class="status-chip" [ngClass]="[item.statusColorClass, item.statusBgClass]">{{ item.statusLabel }}</span>
+                <span class="material-icons icon-badge" [ngClass]="item.iconColorClass">{{ item.icon }}</span>
+                <span class="status-pill" [ngClass]="[item.statusColorClass, item.statusBgClass]">{{ item.statusLabel }}</span>
               </div>
-              <div class="card-body">
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.subtitle }}</p>
-                <div class="stats">
-                  <div class="stat" [ngClass]="item.stat1ColorClass">
-                    <strong>{{ item.stat1Value }}</strong>
-                    <small>{{ item.stat1Label }}</small>
+              <div class="card-content">
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p class="card-subtitle">{{ item.subtitle }}</p>
+                <div class="card-stats">
+                  <div class="stat-box">
+                    <div class="stat-value" [ngClass]="item.stat1ColorClass">{{ item.stat1Value }}</div>
+                    <div class="stat-label">{{ item.stat1Label }}</div>
                   </div>
-                  <div class="stat" [ngClass]="item.stat2ColorClass">
-                    <strong>{{ item.stat2Value }}</strong>
-                    <small>{{ item.stat2Label }}</small>
+                  <div class="stat-box">
+                    <div class="stat-value" [ngClass]="item.stat2ColorClass">{{ item.stat2Value }}</div>
+                    <div class="stat-label">{{ item.stat2Label }}</div>
                   </div>
                 </div>
               </div>
-            </article>
-          </div>
+            </div>
+          </article>
         </div>
       </div>
     </div>
