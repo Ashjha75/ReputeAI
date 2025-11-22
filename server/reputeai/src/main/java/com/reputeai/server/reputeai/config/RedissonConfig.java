@@ -17,10 +17,10 @@ import javax.cache.spi.CachingProvider;
 @EnableCaching
 public class RedissonConfig {
 
-    @Value("${spring.data.redis.host:localhost}")
+    @Value("${spring.redis.host:${spring.data.redis.host:localhost}}")
     private String redisHost;
 
-    @Value("${spring.data.redis.port:6379}")
+    @Value("${spring.redis.port:${spring.data.redis.port:6379}}")
     private int redisPort;
 
     @Bean(destroyMethod = "shutdown")
