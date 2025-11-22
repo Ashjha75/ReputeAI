@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ConfirmModalComponent, ConfirmModalConfig } from '../../shared/components/confirm-modal/confirm-modal.component';
 import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
 
+// Define the structure for our card data
 interface CarouselItem {
   icon: string;
   iconColorClass: string;
@@ -33,9 +34,9 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
 
   // --- Carousel State ---
   currentCardIndex = 0;
-  private carouselInterval: any = null; // Initialize as null
+  private carouselInterval: any;
 
-  // --- Carousel Data ---
+  // --- Carousel Data (The 3 rotating cards) ---
   carouselItems: CarouselItem[] = [
     {
       icon: 'verified_user',
@@ -84,23 +85,24 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
     }
   ];
 
-  // --- Modal Config ---
+  // --- Modal Data ---
   featureModalData = {
     badgeLabel: 'AI Analysis',
     badgeContext: 'Deep Scan Technology',
     title: 'Comprehensive Digital Audit',
     subtitle: 'Real-time | Multi-platform',
-    description: 'Our advanced algorithms scan social platforms to identify potential risks.',
+    description:
+      'Our advanced algorithms scan Twitter/X, LinkedIn, and GitHub to identify potential risks in your digital footprint. We analyze sentiment, keyword history, and brand alignment.',
     ctaLabel: 'View Sample Report',
     ctaIcon: 'analytics',
-    mediaSrc: 'assets/hero-modal-demo.png',
+    mediaSrc: 'assets/hero-modal-demo.png', 
     mediaAlt: 'AI Analysis Dashboard Demo'
   };
 
   confirmConfig: ConfirmModalConfig = {
     title: 'Start Deep Scan?',
     message: 'This will analyze your public profile data.',
-    detail: 'The process typically takes 2-3 minutes.',
+    detail: 'The process typically takes 2-3 minutes. You will be notified when complete.',
     variant: 'info',
     confirmLabel: 'Start Scan',
     cancelLabel: 'Cancel'
@@ -109,69 +111,83 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit(): void {
+    // Start automatic rotation
     this.startCarousel();
   }
 
   ngOnDestroy(): void {
-    this.stopCarousel();
+    // Stop rotation to prevent memory leaks
+    if (this.carouselInterval) {
+      clearInterval(this.carouselInterval);
+    }
   }
 
   private startCarousel() {
-    // Clear any existing interval first to prevent infinite loops
-    this.stopCarousel(); 
-    
+    // Rotate every 5 seconds
     this.carouselInterval = setInterval(() => {
       this.currentCardIndex = (this.currentCardIndex + 1) % this.carouselItems.length;
     }, 5000);
   }
 
-  private stopCarousel() {
-    if (this.carouselInterval) {
-      clearInterval(this.carouselInterval);
-      this.carouselInterval = null;
-    }
-  }
-
-  // --- FIXED 3D Stack Logic ---
+// --- Visual Logic for 3D Stack ---
   getCardStyle(index: number) {
     const itemCount = this.carouselItems.length;
+    
+    // Calculate relative position
     let relativeIndex = (index - this.currentCardIndex + itemCount) % itemCount;
 
-    // Completely hide anything beyond the top 3 cards to prevent glitches
+    // If the card is "behind" the stack (index > 2), hide it completely
     if (relativeIndex > 2) {
-        return { 
-          opacity: 0, 
-          zIndex: -1, 
-          transform: 'scale(0.8)', 
-          pointerEvents: 'none' 
-        };
+        return { opacity: 0, zIndex: -1, pointerEvents: 'none' };
     }
 
-    // Is this the front card?
     const isActive = relativeIndex === 0;
 
-    // Calculations
+    // VISUAL TWEAKS:
+    // 1. Make active card solid (opacity 1).
+    // 2. Make back cards very faint (0.4 and 0.2) so text doesn't clash.
+    // 3. Scale them down more (0.1 difference) to create depth.
     const zIndex = 10 - relativeIndex;
-    const scale = 1 - (relativeIndex * 0.1);      // 1.0 -> 0.9 -> 0.8
-    const translateY = relativeIndex * 15;        // 0px -> 15px -> 30px
-    
-    // Opacity: Active is 1 (Solid). Back cards fade out quickly.
-    const opacity = isActive ? 1 : (0.4 - (relativeIndex * 0.15)); 
+    const scale = 1 - (relativeIndex * 0.1);     // 1.0 -> 0.9 -> 0.8
+    const translateY = relativeIndex * 20;       // 0px -> 20px -> 40px
+    const opacity = isActive ? 1 : (0.5 - (relativeIndex * 0.2)); // 1.0 -> 0.3 -> 0.1
 
     return {
       'z-index': zIndex,
       'transform': `scale(${scale}) translateY(${translateY}px)`,
       'opacity': opacity,
-      'filter': isActive ? 'none' : 'blur(1px)', // Blur back cards slightly
+      'filter': isActive ? 'none' : 'blur(1px)', // Blur the back cards slightly
       'pointer-events': isActive ? 'auto' : 'none'
     };
   }
 
-  // --- Actions ---
-  openFeatureModal() { this.featureModal?.open(); }
-  closeFeatureModal() { this.featureModal?.closeModal(); }
-  handleFeatureCta() { this.closeFeatureModal(); }
-  openConfirmModal() { this.confirmModal?.applyConfig(this.confirmConfig); this.confirmModal?.open(); }
-  closeConfirmModal() { this.confirmModal?.closeModal(); }
-  confirmAction() { this.closeConfirmModal(); }
+
+  // --- Modal Actions ---
+  openFeatureModal() {
+    this.featureModal?.open();
+  }
+
+  closeFeatureModal() {
+    this.featureModal?.closeModal();
+  }
+
+  handleFeatureCta() {
+    console.log('Navigate to sample report or detailed analysis page');
+    this.closeFeatureModal();
+  }
+
+  openConfirmModal() {
+    this.confirmModal?.applyConfig(this.confirmConfig);
+    this.confirmModal?.open();
+  }
+
+  closeConfirmModal() {
+    this.confirmModal?.closeModal();
+  }
+
+  confirmAction() {
+    console.log('Starting scan...');
+    this.closeConfirmModal();
+    // Service call logic goes here
+  }
 }
