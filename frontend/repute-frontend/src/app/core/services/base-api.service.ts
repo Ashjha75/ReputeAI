@@ -60,7 +60,8 @@ export class BaseApiService {
 
     return this.http.get<T>(`${this.baseUrl}${endpoint}`, {
       headers,
-      params
+      params,
+      withCredentials: true
     }).pipe(
       map(response => this.handleSuccess<T>(response, showNotification)),
       retry(2), // Retry failed requests twice
@@ -80,7 +81,8 @@ export class BaseApiService {
     const headers = requireAuth ? this.getAuthHeaders() : this.defaultHeaders;
 
     return this.http.post<T>(`${this.baseUrl}${endpoint}`, body, {
-      headers
+      headers,
+      withCredentials: true
     }).pipe(
       map(response => this.handleSuccess<T>(response, showNotification)),
       catchError(error => this.handleError(error, showNotification))
@@ -99,7 +101,8 @@ export class BaseApiService {
     const headers = requireAuth ? this.getAuthHeaders() : this.defaultHeaders;
 
     return this.http.put<T>(`${this.baseUrl}${endpoint}`, body, {
-      headers
+      headers,
+      withCredentials: true
     }).pipe(
       map(response => this.handleSuccess<T>(response, showNotification)),
       catchError(error => this.handleError(error, showNotification))
@@ -118,7 +121,8 @@ export class BaseApiService {
     const headers = requireAuth ? this.getAuthHeaders() : this.defaultHeaders;
 
     return this.http.patch<T>(`${this.baseUrl}${endpoint}`, body, {
-      headers
+      headers,
+      withCredentials: true
     }).pipe(
       map(response => this.handleSuccess<T>(response, showNotification)),
       catchError(error => this.handleError(error, showNotification))
@@ -136,7 +140,8 @@ export class BaseApiService {
     const headers = requireAuth ? this.getAuthHeaders() : this.defaultHeaders;
 
     return this.http.delete<T>(`${this.baseUrl}${endpoint}`, {
-      headers
+      headers,
+      withCredentials: true
     }).pipe(
       map(response => this.handleSuccess<T>(response, showNotification)),
       catchError(error => this.handleError(error, showNotification))

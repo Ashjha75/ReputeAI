@@ -87,7 +87,9 @@ public class CookieUtil {
         cookie.setHttpOnly(true);
         cookie.setSecure(secureCookie); // Set true in production (HTTPS)
         cookie.setMaxAge(maxAge);
-        cookie.setAttribute("SameSite", "Strict"); // CSRF protection
+        // Use Lax for development (allows cookies on cross-site GET requests)
+        // Change to Strict in production for better security
+        cookie.setAttribute("SameSite", secureCookie ? "Strict" : "Lax");
 
         if (cookieDomain != null && !cookieDomain.isBlank()) {
             cookie.setDomain(cookieDomain);
