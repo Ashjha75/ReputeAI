@@ -153,19 +153,21 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
     const isActive = relativeIndex === 0;
 
     // VISUAL TWEAKS:
-    // 1. Make active card solid (opacity 1).
-    // 2. Make back cards very faint (0.4 and 0.2) so text doesn't clash.
-    // 3. Scale them down more (0.1 difference) to create depth.
+    // 1. Active card sits centered and fully opaque.
+    // 2. Back cards scale down, move down and to the RIGHT so you can see the stack.
+    // 3. Slight rotation for subtle fanning effect.
     const zIndex = 10 - relativeIndex;
-    const scale = 1 - (relativeIndex * 0.1);     // 1.0 -> 0.9 -> 0.8
-    const translateY = relativeIndex * 20;       // 0px -> 20px -> 40px
-    const opacity = isActive ? 1 : (0.5 - (relativeIndex * 0.2)); // 1.0 -> 0.3 -> 0.1
+    const scale = 1 - (relativeIndex * 0.08);     // 1.0 -> 0.92 -> 0.84
+    const translateY = relativeIndex * 18;        // 0px -> 18px -> 36px
+    const translateX = relativeIndex * 36;        // 0px -> 36px -> 72px (push to right)
+    const rotateZ = -relativeIndex * 2;           // subtle rotate: 0 -> -2deg -> -4deg
+    const opacity = isActive ? 1 : (0.55 - (relativeIndex * 0.2)); // 1.0 -> 0.35 -> 0.15
 
     return {
       'z-index': zIndex,
-      'transform': `scale(${scale}) translateY(${translateY}px)`,
+      'transform': `translateX(${translateX}px) translateY(${translateY}px) rotateZ(${rotateZ}deg) scale(${scale})`,
       'opacity': opacity,
-      'filter': isActive ? 'none' : 'blur(1px)', // Blur the back cards slightly
+      'filter': isActive ? 'none' : 'blur(0.9px)',
       'pointer-events': isActive ? 'auto' : 'none'
     };
   }

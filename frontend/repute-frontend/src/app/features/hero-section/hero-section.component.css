@@ -107,6 +107,7 @@
   perspective: 1500px;
   animation: fadeScaleIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: 0.5s;
+  overflow: visible; /* allow cards to be visible outside container */
 }
 
 .card-stack-wrapper {
@@ -117,6 +118,7 @@
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d;
+  overflow: visible; /* ensure stacked cards on the right are not clipped */
 }
 
 /* Stacked Card with 3D Effect */
