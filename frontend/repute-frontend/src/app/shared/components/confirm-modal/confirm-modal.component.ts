@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, Renderer2, Inject } from '@angu
 import { CommonModule } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
 
-export type ConfirmModalVariant = 'delete' | 'update' | 'warning';
+export type ConfirmModalVariant = 'delete' | 'update' | 'warning' | 'info';
 
 export interface ConfirmModalConfig {
   title: string;
@@ -25,7 +25,8 @@ const DEFAULT_CONFIG: ConfirmModalConfig = {
 const VARIANT_ICON: Record<ConfirmModalVariant, string> = {
   delete: 'delete_forever',
   update: 'edit',
-  warning: 'warning_amber'
+  warning: 'warning_amber',
+  info: 'info'
 };
 
 @Component({
