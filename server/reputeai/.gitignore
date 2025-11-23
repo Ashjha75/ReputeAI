@@ -31,17 +31,34 @@ build/
 ### VS Code ###
 .vscode/
 
-# Ignore application.properties and dev YAML for security
-src/main/resources/application.properties
-src/main/resources/application-local.yml
-
-# Do NOT ignore dev, prod, or main application config
-
-# Ignore log files
+# Logs
 logs/
 *.log
 *.log.*
 
-# Environment overrides
-.env.dev
-.env*
+# Ignore build artifacts
+*.jar
+
+# Ignore application config files that contain secrets. These should be provided via environment variables or secret management
+/src/main/resources/application.yml
+/src/main/resources/application-local.yml
+/src/main/resources/application-dev.yml
+/src/main/resources/application-prod.yml
+/src/main/resources/application.properties
+
+# Environment override files (local dev) - do not commit
+.env
+.env.*
+
+# Private keys and generated key files
+private.pem
+private.der.b64
+private.*
+
+# Optional: ignore Docker local files
+docker-compose.override.yml
+
+# Keep README and docs tracked
+!HELP.md
+
+# End of file
