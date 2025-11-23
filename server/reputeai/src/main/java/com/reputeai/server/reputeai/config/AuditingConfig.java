@@ -24,9 +24,9 @@ public class AuditingConfig {
 
             if (authentication == null || !authentication.isAuthenticated()) {
                 // Return null/empty for jobs (SYSTEM user) or unauthenticated access
-                return Optional.empty(); 
+                return Optional.empty();
             }
-            
+
             Object principal = authentication.getPrincipal();
 
             // Check if the principal is our custom AuthenticatedUser (from JWT)
@@ -35,7 +35,7 @@ public class AuditingConfig {
             }
 
             // Fallback for system user (e.g., SYSTEM role or default ID)
-            return Optional.of(0L); 
+            return Optional.of(0L);
         };
     }
 }

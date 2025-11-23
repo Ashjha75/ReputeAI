@@ -7,7 +7,7 @@ import java.util.Collection;
 
 /**
  * Custom Principal object stored in the SecurityContext.
- * Wraps Spring Security's User and adds custom claims (e.g., jti, userId) 
+ * Wraps Spring Security's User and adds custom claims (e.g., jti, userId)
  * for use in service-layer security checks (ABAC, Token Revocation).
  */
 public class AuthenticatedUser extends User {
@@ -26,7 +26,7 @@ public class AuthenticatedUser extends User {
         this.userId = userId;
         this.jti = jti;
     }
-    
+
     public Long getUserId() {
         return userId;
     }
@@ -34,6 +34,6 @@ public class AuthenticatedUser extends User {
     public String getJti() {
         return jti;
     }
-    
+
 
 }
