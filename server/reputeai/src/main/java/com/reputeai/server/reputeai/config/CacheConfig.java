@@ -54,7 +54,6 @@ public class CacheConfig {
                 .disableCachingNullValues();
 
         // 3. Define specific cache configuration for Bucket4j rate limiting
-        // Rate limit buckets need longer TTL and simpler serialization
         RedisCacheConfiguration rateLimitCacheConfig = RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofHours(1)) // Rate limit buckets live for 1 hour
                 .serializeKeysWith(
@@ -70,6 +69,7 @@ public class CacheConfig {
                 .cacheDefaults(defaultCacheConfig)
                 // Register the rate-limit-buckets cache used by Bucket4j
                 .withCacheConfiguration("auth-limit", rateLimitCacheConfig)
+                .withCacheConfiguration("buckets", rateLimitCacheConfig) // <-- Added for Bucket4j
                 .build();
     }
 }
