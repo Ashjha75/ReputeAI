@@ -65,11 +65,11 @@ public class LoginResponseDto {
     /**
      * Convenience constructor for building the response within the service layer.
      *
-     * @param accessToken The generated JWT access token.
+     * @param accessToken  The generated JWT access token.
      * @param refreshToken The generated refresh token.
-     * @param userId The user's ID.
-     * @param email The user's email.
-     * @param roles The user's roles.
+     * @param userId       The user's ID.
+     * @param email        The user's email.
+     * @param roles        The user's roles.
      */
     public LoginResponseDto(String accessToken, String refreshToken, Long userId, String email, Set<String> roles) {
         this.accessToken = accessToken;
@@ -82,7 +82,7 @@ public class LoginResponseDto {
     /**
      * Convenience constructor for building the response when only tokens are available.
      *
-     * @param accessToken The generated JWT access token.
+     * @param accessToken  The generated JWT access token.
      * @param refreshToken The generated refresh token.
      */
     public LoginResponseDto(String accessToken, String refreshToken) {

@@ -6,9 +6,14 @@ package com.reputeai.server.reputeai.security.oauth;
  */
 public interface OAuth2UserInfo {
     String getProviderId();
+
     String getEmail();
+
     String getFirstName();
+
     String getLastName();
+
     String getProfilePictureUrl();
+
     boolean isEmailVerified();
 }
