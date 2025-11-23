@@ -2,7 +2,6 @@ package com.reputeai.server.reputeai.service.impl;
 
 import com.reputeai.server.reputeai.constants.MessageConstants;
 import com.reputeai.server.reputeai.domain.dto.*;
-import com.reputeai.server.reputeai.domain.entity.AuthProvider; // Added
 import com.reputeai.server.reputeai.domain.entity.RefreshToken;
 import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
@@ -14,9 +13,10 @@ import com.reputeai.server.reputeai.repository.RoleRepository;
 import com.reputeai.server.reputeai.repository.UserOAuthProviderRepository; // Added
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.security.JwtProvider;
-import com.reputeai.server.reputeai.security.oauth2.OAuth2UserInfo; // Added
-import com.reputeai.server.reputeai.security.oauth2.OAuth2UserInfoFactory; // Added
+import com.reputeai.server.reputeai.security.oauth.OAuth2UserInfo;
+import com.reputeai.server.reputeai.security.oauth.OAuth2UserInfoFactory;
 import com.reputeai.server.reputeai.service.AuthService;
+import com.reputeai.server.reputeai.util.AuthProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
