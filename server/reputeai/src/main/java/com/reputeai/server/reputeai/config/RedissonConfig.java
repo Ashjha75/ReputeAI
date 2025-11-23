@@ -1,4 +1,3 @@
-
 package com.reputeai.server.reputeai.config;
 
 import org.redisson.Redisson;
@@ -32,7 +31,6 @@ public class RedissonConfig {
                 .setAddress("redis://" + redisHost + ":" + redisPort);
         return Redisson.create(config);
     }
-
 
 
     @Bean

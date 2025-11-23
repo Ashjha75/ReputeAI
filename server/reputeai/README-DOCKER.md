@@ -1,4 +1,5 @@
-This README explains how to build and run the `reputeai` Spring Boot service with Docker, and how to push images to AWS ECR.
+This README explains how to build and run the `reputeai` Spring Boot service with Docker, and how to push images to AWS
+ECR.
 
 Build (local)
 
@@ -42,6 +43,8 @@ docker push <account-id>.dkr.ecr.<region>.amazonaws.com/reputeai:latest
 ```
 
 Notes
-- The Dockerfile uses a multi-stage build with Maven and Temurin Java 21. Ensure your project builds locally with `mvn -U clean package` before relying on the container build.
+
+- The Dockerfile uses a multi-stage build with Maven and Temurin Java 21. Ensure your project builds locally with
+  `mvn -U clean package` before relying on the container build.
 - Keep secrets out of the image; provide credentials via environment variables or AWS Secrets Manager.
 
