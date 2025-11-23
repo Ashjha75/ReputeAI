@@ -2,24 +2,26 @@
 
 ## 🎯 When to Throw What
 
-| Scenario | Exception | HTTP Status |
-|----------|-----------|-------------|
-| Resource not found | `NotFoundException` | 404 |
-| Duplicate resource | `ConflictException` | 409 |
-| Invalid input | `BadRequestException` | 400 |
-| Auth required/failed | `UnauthorizedException` | 401 |
-| Insufficient permissions | `ForbiddenException` | 403 |
-| Bean validation fails | Use `@Valid` in controller | 400 |
+| Scenario                 | Exception                  | HTTP Status |
+|--------------------------|----------------------------|-------------|
+| Resource not found       | `NotFoundException`        | 404         |
+| Duplicate resource       | `ConflictException`        | 409         |
+| Invalid input            | `BadRequestException`      | 400         |
+| Auth required/failed     | `UnauthorizedException`    | 401         |
+| Insufficient permissions | `ForbiddenException`       | 403         |
+| Bean validation fails    | Use `@Valid` in controller | 400         |
 
 ## 💡 Common Patterns
 
 ### Pattern 1: Optional.orElseThrow
+
 ```java
 return repository.findById(id)
     .orElseThrow(() -> new NotFoundException("User not found: " + id));
 ```
 
 ### Pattern 2: Check then throw
+
 ```java
 if (repository.existsByUsername(username)) {
     throw new ConflictException("Username already exists: " + username);
@@ -27,6 +29,7 @@ if (repository.existsByUsername(username)) {
 ```
 
 ### Pattern 3: Validation
+
 ```java
 if (age < 0 || age > 150) {
     throw new BadRequestException("Invalid age: " + age);
@@ -34,6 +37,7 @@ if (age < 0 || age > 150) {
 ```
 
 ### Pattern 4: Controller validation
+
 ```java
 @PostMapping
 public Response create(@Valid @RequestBody Request req) {
@@ -98,17 +102,20 @@ GET /api/demo/internal-error
 ## 🚫 Don'ts
 
 ❌ Don't throw generic RuntimeException
+
 ```java
 throw new RuntimeException("Error"); // BAD
 ```
 
 ❌ Don't return null or error objects
+
 ```java
 return null; // BAD
 return new ErrorDTO(); // BAD
 ```
 
 ❌ Don't handle in controller (let GlobalExceptionHandler do it)
+
 ```java
 try {
     service.method();
@@ -118,6 +125,7 @@ try {
 ```
 
 ❌ Don't include sensitive data in messages
+
 ```java
 throw new NotFoundException("User not found. Password was: " + pwd); // BAD!
 ```
@@ -125,21 +133,25 @@ throw new NotFoundException("User not found. Password was: " + pwd); // BAD!
 ## ✅ Do's
 
 ✅ Throw specific exceptions from services
+
 ```java
 throw new NotFoundException("User not found: " + id); // GOOD
 ```
 
 ✅ Use @Valid for bean validation
+
 ```java
 public Response create(@Valid @RequestBody Request req) // GOOD
 ```
 
 ✅ Include context in messages
+
 ```java
 throw new ConflictException("Username already exists: " + username); // GOOD
 ```
 
 ✅ Let GlobalExceptionHandler convert to HTTP response
+
 ```java
 // Service just throws, handler converts to ResponseEntity
 ```

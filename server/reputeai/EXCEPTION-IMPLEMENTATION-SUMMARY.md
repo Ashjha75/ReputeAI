@@ -5,6 +5,7 @@
 ### 1. Core Components Created
 
 #### Exception Package (`com.reputeai.server.reputeai.exception`)
+
 - ✅ `ErrorCode.java` - Enum with all error codes (VALIDATION_ERROR, RESOURCE_NOT_FOUND, etc.)
 - ✅ `ApiException.java` - Base abstract exception class
 - ✅ `NotFoundException.java` - For 404 scenarios
@@ -15,17 +16,21 @@
 - ✅ `GlobalExceptionHandler.java` - Central `@RestControllerAdvice` handler
 
 #### DTO Package (`com.reputeai.server.reputeai.dto`)
+
 - ✅ `ErrorResponse.java` - Standard error response record
 
 #### Controller Package (Demo)
+
 - ✅ `DemoExceptionController.java` - Demo endpoints showing exception usage
 
 #### Documentation
+
 - ✅ `README-EXCEPTION-HANDLING.md` - Complete usage guide
 
 ## 🎯 Features
 
 ✅ **Standardized Error Response**
+
 - Consistent JSON structure for all errors
 - TraceId for log correlation
 - Machine-readable error codes
@@ -33,22 +38,26 @@
 - Field-level validation details
 
 ✅ **Centralized Exception Handling**
+
 - Single `@RestControllerAdvice` handler
 - Consistent HTTP status mapping
 - Appropriate logging levels
 - No sensitive data leakage
 
 ✅ **Type-Safe Custom Exceptions**
+
 - Clear semantic meaning
 - Automatic HTTP status mapping
 - Easy to throw from services
 
 ✅ **Validation Support**
+
 - Bean validation with `@Valid`
 - Field-level error messages
 - Automatic 400 responses
 
 ✅ **Logging & Tracing**
+
 - MDC traceId integration
 - INFO for client errors (4xx)
 - ERROR for server errors (5xx)
@@ -172,13 +181,17 @@ curl http://localhost:8080/api/demo/internal-error
 ## 📝 Next Steps
 
 ### 1. Remove Demo Controller (Production)
+
 Once you understand the system, remove:
+
 ```
 src/main/java/.../controller/DemoExceptionController.java
 ```
 
 ### 2. Add Exception Handling to Your Services
+
 Replace existing error handling code with custom exceptions:
+
 ```java
 // Before
 if (user == null) {
@@ -192,7 +205,9 @@ if (user == null) {
 ```
 
 ### 3. Add Validation to DTOs
+
 Add Bean Validation annotations to request DTOs:
+
 ```java
 public record YourRequest(
     @NotBlank String field1,
@@ -202,10 +217,13 @@ public record YourRequest(
 ```
 
 ### 4. Update OpenAPI Configuration
+
 Document ErrorResponse schema in your OpenAPI config (if not already done).
 
 ### 5. Write Integration Tests
+
 Test your actual endpoints for error scenarios:
+
 ```java
 @Test
 void shouldReturn404WhenUserNotFound() throws Exception {
@@ -219,6 +237,7 @@ void shouldReturn404WhenUserNotFound() throws Exception {
 ## 🎓 Interview Ready
 
 You can now confidently discuss:
+
 - ✅ Centralized exception handling architecture
 - ✅ HTTP status mapping strategy
 - ✅ Error response standardization
