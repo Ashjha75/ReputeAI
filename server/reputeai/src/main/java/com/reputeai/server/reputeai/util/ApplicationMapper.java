@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
-import java.util.stream.Collectors; // <-- Import here so the `imports` attribute can find it
+import java.util.stream.Collectors;
 
 /**
  * MapStruct interface for mapping all DTOs to Entities and vice-versa.

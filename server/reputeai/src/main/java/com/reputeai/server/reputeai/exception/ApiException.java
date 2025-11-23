@@ -7,7 +7,7 @@ import lombok.Getter;
  * All custom exceptions should extend this to ensure consistent error handling.
  */
 @Getter
-public  class ApiException extends RuntimeException {
+public class ApiException extends RuntimeException {
     private final ErrorCode code;
 
     public ApiException(ErrorCode code, String message) {
