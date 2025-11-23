@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * Extracts user information from Google OAuth2 response.
- * 
+ * <p>
  * Google OAuth2 attributes:
  * - sub: Unique Google user ID
  * - email: User's email

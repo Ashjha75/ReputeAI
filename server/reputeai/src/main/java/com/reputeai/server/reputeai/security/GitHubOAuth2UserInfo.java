@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * Extracts user information from GitHub OAuth2 response.
- *
+ * <p>
  * Typical GitHub attributes:
  * - id: provider id (numeric or string)
  * - login: username
