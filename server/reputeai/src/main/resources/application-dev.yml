@@ -76,3 +76,21 @@ aws:
 external:
   api:
     url: ${EXTERNAL_API_URL}
+
+# Bucket4j Rate Limiting Configuration
+bucket4j:
+  enabled: true
+  cache-to-use: jcache
+  filters:
+    - cache-name: buckets
+      url: /api/v1/auth/.*
+      strategy: first
+      http-response-body: '{"error": "TOO_MANY_REQUESTS", "message": "Rate limit exceeded. Please try again after 5 minutes."}'
+      rate-limits:
+        - execute-condition: "true"
+          expression: "getRemoteAddr()"
+          bandwidths:
+            - capacity: 5
+              time: 5
+              unit: minutes
+              refill-speed: interval
