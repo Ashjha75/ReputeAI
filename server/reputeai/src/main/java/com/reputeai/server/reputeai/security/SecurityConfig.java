@@ -1,6 +1,7 @@
 package com.reputeai.server.reputeai.security;
 
 import com.reputeai.server.reputeai.security.oauth.OAuth2LoginFailureHandler;
+import com.reputeai.server.reputeai.security.oauth.OAuth2LoginSuccessHandler;
 import com.reputeai.server.reputeai.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.ObjectProvider;
@@ -30,7 +31,7 @@ public class SecurityConfig {
     private final AuthEntryPointJwt unauthorizedHandler;
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
-    private final OAuth2LoginFailureHandler oauth2LoginSuccessHandler;
+    private final OAuth2LoginSuccessHandler oauth2LoginSuccessHandler;
     private final OAuth2LoginFailureHandler oauth2LoginFailureHandler;
 
     private static final String[] PUBLIC_ENDPOINTS = {
