@@ -19,5 +19,5 @@ public class ErrorResponse {
     private String message;
     private List<ErrorDetail> details; // For field-specific validation errors
     private Instant timestamp;
-    private boolean success=false;
+    private boolean success = false;
 }
