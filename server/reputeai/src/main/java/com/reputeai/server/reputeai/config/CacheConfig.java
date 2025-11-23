@@ -39,17 +39,17 @@ public class CacheConfig {
         RedisCacheConfiguration defaultCacheConfig = RedisCacheConfiguration.defaultCacheConfig()
                 // Set a default Time-To-Live (TTL) for cache entries.
                 .entryTtl(Duration.ofMinutes(10))
-                
+
                 // Use a String serializer for the cache keys.
                 .serializeKeysWith(
                         RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer())
                 )
-                
+
                 // Use our custom JSON serializer for the cache values.
                 .serializeValuesWith(
                         RedisSerializationContext.SerializationPair.fromSerializer(jsonRedisSerializer)
                 )
-                
+
                 // Do not cache null values, which prevents potential issues with some caching strategies.
                 .disableCachingNullValues();
 

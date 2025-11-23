@@ -1,7 +1,9 @@
 # Bucket4j Rate Limiting - Final Configuration ✅
 
 ## Summary
-Your Bucket4j + Redis rate limiting is now properly configured with **IP-based rate limiting only** (no separate SecurityService needed).
+
+Your Bucket4j + Redis rate limiting is now properly configured with **IP-based rate limiting only** (no separate
+SecurityService needed).
 
 ---
 
@@ -9,14 +11,15 @@ Your Bucket4j + Redis rate limiting is now properly configured with **IP-based r
 
 ### Rate Limits (IP-Based)
 
-| Endpoint | Limit | Window | Purpose |
-|----------|-------|--------|---------|
-| `/api/v1/auth/login` | 5 requests | 1 minute | Prevent brute force |
-| `/api/v1/auth/register` | 3 requests | 10 minutes | Prevent spam accounts |
-| `/api/v1/auth/forgot-password` | 3 requests | 15 minutes | Prevent abuse |
-| `/api/v1/auth/verify-email` | 5 requests | 5 minutes | Prevent OTP spam |
+| Endpoint                       | Limit      | Window     | Purpose               |
+|--------------------------------|------------|------------|-----------------------|
+| `/api/v1/auth/login`           | 5 requests | 1 minute   | Prevent brute force   |
+| `/api/v1/auth/register`        | 3 requests | 10 minutes | Prevent spam accounts |
+| `/api/v1/auth/forgot-password` | 3 requests | 15 minutes | Prevent abuse         |
+| `/api/v1/auth/verify-email`    | 5 requests | 5 minutes  | Prevent OTP spam      |
 
 ### How It Works
+
 - **All endpoints** use `getRemoteAddr()` - rate limits by **IP address**
 - **No user authentication needed** - rate limiting happens before authentication
 - **Distributed storage** - Uses Redis to share rate limit state across instances
@@ -27,25 +30,30 @@ Your Bucket4j + Redis rate limiting is now properly configured with **IP-based r
 ## 📁 Files Modified
 
 ### 1. `application.yml` ✅
+
 - Added 4 rate limit filters (login, register, forgot-password, verify-email)
 - All use `cache-name: "rate-limit-buckets"`
 - Simple IP-based rate limiting with `expression: "getRemoteAddr()"`
 
 ### 2. `CacheConfig.java` ✅
+
 - Added dedicated cache configuration for `rate-limit-buckets`
 - 1-hour TTL for rate limit data
 - Proper Redis serialization
 
 ### 3. `GlobalExceptionHandler.java` ✅
+
 - Removed incorrect `RateLimitException` handler
 - Bucket4j returns HTTP 429 automatically (no exception thrown)
 - Added `ErrorCode.RATE_LIMIT_EXCEEDED` for future use
 
 ### 4. `ErrorCode.java` ✅
+
 - Added `RATE_LIMIT_EXCEEDED` enum value
 - Mapped to `HttpStatus.TOO_MANY_REQUESTS` (429)
 
 ### 5. ~~`SecurityService.java`~~ ❌ DELETED
+
 - **Removed** - Not needed for IP-based rate limiting
 - No separate service required
 - Keeps architecture simpler
@@ -55,6 +63,7 @@ Your Bucket4j + Redis rate limiting is now properly configured with **IP-based r
 ## 🔧 Configuration Details
 
 ### Bucket4j Configuration (application.yml)
+
 ```yaml
 bucket4j:
   enabled: true
@@ -71,6 +80,7 @@ bucket4j:
 ```
 
 ### Redis Cache Configuration (CacheConfig.java)
+
 ```java
 @Bean
 public CacheManager cacheManager(RedisConnectionFactory factory) {
@@ -91,6 +101,7 @@ public CacheManager cacheManager(RedisConnectionFactory factory) {
 ## 🧪 Testing
 
 ### Prerequisites
+
 ```bash
 # 1. Start Redis (Docker - easiest)
 docker run -d --name redis-local -p 6379:6379 redis:latest
@@ -104,6 +115,7 @@ docker exec -it redis-local redis-cli ping
 ```
 
 ### Test Login Rate Limit (5 requests/minute)
+
 ```bash
 # Make 6 login requests
 for i in {1..6}; do
@@ -121,6 +133,7 @@ done
 ```
 
 ### Test Registration Rate Limit (3 requests/10 minutes)
+
 ```bash
 # Make 4 registration requests
 for i in {1..4}; do
@@ -138,6 +151,7 @@ done
 ```
 
 ### Monitor Redis
+
 ```bash
 # Connect to Redis CLI
 docker exec -it redis-local redis-cli
@@ -159,6 +173,7 @@ docker exec -it redis-local redis-cli
 ## 📊 How Rate Limiting Works
 
 ### Request Flow
+
 ```
 ┌─────────────┐
 │   Request   │ → POST /api/v1/auth/login
@@ -181,6 +196,7 @@ docker exec -it redis-local redis-cli
 ```
 
 ### Redis Storage
+
 ```
 Key: rate-limit-buckets::127.0.0.1
 Value: {
@@ -196,6 +212,7 @@ TTL: 60 seconds          // Auto-delete after window
 ## 🚀 Production Considerations
 
 ### 1. Use Managed Redis
+
 ```yaml
 # application-prod.yml
 spring:
@@ -208,19 +225,24 @@ spring:
 ```
 
 ### 2. Adjust Rate Limits
+
 Consider more lenient limits for production:
+
 ```yaml
 - capacity: 10  # 10 login attempts
   time: 5       # per 5 minutes
 ```
 
 ### 3. Behind Proxy/Load Balancer?
+
 If behind a proxy, use `X-Forwarded-For` header:
+
 ```yaml
 expression: "getHeader('X-Forwarded-For') ?: getRemoteAddr()"
 ```
 
 ### 4. Monitor Rate Limiting
+
 - Track 429 responses in logs
 - Alert on excessive rate limiting
 - Dashboard showing rate limit hits by endpoint
@@ -230,18 +252,22 @@ expression: "getHeader('X-Forwarded-For') ?: getRemoteAddr()"
 ## 🐛 Troubleshooting
 
 ### Issue: Rate Limiting Not Working
+
 **Symptoms:** No 429 responses
 
 **Solutions:**
+
 1. Check Redis is running: `redis-cli ping`
 2. Verify `bucket4j.enabled: true` in application.yml
 3. Check URL patterns match exactly
 4. Review logs for Bucket4j initialization
 
 ### Issue: All Requests Get 429
+
 **Symptoms:** Even first request gets rate limited
 
 **Solutions:**
+
 ```bash
 # Clear Redis cache
 redis-cli
@@ -253,6 +279,7 @@ redis-cli
 ```
 
 ### Issue: Rate Limit Not Resetting
+
 **Symptoms:** Rate limit persists after time window
 
 **Solution:** Check Redis TTL is set correctly in CacheConfig
@@ -285,14 +312,14 @@ redis-cli
    ```
 
 3. **Test Rate Limiting:**
-   - Try 6 login requests → 6th should return 429
-   - Try 4 registrations → 4th should return 429
+    - Try 6 login requests → 6th should return 429
+    - Try 4 registrations → 4th should return 429
 
 4. **Monitor Logs:**
    Look for:
-   - ✅ Redis connection established
-   - ✅ Bucket4j filters registered
-   - ✅ Cache manager initialized
+    - ✅ Redis connection established
+    - ✅ Bucket4j filters registered
+    - ✅ Cache manager initialized
 
 5. **Check Redis Keys:**
    ```bash
@@ -304,6 +331,7 @@ redis-cli
 ## 📝 Summary
 
 Your rate limiting is now:
+
 - ✅ **Simple** - IP-based, no complex authentication logic
 - ✅ **Secure** - Prevents brute force and spam
 - ✅ **Scalable** - Redis-backed, works across multiple instances

@@ -16,16 +16,19 @@ Your rate limiting configuration is complete and ready to use!
 ## Quick Start
 
 ### 1. Start Redis
+
 ```bash
 docker run -d --name redis-local -p 6379:6379 redis:latest
 ```
 
 ### 2. Start Your App
+
 ```bash
 ./mvnw spring-boot:run
 ```
 
 ### 3. Test Rate Limiting
+
 ```bash
 # Try 6 login requests (5 is the limit)
 for i in {1..6}; do
@@ -49,6 +52,7 @@ done
 ## Architecture Decision
 
 **Using IP-based rate limiting only:**
+
 - ✅ Simpler - No separate service needed
 - ✅ Standard - Best practice for public auth endpoints
 - ✅ Secure - Prevents abuse before authentication

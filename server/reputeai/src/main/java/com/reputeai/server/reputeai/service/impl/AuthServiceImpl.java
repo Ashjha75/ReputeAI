@@ -11,11 +11,8 @@ import com.reputeai.server.reputeai.exception.ErrorCode;
 import com.reputeai.server.reputeai.repository.RoleRepository;
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.security.JwtProvider;
-import com.reputeai.server.reputeai.security.oauth.OAuth2UserInfo;
-import com.reputeai.server.reputeai.security.oauth.OAuth2UserInfoFactory;
 import com.reputeai.server.reputeai.service.AuthService;
 import com.reputeai.server.reputeai.service.OAuthUserService;
-import com.reputeai.server.reputeai.util.AuthProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
@@ -26,12 +23,11 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.core.user.OAuth2User; // Added
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
-import java.util.HashSet;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
@@ -57,8 +53,11 @@ public class AuthServiceImpl implements AuthService {
     private static final int OTP_TTL_MINUTES = 10;
     private static final int RESET_TTL_MINUTES = 30;
 
-    private record OtpRecord(String otp, Instant expiresAt) {}
-    private record ResetRecord(String token, Instant expiresAt) {}
+    private record OtpRecord(String otp, Instant expiresAt) {
+    }
+
+    private record ResetRecord(String token, Instant expiresAt) {
+    }
 
     @Override
     @Transactional
@@ -265,6 +264,7 @@ public class AuthServiceImpl implements AuthService {
         log.info(MessageConstants.LOG_EMAIL_VERIFIED, normalizedEmail);
         return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_EMAIL_VERIFIED);
     }
+
     // ===== Forgot / Reset Password (Unchanged) =====
     @Override
     public SimpleSuccessResponseDto forgotPassword(ForgotPasswordRequestDto request) {
