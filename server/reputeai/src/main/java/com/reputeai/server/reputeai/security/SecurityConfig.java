@@ -1,5 +1,7 @@
 package com.reputeai.server.reputeai.security;
 
+import com.reputeai.server.reputeai.security.oauth2.OAuth2LoginFailureHandler;
+import com.reputeai.server.reputeai.security.oauth2.OAuth2LoginSuccessHandler;
 import com.reputeai.server.reputeai.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.ObjectProvider;
@@ -21,7 +23,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity // Enables @PreAuthorize for RBAC
+@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
@@ -29,10 +31,13 @@ public class SecurityConfig {
     private final AuthEntryPointJwt unauthorizedHandler;
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
+    private final OAuth2LoginSuccessHandler oauth2LoginSuccessHandler;
+    private final OAuth2LoginFailureHandler oauth2LoginFailureHandler;
 
-    // /api/v1/auth/** covers: /login, /signup, /refresh, /logout
     private static final String[] PUBLIC_ENDPOINTS = {
             "/api/v1/auth/**",
+            "/oauth2/**",
+            "/login/oauth2/code/**",
             "/v3/api-docs/**",
             "/swagger-ui/**",
             "/swagger-ui.html",
@@ -47,16 +52,27 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors -> {}) // Enable CORS using CorsConfigurationSource bean if present
+                .cors(cors -> {})
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PUBLIC_ENDPOINTS).permitAll()
                         .anyRequest().authenticated()
+                )
+                // OAuth2 login configuration
+                .oauth2Login(oauth2 -> oauth2
+                        .authorizationEndpoint(authorization -> authorization
+                                .baseUri("/oauth2/authorize")
+                        )
+                        .redirectionEndpoint(redirection -> redirection
+                                .baseUri("/login/oauth2/code/*")
+                        )
+                        .successHandler(oauth2LoginSuccessHandler)
+                        .failureHandler(oauth2LoginFailureHandler)
                 );
 
-        // Add our custom JWT filter before the standard authentication filter (resolved lazily)
+        // Add JWT filter
         JwtAuthenticationFilter jwtFilter = jwtAuthenticationFilterProvider.getIfAvailable();
         if (jwtFilter != null) {
             http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
@@ -84,7 +100,6 @@ public class SecurityConfig {
         return new ProviderManager(provider);
     }
 
-    // Adapter bean: expose the UserService implementation as a UserDetailsService bean
     @Bean
     public UserDetailsService userDetailsService(UserService userService) {
         return userService;

@@ -1,8 +1,7 @@
 package com.reputeai.server.reputeai.service;
 
-
-import com.reputeai.server.reputeai.domain.dto.*; // wildcard import for DTOs
-import org.springframework.http.ResponseEntity;
+import com.reputeai.server.reputeai.domain.dto.*;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 /**
  * Service interface for handling authentication operations.
@@ -10,46 +9,48 @@ import org.springframework.http.ResponseEntity;
 public interface AuthService {
 
     /**
-     * Register a user .
-     *
-     * @param registerRequestDto DTO containing register body.
-     * @return A DTO containing success status and message.
+     * Register a new user with LOCAL authentication.
      */
     RegisterResponseDto register(RegisterRequestDto registerRequestDto);
 
-
     /**
-     * Authenticates a user and returns a JWT.
-     *
-     * @param loginRequestDto DTO containing login credentials.
-     * @return A DTO containing the access token and refresh token.
+     * Authenticates a user with LOCAL credentials and returns JWT tokens.
      */
     LoginResponseDto login(LoginRequestDto loginRequestDto);
 
     /**
      * Refresh access token using refresh token.
-     *
-     * @param refreshToken The refresh token string
-     * @return New access token response
      */
     RefreshTokenResponseDto refreshToken(String refreshToken);
 
     /**
      * Logout user by invalidating refresh token.
-     *
-     * @param refreshToken The refresh token to invalidate
      */
     void logout(String refreshToken);
 
-    // Request OTP for email verification (public)
+    /**
+     * Request OTP for email verification (public).
+     */
     SimpleSuccessResponseDto requestEmailVerification(String email);
 
-    // Verify OTP and mark email as verified (public)
+    /**
+     * Verify OTP and mark email as verified (public).
+     */
     SimpleSuccessResponseDto verifyEmailOtp(VerifyEmailRequestDto request);
 
-    // Initiate forgot password (public)
+    /**
+     * Initiate forgot password (public).
+     */
     SimpleSuccessResponseDto forgotPassword(ForgotPasswordRequestDto request);
 
-    // Perform password reset with token (public)
+    /**
+     * Perform password reset with token (public).
+     */
     SimpleSuccessResponseDto resetPassword(ResetPasswordRequestDto request);
+
+    /**
+     * Process OAuth2 login - create/update user and generate JWT tokens.
+     * Handles email uniqueness and provider linking.
+     */
+    LoginResponseDto processOAuth2Login(OAuth2User oauth2User, String registrationId);
 }
