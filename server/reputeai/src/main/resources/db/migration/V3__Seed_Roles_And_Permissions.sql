@@ -42,4 +42,4 @@ CREATE TABLE IF NOT EXISTS role_permission (
 );
 
 -- Seed the basic role names immediately after creating the table
-INSERT INTO role (name) VALUES ('USER'), ('ADMIN'), ('AUDITOR');
+INSERT IGNORE INTO role (name) VALUES ('USER'), ('ADMIN'), ('AUDITOR');
