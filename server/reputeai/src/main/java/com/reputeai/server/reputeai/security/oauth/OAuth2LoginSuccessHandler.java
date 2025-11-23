@@ -2,11 +2,13 @@ package com.reputeai.server.reputeai.security.oauth;
 
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
 import com.reputeai.server.reputeai.service.OAuthUserService;
+import com.reputeai.server.reputeai.service.impl.AuthServiceImpl;
 import com.reputeai.server.reputeai.util.CookieUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
@@ -30,8 +32,16 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
     private final OAuthUserService oAuthUserService;
     private final CookieUtil cookieUtil;
 
+    private AuthServiceImpl authServiceImpl;
+
     @Value("${app.oauth2.redirect-uri:http://localhost:3000/oauth2/redirect}")
     private String oauth2RedirectUri;
+
+    @Autowired
+    @Lazy
+    public void setAuthServiceImpl(AuthServiceImpl authServiceImpl) {
+        this.authServiceImpl = authServiceImpl;
+    }
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
