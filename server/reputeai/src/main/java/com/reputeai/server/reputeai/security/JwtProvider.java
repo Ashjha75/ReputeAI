@@ -14,6 +14,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.crypto.SecretKey;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -24,7 +25,6 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
-import javax.crypto.SecretKey;
 
 @Component
 @Slf4j
