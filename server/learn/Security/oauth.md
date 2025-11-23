@@ -1,5 +1,3 @@
-Here is the **complete master guide**. It covers the **Theory** (from basics to advanced security concepts) and the *
-*Practical Implementation** (clean, working backend code).
 
 ---
 
