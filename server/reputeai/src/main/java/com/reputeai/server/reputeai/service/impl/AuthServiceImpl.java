@@ -2,15 +2,20 @@ package com.reputeai.server.reputeai.service.impl;
 
 import com.reputeai.server.reputeai.constants.MessageConstants;
 import com.reputeai.server.reputeai.domain.dto.*;
+import com.reputeai.server.reputeai.domain.entity.AuthProvider; // Added
 import com.reputeai.server.reputeai.domain.entity.RefreshToken;
 import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
+import com.reputeai.server.reputeai.domain.entity.UserOAuthProvider; // Added
 import com.reputeai.server.reputeai.exception.ApiException;
 import com.reputeai.server.reputeai.exception.ConflictException;
 import com.reputeai.server.reputeai.exception.ErrorCode;
 import com.reputeai.server.reputeai.repository.RoleRepository;
+import com.reputeai.server.reputeai.repository.UserOAuthProviderRepository; // Added
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.security.JwtProvider;
+import com.reputeai.server.reputeai.security.oauth2.OAuth2UserInfo; // Added
+import com.reputeai.server.reputeai.security.oauth2.OAuth2UserInfoFactory; // Added
 import com.reputeai.server.reputeai.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,10 +27,12 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User; // Added
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
@@ -40,6 +47,7 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final UserOAuthProviderRepository userOAuthProviderRepository; // Added for OAuth2
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
 
@@ -129,14 +137,190 @@ public class AuthServiceImpl implements AuthService {
             throw new ApiException(ErrorCode.FORBIDDEN, MessageConstants.ERROR_EMAIL_VERIFICATION_REQUIRED);
         }
 
+        return generateLoginResponse(user);
+    }
+
+    // ===== OAuth2 Login Implementation (Copied and adapted) =====
+
+    @Override
+    @Transactional
+    public LoginResponseDto processOAuth2Login(OAuth2User oauth2User, String registrationId) {
+        log.info("Processing OAuth2 login for provider: {}", registrationId);
+
+        // Extract user info from OAuth2 provider
+        OAuth2UserInfo oauth2UserInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(
+                registrationId,
+                oauth2User.getAttributes()
+        );
+
+        // Validate email
+        String email = oauth2UserInfo.getEmail();
+        if (email == null || email.isEmpty()) {
+            log.error("OAuth2 login failed: Email not provided by {}", registrationId);
+            throw new ApiException(
+                    ErrorCode.BAD_REQUEST,
+                    String.format("%s did not provide email. Please ensure email permission is granted.",
+                            registrationId.toUpperCase())
+            );
+        }
+
+        // Normalize email
+        String normalizedEmail = email.trim().toLowerCase(Locale.ROOT);
+
+        String providerId = oauth2UserInfo.getProviderId();
+        AuthProvider provider;
+        try {
+            provider = AuthProvider.valueOf(registrationId.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            log.error("Unsupported OAuth2 registrationId: {}", registrationId);
+            throw new ApiException(ErrorCode.BAD_REQUEST, "Unsupported OAuth provider: " + registrationId);
+        }
+
+        log.debug("OAuth2 user info - email: {}, providerId: {}, provider: {}",
+                normalizedEmail, providerId, provider);
+
+        // Check if user exists by email
+        User user = userRepository.findByEmail(normalizedEmail).orElse(null);
+
+        if (user != null) {
+            // User exists - handle linking
+            return handleExistingUserOAuth2Login(user, oauth2UserInfo, provider, providerId);
+        } else {
+            // New user - create account
+            return handleNewUserOAuth2Login(oauth2UserInfo, provider, providerId);
+        }
+    }
+
+    /**
+     * Handle OAuth2 login for existing user.
+     * Links OAuth provider if not already linked.
+     */
+    private LoginResponseDto handleExistingUserOAuth2Login(User user,
+                                                           OAuth2UserInfo oauth2UserInfo,
+                                                           AuthProvider provider,
+                                                           String providerId) {
+        log.info("Existing user found for email: {}", user.getEmail());
+
+        // Check if this OAuth provider is already linked
+        UserOAuthProvider existingOAuthProvider = user.getOAuthProvider(provider);
+
+        if (existingOAuthProvider == null) {
+            // Link this OAuth provider to existing account
+            log.info("Linking {} provider to existing user: {}", provider, user.getEmail());
+
+            UserOAuthProvider newOAuthProvider = UserOAuthProvider.builder()
+                    .user(user)
+                    .provider(provider)
+                    .providerId(providerId)
+                    .profilePictureUrl(oauth2UserInfo.getProfilePictureUrl())
+                    .build();
+
+            user.addOAuthProvider(newOAuthProvider);
+
+            // Update email verification if OAuth provider verified it
+            if (oauth2UserInfo.isEmailVerified() && !user.isEmailVerified()) {
+                user.setEmailVerified(true);
+                log.info("Email verified via {} OAuth", provider);
+            }
+
+            // Update profile picture if not set
+            if (user.getProfilePictureUrl() == null) {
+                user.setProfilePictureUrl(oauth2UserInfo.getProfilePictureUrl());
+            }
+
+            userRepository.save(user);
+        } else {
+            // OAuth provider already linked - just update profile picture if changed
+            log.info("OAuth provider {} already linked to user: {}", provider, user.getEmail());
+
+            String newPictureUrl = oauth2UserInfo.getProfilePictureUrl();
+            if (newPictureUrl != null && !newPictureUrl.equals(existingOAuthProvider.getProfilePictureUrl())) {
+                existingOAuthProvider.setProfilePictureUrl(newPictureUrl);
+                user.setProfilePictureUrl(newPictureUrl);
+                userRepository.save(user);
+            }
+        }
+
+        // Check email verification status for login block
+        if (!user.isEmailVerified()) {
+            log.warn("OAuth login blocked: email not verified for {}", user.getEmail());
+            // We should ideally NOT auto-send OTP here, as the OAuth provider may have its own flow.
+            // For now, we block but don't re-request verification unless the user has local auth enabled.
+            throw new ApiException(ErrorCode.FORBIDDEN, MessageConstants.ERROR_EMAIL_VERIFICATION_REQUIRED);
+        }
+
+        // Generate tokens
+        return generateLoginResponse(user);
+    }
+
+    /**
+     * Handle OAuth2 login for new user.
+     * Creates new account with OAuth provider.
+     */
+    @Transactional // Keeping @Transactional here for clarity, though class-level @Transactional would suffice
+    private LoginResponseDto handleNewUserOAuth2Login(OAuth2UserInfo oauth2UserInfo,
+                                                      AuthProvider provider,
+                                                      String providerId) {
+        log.info("Creating new user from {} OAuth: {}", provider, oauth2UserInfo.getEmail());
+
+        // Assign default USER role
+        Role userRole = roleRepository.findByName("USER")
+                .orElseThrow(() -> new RuntimeException("Default USER role not found"));
+
+        Set<Role> roles = new HashSet<>();
+        roles.add(userRole);
+
+        // Create new user
+        User user = User.builder()
+                .email(oauth2UserInfo.getEmail().trim().toLowerCase(Locale.ROOT))
+                .firstName(oauth2UserInfo.getFirstName())
+                .lastName(oauth2UserInfo.getLastName())
+                .passwordHash(null) // No password for OAuth users
+                .isEnabled(true)
+                .isEmailVerified(oauth2UserInfo.isEmailVerified())
+                .profilePictureUrl(oauth2UserInfo.getProfilePictureUrl())
+                .roles(roles)
+                .build();
+
+        // Create OAuth provider link
+        UserOAuthProvider oauthProvider = UserOAuthProvider.builder()
+                .user(user)
+                .provider(provider)
+                .providerId(providerId)
+                .profilePictureUrl(oauth2UserInfo.getProfilePictureUrl())
+                .build();
+
+        user.addOAuthProvider(oauthProvider);
+
+        // Save user (cascades to OAuth provider)
+        User savedUser = userRepository.save(user);
+        log.info("New OAuth user created with ID: {}", savedUser.getId());
+
+        // Generate tokens
+        return generateLoginResponse(savedUser);
+    }
+
+    /**
+     * Generate login response with JWT tokens (Unified Helper).
+     */
+    private LoginResponseDto generateLoginResponse(User user) {
         // put user_id into MDC so subsequent logs include it
         if (user.getId() != null) {
             MDC.put("user_id", String.valueOf(user.getId()));
         }
 
         try {
-            // Generate real JWT access token and refresh token
+            // Create Authentication object for JWT generation
+            Authentication authentication = new UsernamePasswordAuthenticationToken(
+                    user.getEmail(),
+                    null, // No password
+                    user.getAuthorities()
+            );
+
+            // Generate JWT access token
             String accessToken = jwtProvider.generateAccessToken(authentication);
+
+            // Generate refresh token
             RefreshToken refreshTokenEntity = jwtProvider.createRefreshToken(user.getId());
             String refreshToken = refreshTokenEntity.getToken();
 
@@ -146,7 +330,9 @@ public class AuthServiceImpl implements AuthService {
                     : user.getEmail();
             String welcomeMessage = String.format("Login successful! Welcome back, %s.", userName);
 
-            LoginResponseDto response = new LoginResponseDto(
+            log.info("JWT tokens generated for user: userId={}, email={}", user.getId(), user.getEmail());
+
+            return new LoginResponseDto(
                     true,  // success
                     welcomeMessage,  // message
                     accessToken,
@@ -156,13 +342,12 @@ public class AuthServiceImpl implements AuthService {
                     user.getEmail(),
                     user.getRoles().stream().map(Role::getName).collect(Collectors.toSet())
             );
-
-            log.info("User logged in successfully: userId={}, email={}", user.getId(), user.getEmail());
-            return response;
         } finally {
             MDC.remove("user_id");
         }
     }
+
+    // ===== Refresh / Logout / Password Reset Methods (Unchanged) =====
 
     @Override
     public RefreshTokenResponseDto refreshToken(String refreshToken) {
@@ -182,7 +367,7 @@ public class AuthServiceImpl implements AuthService {
         }
     }
 
-    // ===== Email Verification =====
+    // ===== Email Verification (Unchanged) =====
     @Override
     public SimpleSuccessResponseDto requestEmailVerification(String email) {
         String normalizedEmail = email.trim().toLowerCase(Locale.ROOT);
@@ -199,43 +384,43 @@ public class AuthServiceImpl implements AuthService {
         return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_VERIFICATION_EMAIL_SENT);
     }
 
- private static final String FALLBACK_TEST_OTP = "123456";
+    private static final String FALLBACK_TEST_OTP = "123456";
 
- @Override
- public SimpleSuccessResponseDto verifyEmailOtp(VerifyEmailRequestDto request) {
-     String normalizedEmail = request.getEmail().trim().toLowerCase(Locale.ROOT);
-     User user = userRepository.findByEmail(normalizedEmail)
-             .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND,
-                     MessageConstants.ERROR_USER_NOT_FOUND + normalizedEmail));
+    @Override
+    public SimpleSuccessResponseDto verifyEmailOtp(VerifyEmailRequestDto request) {
+        String normalizedEmail = request.getEmail().trim().toLowerCase(Locale.ROOT);
+        User user = userRepository.findByEmail(normalizedEmail)
+                .orElseThrow(() -> new ApiException(ErrorCode.RESOURCE_NOT_FOUND,
+                        MessageConstants.ERROR_USER_NOT_FOUND + normalizedEmail));
 
-     if (user.isEmailVerified()) {
-         return new SimpleSuccessResponseDto(true, MessageConstants.ERROR_EMAIL_ALREADY_VERIFIED);
-     }
+        if (user.isEmailVerified()) {
+            return new SimpleSuccessResponseDto(true, MessageConstants.ERROR_EMAIL_ALREADY_VERIFIED);
+        }
 
-     // Accept the test fallback OTP (case-insensitive, trimmed)
-     String providedOtp = request.getOtp() == null ? "" : request.getOtp().trim();
-     if (FALLBACK_TEST_OTP.equalsIgnoreCase(providedOtp)) {
-         user.setEmailVerified(true);
-         userRepository.save(user);
-         emailOtpStore.remove(normalizedEmail);
-         log.info(MessageConstants.LOG_EMAIL_VERIFIED, normalizedEmail);
-         return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_EMAIL_VERIFIED);
-     }
+        // Accept the test fallback OTP (case-insensitive, trimmed)
+        String providedOtp = request.getOtp() == null ? "" : request.getOtp().trim();
+        if (FALLBACK_TEST_OTP.equalsIgnoreCase(providedOtp)) {
+            user.setEmailVerified(true);
+            userRepository.save(user);
+            emailOtpStore.remove(normalizedEmail);
+            log.info(MessageConstants.LOG_EMAIL_VERIFIED, normalizedEmail);
+            return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_EMAIL_VERIFIED);
+        }
 
-     OtpRecord record = emailOtpStore.get(normalizedEmail);
-     if (record == null
-             || Instant.now().isAfter(record.expiresAt())
-             || !record.otp().equals(providedOtp)) {
-         throw new ApiException(ErrorCode.UNAUTHENTICATED, MessageConstants.ERROR_OTP_INVALID);
-     }
+        OtpRecord record = emailOtpStore.get(normalizedEmail);
+        if (record == null
+                || Instant.now().isAfter(record.expiresAt())
+                || !record.otp().equals(providedOtp)) {
+            throw new ApiException(ErrorCode.UNAUTHENTICATED, MessageConstants.ERROR_OTP_INVALID);
+        }
 
-     user.setEmailVerified(true);
-     userRepository.save(user);
-     emailOtpStore.remove(normalizedEmail);
-     log.info(MessageConstants.LOG_EMAIL_VERIFIED, normalizedEmail);
-     return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_EMAIL_VERIFIED);
- }
-    // ===== Forgot / Reset Password =====
+        user.setEmailVerified(true);
+        userRepository.save(user);
+        emailOtpStore.remove(normalizedEmail);
+        log.info(MessageConstants.LOG_EMAIL_VERIFIED, normalizedEmail);
+        return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_EMAIL_VERIFIED);
+    }
+    // ===== Forgot / Reset Password (Unchanged) =====
     @Override
     public SimpleSuccessResponseDto forgotPassword(ForgotPasswordRequestDto request) {
         String normalizedEmail = request.getEmail().trim().toLowerCase(Locale.ROOT);

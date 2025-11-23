@@ -21,11 +21,28 @@ spring:
       client:
         registration:
           google:
-            client-id: ${OAUTH_GOOGLE_CLIENT_ID:not-configured}
-            client-secret: ${OAUTH_GOOGLE_CLIENT_SECRET:not-configured}
+            client-id: ${GOOGLE_CLIENT_ID:not-configured}
+            client-secret: ${GOOGLE_CLIENT_SECRET:not-configured}
+            scope: openid,email,profile
+            redirect-uri: {baseUrl}/login/oauth2/code/google
+            client-name: Google
           github:
-            client-id: ${OAUTH_GITHUB_CLIENT_ID:not-configured}
-            client-secret: ${OAUTH_GITHUB_CLIENT_SECRET:not-configured}
+            client-id: ${GITHUB_CLIENT_ID:not-configured}
+            client-secret: ${GITHUB_CLIENT_SECRET:not-configured}
+            scope: read:user,user:email
+            redirect-uri: {baseUrl}/login/oauth2/code/github
+            client-name: GitHub
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+            user-name-attribute: sub
+          github:
+            authorization-uri: https://github.com/login/oauth/authorize
+            token-uri: https://github.com/login/oauth/access_token
+            user-info-uri: https://api.github.com/user
+            user-name-attribute: id
 
 # JWT Configuration - Maps to JwtProvider constructor parameters
 jwt:
@@ -42,6 +59,8 @@ app:
   domain: ${APP_DOMAIN}
   jwtSecret: ${APP_JWTSECRET}
   cookieName: TOKEN
+  oauth2:
+    redirect-uri: ${APP_OAUTH2_REDIRECT_URI:http://localhost:3000/oauth2/redirect}
 
 # AWS Configuration
 aws:
