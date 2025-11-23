@@ -27,7 +27,7 @@ public interface UserService extends UserDetailsService {
      * Changes the password for the authenticated user.
      *
      * @param userEmail The email of the logged-in user (from JWT token)
-     * @param request The password change request containing current and new passwords
+     * @param request   The password change request containing current and new passwords
      * @throws RuntimeException if current password is incorrect or new password validation fails
      */
     void changePassword(String userEmail, ChangePasswordRequestDto request);

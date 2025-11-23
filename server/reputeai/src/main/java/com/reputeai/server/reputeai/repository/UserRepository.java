@@ -26,9 +26,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * Optimized for authentication.
      */
     @Query("SELECT u FROM User u " +
-           "LEFT JOIN FETCH u.roles r " +
-           "LEFT JOIN FETCH r.permissions " +
-           "LEFT JOIN FETCH u.oauthProviders " +
-           "WHERE u.email = :email")
+            "LEFT JOIN FETCH u.roles r " +
+            "LEFT JOIN FETCH r.permissions " +
+            "LEFT JOIN FETCH u.oauthProviders " +
+            "WHERE u.email = :email")
     Optional<User> findByEmailWithRolesAndPermissions(@Param("email") String email);
 }
