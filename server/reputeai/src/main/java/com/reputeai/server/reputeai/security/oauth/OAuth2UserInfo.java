@@ -1,4 +1,4 @@
-package com.reputeai.server.reputeai.util;
+package com.reputeai.server.reputeai.security.oauth;
 
 /**
  * Abstract interface for extracting user information from different OAuth2 providers.

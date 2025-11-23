@@ -1,7 +1,8 @@
-package com.reputeai.server.reputeai.security;
+package com.reputeai.server.reputeai.security.oauth;
 
 import com.reputeai.server.reputeai.domain.entity.AuthProvider;
 import com.reputeai.server.reputeai.exception.BadRequestException;
+import com.reputeai.server.reputeai.security.GoogleOAuth2UserInfo;
 
 import java.util.Map;
 

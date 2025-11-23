@@ -1,6 +1,6 @@
 package com.reputeai.server.reputeai.security;
 
-import com.reputeai.server.reputeai.util.OAuth2UserInfo;
+import com.reputeai.server.reputeai.security.oauth.OAuth2UserInfo;
 
 import java.util.Map;
 

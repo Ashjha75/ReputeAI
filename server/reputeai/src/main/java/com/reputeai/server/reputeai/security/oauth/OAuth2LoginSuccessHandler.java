@@ -1,4 +1,4 @@
-package com.reputeai.server.reputeai.security;
+package com.reputeai.server.reputeai.security.oauth;
 
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
 import com.reputeai.server.reputeai.service.AuthService;
