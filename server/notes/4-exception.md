@@ -2,7 +2,8 @@
 
 ## Goals (one line)
 
-Provide a single, predictable error payload, map exceptions → HTTP status consistently, log context, and keep handlers minimal and testable.
+Provide a single, predictable error payload, map exceptions → HTTP status consistently, log context, and keep handlers
+minimal and testable.
 
 ---
 

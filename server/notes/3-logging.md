@@ -82,7 +82,8 @@ logging:
 **Meaning of key elements**
 
 * `ConsoleAppender` / `RollingFileAppender`: where logs go.
-* `encoder.pattern`: log message template. `%d` timestamp, `%level` severity, `%X{traceId}` MDC value, `%logger` class, `%msg` message.
+* `encoder.pattern`: log message template. `%d` timestamp, `%level` severity, `%X{traceId}` MDC value, `%logger` class,
+  `%msg` message.
 * `TimeBasedRollingPolicy`: rotate logs daily, compress old logs. `maxHistory` retention.
 * `logging.level`: set per-package level; root level default.
 
@@ -179,7 +180,8 @@ public class LoggingFilter extends OncePerRequestFilter {
 
 * Log at the point you can add context, not both here and upstream (avoid duplicate stack traces).
 * Always pass the exception as the last parameter: `log.error("msg {}", var, e)`.
-* For expected exceptions (validation), use `WARN` or `INFO` with clear code; avoid stack trace for simple client errors.
+* For expected exceptions (validation), use `WARN` or `INFO` with clear code; avoid stack trace for simple client
+  errors.
 
 ---
 
@@ -248,16 +250,19 @@ public class LoggingFilter extends OncePerRequestFilter {
 ## 14 — Common interview Qs & concise answers
 
 Q: **Why use SLF4J instead of System.out?**
-A: SLF4J is an abstraction with performant parameterized API, supports pluggable backends (Logback), and integrates with frameworks and appenders.
+A: SLF4J is an abstraction with performant parameterized API, supports pluggable backends (Logback), and integrates with
+frameworks and appenders.
 
 Q: **Why parameterized logging (`{}`) over string concat?**
 A: Avoids expensive `toString()` when level disabled; better performance and readability.
 
 Q: **What is MDC and why use it?**
-A: Thread-local map to attach contextual data (traceId, userId) to all log lines from the same request; helps correlation.
+A: Thread-local map to attach contextual data (traceId, userId) to all log lines from the same request; helps
+correlation.
 
 Q: **What log levels to use for business events?**
-A: `INFO` for major business events, `DEBUG` for developer troubleshooting, `WARN` for recoverable anomalies, `ERROR` for failures.
+A: `INFO` for major business events, `DEBUG` for developer troubleshooting, `WARN` for recoverable anomalies, `ERROR`
+for failures.
 
 Q: **How to avoid logging sensitive data?**
 A: Design DTOs to exclude secrets, sanitize inputs, enforce code reviews and static checks, redact before logging.
