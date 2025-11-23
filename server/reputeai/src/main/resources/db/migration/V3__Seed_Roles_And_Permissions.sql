@@ -1,18 +1,18 @@
 -- This is your first migration. It creates the foundational tables for the application.
 
 -- 1. ROLE and PERMISSION tables
-CREATE TABLE role (
+CREATE TABLE IF NOT EXISTS role (
                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
                       name VARCHAR(50) NOT NULL UNIQUE
 );
 
-CREATE TABLE permission (
+CREATE TABLE IF NOT EXISTS permission (
                             id BIGINT AUTO_INCREMENT PRIMARY KEY,
                             name VARCHAR(100) NOT NULL UNIQUE
 );
 
 -- 2. USER table
-CREATE TABLE app_user (
+CREATE TABLE IF NOT EXISTS app_user (
                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
                           email VARCHAR(255) NOT NULL UNIQUE,
                           password_hash VARCHAR(255) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE app_user (
 );
 
 -- 3. MAPPING tables for RBAC
-CREATE TABLE user_role (
+CREATE TABLE IF NOT EXISTS user_role (
                            user_id BIGINT NOT NULL,
                            role_id BIGINT NOT NULL,
                            PRIMARY KEY (user_id, role_id),
@@ -33,7 +33,7 @@ CREATE TABLE user_role (
                            CONSTRAINT fk_userrole_role FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
-CREATE TABLE role_permission (
+CREATE TABLE IF NOT EXISTS role_permission (
                                  role_id BIGINT NOT NULL,
                                  permission_id BIGINT NOT NULL,
                                  PRIMARY KEY (role_id, permission_id),
