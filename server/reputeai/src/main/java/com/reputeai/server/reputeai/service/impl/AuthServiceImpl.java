@@ -5,17 +5,16 @@ import com.reputeai.server.reputeai.domain.dto.*;
 import com.reputeai.server.reputeai.domain.entity.RefreshToken;
 import com.reputeai.server.reputeai.domain.entity.Role;
 import com.reputeai.server.reputeai.domain.entity.User;
-import com.reputeai.server.reputeai.domain.entity.UserOAuthProvider; // Added
 import com.reputeai.server.reputeai.exception.ApiException;
 import com.reputeai.server.reputeai.exception.ConflictException;
 import com.reputeai.server.reputeai.exception.ErrorCode;
 import com.reputeai.server.reputeai.repository.RoleRepository;
-import com.reputeai.server.reputeai.repository.UserOAuthProviderRepository; // Added
 import com.reputeai.server.reputeai.repository.UserRepository;
 import com.reputeai.server.reputeai.security.JwtProvider;
 import com.reputeai.server.reputeai.security.oauth.OAuth2UserInfo;
 import com.reputeai.server.reputeai.security.oauth.OAuth2UserInfoFactory;
 import com.reputeai.server.reputeai.service.AuthService;
+import com.reputeai.server.reputeai.service.OAuthUserService;
 import com.reputeai.server.reputeai.util.AuthProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -47,9 +46,9 @@ public class AuthServiceImpl implements AuthService {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final UserOAuthProviderRepository userOAuthProviderRepository; // Added for OAuth2
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
+    private final OAuthUserService oAuthUserService;
 
     // In-memory stores for demo purposes (replace with persistent tables/Redis in production)
     private final ConcurrentHashMap<String, OtpRecord> emailOtpStore = new ConcurrentHashMap<>();
@@ -140,164 +139,10 @@ public class AuthServiceImpl implements AuthService {
         return generateLoginResponse(user);
     }
 
-    // ===== OAuth2 Login Implementation (Copied and adapted) =====
-
     @Override
     @Transactional
     public LoginResponseDto processOAuth2Login(OAuth2User oauth2User, String registrationId) {
-        log.info("Processing OAuth2 login for provider: {}", registrationId);
-
-        // Extract user info from OAuth2 provider
-        OAuth2UserInfo oauth2UserInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(
-                registrationId,
-                oauth2User.getAttributes()
-        );
-
-        // Validate email
-        String email = oauth2UserInfo.getEmail();
-        if (email == null || email.isEmpty()) {
-            log.error("OAuth2 login failed: Email not provided by {}", registrationId);
-            throw new ApiException(
-                    ErrorCode.BAD_REQUEST,
-                    String.format("%s did not provide email. Please ensure email permission is granted.",
-                            registrationId.toUpperCase())
-            );
-        }
-
-        // Normalize email
-        String normalizedEmail = email.trim().toLowerCase(Locale.ROOT);
-
-        String providerId = oauth2UserInfo.getProviderId();
-        AuthProvider provider;
-        try {
-            provider = AuthProvider.valueOf(registrationId.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            log.error("Unsupported OAuth2 registrationId: {}", registrationId);
-            throw new ApiException(ErrorCode.BAD_REQUEST, "Unsupported OAuth provider: " + registrationId);
-        }
-
-        log.debug("OAuth2 user info - email: {}, providerId: {}, provider: {}",
-                normalizedEmail, providerId, provider);
-
-        // Check if user exists by email
-        User user = userRepository.findByEmail(normalizedEmail).orElse(null);
-
-        if (user != null) {
-            // User exists - handle linking
-            return handleExistingUserOAuth2Login(user, oauth2UserInfo, provider, providerId);
-        } else {
-            // New user - create account
-            return handleNewUserOAuth2Login(oauth2UserInfo, provider, providerId);
-        }
-    }
-
-    /**
-     * Handle OAuth2 login for existing user.
-     * Links OAuth provider if not already linked.
-     */
-    private LoginResponseDto handleExistingUserOAuth2Login(User user,
-                                                           OAuth2UserInfo oauth2UserInfo,
-                                                           AuthProvider provider,
-                                                           String providerId) {
-        log.info("Existing user found for email: {}", user.getEmail());
-
-        // Check if this OAuth provider is already linked
-        UserOAuthProvider existingOAuthProvider = user.getOAuthProvider(provider);
-
-        if (existingOAuthProvider == null) {
-            // Link this OAuth provider to existing account
-            log.info("Linking {} provider to existing user: {}", provider, user.getEmail());
-
-            UserOAuthProvider newOAuthProvider = UserOAuthProvider.builder()
-                    .user(user)
-                    .provider(provider)
-                    .providerId(providerId)
-                    .profilePictureUrl(oauth2UserInfo.getProfilePictureUrl())
-                    .build();
-
-            user.addOAuthProvider(newOAuthProvider);
-
-            // Update email verification if OAuth provider verified it
-            if (oauth2UserInfo.isEmailVerified() && !user.isEmailVerified()) {
-                user.setEmailVerified(true);
-                log.info("Email verified via {} OAuth", provider);
-            }
-
-            // Update profile picture if not set
-            if (user.getProfilePictureUrl() == null) {
-                user.setProfilePictureUrl(oauth2UserInfo.getProfilePictureUrl());
-            }
-
-            userRepository.save(user);
-        } else {
-            // OAuth provider already linked - just update profile picture if changed
-            log.info("OAuth provider {} already linked to user: {}", provider, user.getEmail());
-
-            String newPictureUrl = oauth2UserInfo.getProfilePictureUrl();
-            if (newPictureUrl != null && !newPictureUrl.equals(existingOAuthProvider.getProfilePictureUrl())) {
-                existingOAuthProvider.setProfilePictureUrl(newPictureUrl);
-                user.setProfilePictureUrl(newPictureUrl);
-                userRepository.save(user);
-            }
-        }
-
-        // Check email verification status for login block
-        if (!user.isEmailVerified()) {
-            log.warn("OAuth login blocked: email not verified for {}", user.getEmail());
-            // We should ideally NOT auto-send OTP here, as the OAuth provider may have its own flow.
-            // For now, we block but don't re-request verification unless the user has local auth enabled.
-            throw new ApiException(ErrorCode.FORBIDDEN, MessageConstants.ERROR_EMAIL_VERIFICATION_REQUIRED);
-        }
-
-        // Generate tokens
-        return generateLoginResponse(user);
-    }
-
-    /**
-     * Handle OAuth2 login for new user.
-     * Creates new account with OAuth provider.
-     */
-    @Transactional // Keeping @Transactional here for clarity, though class-level @Transactional would suffice
-    private LoginResponseDto handleNewUserOAuth2Login(OAuth2UserInfo oauth2UserInfo,
-                                                      AuthProvider provider,
-                                                      String providerId) {
-        log.info("Creating new user from {} OAuth: {}", provider, oauth2UserInfo.getEmail());
-
-        // Assign default USER role
-        Role userRole = roleRepository.findByName("USER")
-                .orElseThrow(() -> new RuntimeException("Default USER role not found"));
-
-        Set<Role> roles = new HashSet<>();
-        roles.add(userRole);
-
-        // Create new user
-        User user = User.builder()
-                .email(oauth2UserInfo.getEmail().trim().toLowerCase(Locale.ROOT))
-                .firstName(oauth2UserInfo.getFirstName())
-                .lastName(oauth2UserInfo.getLastName())
-                .passwordHash(null) // No password for OAuth users
-                .isEnabled(true)
-                .isEmailVerified(oauth2UserInfo.isEmailVerified())
-                .profilePictureUrl(oauth2UserInfo.getProfilePictureUrl())
-                .roles(roles)
-                .build();
-
-        // Create OAuth provider link
-        UserOAuthProvider oauthProvider = UserOAuthProvider.builder()
-                .user(user)
-                .provider(provider)
-                .providerId(providerId)
-                .profilePictureUrl(oauth2UserInfo.getProfilePictureUrl())
-                .build();
-
-        user.addOAuthProvider(oauthProvider);
-
-        // Save user (cascades to OAuth provider)
-        User savedUser = userRepository.save(user);
-        log.info("New OAuth user created with ID: {}", savedUser.getId());
-
-        // Generate tokens
-        return generateLoginResponse(savedUser);
+        return oAuthUserService.processOAuth2Login(oauth2User, registrationId);
     }
 
     /**

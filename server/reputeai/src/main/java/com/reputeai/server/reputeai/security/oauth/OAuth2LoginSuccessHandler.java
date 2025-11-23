@@ -1,7 +1,7 @@
 package com.reputeai.server.reputeai.security.oauth;
 
 import com.reputeai.server.reputeai.domain.dto.LoginResponseDto;
-import com.reputeai.server.reputeai.service.AuthService;
+import com.reputeai.server.reputeai.service.OAuthUserService;
 import com.reputeai.server.reputeai.util.CookieUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,7 +27,7 @@ import java.io.IOException;
 @Slf4j
 public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-    private final @Lazy AuthService authService;
+    private final @Lazy OAuthUserService oAuthUserService;
     private final CookieUtil cookieUtil;
 
     @Value("${app.oauth2.redirect-uri:http://localhost:3000/oauth2/redirect}")
@@ -46,7 +46,7 @@ public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
 
         try {
             // Process OAuth2 user (create/update user, generate JWT)
-            LoginResponseDto loginResponse = authService.processOAuth2Login(oauth2User, registrationId);
+            LoginResponseDto loginResponse = oAuthUserService.processOAuth2Login(oauth2User, registrationId);
 
             // Set tokens in httpOnly cookies
             cookieUtil.setAuthCookies(response,
