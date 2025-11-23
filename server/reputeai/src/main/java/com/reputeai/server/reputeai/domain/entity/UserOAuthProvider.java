@@ -1,5 +1,6 @@
 package com.reputeai.server.reputeai.domain.entity;
 
+import com.reputeai.server.reputeai.util.AuthProvider;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;

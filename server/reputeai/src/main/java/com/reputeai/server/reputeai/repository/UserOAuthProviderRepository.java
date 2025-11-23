@@ -1,8 +1,8 @@
 package com.reputeai.server.reputeai.repository;
 
-import com.reputeai.server.reputeai.domain.entity.AuthProvider;
 import com.reputeai.server.reputeai.domain.entity.User;
 import com.reputeai.server.reputeai.domain.entity.UserOAuthProvider;
+import com.reputeai.server.reputeai.util.AuthProvider;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
