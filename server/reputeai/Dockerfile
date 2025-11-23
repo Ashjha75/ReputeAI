@@ -20,7 +20,7 @@ RUN addgroup -S spring && adduser -S spring -G spring
 # Ensure log directory exists for Logback with proper ownership
 RUN mkdir -p /app/logs && chown -R spring:spring /app/logs
 
-# Copy the jar from build stage
+# Copy the jar from build stage (match any jar name produced)
 COPY --from=build /app/target/*.jar app.jar
 
 USER spring:spring
