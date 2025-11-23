@@ -1,12 +1,15 @@
 # Exception Handling & Error Contract
 
 ## Overview
+
 Centralized error handling system providing predictable, standardized error responses for all API errors.
 
 ## Architecture
 
 ### Error Response Structure
+
 All errors return this JSON structure:
+
 ```json
 {
   "traceId": "abc123-...",
@@ -20,12 +23,15 @@ All errors return this JSON structure:
 ### Components
 
 #### 1. ErrorResponse (DTO)
+
 - Standard error payload returned for all exceptions
 - Includes traceId for correlation with logs
 - Machine-readable errorCode + human-readable message
 
 #### 2. ErrorCode (Enum)
+
 Single source of truth for error codes:
+
 - `VALIDATION_ERROR` - Bean validation failures
 - `RESOURCE_NOT_FOUND` - 404 scenarios
 - `CONFLICT` - Duplicate resources, constraint violations
@@ -36,9 +42,11 @@ Single source of truth for error codes:
 - `DATA_ACCESS_ERROR` - Database errors
 
 #### 3. ApiException (Base Class)
+
 Abstract base for all custom exceptions. Contains ErrorCode.
 
 #### 4. Specific Exceptions
+
 - `NotFoundException` → 404
 - `BadRequestException` → 400
 - `ConflictException` → 409
@@ -46,7 +54,9 @@ Abstract base for all custom exceptions. Contains ErrorCode.
 - `ForbiddenException` → 403
 
 #### 5. GlobalExceptionHandler
+
 `@RestControllerAdvice` that:
+
 - Catches all exceptions
 - Maps to appropriate HTTP status
 - Logs with correct level (INFO/WARN/ERROR)
@@ -56,6 +66,7 @@ Abstract base for all custom exceptions. Contains ErrorCode.
 ## Usage in Services
 
 ### Throwing Exceptions
+
 ```java
 // Service layer
 public User findById(Long id) {
@@ -78,6 +89,7 @@ public void validateInput(String input) {
 ```
 
 ### Validation in Controllers
+
 ```java
 @PostMapping("/users")
 public ResponseEntity<UserResponse> create(@Valid @RequestBody CreateUserRequest request) {
@@ -89,16 +101,16 @@ public ResponseEntity<UserResponse> create(@Valid @RequestBody CreateUserRequest
 
 ## HTTP Status Mapping
 
-| ErrorCode | HTTP Status | Use Case |
-|-----------|-------------|----------|
-| VALIDATION_ERROR | 400 | Bean validation failures (@Valid) |
-| BAD_REQUEST | 400 | Malformed JSON, invalid input |
-| UNAUTHORIZED | 401 | Missing/invalid authentication |
-| FORBIDDEN | 403 | Insufficient permissions |
-| RESOURCE_NOT_FOUND | 404 | Entity not found |
-| CONFLICT | 409 | Duplicate resource, constraint violation |
-| DATA_ACCESS_ERROR | 500 | Database errors |
-| INTERNAL_ERROR | 500 | Unexpected exceptions |
+| ErrorCode          | HTTP Status | Use Case                                 |
+|--------------------|-------------|------------------------------------------|
+| VALIDATION_ERROR   | 400         | Bean validation failures (@Valid)        |
+| BAD_REQUEST        | 400         | Malformed JSON, invalid input            |
+| UNAUTHORIZED       | 401         | Missing/invalid authentication           |
+| FORBIDDEN          | 403         | Insufficient permissions                 |
+| RESOURCE_NOT_FOUND | 404         | Entity not found                         |
+| CONFLICT           | 409         | Duplicate resource, constraint violation |
+| DATA_ACCESS_ERROR  | 500         | Database errors                          |
+| INTERNAL_ERROR     | 500         | Unexpected exceptions                    |
 
 ## Logging Strategy
 
@@ -110,6 +122,7 @@ public ResponseEntity<UserResponse> create(@Valid @RequestBody CreateUserRequest
 ## Testing
 
 ### Unit Test Example
+
 ```java
 @Test
 void testNotFoundExceptionHandling() {
@@ -123,6 +136,7 @@ void testNotFoundExceptionHandling() {
 ```
 
 ### Integration Test Example
+
 ```java
 @Test
 void testCreateUser_Conflict() throws Exception {
@@ -139,33 +153,34 @@ void testCreateUser_Conflict() throws Exception {
 ## Best Practices
 
 1. **Throw exceptions from service layer, not controllers**
-   - Controllers handle HTTP concerns
-   - Services handle business logic and validation
+    - Controllers handle HTTP concerns
+    - Services handle business logic and validation
 
 2. **Use specific exception types**
-   - Clear intent: `NotFoundException` vs generic `RuntimeException`
-   - Consistent mapping to HTTP status
+    - Clear intent: `NotFoundException` vs generic `RuntimeException`
+    - Consistent mapping to HTTP status
 
 3. **Keep error messages non-sensitive**
-   - No stack traces in response body
-   - No internal implementation details
-   - No PII or credentials
+    - No stack traces in response body
+    - No internal implementation details
+    - No PII or credentials
 
 4. **Include context in messages**
-   - Good: `"User not found for id 42"`
-   - Bad: `"Not found"`
+    - Good: `"User not found for id 42"`
+    - Bad: `"Not found"`
 
 5. **Use validation annotations**
-   - `@Valid`, `@NotNull`, `@Size`, etc.
-   - Let GlobalExceptionHandler format field errors
+    - `@Valid`, `@NotNull`, `@Size`, etc.
+    - Let GlobalExceptionHandler format field errors
 
 6. **Test error scenarios**
-   - Unit test exception handlers
-   - Integration test actual endpoints returning errors
+    - Unit test exception handlers
+    - Integration test actual endpoints returning errors
 
 ## OpenAPI/Swagger Documentation
 
 Document ErrorResponse schema in your OpenAPI config:
+
 ```java
 @Bean
 public OpenAPI customOpenAPI() {
@@ -186,23 +201,28 @@ public OpenAPI customOpenAPI() {
 ## Interview Talking Points
 
 **Q: Why centralized exception handling?**
-A: Single source of truth for error responses. Consistent structure for clients, easier testing, monitoring, and documentation.
+A: Single source of truth for error responses. Consistent structure for clients, easier testing, monitoring, and
+documentation.
 
 **Q: When to use custom exceptions vs built-in?**
-A: Use custom `ApiException` subtypes for domain/business errors. Framework exceptions (validation, malformed JSON) are handled centrally.
+A: Use custom `ApiException` subtypes for domain/business errors. Framework exceptions (validation, malformed JSON) are
+handled centrally.
 
 **Q: How to avoid leaking sensitive data in errors?**
-A: Never include stack traces, internal paths, or implementation details in response. Log sensitive context server-side only.
+A: Never include stack traces, internal paths, or implementation details in response. Log sensitive context server-side
+only.
 
 **Q: Why include traceId?**
 A: Correlates client error with server logs. Client reports traceId, support can quickly find exact request in logs.
 
 **Q: How to handle field-level validation errors?**
-A: Use `@Valid` on DTOs. `MethodArgumentNotValidException` handler returns `details` array with `field: message` entries.
+A: Use `@Valid` on DTOs. `MethodArgumentNotValidException` handler returns `details` array with `field: message`
+entries.
 
 ---
 
 For implementation details, see:
+
 - `notes/4-exception.md` - Complete design documentation
 - `exception/GlobalExceptionHandler.java` - Central error handling logic
 
