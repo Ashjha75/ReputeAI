@@ -30,17 +30,17 @@ public class User implements UserDetails {
 
     // --- Core Authentication ---
     @Column(name = "email", unique = true, nullable = false)
-    private String email; // PII: Used as the principal/username
-    
-    @Column(name = "password_hash", nullable = false)
-    private String passwordHash; // BCrypt hash
+    private String email; // UNIQUE globally - one email = one account
+
+    @Column(name = "password_hash", nullable = true) // ✅ NULLABLE for OAuth users
+    private String passwordHash;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
-    
+
     @Column(name = "last_name", nullable = false)
     private String lastName;
-    
+
     @Column(name = "is_enabled", nullable = false)
     @Builder.Default
     private boolean isEnabled = true;
@@ -48,6 +48,15 @@ public class User implements UserDetails {
     @Column(name = "is_email_verified", nullable = false)
     @Builder.Default
     private boolean isEmailVerified = false;
+
+    @Column(name = "profile_picture_url", length = 500)
+    private String profilePictureUrl;
+
+    // --- OAuth Provider Tracking ---
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @Builder.Default
+    private Set<UserOAuthProvider> oauthProviders = new HashSet<>();
+
     // --- Authorization (RBAC) ---
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
@@ -56,7 +65,7 @@ public class User implements UserDetails {
     @Builder.Default
     private Set<Role> roles = new HashSet<>();
 
-    // --- Auditing (Mandatory) ---
+    // --- Auditing ---
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
@@ -67,9 +76,44 @@ public class User implements UserDetails {
 
     @CreatedBy
     @Column(name = "created_by")
-    private Long createdBy; // ID of the User who created this record (e.g., Admin)
+    private Long createdBy;
 
-    // --- UserDetails Implementation for Spring Security ---
+    // --- Helper Methods ---
+
+    /**
+     * Check if user has LOCAL password authentication.
+     */
+    public boolean hasLocalAuth() {
+        return passwordHash != null && !passwordHash.isEmpty();
+    }
+
+    /**
+     * Check if user has specific OAuth provider linked.
+     */
+    public boolean hasOAuthProvider(AuthProvider provider) {
+        return oauthProviders.stream()
+                .anyMatch(oauth -> oauth.getProvider() == provider);
+    }
+
+    /**
+     * Get OAuth provider info for specific provider.
+     */
+    public UserOAuthProvider getOAuthProvider(AuthProvider provider) {
+        return oauthProviders.stream()
+                .filter(oauth -> oauth.getProvider() == provider)
+                .findFirst()
+                .orElse(null);
+    }
+
+    /**
+     * Add OAuth provider to user.
+     */
+    public void addOAuthProvider(UserOAuthProvider oauthProvider) {
+        oauthProviders.add(oauthProvider);
+        oauthProvider.setUser(this);
+    }
+
+    // --- UserDetails Implementation ---
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -83,7 +127,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.email; // Authentication username is the email
+        return this.email;
     }
 
     @Override
@@ -93,7 +137,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return this.isEnabled; // Simple lock check
+        return this.isEnabled;
     }
 
     @Override
