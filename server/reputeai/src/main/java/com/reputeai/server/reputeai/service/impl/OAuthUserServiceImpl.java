@@ -69,6 +69,7 @@ public class OAuthUserServiceImpl implements OAuthUserService {
             return handleNewUserOAuth2Login(oauth2UserInfo, provider, providerId);
         }
     }
+
     private LoginResponseDto handleExistingUserOAuth2Login(User user,
                                                            OAuth2UserInfo oauth2UserInfo,
                                                            AuthProvider provider,
@@ -107,6 +108,7 @@ public class OAuthUserServiceImpl implements OAuthUserService {
         }
         return generateLoginResponse(user);
     }
+
     private LoginResponseDto handleNewUserOAuth2Login(OAuth2UserInfo oauth2UserInfo,
                                                       AuthProvider provider,
                                                       String providerId) {
@@ -136,6 +138,7 @@ public class OAuthUserServiceImpl implements OAuthUserService {
         log.info("New OAuth user created with ID: {}", savedUser.getId());
         return generateLoginResponse(savedUser);
     }
+
     private LoginResponseDto generateLoginResponse(User user) {
         if (user.getId() != null) {
             MDC.put("user_id", String.valueOf(user.getId()));
