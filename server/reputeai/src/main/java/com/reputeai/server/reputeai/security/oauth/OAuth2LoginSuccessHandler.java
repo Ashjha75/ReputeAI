@@ -27,7 +27,7 @@ import java.io.IOException;
 @Slf4j
 public class OAuth2LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
-    private final @Lazy OAuthUserService oAuthUserService;
+    private final OAuthUserService oAuthUserService;
     private final CookieUtil cookieUtil;
 
     @Value("${app.oauth2.redirect-uri:http://localhost:3000/oauth2/redirect}")
