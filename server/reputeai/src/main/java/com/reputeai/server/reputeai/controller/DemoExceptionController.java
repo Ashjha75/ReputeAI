@@ -26,18 +26,6 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Demo", description = "Demo endpoints showing exception handling")
 public class DemoExceptionController {
 
-    /**
-     * Demo DTO for validation testing
-     */
-    public record DemoRequest(
-            @NotBlank(message = "Name is required")
-            String name,
-
-            @NotBlank(message = "Email is required")
-            String email
-    ) {
-    }
-
     @Operation(summary = "Demo endpoint - throws NotFoundException", description = "Always returns 404 with a standardized error response.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "404", description = "Resource not found",
@@ -101,5 +89,17 @@ public class DemoExceptionController {
     @GetMapping("/success")
     public ResponseEntity<String> demoSuccess() {
         return ResponseEntity.ok("Demo success response");
+    }
+
+    /**
+     * Demo DTO for validation testing
+     */
+    public record DemoRequest(
+            @NotBlank(message = "Name is required")
+            String name,
+
+            @NotBlank(message = "Email is required")
+            String email
+    ) {
     }
 }

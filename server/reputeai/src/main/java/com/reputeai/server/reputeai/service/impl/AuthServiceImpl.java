@@ -39,25 +39,18 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
+    private static final int OTP_TTL_MINUTES = 10;
+    private static final int RESET_TTL_MINUTES = 30;
+    private static final String FALLBACK_TEST_OTP = "123456";
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
     private final OAuthUserService oAuthUserService;
-
     // In-memory stores for demo purposes (replace with persistent tables/Redis in production)
     private final ConcurrentHashMap<String, OtpRecord> emailOtpStore = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<String, ResetRecord> passwordResetStore = new ConcurrentHashMap<>();
-
-    private static final int OTP_TTL_MINUTES = 10;
-    private static final int RESET_TTL_MINUTES = 30;
-
-    private record OtpRecord(String otp, Instant expiresAt) {
-    }
-
-    private record ResetRecord(String token, Instant expiresAt) {
-    }
 
     @Override
     @Transactional
@@ -95,7 +88,6 @@ public class AuthServiceImpl implements AuthService {
         requestEmailVerification(email);
         return new RegisterResponseDto(true, "Registration successful. Please check your email to verify your account.");
     }
-
 
     @Override
     public LoginResponseDto login(LoginRequestDto loginRequestDto) {
@@ -191,8 +183,6 @@ public class AuthServiceImpl implements AuthService {
         }
     }
 
-    // ===== Refresh / Logout / Password Reset Methods (Unchanged) =====
-
     @Override
     public RefreshTokenResponseDto refreshToken(String refreshToken) {
         if (refreshToken == null || refreshToken.isBlank()) {
@@ -202,6 +192,8 @@ public class AuthServiceImpl implements AuthService {
         log.info("Refresh token used, generated new access token");
         return new RefreshTokenResponseDto(true, MessageConstants.SUCCESS_TOKEN_REFRESHED, newAccessToken, "Bearer");
     }
+
+    // ===== Refresh / Logout / Password Reset Methods (Unchanged) =====
 
     @Override
     public void logout(String refreshToken) {
@@ -227,8 +219,6 @@ public class AuthServiceImpl implements AuthService {
         log.debug("Generated OTP {} for email {} (expires {} minutes)", otp, normalizedEmail, OTP_TTL_MINUTES);
         return new SimpleSuccessResponseDto(true, MessageConstants.SUCCESS_VERIFICATION_EMAIL_SENT);
     }
-
-    private static final String FALLBACK_TEST_OTP = "123456";
 
     @Override
     public SimpleSuccessResponseDto verifyEmailOtp(VerifyEmailRequestDto request) {
@@ -307,5 +297,11 @@ public class AuthServiceImpl implements AuthService {
     private String generateResetToken(String email) {
         // Delegate to JwtProvider so we have a single source of truth
         return jwtProvider.generatePasswordResetToken(email);
+    }
+
+    private record OtpRecord(String otp, Instant expiresAt) {
+    }
+
+    private record ResetRecord(String token, Instant expiresAt) {
     }
 }
