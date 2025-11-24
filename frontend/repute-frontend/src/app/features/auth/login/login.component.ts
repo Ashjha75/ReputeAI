@@ -11,6 +11,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { UserProfileService } from '../../../core/services/user-profile.service';
 import { NotificationService } from '../../../core/services/notification.service';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -119,13 +120,65 @@ export class LoginComponent {
   }
 
   loginWithGoogle() {
-    console.log('Login with Google');
-    // Backend integration here
+    // Build OAuth URL from API base but remove the '/api' path segment if present
+    const apiHost = environment.apiUrl.replace(/\/$/, '').replace(/\/api\/?$/i, '');
+    const url = `${apiHost}/oauth2/authorization/google`;
+    this.openOAuthPopup(url, 'Google');
   }
 
   loginWithGithub() {
-    console.log('Login with Github');
-    // Backend integration here
+    const apiHost = environment.apiUrl.replace(/\/$/, '').replace(/\/api\/?$/i, '');
+    const url = `${apiHost}/oauth2/authorization/github`;
+    this.openOAuthPopup(url, 'Github');
+  }
+
+  private openOAuthPopup(url: string, providerName = 'OAuth') {
+    try {
+      const width = 600;
+      const height = 700;
+      const left = window.screenX + (window.innerWidth - width) / 2;
+      const top = window.screenY + (window.innerHeight - height) / 2;
+      const opts = `toolbar=no,menubar=no,width=${width},height=${height},top=${top},left=${left}`;
+      const popup = window.open(url, `oauth_${providerName}`, opts);
+      if (!popup) {
+        // Popup blocked — fallback to full redirect
+        window.location.href = url;
+        return;
+      }
+
+      // Poll to detect when popup closes, then refresh user state
+      const poll = setInterval(() => {
+        try {
+          if (!popup || popup.closed) {
+            clearInterval(poll);
+            // Attempt to refresh profile — if the OAuth flow succeeded the backend
+            // should have set cookies and getUserProfile will return the user.
+            this.authService.getUserProfile().subscribe({
+              next: (profileRes: any) => {
+                const profile = profileRes?.data ?? profileRes;
+                if (profile) {
+                  this.userProfileService.setUserProfile(profile);
+                  this.notificationService.success('Logged in successfully', 4000);
+                  this.router.navigate(['/']);
+                } else {
+                  // Not logged in — no change
+                }
+              },
+              error: () => {
+                // No-op; user may have cancelled login
+              }
+            });
+          }
+        } catch (e) {
+          // Accessing popup properties may throw cross-origin errors while provider is redirecting.
+          // Ignore and continue polling.
+        }
+      }, 500);
+    } catch (err) {
+      console.error('OAuth popup failed', err);
+      // fallback to full redirect
+      window.location.href = url;
+    }
   }
 
   get email() { return this.loginForm.get('email'); }
