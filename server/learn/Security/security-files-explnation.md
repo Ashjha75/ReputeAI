@@ -1,18 +1,16 @@
-
 # JWT Security System - Complete Documentation
-
-
 
 ----------
 
 ## 🎯 System Overview
 
-This is a **JWT-based authentication and authorization system** for a Patient Management application built with Spring Boot. It uses:
+This is a **JWT-based authentication and authorization system** for a Patient Management application built with Spring
+Boot. It uses:
 
--   **JWT Tokens** for stateless authentication
--   **Role-Based Access Control (RBAC)** for authorization
--   **OAuth2** for third-party login (Google, GitHub)
--   **Permission-based** access to different modules
+- **JWT Tokens** for stateless authentication
+- **Role-Based Access Control (RBAC)** for authorization
+- **OAuth2** for third-party login (Google, GitHub)
+- **Permission-based** access to different modules
 
 ----------
 
@@ -183,6 +181,7 @@ This is a **JWT-based authentication and authorization system** for a Patient Ma
 #### `passwordEncoder()`
 
 ```java
+
 @Bean
 public PasswordEncoder passwordEncoder()
 
@@ -190,15 +189,15 @@ public PasswordEncoder passwordEncoder()
 
 **What it does:**
 
--   Creates a BCrypt password encoder
--   This is used to hash passwords before storing in database
--   BCrypt automatically adds salt and is slow (good for security)
+- Creates a BCrypt password encoder
+- This is used to hash passwords before storing in database
+- BCrypt automatically adds salt and is slow (good for security)
 
 **Example:**
 
 ```java
 String rawPassword = "myPassword123";
-String hashed = passwordEncoder.encode(rawPassword); 
+String hashed = passwordEncoder.encode(rawPassword);
 // Result: $2a$10$N9qo8uLOickgx2ZMRZoMye...
 
 ```
@@ -206,6 +205,7 @@ String hashed = passwordEncoder.encode(rawPassword);
 #### `authenticationManager()`
 
 ```java
+
 @Bean
 public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
 
@@ -213,14 +213,14 @@ public AuthenticationManager authenticationManager(AuthenticationConfiguration c
 
 **What it does:**
 
--   Creates the main authentication manager
--   This manager handles all authentication requests
--   Used during login to verify username/password
+- Creates the main authentication manager
+- This manager handles all authentication requests
+- Used during login to verify username/password
 
 **When used:**
 
--   During login process
--   To validate user credentials
+- During login process
+- To validate user credentials
 
 ----------
 
@@ -235,6 +235,7 @@ public AuthenticationManager authenticationManager(AuthenticationConfiguration c
 #### `run()`
 
 ```java
+
 @Override
 public void run(String... args)
 
@@ -242,10 +243,10 @@ public void run(String... args)
 
 **What it does:**
 
--   Creates modules (Patient Management, User Management)
--   Creates roles (ROLE_USER, ROLE_PATIENT, ROLE_ADMIN)
--   Assigns permissions to roles
--   Creates sample users with roles
+- Creates modules (Patient Management, User Management)
+- Creates roles (ROLE_USER, ROLE_PATIENT, ROLE_ADMIN)
+- Assigns permissions to roles
+- Creates sample users with roles
 
 **Flow:**
 
@@ -270,17 +271,17 @@ private Module createModuleIfNotFound(String name, String key, String path)
 
 **What it does:**
 
--   Checks if module exists in database
--   If not found, creates new module
--   Returns the module
+- Checks if module exists in database
+- If not found, creates new module
+- Returns the module
 
 **Example:**
 
 ```java
 Module patientModule = createModuleIfNotFound(
-    "Patient Management",      // Display name
-    "PATIENT_MANAGEMENT",      // Unique key
-    "/api/v1/patients"         // URL path
+        "Patient Management",      // Display name
+        "PATIENT_MANAGEMENT",      // Unique key
+        "/api/v1/patients"         // URL path
 );
 
 ```
@@ -294,19 +295,19 @@ private Role createRoleAndAssignPermissions(String roleName, Module module, Set<
 
 **What it does:**
 
--   Creates a role if it doesn't exist
--   Assigns permissions to that role for a specific module
+- Creates a role if it doesn't exist
+- Assigns permissions to that role for a specific module
 
 **Example:**
 
 ```java
 Role adminRole = createRoleAndAssignPermissions(
-    "ROLE_ADMIN",                           // Role name
-    patientModule,                          // Module
-    Set.of(Permission.CREATE,               // Permissions
-           Permission.VIEW, 
-           Permission.EDIT, 
-           Permission.DELETE)
+        "ROLE_ADMIN",                           // Role name
+        patientModule,                          // Module
+        Set.of(Permission.CREATE,               // Permissions
+                Permission.VIEW,
+                Permission.EDIT,
+                Permission.DELETE)
 );
 
 ```
@@ -324,6 +325,7 @@ Role adminRole = createRoleAndAssignPermissions(
 #### `authenticationTokenFilterBean()`
 
 ```java
+
 @Bean
 public AuthTokenFilter authenticationTokenFilterBean()
 
@@ -331,12 +333,13 @@ public AuthTokenFilter authenticationTokenFilterBean()
 
 **What it does:**
 
--   Creates the JWT filter bean
--   This filter will intercept every request
+- Creates the JWT filter bean
+- This filter will intercept every request
 
 #### `defaultSecurityFilterChain()`
 
 ```java
+
 @Bean
 SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
 
@@ -344,10 +347,10 @@ SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
 
 **What it does:**
 
--   Configures which URLs are public vs protected
--   Adds JWT filter to the security chain
--   Sets up OAuth2 login
--   Configures CORS
+- Configures which URLs are public vs protected
+- Adds JWT filter to the security chain
+- Sets up OAuth2 login
+- Configures CORS
 
 **Configuration breakdown:**
 
@@ -358,75 +361,89 @@ SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
 
 ```
 
--   Disables CSRF protection
--   Safe for JWT-based APIs (stateless)
+- Disables CSRF protection
+- Safe for JWT-based APIs (stateless)
 
 **Session Management:**
 
 ```java
-.sessionManagement(sess -> 
-    sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+.sessionManagement(sess ->
+        sess.
+
+sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
 ```
 
--   Tells Spring to NOT create HTTP sessions
--   Perfect for JWT (each request is independent)
+- Tells Spring to NOT create HTTP sessions
+- Perfect for JWT (each request is independent)
 
 **Public Endpoints:**
 
 ```java
 .requestMatchers(
     "/api/auth/**",           // Login, signup
-    "/api/v1/auth/**",        // Auth endpoints
-    "/v3/api-docs/**",        // Swagger docs
-    "/health",                // Health check
-    "/oauth2/**"              // OAuth2 callbacks
-).permitAll()
+            "/api/v1/auth/**",        // Auth endpoints
+            "/v3/api-docs/**",        // Swagger docs
+            "/health",                // Health check
+            "/oauth2/**"              // OAuth2 callbacks
+).
+
+permitAll()
 
 ```
 
--   These URLs don't need authentication
--   Anyone can access them
+- These URLs don't need authentication
+- Anyone can access them
 
 **Protected Endpoints:**
 
 ```java
-.anyRequest().authenticated()
+.anyRequest().
+
+authenticated()
 
 ```
 
--   All other URLs require authentication
+- All other URLs require authentication
 
 **JWT Filter Registration:**
 
 ```java
-.addFilterBefore(authenticationTokenFilterBean(), 
-                 UsernamePasswordAuthenticationFilter.class)
+.addFilterBefore(authenticationTokenFilterBean(),
+
+UsernamePasswordAuthenticationFilter .class)
 
 ```
 
--   Adds JWT filter BEFORE Spring's default authentication filter
--   This ensures JWT is checked first
+- Adds JWT filter BEFORE Spring's default authentication filter
+- This ensures JWT is checked first
 
 **OAuth2 Configuration:**
 
 ```java
-.oauth2Login(oauth -> oauth
-    .successHandler(oauth2SuccessHandler)
-    .redirectionEndpoint(endpoint ->
-        endpoint.baseUri("/login/oauth2/code/*")
+.oauth2Login(oauth ->oauth
+        .
+
+successHandler(oauth2SuccessHandler)
+    .
+
+redirectionEndpoint(endpoint ->
+        endpoint.
+
+baseUri("/login/oauth2/code/*")
     )
-)
+            )
 
 ```
 
--   Configures OAuth2 login with Google/GitHub
--   Sets success handler
--   Sets redirect URL pattern
+- Configures OAuth2 login with Google/GitHub
+- Sets success handler
+- Sets redirect URL pattern
 
 #### `corsConfigurationSource()`
 
 ```java
+
 @Bean
 public CorsConfigurationSource corsConfigurationSource()
 
@@ -434,28 +451,32 @@ public CorsConfigurationSource corsConfigurationSource()
 
 **What it does:**
 
--   Configures Cross-Origin Resource Sharing (CORS)
--   Allows frontend (React/Angular) to call your API from different domain
+- Configures Cross-Origin Resource Sharing (CORS)
+- Allows frontend (React/Angular) to call your API from different domain
 
 **Configuration:**
 
 ```java
 // Allowed origins (your frontend URLs)
 .setAllowedOriginPatterns(Arrays.asList(
-    "http://localhost:*",     // Local development
+                                  "http://localhost:*",     // Local development
     "https://mydomain.com"    // Production
 ))
 
 // Allowed HTTP methods
-.setAllowedMethods(Arrays.asList(
-    "GET", "POST", "PUT", "DELETE", "OPTIONS"
+        .
+
+setAllowedMethods(Arrays.asList(
+        "GET", "POST","PUT","DELETE","OPTIONS"
 ))
 
 // Allowed headers
-.setAllowedHeaders(Arrays.asList(
-    "Authorization",   // For JWT token
+        .
+
+setAllowedHeaders(Arrays.asList(
+                          "Authorization",   // For JWT token
     "Content-Type",    // For JSON
-    "X-Requested-With"
+                          "X-Requested-With"
 ))
 
 ```
@@ -473,9 +494,10 @@ public CorsConfigurationSource corsConfigurationSource()
 #### `doFilterInternal()`
 
 ```java
+
 @Override
-protected void doFilterInternal(HttpServletRequest request, 
-                                HttpServletResponse response, 
+protected void doFilterInternal(HttpServletRequest request,
+                                HttpServletResponse response,
                                 FilterChain filterChain)
 
 ```
@@ -491,17 +513,19 @@ String jwt = parseJwt(request);
 
 ```
 
--   Calls `parseJwt()` to get token from "Authorization" header
+- Calls `parseJwt()` to get token from "Authorization" header
 
 **Step 2: Validate JWT**
 
 ```java
-if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
+if(jwt !=null&&jwtUtils.
+
+validateJwtToken(jwt)){
 
 ```
 
--   Checks if token exists
--   Validates token using JwtUtils
+- Checks if token exists
+- Validates token using JwtUtils
 
 **Step 3: Extract username**
 
@@ -510,7 +534,7 @@ String username = jwtUtils.getUserNameFromJwtToken(jwt);
 
 ```
 
--   Extracts username from JWT payload
+- Extracts username from JWT payload
 
 **Step 4: Load user details**
 
@@ -519,18 +543,18 @@ UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
 ```
 
--   Loads complete user info from database
--   Includes roles and permissions
+- Loads complete user info from database
+- Includes roles and permissions
 
 **Step 5: Create authentication object**
 
 ```java
 UsernamePasswordAuthenticationToken authentication =
-    new UsernamePasswordAuthenticationToken(
-        userDetails,           // Principal (user)
-        null,                 // Credentials (not needed for JWT)
-        userDetails.getAuthorities()  // Roles and permissions
-    );
+        new UsernamePasswordAuthenticationToken(
+                userDetails,           // Principal (user)
+                null,                 // Credentials (not needed for JWT)
+                userDetails.getAuthorities()  // Roles and permissions
+        );
 
 ```
 
@@ -538,22 +562,26 @@ UsernamePasswordAuthenticationToken authentication =
 
 ```java
 authentication.setDetails(
-    new WebAuthenticationDetailsSource().buildDetails(request)
+    new WebAuthenticationDetailsSource().
+
+buildDetails(request)
 );
 
 ```
 
--   Adds IP address, session ID to authentication
+- Adds IP address, session ID to authentication
 
 **Step 7: Set in SecurityContext**
 
 ```java
-SecurityContextHolder.getContext().setAuthentication(authentication);
+SecurityContextHolder.getContext().
+
+setAuthentication(authentication);
 
 ```
 
--   Stores authentication in thread-local storage
--   Now Spring Security knows this request is authenticated
+- Stores authentication in thread-local storage
+- Now Spring Security knows this request is authenticated
 
 **Step 8: Continue filter chain**
 
@@ -562,7 +590,7 @@ filterChain.doFilter(request, response);
 
 ```
 
--   Passes request to next filter or controller
+- Passes request to next filter or controller
 
 #### `parseJwt()`
 
@@ -573,8 +601,8 @@ private String parseJwt(HttpServletRequest request)
 
 **What it does:**
 
--   Extracts JWT from "Authorization" header
--   Removes "Bearer " prefix
+- Extracts JWT from "Authorization" header
+- Removes "Bearer " prefix
 
 **Example:**
 
@@ -588,10 +616,16 @@ Output: "eyJhbGciOiJIUzI1NiIs..."
 
 ```java
 String headerAuth = request.getHeader("Authorization");
-if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
-    return headerAuth.substring(7);  // Remove "Bearer "
+if(StringUtils.
+
+hasText(headerAuth) &&headerAuth.
+
+startsWith("Bearer ")){
+        return headerAuth.
+
+substring(7);  // Remove "Bearer "
 }
-return null;
+        return null;
 
 ```
 
@@ -608,6 +642,7 @@ return null;
 #### `commence()`
 
 ```java
+
 @Override
 public void commence(HttpServletRequest request,
                      HttpServletResponse response,
@@ -623,18 +658,22 @@ public void commence(HttpServletRequest request,
 
 ```java
 String requestURI = request.getRequestURI();
-logger.error("Unauthorized access attempt - URI: {}", requestURI);
+logger.
+
+error("Unauthorized access attempt - URI: {}",requestURI);
 
 ```
 
--   Logs which endpoint user tried to access
--   Useful for security monitoring
+- Logs which endpoint user tried to access
+- Useful for security monitoring
 
 **Step 2: Set response headers**
 
 ```java
 response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);  // 401
+response.
+
+setStatus(HttpServletResponse.SC_UNAUTHORIZED);  // 401
 
 ```
 
@@ -642,11 +681,23 @@ response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);  // 401
 
 ```java
 final Map<String, Object> body = new HashMap<>();
-body.put("status", 401);
-body.put("error", "Unauthorized");
-body.put("message", "Authentication required to access this resource");
-body.put("path", requestURI);
-body.put("timestamp", Instant.now().toString());
+body.
+
+put("status",401);
+body.
+
+put("error","Unauthorized");
+body.
+
+put("message","Authentication required to access this resource");
+body.
+
+put("path",requestURI);
+body.
+
+put("timestamp",Instant.now().
+
+toString());
 
 ```
 
@@ -654,7 +705,9 @@ body.put("timestamp", Instant.now().toString());
 
 ```java
 final ObjectMapper mapper = new ObjectMapper();
-mapper.writeValue(response.getOutputStream(), body);
+mapper.
+
+writeValue(response.getOutputStream(),body);
 
 ```
 
@@ -690,8 +743,8 @@ public String getJwtFromHeader(HttpServletRequest request)
 
 **What it does:**
 
--   Extracts JWT from "Authorization: Bearer <token>" header
--   Returns token or null
+- Extracts JWT from "Authorization: Bearer <token>" header
+- Returns token or null
 
 **Example:**
 
@@ -711,9 +764,9 @@ public String generateTokenFromUsername(String username)
 
 **What it does:**
 
--   Creates a new JWT token for a user
--   Adds expiration time
--   Signs with secret key
+- Creates a new JWT token for a user
+- Adds expiration time
+- Signs with secret key
 
 **⚠️ PROBLEM:** Currently hardcodes role as "Admin"
 
@@ -722,8 +775,10 @@ public String generateTokenFromUsername(String username)
 **Step 1: Validate input**
 
 ```java
-if (!StringUtils.hasText(username)) {
-    throw new IllegalArgumentException("Username cannot be empty");
+if(!StringUtils.hasText(username)){
+        throw new
+
+IllegalArgumentException("Username cannot be empty");
 }
 
 ```
@@ -740,12 +795,24 @@ Date expirationDate = new Date(issuedDate.getTime() + Long.parseLong(expirationT
 
 ```java
 return Jwts.builder()
-    .subject(username.trim())           // Who the token is for
-    .claim("roles", "Admin")            // ❌ HARDCODED - BAD!
-    .issuedAt(issuedDate)              // When created
-    .expiration(expirationDate)        // When expires
-    .signWith(secureKey())             // Digital signature
-    .compact();                        // Create final token
+    .
+
+subject(username.trim())           // Who the token is for
+        .
+
+claim("roles","Admin")            // ❌ HARDCODED - BAD!
+    .
+
+issuedAt(issuedDate)              // When created
+    .
+
+expiration(expirationDate)        // When expires
+    .
+
+signWith(secureKey())             // Digital signature
+        .
+
+compact();                        // Create final token
 
 ```
 
@@ -767,16 +834,18 @@ public String getUserNameFromJwtToken(String token)
 
 **What it does:**
 
--   Extracts username from JWT payload
--   Validates signature first
+- Extracts username from JWT payload
+- Validates signature first
 
 **Step-by-step:**
 
 **Step 1: Validate token not empty**
 
 ```java
-if (!StringUtils.hasText(token)) {
-    throw new IllegalArgumentException("Token cannot be empty");
+if(!StringUtils.hasText(token)){
+        throw new
+
+IllegalArgumentException("Token cannot be empty");
 }
 
 ```
@@ -785,12 +854,14 @@ if (!StringUtils.hasText(token)) {
 
 ```java
 Claims claims = Jwts.parser()
-    .verifyWith((SecretKey) secureKey())  // Verify signature
-    .build()
-    .parseSignedClaims(token.trim())      // Parse token
-    .getPayload();                        // Get payload
+        .verifyWith((SecretKey) secureKey())  // Verify signature
+        .build()
+        .parseSignedClaims(token.trim())      // Parse token
+        .getPayload();                        // Get payload
 
-return claims.getSubject();               // Get username from "sub" claim
+return claims.
+
+getSubject();               // Get username from "sub" claim
 
 ```
 
@@ -803,22 +874,24 @@ public boolean validateJwtToken(String token)
 
 **What it does:**
 
--   Validates JWT signature
--   Checks expiration
--   Handles all possible errors
+- Validates JWT signature
+- Checks expiration
+- Handles all possible errors
 
 **Returns:**
 
--   `true` if token is valid
--   `false` if invalid (logs reason)
+- `true` if token is valid
+- `false` if invalid (logs reason)
 
 **Validation checks:**
 
 **1. Empty check:**
 
 ```java
-if (!StringUtils.hasText(token)) {
-    throw new IllegalArgumentException("Token cannot be empty");
+if(!StringUtils.hasText(token)){
+        throw new
+
+IllegalArgumentException("Token cannot be empty");
 }
 
 ```
@@ -827,26 +900,43 @@ if (!StringUtils.hasText(token)) {
 
 ```java
 Jwts.parser()
-    .verifyWith((SecretKey) secureKey())  // Check signature
-    .build()
-    .parseSignedClaims(token.trim());     // Parse token
+    .
+
+verifyWith((SecretKey) secureKey())  // Check signature
+        .
+
+build()
+    .
+
+parseSignedClaims(token.trim());     // Parse token
 
 ```
 
 **3. Error handling:**
 
 ```java
-catch (SecurityException ex) {
-    logger.error("Invalid JWT signature");
+catch(SecurityException ex){
+        logger.
+
+error("Invalid JWT signature");
 }
-catch (MalformedJwtException ex) {
-    logger.error("Invalid JWT format");
+        catch(
+MalformedJwtException ex){
+        logger.
+
+error("Invalid JWT format");
 }
-catch (ExpiredJwtException ex) {
-    logger.error("JWT token expired");
+        catch(
+ExpiredJwtException ex){
+        logger.
+
+error("JWT token expired");
 }
-catch (UnsupportedJwtException ex) {
-    logger.error("Unsupported JWT token");
+        catch(
+UnsupportedJwtException ex){
+        logger.
+
+error("Unsupported JWT token");
 }
 
 ```
@@ -860,12 +950,12 @@ public LocalDateTime getExpirationFromToken(String token)
 
 **What it does:**
 
--   Extracts expiration date from JWT
--   Converts to LocalDateTime
+- Extracts expiration date from JWT
+- Converts to LocalDateTime
 
 **Used for:**
 
--   Token blacklist (to know when to remove from blacklist)
+- Token blacklist (to know when to remove from blacklist)
 
 #### `secureKey()` (Private Helper)
 
@@ -876,8 +966,8 @@ private Key secureKey()
 
 **What it does:**
 
--   Converts Base64 secret to cryptographic key
--   Used for signing and verifying JWTs
+- Converts Base64 secret to cryptographic key
+- Used for signing and verifying JWTs
 
 ```java
 return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
@@ -897,6 +987,7 @@ return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
 #### `loadUserByUsername()`
 
 ```java
+
 @Override
 @Cacheable(value = "userPermissions", key = "#username")
 public UserDetails loadUserByUsername(String username)
@@ -905,17 +996,19 @@ public UserDetails loadUserByUsername(String username)
 
 **What it does:**
 
--   Loads user from database
--   Converts roles and permissions to Spring Security format
--   Caches result for performance
+- Loads user from database
+- Converts roles and permissions to Spring Security format
+- Caches result for performance
 
 **Step-by-step flow:**
 
 **Step 1: Validate username**
 
 ```java
-if (!StringUtils.hasText(username)) {
-    throw new UsernameNotFoundException("Username cannot be null or empty");
+if(!StringUtils.hasText(username)){
+        throw new
+
+UsernameNotFoundException("Username cannot be null or empty");
 }
 
 ```
@@ -924,9 +1017,9 @@ if (!StringUtils.hasText(username)) {
 
 ```java
 User user = userRepository.findByUsernameWithAllPermissions(username.trim())
-    .orElseThrow(() ->
-        new UsernameNotFoundException("User not found: " + username.trim())
-    );
+        .orElseThrow(() ->
+                new UsernameNotFoundException("User not found: " + username.trim())
+        );
 
 ```
 
@@ -940,22 +1033,31 @@ List<GrantedAuthority> authorities = new ArrayList<>();
 **Step 4: Add role authorities**
 
 ```java
-for (Role role : roles) {
-    authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
-    // Result: "ROLE_ADMIN", "ROLE_USER"
+for(Role role :roles){
+        authorities.
+
+add(new SimpleGrantedAuthority(role.getRoleName()));
+// Result: "ROLE_ADMIN", "ROLE_USER"
 
 ```
 
 **Step 5: Add permission authorities**
 
 ```java
-for (RolePermission rolePermission : role.getRolePermissions()) {
-    String moduleKey = rolePermission.getModule().getModuleKey();
-    for (Permission permissionAction : rolePermission.getGrantedPermissions()) {
-        String fullPermission = moduleKey + ":" + permissionAction.name();
-        authorities.add(new SimpleGrantedAuthority(fullPermission));
-    }
-}
+for(RolePermission rolePermission :role.
+
+getRolePermissions()){
+String moduleKey = rolePermission.getModule().getModuleKey();
+    for(
+Permission permissionAction :rolePermission.
+
+getGrantedPermissions()){
+String fullPermission = moduleKey + ":" + permissionAction.name();
+        authorities.
+
+add(new SimpleGrantedAuthority(fullPermission));
+        }
+        }
 // Result: "PATIENT_MANAGEMENT:CREATE", "PATIENT_MANAGEMENT:VIEW"
 
 ```
@@ -963,8 +1065,10 @@ for (RolePermission rolePermission : role.getRolePermissions()) {
 **Step 6: Validate password exists**
 
 ```java
-if (!StringUtils.hasText(user.getPassword())) {
-    throw new UsernameNotFoundException("Local user has no password");
+if(!StringUtils.hasText(user.getPassword())){
+        throw new
+
+UsernameNotFoundException("Local user has no password");
 }
 
 ```
@@ -973,21 +1077,25 @@ if (!StringUtils.hasText(user.getPassword())) {
 
 ```java
 return new org.springframework.security.core.userdetails.User(
-    user.getUsername(),           // Username
-    user.getPassword(),           // Encoded password
-    user.isEnabled(),             // Account enabled?
+        user.getUsername(),           // Username
+    user.
+
+getPassword(),           // Encoded password
+    user.
+
+isEnabled(),             // Account enabled?
     true,                         // Account not expired
-    true,                         // Credentials not expired
-    true,                         // Account not locked
-    authorities                   // All roles and permissions
+            true,                         // Credentials not expired
+            true,                         // Account not locked
+authorities                   // All roles and permissions
 );
 
 ```
 
 **Caching:**
 
--   Results are cached with key: username
--   Next request for same user = instant (no database query)
+- Results are cached with key: username
+- Next request for same user = instant (no database query)
 
 ----------
 
@@ -1002,33 +1110,36 @@ return new org.springframework.security.core.userdetails.User(
 #### `hasPermission()`
 
 ```java
+
 @Cacheable(value = "userPermissions", key = "#authentication.name + '_' + #moduleKey + '_' + #permission")
-public boolean hasPermission(Authentication authentication, 
-                            String moduleKey, 
-                            String permission)
+public boolean hasPermission(Authentication authentication,
+                             String moduleKey,
+                             String permission)
 
 ```
 
 **What it does:**
 
--   Checks if user has permission for a module
--   Returns true/false
--   Cached for performance
+- Checks if user has permission for a module
+- Returns true/false
+- Cached for performance
 
 **Parameters:**
 
--   `authentication`: Current user's authentication object
--   `moduleKey`: Module to check (e.g., "PATIENT_MANAGEMENT")
--   `permission`: Permission to check (e.g., "CREATE", "VIEW")
+- `authentication`: Current user's authentication object
+- `moduleKey`: Module to check (e.g., "PATIENT_MANAGEMENT")
+- `permission`: Permission to check (e.g., "CREATE", "VIEW")
 
 **Step-by-step flow:**
 
 **Step 1: Validate authentication**
 
 ```java
-if (authentication == null || !authentication.isAuthenticated()) {
-    return false;  // Not logged in = no permission
-}
+if(authentication ==null||!authentication.
+
+isAuthenticated()){
+        return false;  // Not logged in = no permission
+        }
 
 ```
 
@@ -1043,10 +1154,12 @@ String username = userDetails.getUsername();
 **Step 3: Check for SUPER_ADMIN (bypass)**
 
 ```java
-if (hasRole(userDetails.getAuthorities(), "SUPER_ADMIN")) {
-    log.debug("User '{}' is a SUPER_ADMIN. Granting access.", username);
+if(hasRole(userDetails.getAuthorities(), "SUPER_ADMIN")){
+        log.
+
+debug("User '{}' is a SUPER_ADMIN. Granting access.",username);
     return true;  // Super admins have all permissions
-}
+            }
 
 ```
 
@@ -1054,12 +1167,17 @@ if (hasRole(userDetails.getAuthorities(), "SUPER_ADMIN")) {
 
 ```java
 Permission requiredPermission;
-try {
-    requiredPermission = Permission.valueOf(permission.toUpperCase());
-} catch (IllegalArgumentException e) {
-    log.warn("Invalid permission string '{}'", permission);
+try{
+requiredPermission =Permission.
+
+valueOf(permission.toUpperCase());
+        }catch(
+IllegalArgumentException e){
+        log.
+
+warn("Invalid permission string '{}'",permission);
     return false;
-}
+            }
 
 ```
 
@@ -1067,11 +1185,11 @@ try {
 
 ```java
 User user = userRepository.findByUsernameWithRolesAndPermissions(username)
-    .orElse(null);
+        .orElse(null);
 
-if (user == null) {
-    return false;
-}
+if(user ==null){
+        return false;
+        }
 
 ```
 
@@ -1079,13 +1197,13 @@ if (user == null) {
 
 ```java
 boolean isPermitted = user.getRoles().stream()
-    // Get all RolePermission objects from all roles
-    .flatMap(role -> role.getRolePermissions().stream())
-    // Find match for module and permission
-    .anyMatch(rolePermission ->
-        rolePermission.getModule().getModuleKey().equalsIgnoreCase(moduleKey) &&
-        rolePermission.getGrantedPermissions().contains(requiredPermission)
-    );
+        // Get all RolePermission objects from all roles
+        .flatMap(role -> role.getRolePermissions().stream())
+        // Find match for module and permission
+        .anyMatch(rolePermission ->
+                rolePermission.getModule().getModuleKey().equalsIgnoreCase(moduleKey) &&
+                        rolePermission.getGrantedPermissions().contains(requiredPermission)
+        );
 
 ```
 
@@ -1116,26 +1234,32 @@ return isPermitted;
 #### `hasRole()` (Private Helper)
 
 ```java
-private boolean hasRole(Collection<? extends GrantedAuthority> authorities, 
-                       String roleName)
+private boolean hasRole(Collection<? extends GrantedAuthority> authorities,
+                        String roleName)
 
 ```
 
 **What it does:**
 
--   Checks if user has specific role
--   Used for SUPER_ADMIN check
+- Checks if user has specific role
+- Used for SUPER_ADMIN check
 
 ```java
 return authorities.stream()
-    .anyMatch(authority -> authority.getAuthority().equals(roleName));
+    .
+
+anyMatch(authority ->authority.
+
+getAuthority().
+
+equals(roleName));
 
 ```
 
 **Caching:**
 
--   Cache key: "john@example.com_PATIENT_MANAGEMENT_CREATE"
--   Same check again = instant result (no database query)
+- Cache key: "john@example.com_PATIENT_MANAGEMENT_CREATE"
+- Same check again = instant result (no database query)
 
 ----------
 
@@ -1156,19 +1280,19 @@ public void blacklistToken(String token, LocalDateTime expirationTime)
 
 **What it does:**
 
--   Adds token to blacklist map
--   Stores expiration time
+- Adds token to blacklist map
+- Stores expiration time
 
 **When used:**
 
--   User logs out
--   Admin revokes token
+- User logs out
+- Admin revokes token
 
 **Example:**
 
 ```java
 // User logs out at 2 PM, token expires at 6 PM
-tokenBlacklistService.blacklistToken(jwtToken, LocalDateTime.of(2024, 1, 15, 18, 0));
+tokenBlacklistService.blacklistToken(jwtToken, LocalDateTime.of(2024, 1,15,18,0));
 
 ```
 
@@ -1189,7 +1313,7 @@ public void blacklistToken(String token)
 
 ```
 
--   Uses default expiration (24 hours from now)
+- Uses default expiration (24 hours from now)
 
 #### `isTokenBlacklisted()`
 
@@ -1200,14 +1324,16 @@ public boolean isTokenBlacklisted(String token)
 
 **What it does:**
 
--   Checks if token is in blacklist
--   Returns true if blacklisted
+- Checks if token is in blacklist
+- Returns true if blacklisted
 
 **Example:**
 
 ```java
-if (tokenBlacklistService.isTokenBlacklisted(jwt)) {
-    throw new AuthenticationException("Token has been revoked");
+if(tokenBlacklistService.isTokenBlacklisted(jwt)){
+        throw new
+
+AuthenticationException("Token has been revoked");
 }
 
 ```
@@ -1215,6 +1341,7 @@ if (tokenBlacklistService.isTokenBlacklisted(jwt)) {
 #### `removeExpiredTokens()`
 
 ```java
+
 @Scheduled(fixedRate = 3600000)  // Every 1 hour
 public void removeExpiredTokens()
 
@@ -1222,9 +1349,9 @@ public void removeExpiredTokens()
 
 **What it does:**
 
--   Automatically removes expired tokens from blacklist
--   Prevents memory leaks
--   Runs every hour
+- Automatically removes expired tokens from blacklist
+- Prevents memory leaks
+- Runs every hour
 
 **How it works:**
 
@@ -1232,13 +1359,23 @@ public void removeExpiredTokens()
 LocalDateTime now = LocalDateTime.now();
 AtomicInteger removedCount = new AtomicInteger(0);
 
-blacklistedTokens.entrySet().removeIf(entry -> {
-    if (entry.getValue().isBefore(now)) {  // Expiration passed?
-        removedCount.incrementAndGet();
+blacklistedTokens.
+
+entrySet().
+
+removeIf(entry ->{
+        if(entry.
+
+getValue().
+
+isBefore(now)){  // Expiration passed?
+        removedCount.
+
+incrementAndGet();
         return true;  // Remove this entry
-    }
-    return false;  // Keep this entry
-});
+                }
+                return false;  // Keep this entry
+                });
 
 ```
 
@@ -1264,8 +1401,8 @@ public void clearAllTokens()
 
 **What it does:**
 
--   Removes ALL tokens from blacklist
--   **Use with caution** - administrative use only
+- Removes ALL tokens from blacklist
+- **Use with caution** - administrative use only
 
 #### `getBlacklistSize()`
 
@@ -1276,8 +1413,8 @@ public int getBlacklistSize()
 
 **What it does:**
 
--   Returns number of tokens currently blacklisted
--   Useful for monitoring
+- Returns number of tokens currently blacklisted
+- Useful for monitoring
 
 #### `getTokenExpirationTime()`
 
@@ -1288,8 +1425,8 @@ public LocalDateTime getTokenExpirationTime(String token)
 
 **What it does:**
 
--   Returns when a specific blacklisted token expires
--   Returns null if token not in blacklist
+- Returns when a specific blacklisted token expires
+- Returns null if token not in blacklist
 
 ----------
 
@@ -1304,6 +1441,7 @@ public LocalDateTime getTokenExpirationTime(String token)
 #### `onAuthenticationSuccess()`
 
 ```java
+
 @Override
 public void onAuthenticationSuccess(HttpServletRequest request,
                                     HttpServletResponse response,
@@ -1313,10 +1451,10 @@ public void onAuthenticationSuccess(HttpServletRequest request,
 
 **What it does:**
 
--   Receives OAuth2 user data
--   Processes/creates user in database
--   Generates JWT
--   Returns response
+- Receives OAuth2 user data
+- Processes/creates user in database
+- Generates JWT
+- Returns response
 
 **Step-by-step flow:**
 
@@ -1339,32 +1477,38 @@ String registrationId = oauthToken.getAuthorizedClientRegistrationId();
 **Step 3: Process OAuth2 user**
 
 ```java
-ResponseEntity<UserInfoResponse> oauthLoginResponse = 
-    oAuth2UserProcessingService.handleOauth2loginRequest(user, registrationId);
+ResponseEntity<UserInfoResponse> oauthLoginResponse =
+        oAuth2UserProcessingService.handleOauth2loginRequest(user, registrationId);
 
 ```
 
 This does:
 
--   Extracts email, name from OAuth2 user
--   Checks if user exists in database
--   Creates new user if needed
--   Generates JWT token
+- Extracts email, name from OAuth2 user
+- Checks if user exists in database
+- Creates new user if needed
+- Generates JWT token
 
 **Step 4: Set response**
 
 ```java
-response.setStatus(oauthLoginResponse.getStatusCode().value());
-response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+response.setStatus(oauthLoginResponse.getStatusCode().
+
+value());
+        response.
+
+setContentType(MediaType.APPLICATION_JSON_VALUE);
 
 ```
 
 **Step 5: Write JSON response**
 
 ```java
-response.getWriter().write(
-    objectMapper.writeValueAsString(oauthLoginResponse.getBody())
-);
+response.getWriter().
+
+write(
+        objectMapper.writeValueAsString(oauthLoginResponse.getBody())
+        );
 
 ```
 
@@ -1374,7 +1518,9 @@ response.getWriter().write(
 {
   "token": "eyJhbGciOiJIUzI1NiIs...",
   "username": "john@gmail.com",
-  "roles": ["ROLE_USER"],
+  "roles": [
+    "ROLE_USER"
+  ],
   "message": "Login successful"
 }
 
@@ -1399,8 +1545,8 @@ public AuthProviderType getOauthProvider(String registrationId)
 
 **What it does:**
 
--   Converts provider string to enum
--   Validates provider
+- Converts provider string to enum
+- Validates provider
 
 **Example:**
 
@@ -1416,10 +1562,12 @@ AuthProviderType provider = oauth2Utils.getOauthProvider("facebook");
 **Supported providers:**
 
 ```java
-return switch (registrationId.toLowerCase()) {
-    case "google" -> AuthProviderType.GOOGLE;
-    case "github" -> AuthProviderType.GITHUB;
-    default -> throw new IllegalArgumentException("Invalid provider");
+return switch(registrationId.toLowerCase()){
+        case"google"->AuthProviderType.GOOGLE;
+    case"github"->AuthProviderType.GITHUB;
+default ->throw new
+
+IllegalArgumentException("Invalid provider");
 };
 
 ```
@@ -1427,23 +1575,29 @@ return switch (registrationId.toLowerCase()) {
 #### `determineProviderIdFromOauth2user()`
 
 ```java
-public String determineProviderIdFromOauth2user(OAuth2User oAuth2User, 
-                                               String registrationId)
+public String determineProviderIdFromOauth2user(OAuth2User oAuth2User,
+                                                String registrationId)
 
 ```
 
 **What it does:**
 
--   Extracts unique user ID from OAuth2 provider
--   Different providers have different ID fields
+- Extracts unique user ID from OAuth2 provider
+- Different providers have different ID fields
 
 **How it works:**
 
 ```java
-return switch (registrationId.toLowerCase()) {
-    case "google" -> oAuth2User.getAttribute("sub");  // Google's user ID field
-    case "github" -> Objects.toString(oAuth2User.getAttribute("id"), null);  // GitHub's ID
-    default -> throw new IllegalArgumentException("Invalid provider");
+return switch(registrationId.toLowerCase()){
+        case"google"->oAuth2User.
+
+getAttribute("sub");  // Google's user ID field
+    case"github"->Objects.
+
+toString(oAuth2User.getAttribute("id"), null);  // GitHub's ID
+default ->throw new
+
+IllegalArgumentException("Invalid provider");
 };
 
 ```
@@ -1454,7 +1608,10 @@ return switch (registrationId.toLowerCase()) {
 
 ```json
 {
-  "sub": "110169484474386276334",  ← Provider ID
+  "sub": "110169484474386276334",
+  ←
+  Provider
+  ID
   "email": "john@gmail.com",
   "name": "John Doe"
 }
@@ -1465,7 +1622,10 @@ return switch (registrationId.toLowerCase()) {
 
 ```json
 {
-  "id": 12345678,  ← Provider ID
+  "id": 12345678,
+  ←
+  Provider
+  ID
   "login": "johndoe",
   "email": "john@github.com"
 }
@@ -1475,30 +1635,39 @@ return switch (registrationId.toLowerCase()) {
 #### `determineUsernameFromOauth2user()`
 
 ```java
-public String determineUsernameFromOauth2user(OAuth2User oAuth2User, 
-                                             String registrationId, 
-                                             String providerId)
+public String determineUsernameFromOauth2user(OAuth2User oAuth2User,
+                                              String registrationId,
+                                              String providerId)
 
 ```
 
 **What it does:**
 
--   Determines username to use in our system
--   Priority: email > provider-specific username > provider ID
+- Determines username to use in our system
+- Priority: email > provider-specific username > provider ID
 
 **Logic:**
 
 ```java
 String email = oAuth2User.getAttribute("email");
-if (email != null && !email.isBlank()) {
-    return email;  // Use email if available
+if(email !=null&&!email.
+
+isBlank()){
+        return email;  // Use email if available
 }
 
 // Fallback to provider-specific username
-return switch (registrationId.toLowerCase()) {
-    case "google" -> oAuth2User.getAttribute("sub");
-    case "github" -> oAuth2User.getAttribute("login");
-    default -> providerId;  // Last resort: use provider ID
+        return switch(registrationId.
+
+toLowerCase()){
+        case"google"->oAuth2User.
+
+getAttribute("sub");
+    case"github"->oAuth2User.
+
+getAttribute("login");
+
+default ->providerId;  // Last resort: use provider ID
 };
 
 ```
@@ -2099,13 +2268,16 @@ String token = jwtUtils.generateTokenFromUsername(username);
 
 ```java
 LocalDateTime expiration = jwtUtils.getExpirationFromToken(token);
-tokenBlacklistService.blacklistToken(token, expiration);
+tokenBlacklistService.
+
+blacklistToken(token, expiration);
 
 ```
 
 #### 5. Check permission in controller
 
 ```java
+
 @PreAuthorize("@permissionService.hasPermission(authentication, 'PATIENT_MANAGEMENT', 'CREATE')")
 public Patient createPatient(@RequestBody Patient patient) {
     // Method only executes if user has CREATE permission
@@ -2116,6 +2288,7 @@ public Patient createPatient(@RequestBody Patient patient) {
 #### 6. Get current authenticated user
 
 ```java
+
 @GetMapping("/me")
 public User getCurrentUser(Authentication authentication) {
     String username = authentication.getName();
@@ -2135,16 +2308,13 @@ public User getCurrentUser(Authentication authentication) {
 spring.app.jwtSecret=YOUR_BASE64_ENCODED_SECRET_KEY_HERE_AT_LEAST_256_BITS
 spring.app.expirationTimeMS=86400000
 spring.app.cookieName=jwt_token
-
 # Token Blacklist
 app.jwt.expiration-hours=24
-
 # OAuth2 - Google
 spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_CLIENT_ID
 spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_CLIENT_SECRET
 spring.security.oauth2.client.registration.google.scope=openid,email,profile
 spring.security.oauth2.client.registration.google.redirect-uri={baseUrl}/login/oauth2/code/google
-
 # OAuth2 - GitHub
 spring.security.oauth2.client.registration.github.client-id=YOUR_GITHUB_CLIENT_ID
 spring.security.oauth2.client.registration.github.client-secret=YOUR_GITHUB_CLIENT_SECRET
@@ -2159,26 +2329,26 @@ spring.security.oauth2.client.registration.github.redirect-uri={baseUrl}/login/o
 
 #### ✅ DO:
 
-1.  **Use strong secret keys** (at least 256 bits, Base64 encoded)
-2.  **Set short token expiration** (15-30 minutes for access tokens)
-3.  **Implement refresh tokens** for better UX
-4.  **Enable token blacklist** for logout functionality
-5.  **Use HTTPS in production**
-6.  **Validate all inputs**
-7.  **Log security events**
-8.  **Cache permission checks** for performance
-9.  **Use @Transactional(readOnly=true)** for read operations
+1. **Use strong secret keys** (at least 256 bits, Base64 encoded)
+2. **Set short token expiration** (15-30 minutes for access tokens)
+3. **Implement refresh tokens** for better UX
+4. **Enable token blacklist** for logout functionality
+5. **Use HTTPS in production**
+6. **Validate all inputs**
+7. **Log security events**
+8. **Cache permission checks** for performance
+9. **Use @Transactional(readOnly=true)** for read operations
 
 #### ❌ DON'T:
 
-1.  **Don't hardcode roles** in JWT generation (current issue!)
-2.  **Don't store sensitive data** in JWT payload
-3.  **Don't expose secret keys** through public methods
-4.  **Don't skip token validation**
-5.  **Don't trust client-side data**
-6.  **Don't log sensitive information** (tokens, passwords)
-7.  **Don't use GET for logout** (should be POST)
-8.  **Don't forget rate limiting**
+1. **Don't hardcode roles** in JWT generation (current issue!)
+2. **Don't store sensitive data** in JWT payload
+3. **Don't expose secret keys** through public methods
+4. **Don't skip token validation**
+5. **Don't trust client-side data**
+6. **Don't log sensitive information** (tokens, passwords)
+7. **Don't use GET for logout** (should be POST)
+8. **Don't forget rate limiting**
 
 ----------
 
@@ -2224,27 +2394,27 @@ spring.security.oauth2.client.registration.github.redirect-uri={baseUrl}/login/o
 **Current code:**
 
 ```java
-.claim("roles", "Admin")  // ❌ Wrong!
+.claim("roles","Admin")  // ❌ Wrong!
 
 ```
 
 **Fix:**
 
 ```java
-public String generateTokenFromUsername(String username, 
-                                       Collection<? extends GrantedAuthority> authorities) {
+public String generateTokenFromUsername(String username,
+                                        Collection<? extends GrantedAuthority> authorities) {
     List<String> roles = authorities.stream()
-        .map(GrantedAuthority::getAuthority)
-        .filter(auth -> auth.startsWith("ROLE_"))
-        .collect(Collectors.toList());
-    
+            .map(GrantedAuthority::getAuthority)
+            .filter(auth -> auth.startsWith("ROLE_"))
+            .collect(Collectors.toList());
+
     return Jwts.builder()
-        .subject(username.trim())
-        .claim("roles", roles)  // ✅ Dynamic roles
-        .issuedAt(new Date())
-        .expiration(new Date(System.currentTimeMillis() + expirationTimeMs))
-        .signWith(secureKey())
-        .compact();
+            .subject(username.trim())
+            .claim("roles", roles)  // ✅ Dynamic roles
+            .issuedAt(new Date())
+            .expiration(new Date(System.currentTimeMillis() + expirationTimeMs))
+            .signWith(secureKey())
+            .compact();
 }
 
 ```
@@ -2258,14 +2428,19 @@ public String generateTokenFromUsername(String username,
 **Fix:** Uncomment and inject service:
 
 ```java
+
 @Autowired
 private TokenBlacklistService tokenBlacklistService;
 
 // In doFilterInternal():
-if (jwt != null && jwtUtils.validateJwtToken(jwt) 
-    && !tokenBlacklistService.isTokenBlacklisted(jwt)) {
-    // Authenticate user
-}
+if(jwt !=null&&jwtUtils.
+
+validateJwtToken(jwt) 
+    &&!tokenBlacklistService.
+
+isTokenBlacklisted(jwt)){
+        // Authenticate user
+        }
 
 ```
 
@@ -2273,9 +2448,9 @@ if (jwt != null && jwtUtils.validateJwtToken(jwt)
 
 **Recommendation:** Implement refresh token flow
 
--   Short-lived access tokens (15 mins)
--   Long-lived refresh tokens (7 days)
--   Separate endpoint: POST /api/auth/refresh
+- Short-lived access tokens (15 mins)
+- Long-lived refresh tokens (7 days)
+- Separate endpoint: POST /api/auth/refresh
 
 ### 4. Data Type Issue
 
@@ -2284,6 +2459,7 @@ if (jwt != null && jwtUtils.validateJwtToken(jwt)
 **Current:**
 
 ```java
+
 @Value("${spring.app.expirationTimeMS}")
 private String expirationTimeMS;  // String for numeric value
 
@@ -2292,6 +2468,7 @@ private String expirationTimeMS;  // String for numeric value
 **Fix:**
 
 ```java
+
 @Value("${spring.app.expirationTimeMS}")
 private long expirationTimeMs;  // Use long
 
@@ -2303,23 +2480,23 @@ private long expirationTimeMs;  // Use long
 
 This JWT security system provides:
 
-1.  **Stateless Authentication** via JWT tokens
-2.  **Role-Based Access Control** (RBAC) with dynamic permissions
-3.  **OAuth2 Integration** for social login
-4.  **Token Blacklisting** for secure logout
-5.  **Centralized Permission Management** via database
+1. **Stateless Authentication** via JWT tokens
+2. **Role-Based Access Control** (RBAC) with dynamic permissions
+3. **OAuth2 Integration** for social login
+4. **Token Blacklisting** for secure logout
+5. **Centralized Permission Management** via database
 
 **Files execute in this order:**
 
-1.  ApplicationConfig → Creates beans
-2.  DataSeeder → Seeds data
-3.  SecurityConfig → Configures security
-4.  AuthTokenFilter → Validates every request
-5.  JwtUtils → Handles JWT operations
-6.  CustomUserDetailsService → Loads user data
-7.  CustomPermissionService → Checks permissions
-8.  AuthEntryPointJwt → Handles errors
-9.  OAuth2 components → Handle social login
-10.  TokenBlacklistService → Manages logout
+1. ApplicationConfig → Creates beans
+2. DataSeeder → Seeds data
+3. SecurityConfig → Configures security
+4. AuthTokenFilter → Validates every request
+5. JwtUtils → Handles JWT operations
+6. CustomUserDetailsService → Loads user data
+7. CustomPermissionService → Checks permissions
+8. AuthEntryPointJwt → Handles errors
+9. OAuth2 components → Handle social login
+10. TokenBlacklistService → Manages logout
 
 **Remember:** Fix the hardcoded "Admin" role before going to production!

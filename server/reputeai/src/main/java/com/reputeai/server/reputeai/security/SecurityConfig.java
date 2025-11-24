@@ -27,13 +27,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final ObjectProvider<JwtAuthenticationFilter> jwtAuthenticationFilterProvider;
-    private final AuthEntryPointJwt unauthorizedHandler;
-    private final UserDetailsService userDetailsService;
-    private final PasswordEncoder passwordEncoder;
-    private final OAuth2LoginSuccessHandler oauth2LoginSuccessHandler;
-    private final OAuth2LoginFailureHandler oauth2LoginFailureHandler;
-
     private static final String[] PUBLIC_ENDPOINTS = {
             "/api/v1/auth/**",
             "/oauth2/**",
@@ -48,6 +41,12 @@ public class SecurityConfig {
             "/favicon.ico",
             "/error"
     };
+    private final ObjectProvider<JwtAuthenticationFilter> jwtAuthenticationFilterProvider;
+    private final AuthEntryPointJwt unauthorizedHandler;
+    private final UserDetailsService userDetailsService;
+    private final PasswordEncoder passwordEncoder;
+    private final OAuth2LoginSuccessHandler oauth2LoginSuccessHandler;
+    private final OAuth2LoginFailureHandler oauth2LoginFailureHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
