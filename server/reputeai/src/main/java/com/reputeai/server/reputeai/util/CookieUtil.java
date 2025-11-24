@@ -14,17 +14,14 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class CookieUtil {
 
-    @Value("${app.cookie.secure:false}")
-    private boolean secureCookie;
-
-    @Value("${app.cookie.domain:}")
-    private String cookieDomain;
-
     public static final String ACCESS_TOKEN_COOKIE = "accessToken";
     public static final String REFRESH_TOKEN_COOKIE = "refreshToken";
-
     private static final int ACCESS_TOKEN_MAX_AGE = 30 * 60; // 30 minutes
     private static final int REFRESH_TOKEN_MAX_AGE = 7 * 24 * 60 * 60; // 7 days
+    @Value("${app.cookie.secure:false}")
+    private boolean secureCookie;
+    @Value("${app.cookie.domain:}")
+    private String cookieDomain;
 
     /**
      * Set both access and refresh token cookies.

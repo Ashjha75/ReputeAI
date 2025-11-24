@@ -1,6 +1,7 @@
 # Spring Boot Docker Setup - Complete Guide
 
 ## 📋 Table of Contents
+
 1. [What We Built](#what-we-built)
 2. [Project Structure](#project-structure)
 3. [Configuration Files](#configuration-files)
@@ -13,6 +14,7 @@
 ## 🎯 What We Built
 
 We created a Docker setup that:
+
 - ✅ Builds your Spring Boot application into a Docker container
 - ✅ Connects to external Aiven MySQL database
 - ✅ Runs Redis in a separate container for caching
@@ -54,6 +56,7 @@ your-project/
 **Purpose:** Instructions to build your Spring Boot app into a Docker image.
 
 **What it does:**
+
 - Uses multi-stage build (smaller final image)
 - Stage 1: Builds the JAR file using Maven
 - Stage 2: Runs the JAR using lightweight Java runtime
@@ -96,6 +99,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 ```
 
 **Simple Explanation:**
+
 - **Line 1-2:** Use Maven with Java 21 to build
 - **Line 5-6:** Copy pom.xml and download dependencies
 - **Line 9-10:** Copy source code and build JAR
@@ -111,6 +115,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 **Purpose:** Defines and connects multiple containers (your app + Redis).
 
 **What it does:**
+
 - Defines 2 services: `app` (Spring Boot) and `redis`
 - Sets environment variables for configuration
 - Creates a network so containers can talk to each other
@@ -188,6 +193,7 @@ networks:
 **Simple Explanation:**
 
 **App Service:**
+
 - `build`: Build from Dockerfile in current directory
 - `ports`: Make app accessible at http://localhost:8080
 - `environment`: Configuration variables (replaces application.yml values)
@@ -195,12 +201,14 @@ networks:
 - `dns`: Custom DNS servers to resolve external database hostname
 
 **Redis Service:**
+
 - `image`: Use official Redis image
 - `volumes`: Save data even if container restarts
 - `healthcheck`: Verify Redis is working before app starts
 - `command`: Enable persistence (save data to disk)
 
 **Networks:**
+
 - Creates a private network where `app` can reach `redis` by name
 
 ---
@@ -243,6 +251,7 @@ CORS_ALLOWED_ORIGINS=http://localhost:4200,http://localhost:8080
 ```
 
 **Simple Explanation:**
+
 - One variable per line: `KEY=value`
 - No spaces around `=`
 - Docker Compose automatically loads this file
@@ -279,6 +288,7 @@ app:
 ```
 
 **Simple Explanation:**
+
 - `${VARIABLE_NAME}` reads from environment variable
 - `:default_value` provides fallback if variable not set
 - Docker passes environment variables from `.env` file
@@ -309,6 +319,7 @@ jwt:
 ```
 
 **Simple Explanation:**
+
 - Hard-coded values for local development
 - Uses `localhost` for Redis (not `redis`)
 - Only used when you run from IntelliJ with `local` profile
@@ -321,6 +332,7 @@ jwt:
 **Purpose:** Connects to Redis for caching and rate limiting.
 
 **What changed:**
+
 - Old: Read from `spring.redis.host` (doesn't exist)
 - New: Read from `spring.data.redis.host` (standard Spring Boot property)
 
@@ -333,6 +345,7 @@ private int redisPort;
 ```
 
 **Simple Explanation:**
+
 - Reads Redis hostname from Spring Boot properties
 - Falls back to `localhost` if not set
 - Works for both Docker (`redis`) and IntelliJ (`localhost`)
@@ -447,11 +460,13 @@ docker system prune -a --volumes
 ### 1. Multi-Stage Docker Build
 
 **Why?**
+
 - Stage 1 (build): Large image with Maven (500MB+)
 - Stage 2 (runtime): Small image with only Java (150MB)
 - Final image is smaller and faster to deploy
 
 **How it works:**
+
 ```dockerfile
 FROM maven AS build     # Heavy build environment
 # ... build stuff ...
@@ -489,10 +504,12 @@ Docker Network (reputeai-net)
 ### 4. Container Hostname Resolution
 
 **Inside Docker network:**
+
 - `redis` → resolves to Redis container IP
 - Service names become hostnames
 
 **From your computer:**
+
 - `localhost:8080` → your app
 - `localhost:6379` → Redis (if port exposed)
 
@@ -509,6 +526,7 @@ spring.data.redis.host=redis
 ```
 
 **Conversion rules:**
+
 - `UPPERCASE_WITH_UNDERSCORES` → `lowercase.with.dots`
 - `SPRING_DATA_REDIS_HOST` → `spring.data.redis.host`
 
@@ -521,6 +539,7 @@ spring.data.redis.host=redis
 **Cause:** Environment variable for JWT expiration is empty or missing.
 
 **Solution:**
+
 ```bash
 # Check .env file has:
 JWT_EXPIRATION_MS=3600000
@@ -535,10 +554,12 @@ docker-compose up --build
 ### Problem: "UnknownHostException: redis"
 
 **Cause:**
+
 - Running locally in IntelliJ with `dev` profile
 - IntelliJ can't resolve `redis` hostname (only works in Docker)
 
 **Solution:**
+
 ```bash
 # Option 1: Use local profile in IntelliJ
 # Set Active profiles: local
@@ -556,6 +577,7 @@ SPRING_REDIS_HOST=localhost
 **Cause:** Can't connect to Aiven MySQL database.
 
 **Solution:**
+
 ```bash
 # 1. Check connection string format
 SPRING_DATASOURCE_URL=jdbc:mysql://host:port/db?sslMode=REQUIRED
@@ -571,6 +593,7 @@ docker exec -it reputeai-app ping mysql-host.aivencloud.com
 ### Problem: Container keeps restarting
 
 **Debug:**
+
 ```bash
 # View logs
 docker-compose logs -f app
@@ -585,6 +608,7 @@ docker logs reputeai-app
 ### Problem: Changes not reflected after rebuild
 
 **Solution:**
+
 ```bash
 # Clean build
 docker-compose down
@@ -595,6 +619,7 @@ docker-compose up
 ### Problem: Port 8080 already in use
 
 **Solution:**
+
 ```bash
 # Find what's using the port
 # Windows:
@@ -612,14 +637,14 @@ ports:
 
 ## 📚 Differences: Docker vs IntelliJ
 
-| Aspect | Docker | IntelliJ |
-|--------|--------|----------|
-| **Profile** | `dev` | `local` |
-| **Config File** | `application-dev.yml` | `application-local.yml` |
-| **Redis Host** | `redis` (service name) | `localhost` |
-| **Environment Variables** | From `.env` file | Hard-coded in YAML |
-| **Database** | External Aiven MySQL | External Aiven MySQL |
-| **How to Run** | `docker-compose up` | Click Run button |
+| Aspect                    | Docker                 | IntelliJ                |
+|---------------------------|------------------------|-------------------------|
+| **Profile**               | `dev`                  | `local`                 |
+| **Config File**           | `application-dev.yml`  | `application-local.yml` |
+| **Redis Host**            | `redis` (service name) | `localhost`             |
+| **Environment Variables** | From `.env` file       | Hard-coded in YAML      |
+| **Database**              | External Aiven MySQL   | External Aiven MySQL    |
+| **How to Run**            | `docker-compose up`    | Click Run button        |
 
 ---
 
@@ -676,6 +701,7 @@ ports:
 Common issues and solutions are in the [Troubleshooting](#troubleshooting) section above.
 
 For more help:
+
 1. Check container logs: `docker-compose logs -f`
 2. Verify environment variables: `docker-compose config`
 3. Test Redis connectivity: `docker exec -it reputeai-redis redis-cli ping`
