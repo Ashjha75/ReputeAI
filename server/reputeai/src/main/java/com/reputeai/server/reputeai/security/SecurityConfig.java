@@ -61,10 +61,21 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 // OAuth2 login configuration
+//                .oauth2Login(oauth2 -> oauth2
+//                        .authorizationEndpoint(authorization -> authorization
+//                                .baseUri("/oauth2/authorize")
+//                        )
+//                        .redirectionEndpoint(redirection -> redirection
+//                                .baseUri("/login/oauth2/code/*")
+//                        )
+//                        .successHandler(oauth2LoginSuccessHandler)
+//                        .failureHandler(oauth2LoginFailureHandler)
+//                );
                 .oauth2Login(oauth2 -> oauth2
-                        .authorizationEndpoint(authorization -> authorization
-                                .baseUri("/oauth2/authorize")
-                        )
+                        // Don't specify authorizationEndpoint - use default
+                        // Default is: /oauth2/authorization/{registrationId}
+
+                        // Only specify redirectionEndpoint
                         .redirectionEndpoint(redirection -> redirection
                                 .baseUri("/login/oauth2/code/*")
                         )
