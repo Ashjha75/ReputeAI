@@ -20,177 +20,129 @@
   min-height: 600px;
 }
 
-/* Left Side: Phone with Blob Background */
-.phone-side {
+/* Left Side: Flower-style hero image container */
+.flower-image-side {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
-.blob-container {
+.flower-container {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  height: 600px;
+  max-width: 520px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.animated-shape-layer {
+.flower-orbit {
   position: absolute;
-  inset: -40px;
-  pointer-events: none;
-  z-index: 0;
-  display: block;
-  filter: drop-shadow(0 25px 45px rgba(15, 23, 42, 0.25));
-}
-
-.shape {
-  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 50%;
-  opacity: 0.7;
-  mix-blend-mode: screen;
-  filter: blur(10px);
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+  filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.35));
+  animation: rotateOrbit 20s linear infinite;
 }
 
-.shape-one {
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle at 30% 30%, #a855f7, #6366f1 60%, transparent 80%);
-  top: 20%;
-  left: 5%;
-  animation: floatSlow 12s alternate;
+.orbit-one {
+  width: 440px;
+  height: 440px;
 }
 
-.shape-two {
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle at 40% 40%, #22d3ee, #0ea5e9 65%, transparent 85%);
-  top: 40%;
-  right: 5%;
-  animation: floatMedium 10s alternate;
+.orbit-two {
+  width: 360px;
+  height: 360px;
+  animation-duration: 16s;
 }
 
-.shape-three {
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle at 35% 35%, #f97316, #f59e0b 70%, transparent 90%);
-  bottom: 5%;
-  left: 35%;
-  animation: floatFast 8s alternate;
+.orbit-three {
+  width: 300px;
+  height: 300px;
+  animation-duration: 12s;
 }
 
-@keyframes floatSlow {
-  from {
-    transform: translateY(0) scale(0.95);
-  }
-  to {
-    transform: translateY(-30px) scale(1);
-  }
-}
-
-@keyframes floatMedium {
-  from {
-    transform: translateY(0) translateX(0) scale(0.95);
-  }
-  to {
-    transform: translateY(-45px) translateX(-15px) scale(1.05);
-  }
-}
-
-@keyframes floatFast {
-  from {
-    transform: translateY(0) translateX(0) scale(0.9);
-  }
-  to {
-    transform: translateY(-60px) translateX(20px) scale(1.1);
-  }
-}
-
-.phone-mockup-wrapper {
+.petal-cluster {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  opacity: 0;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 320px;
+  height: 320px;
+  animation: pulsePetal 6s ease-in-out infinite;
   pointer-events: none;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.phone-mockup-wrapper::before {
-  content: '';
+.petal {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(ellipse at center, #ddd6fe 0%, #e9d5ff 50%, transparent 70%);
-  border-radius: 50% 40% 60% 50%;
-  z-index: -1;
-  opacity: 0.8;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.85;
+  mix-blend-mode: screen;
 }
 
-.phone-mockup-wrapper.active {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  pointer-events: auto;
-  z-index: 2;
+.petal-one {
+  background: radial-gradient(circle at 30% 30%, #fdba74, #fb923c 70%, transparent 90%);
+  top: 0;
+  left: 10%;
 }
 
-.phone-mockup-wrapper.next {
-  transform: translate(0%, -50%) scale(0.9);
-  opacity: 0;
+.petal-two {
+  background: radial-gradient(circle at 40% 40%, #a5b4fc, #6366f1 70%, transparent 90%);
+  bottom: 10%;
+  right: 5%;
 }
 
-.phone-mockup-wrapper.prev {
-  transform: translate(-100%, -50%) scale(0.9);
-  opacity: 0;
+.petal-three {
+  background: radial-gradient(circle at 20% 20%, #34d399, #10b981 70%, transparent 90%);
+  bottom: 5%;
+  left: 25%;
 }
 
-/* Phone Frame */
-.phone-frame {
-  width: 280px;
-  height: 560px;
-  background: #1f2937;
-  border-radius: 40px;
-  padding: 12px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+.hero-image-frame {
   position: relative;
+  width: 360px;
+  height: 360px;
+  border-radius: 50% 45% 60% 50%;
+  overflow: hidden;
+  box-shadow: 0 35px 65px rgba(15, 23, 42, 0.35);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(249, 250, 251, 0.6));
 }
 
-.phone-notch {
-  position: absolute;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 22px;
-  background: #1f2937;
-  border-radius: 0 0 20px 20px;
-  z-index: 10;
-}
-
-.phone-content {
+.hero-image {
   width: 100%;
   height: 100%;
-  background: #f9fafb;
-  border-radius: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  object-fit: cover;
+  animation: floatHero 8s ease-in-out infinite;
 }
 
-.placeholder-text {
-  color: #9ca3af;
-  font-size: 14px;
+@keyframes rotateOrbit {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(360deg) scale(1.02);
+  }
+}
+
+@keyframes pulsePetal {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.05) translateY(-10px);
+  }
+}
+
+@keyframes floatHero {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+  }
 }
 
 /* Right Side: Content Card */
@@ -352,7 +304,7 @@
 }
 
 /* Performance Optimization */
-.phone-mockup-wrapper,
+.flower-image-side,
 .content-card {
   will-change: transform, opacity;
   backface-visibility: hidden;
@@ -372,7 +324,7 @@
     gap: 40px;
   }
 
-  .phone-side {
+  .flower-image-side {
     order: 2;
   }
 
@@ -380,14 +332,14 @@
     order: 1;
   }
 
-  .blob-container {
-    max-width: 400px;
-    height: 400px;
+  .flower-container {
+    max-width: 420px;
+    height: 420px;
   }
 
-  .phone-frame {
-    width: 220px;
-    height: 440px;
+  .hero-image-frame {
+    width: 320px;
+    height: 320px;
   }
 
   .card-title {
@@ -412,14 +364,14 @@
     font-size: 15px;
   }
 
-  .blob-container {
-    max-width: 350px;
-    height: 350px;
+  .flower-container {
+    max-width: 360px;
+    height: 360px;
   }
 
-  .phone-frame {
-    width: 200px;
-    height: 400px;
+  .hero-image-frame {
+    width: 280px;
+    height: 280px;
   }
 }
 
@@ -446,14 +398,14 @@
     height: 42px;
   }
 
-  .blob-container {
-    max-width: 300px;
-    height: 300px;
+  .flower-container {
+    max-width: 320px;
+    height: 320px;
   }
 
-  .phone-frame {
-    width: 180px;
-    height: 360px;
+  .hero-image-frame {
+    width: 240px;
+    height: 240px;
   }
 }
 

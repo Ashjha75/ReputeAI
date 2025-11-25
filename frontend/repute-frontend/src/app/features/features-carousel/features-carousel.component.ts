@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -49,6 +49,7 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   currentSlide = 0;
   autoPlayInterval: any;
   isAnimating = false;
+  @Input() heroImageUrl?: string;
 
   // Updated content specific to ReputeAI
   features = [
@@ -56,7 +57,7 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
       title: 'Scan & Analyze with AI Precision.',
       description: 'Our advanced AI scans thousands of your posts, comments, and interactions across 5+ platforms to uncover hidden reputation risks. Unify your entire digital footprint in one clear, actionable view.',
       buttonText: 'Explore AI Analysis',
-      image: 'assets/images/carousel-scan.png' // IMPORTANT: Replace with a real image path
+      image: '/carousel-scan.png' // IMPORTANT: Replace with a real image path
     },
     {
       title: 'Receive Your Actionable Risk Score.',
@@ -119,5 +120,10 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
     this.isAnimating = true;
     this.currentSlide = index;
     setTimeout(() => { this.isAnimating = false; }, 600);
+  }
+
+  get heroImageSource(): string {
+    const fallbackImage = this.features[this.currentSlide]?.image ?? 'assets/images/carousel-scan.png';
+    return this.heroImageUrl ?? fallbackImage;
   }
 }

@@ -4,28 +4,21 @@
     <!-- Carousel Content Grid -->
     <div class="carousel-grid">
       
-      <!-- Left Side: Phone Mockup with Blob Background -->
-      <div class="phone-side">
-        <div class="blob-container">
-          <div class="animated-shape-layer" aria-hidden="true">
-            <span class="shape shape-one"></span>
-            <span class="shape shape-two"></span>
-            <span class="shape shape-three"></span>
+      <!-- Left Side: Flower-style hero image container -->
+      <div class="flower-image-side">
+        <div class="flower-container">
+          <span class="flower-orbit orbit-one" aria-hidden="true"></span>
+          <span class="flower-orbit orbit-two" aria-hidden="true"></span>
+          <span class="flower-orbit orbit-three" aria-hidden="true"></span>
+
+          <div class="petal-cluster" aria-hidden="true">
+            <span class="petal petal-one"></span>
+            <span class="petal petal-two"></span>
+            <span class="petal petal-three"></span>
           </div>
-          <div 
-            *ngFor="let feature of features; let i = index"
-            class="phone-mockup-wrapper"
-            [class.active]="i === currentSlide"
-            [class.next]="i > currentSlide"
-            [class.prev]="i < currentSlide">
-            
-            <!-- Phone Mockup -->
-            <div class="phone-frame">
-              <div class="phone-notch"></div>
-              <div class="phone-content">
-                <span class="placeholder-text">Phone Screen</span>
-              </div>
-            </div>
+
+          <div class="hero-image-frame">
+            <img [src]="heroImageSource" alt="ReputeAI hero" class="hero-image" />
           </div>
         </div>
       </div>
