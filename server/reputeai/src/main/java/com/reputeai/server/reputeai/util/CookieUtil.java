@@ -84,9 +84,18 @@ public class CookieUtil {
         cookie.setHttpOnly(true);
         cookie.setSecure(secureCookie); // Set true in production (HTTPS)
         cookie.setMaxAge(maxAge);
-        // Use Lax for development (allows cookies on cross-site GET requests)
-        // Change to Strict in production for better security
-        cookie.setAttribute("SameSite", secureCookie ? "Strict" : "Lax");
+
+        // For cross-origin cookie support in development:
+        // - Use SameSite=None for cross-origin (but requires Secure=true in modern browsers)
+        // - For local dev (http), use Lax as fallback
+        // In production (HTTPS), use SameSite=None with Secure=true
+        if (secureCookie) {
+            cookie.setAttribute("SameSite", "None"); // Cross-origin support with HTTPS
+        } else {
+            // For local development without HTTPS, Lax is the best we can do
+            // Note: Modern browsers require Secure=true for SameSite=None
+            cookie.setAttribute("SameSite", "Lax");
+        }
 
         if (cookieDomain != null && !cookieDomain.isBlank()) {
             cookie.setDomain(cookieDomain);

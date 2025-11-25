@@ -28,9 +28,9 @@ public class CorsConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         config.setAllowedOrigins(allowedOrigins);
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept", "Origin", "X-Requested-With"));
-        config.setExposedHeaders(List.of("Authorization", "Location"));
+        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"));
+        config.setAllowedHeaders(Arrays.asList("*")); // Allow all headers for development
+        config.setExposedHeaders(Arrays.asList("Authorization", "Location", "Set-Cookie"));
         config.setMaxAge(3600L); // cache pre-flight 1h
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
