@@ -143,6 +143,20 @@ button:hover svg {
   height: 48px;
 }
 
+/* User text block in dropdown: allow truncation inside flex containers */
+.user-text {
+  min-width: 0; /* allow child to shrink for text-overflow */
+}
+
+.user-email {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  max-width: 100%;
+  color: #6b7280; /* keep existing gray-500 tone */
+}
+
 .user-avatar {
   width: 40px;
   height: 40px;

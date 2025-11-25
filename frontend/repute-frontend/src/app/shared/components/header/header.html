@@ -105,9 +105,9 @@
                     <ng-template #initialsLarge>
                       <div class="user-avatar user-avatar-lg">{{ userInitial }}</div>
                     </ng-template>
-                    <div>
+                    <div class="user-text">
                       <div class="text-sm font-medium text-gray-900">{{ currentUser?.firstName ? (currentUser?.firstName + (currentUser?.lastName ? ' ' + currentUser?.lastName : '')) : (currentUser?.username || 'User') }}</div>
-                      <div class="text-xs text-gray-500">{{ currentUser?.email }}</div>
+                      <div class="text-xs text-gray-500 user-email">{{ currentUser?.email }}</div>
                     </div>
                   </a>
                 </div>
