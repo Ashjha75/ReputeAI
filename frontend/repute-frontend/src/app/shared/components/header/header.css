@@ -144,16 +144,24 @@ button:hover svg {
 }
 
 /* User text block in dropdown: allow truncation inside flex containers */
-.user-text {
-  min-width: 0; /* allow child to shrink for text-overflow */
+.dropdown-menu .user-text {
+  /* Stronger rules in dropdown context to ensure flex children can shrink */
+  min-width: 0 !important;
+  flex: 1 1 0 !important;
+  overflow: hidden !important;
+  max-width: calc(100% - 64px) !important;
+  display: flex;
+  flex-direction: column;
 }
 
-.user-email {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: block;
-  max-width: 100%;
+.dropdown-menu .user-email {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  display: block !important;
+  max-width: 100% !important;
   color: #6b7280; /* keep existing gray-500 tone */
 }
 
