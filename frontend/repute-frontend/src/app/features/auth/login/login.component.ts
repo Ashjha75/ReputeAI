@@ -154,18 +154,21 @@ export class LoginComponent {
             // Clean up
             window.removeEventListener('message', messageHandler);
             try { if (popup && !popup.closed) popup.close(); } catch (e) { /* ignore */ }
-            // Attempt to refresh profile
-            this.authService.getUserProfile().subscribe({
-              next: (profileRes: any) => {
-                const profile = profileRes?.data ?? profileRes;
-                if (profile) {
-                  this.userProfileService.setUserProfile(profile);
-                  this.notificationService.success('Logged in successfully', 4000);
-                  this.router.navigate(['/']);
-                }
-              },
-              error: () => { /* ignore */ }
-            });
+            // Give the browser a short moment to persist cookies set by the popup
+            // (some browsers may need a small delay before cookies are visible to the opener)
+            setTimeout(() => {
+              this.authService.getUserProfile().subscribe({
+                next: (profileRes: any) => {
+                  const profile = profileRes?.data ?? profileRes;
+                  if (profile) {
+                    this.userProfileService.setUserProfile(profile);
+                    this.notificationService.success('Logged in successfully', 4000);
+                    this.router.navigate(['/']);
+                  }
+                },
+                error: () => { /* ignore */ }
+              });
+            }, 600);
           }
         } catch (e) {
           // ignore
@@ -180,21 +183,23 @@ export class LoginComponent {
           if (!popup || popup.closed) {
             clearInterval(poll);
             window.removeEventListener('message', messageHandler);
-            // Attempt to refresh profile — if the OAuth flow succeeded the backend
-            // should have set cookies and getUserProfile will return the user.
-            this.authService.getUserProfile().subscribe({
-              next: (profileRes: any) => {
-                const profile = profileRes?.data ?? profileRes;
-                if (profile) {
-                  this.userProfileService.setUserProfile(profile);
-                  this.notificationService.success('Logged in successfully', 4000);
-                  this.router.navigate(['/']);
+            // Attempt to refresh profile after a short delay — gives browser time
+            // to set cookies created by the popup's redirect response.
+            setTimeout(() => {
+              this.authService.getUserProfile().subscribe({
+                next: (profileRes: any) => {
+                  const profile = profileRes?.data ?? profileRes;
+                  if (profile) {
+                    this.userProfileService.setUserProfile(profile);
+                    this.notificationService.success('Logged in successfully', 4000);
+                    this.router.navigate(['/']);
+                  }
+                },
+                error: () => {
+                  // No-op; user may have cancelled login
                 }
-              },
-              error: () => {
-                // No-op; user may have cancelled login
-              }
-            });
+              });
+            }, 600);
           }
         } catch (e) {
           // Accessing popup properties may throw cross-origin errors while provider is redirecting.

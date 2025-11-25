@@ -41,27 +41,32 @@ export default class OAuth2RedirectComponent implements OnInit {
         h.forEach((v, k) => (result[k] = v));
       }
 
-      // Notify opener if present
+      // Notify opener if present. Wait a short moment to allow the browser
+      // to persist any cookies set by the backend response that performed
+      // the redirect to this page. This helps the opener detect the new
+      // authentication cookie when it performs an XHR immediately after
+      // receiving the postMessage.
       if (window.opener && !window.opener.closed) {
-        try {
-          window.opener.postMessage({ type: 'oauth2:complete', payload: result, success: true }, '*');
-        } catch (e) {
-          // best-effort
+        const notify = () => {
           try {
             window.opener.postMessage({ type: 'oauth2:complete', payload: result, success: true }, '*');
-          } catch (err) {
-            // ignore
-          }
-        }
-
-        // Close after a small delay to allow message processing
-        setTimeout(() => {
-          try {
-            window.close();
           } catch (e) {
-            /* ignore */
+            try {
+              window.opener.postMessage({ type: 'oauth2:complete', payload: result, success: true }, '*');
+            } catch (err) {
+              // ignore
+            }
           }
-        }, 700);
+
+          // Close after a small delay to allow message processing
+          setTimeout(() => {
+            try { window.close(); } catch (e) { /* ignore */ }
+          }, 700);
+        };
+
+        // Use a short delay (500ms) to improve reliability across browsers
+        // — adjust if necessary in environments with slower cookie persistence.
+        setTimeout(notify, 500);
         return;
       }
 

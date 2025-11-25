@@ -52,7 +52,11 @@ public class UserServiceImpl implements UserService {
         // Use the actual fields on your entity. Adjust if your entity uses different names.
         String username = user.getEmail(); // canonical username for spring security
         String passwordHash = user.getPasswordHash(); // ensure this matches your entity
-
+        if (passwordHash == null || passwordHash.isEmpty()) {
+            // OAuth users don't have passwords
+            // Use empty string as placeholder (Spring Security requires non-null)
+            passwordHash = "";
+        }
         return org.springframework.security.core.userdetails.User.withUsername(username)
                 .password(passwordHash)
                 .authorities(authorities)
