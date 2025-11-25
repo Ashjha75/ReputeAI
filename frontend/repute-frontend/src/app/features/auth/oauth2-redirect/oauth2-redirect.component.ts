@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 /**
  * OAuth2 Redirect Handler
@@ -23,17 +23,22 @@ import { CommonModule } from '@angular/common';
   `
 })
 export default class OAuth2RedirectComponent implements OnInit {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngOnInit(): void {
+    // Only run DOM / window logic in browser
+    if (!isPlatformBrowser(this.platformId)) return;
+
     try {
       // Parse query params and hash (some providers return tokens in hash)
       const search = window.location.search ? window.location.search.substring(1) : '';
       const hash = window.location.hash ? window.location.hash.substring(1) : '';
       const params = new URLSearchParams(search);
       const result: any = {};
-      params.forEach((v, k) => result[k] = v);
+      params.forEach((v, k) => (result[k] = v));
       if (hash) {
         const h = new URLSearchParams(hash);
-        h.forEach((v, k) => result[k] = v);
+        h.forEach((v, k) => (result[k] = v));
       }
 
       // Notify opener if present
@@ -42,24 +47,44 @@ export default class OAuth2RedirectComponent implements OnInit {
           window.opener.postMessage({ type: 'oauth2:complete', payload: result, success: true }, '*');
         } catch (e) {
           // best-effort
-          window.opener.postMessage({ type: 'oauth2:complete', payload: result, success: true }, '*');
+          try {
+            window.opener.postMessage({ type: 'oauth2:complete', payload: result, success: true }, '*');
+          } catch (err) {
+            // ignore
+          }
         }
 
         // Close after a small delay to allow message processing
         setTimeout(() => {
-          try { window.close(); } catch (e) { /* ignore */ }
+          try {
+            window.close();
+          } catch (e) {
+            /* ignore */
+          }
         }, 700);
         return;
       }
 
       // If not opened as a popup, redirect to app root (or show a message)
       setTimeout(() => {
-        window.location.href = window.location.origin || '/';
+        try {
+          window.location.href = window.location.origin || '/';
+        } catch (e) {
+          // ignore
+        }
       }, 900);
     } catch (err) {
       console.error('OAuth2 redirect handler error', err);
       // Fallback: close or redirect
-      try { window.close(); } catch (e) { window.location.href = '/'; }
+      try {
+        window.close();
+      } catch (e) {
+        try {
+          window.location.href = '/';
+        } catch (err) {
+          /* ignore */
+        }
+      }
     }
   }
 }
