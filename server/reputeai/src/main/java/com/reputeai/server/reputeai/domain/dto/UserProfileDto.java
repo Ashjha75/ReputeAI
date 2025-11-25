@@ -22,7 +22,7 @@ public class UserProfileDto {
     private String firstName;
     private String lastName;
     private String fullName;
-    private String profilePictureUrl;  // Profile picture URL (can be null)
+    private String profilePictureUrl;
     private Instant createdAt;
     private Set<String> roles;
     private Set<String> permissions;
