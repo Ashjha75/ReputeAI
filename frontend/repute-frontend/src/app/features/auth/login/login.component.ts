@@ -146,11 +146,40 @@ export class LoginComponent {
         return;
       }
 
-      // Poll to detect when popup closes, then refresh user state
+      // Listen for postMessage from redirect page as primary signal
+      const messageHandler = (event: MessageEvent) => {
+        try {
+          const data = event?.data;
+          if (data && data.type === 'oauth2:complete') {
+            // Clean up
+            window.removeEventListener('message', messageHandler);
+            try { if (popup && !popup.closed) popup.close(); } catch (e) { /* ignore */ }
+            // Attempt to refresh profile
+            this.authService.getUserProfile().subscribe({
+              next: (profileRes: any) => {
+                const profile = profileRes?.data ?? profileRes;
+                if (profile) {
+                  this.userProfileService.setUserProfile(profile);
+                  this.notificationService.success('Logged in successfully', 4000);
+                  this.router.navigate(['/']);
+                }
+              },
+              error: () => { /* ignore */ }
+            });
+          }
+        } catch (e) {
+          // ignore
+        }
+      };
+
+      window.addEventListener('message', messageHandler, false);
+
+      // Fallback polling: detect popup close if postMessage not supported
       const poll = setInterval(() => {
         try {
           if (!popup || popup.closed) {
             clearInterval(poll);
+            window.removeEventListener('message', messageHandler);
             // Attempt to refresh profile — if the OAuth flow succeeded the backend
             // should have set cookies and getUserProfile will return the user.
             this.authService.getUserProfile().subscribe({
@@ -160,8 +189,6 @@ export class LoginComponent {
                   this.userProfileService.setUserProfile(profile);
                   this.notificationService.success('Logged in successfully', 4000);
                   this.router.navigate(['/']);
-                } else {
-                  // Not logged in — no change
                 }
               },
               error: () => {
