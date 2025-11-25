@@ -98,6 +98,14 @@ export class Header implements OnDestroy {
   ) {
     this.isAuthenticated = this.authService.isAuthenticated();
     this.currentUser = this.loadUser();
+
+    // If there is a stored profile (from previous OAuth/login) but authState
+    // is false (cookie-based session), mark session authenticated so UI updates
+    // correctly after a page reload.
+    if (!this.isAuthenticated && this.currentUser) {
+      this.isAuthenticated = true;
+      try { this.authService.markAuthenticated(this.currentUser); } catch (e) { /* ignore */ }
+    }
     this.authSub = this.authService.authState.subscribe(isAuth => {
       this.isAuthenticated = isAuth;
       this.currentUser = this.loadUser();
