@@ -11,36 +11,36 @@ import { trigger, transition, style, animate, group, query } from '@angular/anim
   templateUrl: './features-carousel.component.html',
   styleUrls: ['./features-carousel.component.css'],
   animations: [
-    // Clean fade/slide animation for text content
+    // Animation for the text content sliding in and out
     trigger('slideAnimation', [
-      transition(':increment', [
+      transition(':increment', [ // Handles next slide
         group([
           query(':enter', [
-            style({ transform: 'translateX(100%)', opacity: 0 }),
+            style({ transform: 'translateX(50px)', opacity: 0 }),
             animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(0)', opacity: 1 }))
           ], { optional: true }),
           query(':leave', [
-            animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(-100%)', opacity: 0 }))
+            animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(-50px)', opacity: 0 }))
           ], { optional: true })
         ])
       ]),
-      transition(':decrement', [
+      transition(':decrement', [ // Handles previous slide
         group([
           query(':enter', [
-            style({ transform: 'translateX(-100%)', opacity: 0 }),
+            style({ transform: 'translateX(-50px)', opacity: 0 }),
             animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(0)', opacity: 1 }))
           ], { optional: true }),
           query(':leave', [
-            animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(100%)', opacity: 0 }))
+            animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(50px)', opacity: 0 }))
           ], { optional: true })
         ])
       ])
     ]),
-    // Simple fade for the image
+    // Simple fade animation for the image
     trigger('fadeAnimation', [
       transition('* <=> *', [
-        style({ opacity: 0 }),
-        animate('600ms ease-in-out', style({ opacity: 1 }))
+        style({ opacity: 0, transform: 'scale(0.95)' }),
+        animate('600ms ease-in-out', style({ opacity: 1, transform: 'scale(1)' }))
       ])
     ])
   ]
@@ -50,24 +50,25 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   autoPlayInterval: any;
   isAnimating = false;
 
+  // Updated content specific to ReputeAI
   features = [
     {
       title: 'Scan & Analyze with AI Precision.',
       description: 'Our advanced AI scans thousands of your posts, comments, and interactions across 5+ platforms to uncover hidden reputation risks. Unify your entire digital footprint in one clear, actionable view.',
       buttonText: 'Explore AI Analysis',
-      image: 'assets/images/carousel-scan.png' // Replace with your image
+      image: 'assets/images/carousel-scan.png' // IMPORTANT: Replace with a real image path
     },
     {
       title: 'Receive Your Actionable Risk Score.',
       description: 'Every piece of content is given a 0-100 risk score, categorized from Low to Critical. Our dashboard provides a clear explanation for each flagged item, empowering you to take immediate, informed action.',
       buttonText: 'See Your Risk Score',
-      image: 'assets/images/carousel-score.png' // Replace with your image
+      image: 'assets/images/carousel-score.png' // IMPORTANT: Replace with a real image path
     },
     {
       title: 'Proactively Protect Your Brand.',
       description: 'Don\'t wait for a crisis. ReputeAI gives you the tools to manage your digital presence proactively, ensuring your online persona aligns perfectly with your professional brand and company values, 24/7.',
       buttonText: 'Secure Your Brand',
-      image: 'assets/images/carousel-protect.png' // Replace with your image
+      image: 'assets/images/carousel-protect.png' // IMPORTANT: Replace with a real image path
     }
   ];
 
@@ -86,7 +87,9 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   startAutoPlay(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.autoPlayInterval = setInterval(() => {
-        if (!this.isAnimating) this.nextSlide();
+        if (!this.isAnimating) {
+          this.nextSlide();
+        }
       }, 6000);
     }
   }
@@ -101,7 +104,7 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
     if (this.isAnimating) return;
     this.isAnimating = true;
     this.currentSlide = (this.currentSlide + 1) % this.features.length;
-    setTimeout(() => { this.isAnimating = false; }, 600); // Animation duration
+    setTimeout(() => { this.isAnimating = false; }, 600); // Match animation duration
   }
 
   prevSlide(): void {

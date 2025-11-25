@@ -1,71 +1,83 @@
-<section class="features-carousel-section bg-gray-50">
-  <div class="carousel-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="features-carousel-section">
+  <div class="carousel-container">
     
-    <!-- Carousel Content Grid: two equal columns, responsive -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[70vh]">
+    <!-- Carousel Content Grid -->
+    <div class="carousel-grid">
       
-      <!-- Left Side: Image container -->
-      <div class="image-container relative h-96 lg:h-[500px]">
-        <div *ngFor="let feature of features; let i = index">
-          <img *ngIf="i === currentSlide" 
-               [@fadeAnimation] 
-               [src]="feature.image" 
-               [alt]="feature.title" 
-               class="absolute inset-0 w-full h-full object-contain rounded-3xl">
+      <!-- Left Side: Phone Mockup with Blob Background -->
+      <div class="phone-side">
+        <div class="blob-container">
+          <div 
+            *ngFor="let feature of features; let i = index"
+            class="phone-mockup-wrapper"
+            [class.active]="i === currentSlide"
+            [class.next]="i > currentSlide"
+            [class.prev]="i < currentSlide">
+            
+            <!-- Phone Mockup -->
+            <div class="phone-frame">
+              <div class="phone-notch"></div>
+              <div class="phone-content">
+                <span class="placeholder-text">Phone Screen</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Right Side: Text Content -->
-      <div class="text-container relative overflow-hidden">
-        <div *ngFor="let feature of features; let i = index">
-          <div *ngIf="i === currentSlide" 
-               [@slideAnimation]="currentSlide" 
-               class="content-card space-y-6">
+      <!-- Right Side: Text Content Card -->
+      <div class="content-side">
+        <div class="content-card-wrapper">
+          <div 
+            *ngFor="let feature of features; let i = index"
+            class="content-card"
+            [class.active]="i === currentSlide"
+            [class.next]="i > currentSlide"
+            [class.prev]="i < currentSlide">
             
             <!-- Progress Indicators -->
-            <div class="progress-bars flex gap-2">
-              <div *ngFor="let f of features; let idx = index"
-                   (click)="goToSlide(idx)"
-                   class="progress-bar h-1 rounded-full cursor-pointer transition-all duration-500"
-                   [class.bg-gray-900]="idx === currentSlide"
-                   [class.bg-gray-300]="idx !== currentSlide"
-                   [class.w-12]="idx === currentSlide"
-                   [class.w-4]="idx !== currentSlide">
+            <div class="progress-bars">
+              <div 
+                *ngFor="let f of features; let idx = index"
+                class="progress-bar"
+                [class.active]="idx === currentSlide"
+                (click)="goToSlide(idx)">
               </div>
             </div>
 
             <!-- Title -->
-            <h3 class="mat-headline-large font-bold text-gray-900">
-              {{ feature.title }}
-            </h3>
+            <h3 class="card-title">{{ feature.title }}</h3>
 
             <!-- Description -->
-            <p class="mat-body-large text-gray-600">
-              {{ feature.description }}
-            </p>
+            <p class="card-description">{{ feature.description }}</p>
 
             <!-- CTA Button -->
-            <div class="pt-4 flex items-center gap-4">
-              <button mat-stroked-button 
-                      class="rounded-full px-8 py-3 text-base border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300">
-                {{ feature.buttonText }}
-                <mat-icon class="ml-2">arrow_forward</mat-icon>
-              </button>
-            </div>
+            <button class="cta-button">
+              {{ feature.buttonText }}
+              <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </button>
 
-            <!-- Navigation Arrows (Absolute positioning for cleaner look) -->
-            <div class="absolute bottom-0 right-0 flex gap-3">
-              <button mat-icon-button 
-                      (click)="prevSlide()" 
-                      [disabled]="isAnimating"
-                      class="nav-btn w-12 h-12 bg-gray-200 hover:bg-gray-300 disabled:opacity-50">
-                <mat-icon>arrow_back</mat-icon>
+            <!-- Navigation Arrows -->
+            <div class="nav-arrows">
+              <button 
+                (click)="prevSlide()"
+                [disabled]="isAnimating"
+                class="nav-btn"
+                aria-label="Previous slide">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
               </button>
-              <button mat-icon-button 
-                      (click)="nextSlide()" 
-                      [disabled]="isAnimating"
-                      class="nav-btn w-12 h-12 bg-gray-200 hover:bg-gray-300 disabled:opacity-50">
-                <mat-icon>arrow_forward</mat-icon>
+              <button 
+                (click)="nextSlide()"
+                [disabled]="isAnimating"
+                class="nav-btn"
+                aria-label="Next slide">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
               </button>
             </div>
 
