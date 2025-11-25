@@ -149,7 +149,7 @@ public class AuthServiceImpl implements AuthService {
             // Create Authentication object for JWT generation
             Authentication authentication = new UsernamePasswordAuthenticationToken(
                     user.getEmail(),
-                    null, // No password
+                    "", // Empty string instead of null to avoid password validation issues
                     user.getAuthorities()
             );
 

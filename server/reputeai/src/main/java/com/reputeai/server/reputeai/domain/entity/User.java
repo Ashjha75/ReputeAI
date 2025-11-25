@@ -123,7 +123,8 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.passwordHash;
+        // Return empty string instead of null for OAuth users to avoid Spring Security validation errors
+        return this.passwordHash != null ? this.passwordHash : "";
     }
 
     @Override
