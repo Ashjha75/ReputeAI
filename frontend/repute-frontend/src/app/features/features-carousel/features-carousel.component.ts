@@ -178,21 +178,79 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
     }
 
     const primary = { r: Math.round(r / count), g: Math.round(g / count), b: Math.round(b / count) };
-    const accent = this.shiftColor(primary, 1.2);
-    return `linear-gradient(135deg, ${this.toRgba(primary, 0.7)} 15%, ${this.toRgba(accent, 0.9)} 85%)`;
+    const light = this.adjustLightness(primary, 0.2);
+    const accent = this.adjustHue(this.adjustLightness(primary, -0.08), 18);
+    return `linear-gradient(135deg, ${this.toRgba(light, 0.85)} 10%, ${this.toRgba(accent, 0.95)} 95%)`;
   }
 
-  private shiftColor(color: { r: number; g: number; b: number }, factor: number): { r: number; g: number; b: number } {
-    const clamp = (value: number) => Math.max(0, Math.min(255, Math.round(value)));
-    return {
-      r: clamp(color.r * factor),
-      g: clamp(color.g * factor),
-      b: clamp(color.b * factor)
-    };
+  private adjustHue(color: { r: number; g: number; b: number }, degrees: number): { r: number; g: number; b: number } {
+    const hsl = this.toHsl(color);
+    const hue = (hsl.h + degrees + 360) % 360;
+    return this.fromHsl({ ...hsl, h: hue });
+  }
+
+  private adjustLightness(color: { r: number; g: number; b: number }, delta: number): { r: number; g: number; b: number } {
+    const hsl = this.toHsl(color);
+    const lightness = Math.max(0, Math.min(1, hsl.l + delta));
+    return this.fromHsl({ ...hsl, l: lightness });
   }
 
   private toRgba(color: { r: number; g: number; b: number }, alpha = 1): string {
     return `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`;
+  }
+
+  private toHsl(color: { r: number; g: number; b: number }): { h: number; s: number; l: number } {
+    const r = color.r / 255;
+    const g = color.g / 255;
+    const b = color.b / 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h = 0;
+    let s = 0;
+    const l = (max + min) / 2;
+
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r:
+          h = ((g - b) / d + (g < b ? 6 : 0)) * 60;
+          break;
+        case g:
+          h = ((b - r) / d + 2) * 60;
+          break;
+        case b:
+          h = ((r - g) / d + 4) * 60;
+          break;
+      }
+    }
+
+    return { h, s, l };
+  }
+
+  private fromHsl(hsl: { h: number; s: number; l: number }): { r: number; g: number; b: number } {
+    const hue2rgb = (p: number, q: number, t: number) => {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    };
+
+    const { h, s, l } = hsl;
+    if (s === 0) {
+      return { r: Math.round(l * 255), g: Math.round(l * 255), b: Math.round(l * 255) };
+    }
+
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    const hk = h / 360;
+    return {
+      r: Math.round(hue2rgb(p, q, hk + 1 / 3) * 255),
+      g: Math.round(hue2rgb(p, q, hk) * 255),
+      b: Math.round(hue2rgb(p, q, hk - 1 / 3) * 255)
+    };
   }
 
   private ensureColorContext(): CanvasRenderingContext2D | null {
