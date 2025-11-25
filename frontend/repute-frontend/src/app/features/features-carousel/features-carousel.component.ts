@@ -63,7 +63,7 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
       title: 'Receive Your Actionable Risk Score.',
       description: 'Every piece of content is given a 0-100 risk score, categorized from Low to Critical. Our dashboard provides a clear explanation for each flagged item, empowering you to take immediate, informed action.',
       buttonText: 'See Your Risk Score',
-      image: 'assets/images/carousel-score.png' // IMPORTANT: Replace with a real image path
+      image: '/carousel-score.png' // IMPORTANT: Replace with a real image path
     },
     {
       title: 'Proactively Protect Your Brand.',
