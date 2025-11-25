@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -37,11 +38,20 @@ public class OAuthUserServiceImpl implements OAuthUserService {
     @Override
     @Transactional
     public LoginResponseDto processOAuth2Login(OAuth2User oauth2User, String registrationId) {
+        return processOAuth2Login(oauth2User, registrationId, oauth2User.getAttributes());
+    }
+
+    @Override
+    @Transactional
+    public LoginResponseDto processOAuth2Login(OAuth2User oauth2User, String registrationId, Map<String, Object> attributes) {
         log.info("Processing OAuth2 login for provider: {}", registrationId);
+
+        // Use provided attributes (may contain fetched GitHub email)
         OAuth2UserInfo oauth2UserInfo = OAuth2UserInfoFactory.getOAuth2UserInfo(
                 registrationId,
-                oauth2User.getAttributes()
+                attributes
         );
+
         String email = oauth2UserInfo.getEmail();
         if (email == null || email.isEmpty()) {
             log.error("OAuth2 login failed: Email not provided by {}", registrationId);
