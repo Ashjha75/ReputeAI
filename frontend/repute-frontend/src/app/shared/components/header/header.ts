@@ -132,8 +132,16 @@ export class Header implements OnDestroy {
     // and also handle nested shapes if any.
     const anyUser: any = this.currentUser as any;
     const url = this.currentUser.avatar || anyUser.profilePictureUrl || anyUser.profile_picture_url || null;
+    if (this.avatarBroken) return null;
     if (typeof url === 'string' && url.trim().length > 0) return url;
     return null;
+  }
+
+  // Track if avatar image failed to load so we can fallback to initials
+  public avatarBroken = false;
+
+  onAvatarError(): void {
+    this.avatarBroken = true;
   }
 
   logout() {

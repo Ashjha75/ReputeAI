@@ -112,19 +112,35 @@ button:hover svg {
 
 /* Avatar image styles for loaded profile pictures */
 .avatar-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 9999px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
 .avatar-img-lg {
-  width: 48px;
-  height: 48px;
-  border-radius: 9999px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Avatar wrapper ensures perfect circular crop and hides any background */
+.avatar-wrap {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: transparent;
+}
+
+.avatar-wrap-sm {
+  width: 40px;
+  height: 40px;
+}
+
+.avatar-wrap-lg {
+  width: 48px;
+  height: 48px;
 }
 
 .user-avatar {
