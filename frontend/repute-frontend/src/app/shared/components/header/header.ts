@@ -125,6 +125,17 @@ export class Header implements OnDestroy {
     return name.charAt(0).toUpperCase();
   }
 
+  /** Returns avatar URL if available (checks common fields), otherwise null */
+  get avatarUrl(): string | null {
+    if (!this.currentUser) return null;
+    // Prefer `avatar` property, fall back to `profilePictureUrl` (backend naming)
+    // and also handle nested shapes if any.
+    const anyUser: any = this.currentUser as any;
+    const url = this.currentUser.avatar || anyUser.profilePictureUrl || anyUser.profile_picture_url || null;
+    if (typeof url === 'string' && url.trim().length > 0) return url;
+    return null;
+  }
+
   logout() {
     // Refresh token is in httpOnly cookie, no need to pass it
     this.authService.logout().subscribe({

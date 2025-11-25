@@ -77,7 +77,12 @@
             (click)="toggleUserDropdown()"
             class="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-full transition-all duration-200">
             <a routerLink="/" class="block">
-              <div class="user-avatar">{{ userInitial }}</div>
+              <ng-container *ngIf="avatarUrl; else initialsSmall">
+                <img [src]="avatarUrl" alt="User avatar" class="w-8 h-8 rounded-full object-cover" loading="lazy" decoding="async" />
+              </ng-container>
+              <ng-template #initialsSmall>
+                <div class="user-avatar">{{ userInitial }}</div>
+              </ng-template>
             </a>
           </button>
 
@@ -90,7 +95,12 @@
               <div class="flex items-center gap-3">
                 <div class="">
                   <a routerLink="/" class="flex items-center gap-3">
-                    <div class="user-avatar user-avatar-lg">{{ userInitial }}</div>
+                    <div *ngIf="avatarUrl; else initialsLarge">
+                      <img [src]="avatarUrl" alt="User avatar" class="w-12 h-12 rounded-full object-cover" loading="lazy" decoding="async" />
+                    </div>
+                    <ng-template #initialsLarge>
+                      <div class="user-avatar user-avatar-lg">{{ userInitial }}</div>
+                    </ng-template>
                     <div>
                       <div class="text-sm font-medium text-gray-900">{{ currentUser?.firstName ? (currentUser?.firstName + (currentUser?.lastName ? ' ' + currentUser?.lastName : '')) : (currentUser?.username || 'User') }}</div>
                       <div class="text-xs text-gray-500">{{ currentUser?.email }}</div>
