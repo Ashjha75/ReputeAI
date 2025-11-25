@@ -6,7 +6,7 @@
       
       <!-- Left Side: Flower-style hero image container -->
       <div class="flower-image-side">
-        <div class="flower-container">
+        <div class="flower-container" [style.background]="heroGradient">
           <span class="flower-orbit orbit-one" aria-hidden="true"></span>
           <span class="flower-orbit orbit-two" aria-hidden="true"></span>
           <span class="flower-orbit orbit-three" aria-hidden="true"></span>
@@ -25,7 +25,12 @@
           </div>
 
           <div class="hero-image-frame">
-            <img [src]="heroImageSource" alt="ReputeAI hero" class="hero-image" />
+            <img
+              [src]="heroImageSource"
+              alt="ReputeAI hero"
+              class="hero-image"
+              (load)="onHeroImageLoad($event)"
+            />
           </div>
         </div>
       </div>

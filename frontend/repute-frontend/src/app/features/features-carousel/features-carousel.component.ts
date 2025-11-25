@@ -50,6 +50,10 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   autoPlayInterval: any;
   isAnimating = false;
   @Input() heroImageUrl?: string;
+  heroGradient = 'linear-gradient(135deg, rgba(14, 165, 233, 0.35), rgba(59, 130, 246, 0.15))';
+  private isBrowser = false;
+  private colorCanvas?: HTMLCanvasElement;
+  private colorContext?: CanvasRenderingContext2D | null;
 
   // Updated content specific to ReputeAI
   features = [
@@ -73,7 +77,9 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
     }
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -125,5 +131,77 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   get heroImageSource(): string {
     const fallbackImage = this.features[this.currentSlide]?.image ?? 'assets/images/carousel-scan.png';
     return this.heroImageUrl ?? fallbackImage;
+  }
+
+  onHeroImageLoad(event: Event): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    const image = event.target as HTMLImageElement;
+    if (!image || !image.complete) {
+      return;
+    }
+
+    const newGradient = this.buildGradientFromImage(image);
+    if (newGradient) {
+      this.heroGradient = newGradient;
+    }
+  }
+
+  private buildGradientFromImage(image: HTMLImageElement): string | null {
+    const context = this.ensureColorContext();
+    if (!context) {
+      return null;
+    }
+
+    const width = 20;
+    const height = 20;
+    context.canvas.width = width;
+    context.canvas.height = height;
+    context.drawImage(image, 0, 0, width, height);
+    const data = context.getImageData(0, 0, width, height).data;
+    let r = 0;
+    let g = 0;
+    let b = 0;
+    let count = 0;
+
+    for (let i = 0; i < data.length; i += 4) {
+      r += data[i];
+      g += data[i + 1];
+      b += data[i + 2];
+      count += 1;
+    }
+
+    if (!count) {
+      return null;
+    }
+
+    const primary = { r: Math.round(r / count), g: Math.round(g / count), b: Math.round(b / count) };
+    const accent = this.shiftColor(primary, 1.2);
+    return `linear-gradient(135deg, ${this.toRgba(primary, 0.7)} 15%, ${this.toRgba(accent, 0.9)} 85%)`;
+  }
+
+  private shiftColor(color: { r: number; g: number; b: number }, factor: number): { r: number; g: number; b: number } {
+    const clamp = (value: number) => Math.max(0, Math.min(255, Math.round(value)));
+    return {
+      r: clamp(color.r * factor),
+      g: clamp(color.g * factor),
+      b: clamp(color.b * factor)
+    };
+  }
+
+  private toRgba(color: { r: number; g: number; b: number }, alpha = 1): string {
+    return `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`;
+  }
+
+  private ensureColorContext(): CanvasRenderingContext2D | null {
+    if (this.colorContext) {
+      return this.colorContext;
+    }
+
+    this.colorCanvas = document.createElement('canvas');
+    this.colorContext = this.colorCanvas.getContext('2d');
+    return this.colorContext;
   }
 }
