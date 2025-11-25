@@ -60,7 +60,8 @@ app:
   jwtSecret: ${APP_JWTSECRET}
   cookieName: TOKEN
   oauth2:
-    redirect-uri: ${APP_OAUTH2_REDIRECT_URI:http://localhost:3000/oauth2/redirect}
+    # Default for local/dev frontend (Angular) changed to 4200. Override via APP_OAUTH2_REDIRECT_URI env var.
+    redirect-uri: ${APP_OAUTH2_REDIRECT_URI:http://localhost:4200/oauth2/redirect}
 
 # AWS Configuration
 aws:

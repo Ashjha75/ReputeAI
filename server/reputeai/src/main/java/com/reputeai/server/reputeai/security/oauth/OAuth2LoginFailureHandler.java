@@ -19,7 +19,8 @@ import java.io.IOException;
 @Slf4j
 public class OAuth2LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
-    @Value("${app.oauth2.redirect-uri:http://localhost:3000/oauth2/redirect}")
+    // Default changed to 4200 for local Angular dev; can still be overridden via environment
+    @Value("${app.oauth2.redirect-uri:http://localhost:4200/oauth2/redirect}")
     private String oauth2RedirectUri;
 
     @Override
