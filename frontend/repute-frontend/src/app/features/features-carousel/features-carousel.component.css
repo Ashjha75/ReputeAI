@@ -162,26 +162,6 @@
   animation-delay: 2s;
 }
 
-.focus-orb {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(99, 102, 241, 0.2));
-  box-shadow: 0 15px 25px rgba(99, 102, 241, 0.35);
-  animation: orbPulse 5s ease-in-out infinite;
-}
-
-.focus-orb-one {
-  top: 60px;
-  right: 60px;
-}
-
-.focus-orb-two {
-  bottom: 40px;
-  left: 80px;
-  animation-delay: 2s;
-}
 
 .hero-image-frame {
   position: relative;
@@ -273,18 +253,6 @@
   50% {
     transform: translateX(10%) rotate(6deg) scaleX(1);
     opacity: 0.95;
-  }
-}
-
-@keyframes orbPulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.25);
-    opacity: 1;
   }
 }
 
