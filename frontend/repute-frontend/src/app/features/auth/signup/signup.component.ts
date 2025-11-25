@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthService, SignupRequest } from '../../../core/services/auth.service';
 import { NotificationService } from '../../../core/services/notification.service';
+import { UserProfileService } from '../../../core/services/user-profile.service';
+import { environment } from '../../../../environments/environment';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 
 @Component({
@@ -32,6 +34,7 @@ export class SignupComponent {
   private notificationService = inject(NotificationService);
   private fb = inject(FormBuilder);
   private router = inject(Router);
+  private userProfileService = inject(UserProfileService);
 
   signupForm: FormGroup;
   hidePassword = true;
@@ -127,13 +130,90 @@ export class SignupComponent {
   }
 
   signUpWithGoogle() {
-    console.log('Sign up with Google');
-    // Backend integration here
+    // Build OAuth URL from API base but remove the '/api' path segment if present
+    const apiHost = environment.apiUrl.replace(/\/$/, '').replace(/\/api\/?$/i, '');
+    const url = `${apiHost}/oauth2/authorization/google`;
+    this.openOAuthPopup(url, 'Google');
   }
 
   signUpWithGithub() {
-    console.log('Sign up with Github');
-    // Backend integration here
+    const apiHost = environment.apiUrl.replace(/\/$/, '').replace(/\/api\/?$/i, '');
+    const url = `${apiHost}/oauth2/authorization/github`;
+    this.openOAuthPopup(url, 'Github');
+  }
+
+  private openOAuthPopup(url: string, providerName = 'OAuth') {
+    try {
+      const width = 600;
+      const height = 700;
+      const left = window.screenX + (window.innerWidth - width) / 2;
+      const top = window.screenY + (window.innerHeight - height) / 2;
+      const opts = `toolbar=no,menubar=no,width=${width},height=${height},top=${top},left=${left}`;
+      const popup = window.open(url, `oauth_${providerName}`, opts);
+      if (!popup) {
+        // Popup blocked — fallback to full redirect
+        window.location.href = url;
+        return;
+      }
+
+      const messageHandler = (event: MessageEvent) => {
+        try {
+          const data = event?.data;
+          if (data && data.type === 'oauth2:complete') {
+            window.removeEventListener('message', messageHandler);
+            try { if (popup && !popup.closed) popup.close(); } catch (e) { /* ignore */ }
+
+            // Wait briefly for cookies to be available
+            setTimeout(() => {
+              this.authService.getUserProfile().subscribe({
+                next: (profileRes: any) => {
+                  const profile = profileRes?.data ?? profileRes;
+                  if (profile) {
+                    this.userProfileService.setUserProfile(profile);
+                    try { this.authService.markAuthenticated(profile as any); } catch (e) { /* ignore */ }
+                    this.notificationService.success('Signed in via OAuth', 4000);
+                    this.router.navigate(['/']);
+                  }
+                },
+                error: () => { /* ignore */ }
+              });
+            }, 600);
+          }
+        } catch (e) {
+          // ignore
+        }
+      };
+
+      window.addEventListener('message', messageHandler, false);
+
+      const poll = setInterval(() => {
+        try {
+          if (!popup || popup.closed) {
+            clearInterval(poll);
+            window.removeEventListener('message', messageHandler);
+            setTimeout(() => {
+              this.authService.getUserProfile().subscribe({
+                next: (profileRes: any) => {
+                  const profile = profileRes?.data ?? profileRes;
+                  if (profile) {
+                    this.userProfileService.setUserProfile(profile);
+                    try { this.authService.markAuthenticated(profile as any); } catch (e) { /* ignore */ }
+                    this.notificationService.success('Signed in via OAuth', 4000);
+                    this.router.navigate(['/']);
+                  }
+                },
+                error: () => { /* noop */ }
+              });
+            }, 600);
+          }
+        } catch (e) {
+          // ignore
+        }
+      }, 500);
+    } catch (err) {
+      console.error('OAuth popup failed', err);
+      window.location.href = url;
+    }
   }
 
   get firstName() { return this.signupForm.get('firstName'); }
