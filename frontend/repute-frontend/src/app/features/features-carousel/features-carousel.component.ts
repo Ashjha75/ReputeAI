@@ -130,7 +130,7 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   }
 
   get heroImageSource(): string {
-    const fallbackImage = this.features[this.currentSlide]?.image ?? 'assets/images/carousel-scan.png';
+    const fallbackImage = this.features[this.currentSlide]?.image ?? assetPath('carousel-scan.png');
     return this.heroImageUrl ?? fallbackImage;
   }
 

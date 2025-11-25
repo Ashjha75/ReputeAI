@@ -37,12 +37,12 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  border-radius: 46% 54% 52% 48%;
+  border-radius: 46% 54% 38% 62% / 60% 30% 70% 40%;
   background: var(--flower-gradient, #f9fbff);
   border: 1px solid rgba(99, 102, 241, 0.35);
   box-shadow: 0 35px 55px rgba(15, 23, 42, 0.25), inset 0 0 35px rgba(99, 102, 241, 0.15);
   overflow: visible;
-  animation: containerFloat 12s ease-in-out infinite, liquidShape 14s ease-in-out infinite;
+  animation: containerFloat 12s ease-in-out infinite, liquidShape 16s ease-in-out infinite;
 }
 
 .flower-container::before {
@@ -162,6 +162,79 @@
   animation-delay: 2s;
 }
 
+.cloud-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: screen;
+  filter: blur(5px);
+}
+
+.cloud-blob {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 60% 40% 45% 55% / 55% 60% 40% 45%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(248, 250, 255, 0.25) 65%);
+  opacity: 0.6;
+  animation: cloudDrift 18s ease-in-out infinite, cloudPulse 14s ease-in-out infinite;
+  animation-direction: alternate;
+  animation-fill-mode: both;
+  --cloud-start-x: 0px;
+  --cloud-start-y: 0px;
+  --cloud-start-scale: 1;
+  --cloud-mid-x: 20px;
+  --cloud-mid-y: -10px;
+  --cloud-mid-scale: 0.95;
+  --cloud-end-x: -10px;
+  --cloud-end-y: 15px;
+  --cloud-end-scale: 1.03;
+}
+
+.blob-one {
+  --cloud-start-x: -40px;
+  --cloud-start-y: -20px;
+  --cloud-start-scale: 1.05;
+  --cloud-mid-x: 45px;
+  --cloud-mid-y: -15px;
+  --cloud-mid-scale: 0.95;
+  --cloud-end-x: -25px;
+  --cloud-end-y: 38px;
+  --cloud-end-scale: 1.03;
+  animation-delay: 0s, 1s;
+}
+
+.blob-two {
+  --cloud-start-x: 60px;
+  --cloud-start-y: -50px;
+  --cloud-start-scale: 0.92;
+  --cloud-mid-x: 20px;
+  --cloud-mid-y: -5px;
+  --cloud-mid-scale: 0.88;
+  --cloud-end-x: 40px;
+  --cloud-end-y: 20px;
+  --cloud-end-scale: 0.97;
+  background: radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.1) 70%);
+  animation-delay: 1.5s, 2s;
+}
+
+.blob-three {
+  --cloud-start-x: -10px;
+  --cloud-start-y: 60px;
+  --cloud-start-scale: 0.85;
+  --cloud-mid-x: 20px;
+  --cloud-mid-y: 40px;
+  --cloud-mid-scale: 0.9;
+  --cloud-end-x: -35px;
+  --cloud-end-y: 10px;
+  --cloud-end-scale: 0.95;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), rgba(248, 250, 255, 0.15) 70%);
+  animation-delay: 3s, 4s;
+}
+
 
 .hero-image-frame {
   position: relative;
@@ -258,16 +331,43 @@
 
 @keyframes liquidShape {
   0% {
-    border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+    border-radius: 46% 54% 38% 62% / 60% 30% 70% 40%;
   }
-  33% {
-    border-radius: 40% 60% 45% 55% / 50% 60% 40% 50%;
+  25% {
+    border-radius: 35% 65% 48% 52% / 55% 65% 35% 45%;
   }
-  66% {
-    border-radius: 55% 45% 50% 50% / 45% 50% 60% 45%;
+  50% {
+    border-radius: 58% 42% 51% 49% / 45% 55% 65% 35%;
+  }
+  75% {
+    border-radius: 42% 58% 55% 45% / 40% 50% 45% 65%;
   }
   100% {
-    border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+    border-radius: 46% 54% 38% 62% / 60% 30% 70% 40%;
+  }
+}
+
+@keyframes cloudDrift {
+  0% {
+    transform: translate(var(--cloud-start-x), var(--cloud-start-y)) scale(var(--cloud-start-scale));
+  }
+  50% {
+    transform: translate(var(--cloud-mid-x), var(--cloud-mid-y)) scale(var(--cloud-mid-scale));
+  }
+  100% {
+    transform: translate(var(--cloud-end-x), var(--cloud-end-y)) scale(var(--cloud-end-scale));
+  }
+}
+
+@keyframes cloudPulse {
+  0% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0.6;
   }
 }
 
