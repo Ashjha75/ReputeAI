@@ -32,6 +32,13 @@ function imagePath(relativePath: string) {
   return base + relativePath.replace(/^\//, '');
 }
 
+/**
+ * Public helper for other modules that need to resolve static asset URLs.
+ */
+export function assetPath(relativePath: string): string {
+  return imagePath(relativePath);
+}
+
 export const IMAGES = {
   // Use 'logo.png' located at the app root (public/logo.png) — resolved using base href
   logo: imagePath('logo.png'),

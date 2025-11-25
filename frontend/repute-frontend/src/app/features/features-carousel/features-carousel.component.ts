@@ -3,6 +3,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, transition, style, animate, group, query } from '@angular/animations';
+import { assetPath } from '../../shared/assets/images';
 
 @Component({
   selector: 'app-features-carousel',
@@ -61,19 +62,19 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
       title: 'Scan & Analyze with AI Precision.',
       description: 'Our advanced AI scans thousands of your posts, comments, and interactions across 5+ platforms to uncover hidden reputation risks. Unify your entire digital footprint in one clear, actionable view.',
       buttonText: 'Explore AI Analysis',
-      image: '/carousel-scan.png' // IMPORTANT: Replace with a real image path
+      image: assetPath('carousel-scan.png') // IMPORTANT: Replace with a real image path
     },
     {
       title: 'Receive Your Actionable Risk Score.',
       description: 'Every piece of content is given a 0-100 risk score, categorized from Low to Critical. Our dashboard provides a clear explanation for each flagged item, empowering you to take immediate, informed action.',
       buttonText: 'See Your Risk Score',
-      image: '/carousel-score.png' // IMPORTANT: Replace with a real image path
+      image: assetPath('carousel-score.png') // IMPORTANT: Replace with a real image path
     },
     {
       title: 'Proactively Protect Your Brand.',
       description: 'Don\'t wait for a crisis. ReputeAI gives you the tools to manage your digital presence proactively, ensuring your online persona aligns perfectly with your professional brand and company values, 24/7.',
       buttonText: 'Secure Your Brand',
-      image: '/carousel-protect.png' // IMPORTANT: Replace with a real image path
+      image: assetPath('carousel-protect.png') // IMPORTANT: Replace with a real image path
     }
   ];
 
