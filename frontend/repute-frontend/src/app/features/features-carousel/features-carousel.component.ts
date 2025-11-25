@@ -69,7 +69,7 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
       title: 'Proactively Protect Your Brand.',
       description: 'Don\'t wait for a crisis. ReputeAI gives you the tools to manage your digital presence proactively, ensuring your online persona aligns perfectly with your professional brand and company values, 24/7.',
       buttonText: 'Secure Your Brand',
-      image: 'assets/images/carousel-protect.png' // IMPORTANT: Replace with a real image path
+      image: '/carousel-protect.png' // IMPORTANT: Replace with a real image path
     }
   ];
 

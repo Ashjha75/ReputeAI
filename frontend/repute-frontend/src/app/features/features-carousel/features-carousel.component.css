@@ -36,38 +36,75 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 24px;
+  border-radius: 46% 54% 52% 48%;
+  background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.25), transparent 60%),
+    radial-gradient(circle at 70% 30%, rgba(16, 185, 129, 0.3), transparent 55%),
+    #f9fbff;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  box-shadow: 0 45px 90px rgba(15, 23, 42, 0.35), inset 0 0 40px rgba(255, 255, 255, 0.4);
+  overflow: visible;
+  animation: containerFloat 12s ease-in-out infinite;
+}
+
+.flower-container::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 70%);
+  filter: blur(6px);
+  opacity: 0.75;
+  animation: shimmerSurface 9s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.flower-container::after {
+  content: '';
+  position: absolute;
+  inset: 50px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  opacity: 0.6;
+  mix-blend-mode: screen;
 }
 
 .flower-orbit {
   position: absolute;
-  border: 2px solid rgba(255, 255, 255, 0.7);
   border-radius: 50%;
-  filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.35));
-  animation: rotateOrbit 20s linear infinite;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  filter: drop-shadow(0 25px 55px rgba(15, 23, 42, 0.45));
+  animation: orbitSpin 16s linear infinite;
 }
 
 .orbit-one {
   width: 440px;
   height: 440px;
+  animation-duration: 17s;
+  animation-direction: normal;
 }
 
 .orbit-two {
-  width: 360px;
-  height: 360px;
-  animation-duration: 16s;
+  width: 380px;
+  height: 380px;
+  animation-duration: 22s;
+  animation-direction: reverse;
+  opacity: 0.8;
 }
 
 .orbit-three {
-  width: 300px;
-  height: 300px;
-  animation-duration: 12s;
+  width: 320px;
+  height: 320px;
+  animation-duration: 25s;
+  animation-name: orbitSpinSoft;
+  opacity: 0.6;
 }
 
 .petal-cluster {
   position: absolute;
-  width: 320px;
-  height: 320px;
-  animation: pulsePetal 6s ease-in-out infinite;
+  width: 300px;
+  height: 300px;
+  animation: pulsePetal 7s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -77,61 +114,133 @@
   height: 160px;
   border-radius: 50%;
   filter: blur(2px);
-  opacity: 0.85;
+  opacity: 0.9;
   mix-blend-mode: screen;
 }
 
 .petal-one {
-  background: radial-gradient(circle at 30% 30%, #fdba74, #fb923c 70%, transparent 90%);
-  top: 0;
-  left: 10%;
+  background: radial-gradient(circle at 30% 30%, #fcd34d, #f97316 70%, transparent 95%);
+  top: -10px;
+  left: 5%;
 }
 
 .petal-two {
-  background: radial-gradient(circle at 40% 40%, #a5b4fc, #6366f1 70%, transparent 90%);
-  bottom: 10%;
-  right: 5%;
+  background: radial-gradient(circle at 40% 40%, #a5f3fc, #0ea5e9 75%, transparent 90%);
+  bottom: 5%;
+  right: 10%;
 }
 
 .petal-three {
-  background: radial-gradient(circle at 20% 20%, #34d399, #10b981 70%, transparent 90%);
+  background: radial-gradient(circle at 25% 25%, #34d399, #059669 75%, transparent 85%);
   bottom: 5%;
-  left: 25%;
+  left: 28%;
+}
+
+.focus-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.focus-streak {
+  position: absolute;
+  width: 95%;
+  height: 20px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+  filter: blur(12px);
+  animation: streakSweep 6s ease-in-out infinite;
+}
+
+.streak-one {
+  transform: translateY(-100px) scaleX(0.9);
+}
+
+.streak-two {
+  transform: translateY(100px) scaleX(0.7);
+  animation-delay: 2s;
+}
+
+.focus-orb {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(99, 102, 241, 0.2));
+  box-shadow: 0 15px 25px rgba(99, 102, 241, 0.35);
+  animation: orbPulse 5s ease-in-out infinite;
+}
+
+.focus-orb-one {
+  top: 60px;
+  right: 60px;
+}
+
+.focus-orb-two {
+  bottom: 40px;
+  left: 80px;
+  animation-delay: 2s;
 }
 
 .hero-image-frame {
   position: relative;
   width: 360px;
   height: 360px;
-  border-radius: 50% 45% 60% 50%;
+  border-radius: 52% 48% 56% 44%;
   overflow: hidden;
-  box-shadow: 0 35px 65px rgba(15, 23, 42, 0.35);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(249, 250, 251, 0.6));
+  box-shadow: inset 0 0 45px rgba(255, 255, 255, 0.35), 0 35px 70px rgba(15, 23, 42, 0.4);
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.2), rgba(79, 70, 229, 0.15));
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
 }
 
 .hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: floatHero 8s ease-in-out infinite;
+  animation: floatHero 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-@keyframes rotateOrbit {
+@keyframes containerFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+}
+
+@keyframes orbitSpin {
   from {
     transform: rotate(0deg) scale(1);
   }
   to {
-    transform: rotate(360deg) scale(1.02);
+    transform: rotate(360deg) scale(1.05);
+  }
+}
+
+@keyframes orbitSpinSoft {
+  from {
+    transform: rotate(0deg) scale(0.95);
+  }
+  to {
+    transform: rotate(-360deg) scale(1.02);
   }
 }
 
 @keyframes pulsePetal {
   0%,
   100% {
-    transform: scale(1) translateY(0);
+    transform: scale(1) rotate(0deg);
+    opacity: 0.9;
   }
   50% {
-    transform: scale(1.05) translateY(-10px);
+    transform: scale(1.08) rotate(-8deg);
+    opacity: 0.7;
   }
 }
 
@@ -141,7 +250,43 @@
     transform: translateY(0) scale(1);
   }
   50% {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-10px) scale(1.04);
+  }
+}
+
+@keyframes shimmerSurface {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateY(-4px) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.04);
+  }
+}
+
+@keyframes streakSweep {
+  0%,
+  100% {
+    transform: translateX(-10%) rotate(0deg) scaleX(0.9);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateX(10%) rotate(6deg) scaleX(1);
+    opacity: 0.95;
+  }
+}
+
+@keyframes orbPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
   }
 }
 
