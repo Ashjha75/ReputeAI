@@ -35,6 +35,79 @@
   height: 600px;
 }
 
+.animated-shape-layer {
+  position: absolute;
+  inset: -40px;
+  pointer-events: none;
+  z-index: 0;
+  display: block;
+  filter: drop-shadow(0 25px 45px rgba(15, 23, 42, 0.25));
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  filter: blur(10px);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.shape-one {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle at 30% 30%, #a855f7, #6366f1 60%, transparent 80%);
+  top: 20%;
+  left: 5%;
+  animation: floatSlow 12s alternate;
+}
+
+.shape-two {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle at 40% 40%, #22d3ee, #0ea5e9 65%, transparent 85%);
+  top: 40%;
+  right: 5%;
+  animation: floatMedium 10s alternate;
+}
+
+.shape-three {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle at 35% 35%, #f97316, #f59e0b 70%, transparent 90%);
+  bottom: 5%;
+  left: 35%;
+  animation: floatFast 8s alternate;
+}
+
+@keyframes floatSlow {
+  from {
+    transform: translateY(0) scale(0.95);
+  }
+  to {
+    transform: translateY(-30px) scale(1);
+  }
+}
+
+@keyframes floatMedium {
+  from {
+    transform: translateY(0) translateX(0) scale(0.95);
+  }
+  to {
+    transform: translateY(-45px) translateX(-15px) scale(1.05);
+  }
+}
+
+@keyframes floatFast {
+  from {
+    transform: translateY(0) translateX(0) scale(0.9);
+  }
+  to {
+    transform: translateY(-60px) translateX(20px) scale(1.1);
+  }
+}
+
 .phone-mockup-wrapper {
   position: absolute;
   top: 50%;
