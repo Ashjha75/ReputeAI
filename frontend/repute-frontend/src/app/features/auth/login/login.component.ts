@@ -162,6 +162,8 @@ export class LoginComponent {
                   const profile = profileRes?.data ?? profileRes;
                   if (profile) {
                     this.userProfileService.setUserProfile(profile);
+                    // Mark session authenticated for cookie-based flows
+                    try { this.authService.markAuthenticated(profile as any); } catch (e) { /* ignore */ }
                     this.notificationService.success('Logged in successfully', 4000);
                     this.router.navigate(['/']);
                   }
@@ -191,6 +193,7 @@ export class LoginComponent {
                   const profile = profileRes?.data ?? profileRes;
                   if (profile) {
                     this.userProfileService.setUserProfile(profile);
+                    try { this.authService.markAuthenticated(profile as any); } catch (e) { /* ignore */ }
                     this.notificationService.success('Logged in successfully', 4000);
                     this.router.navigate(['/']);
                   }

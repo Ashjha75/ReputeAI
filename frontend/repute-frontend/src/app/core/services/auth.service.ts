@@ -242,6 +242,15 @@ export class AuthService extends BaseApiService {
     try { this.authState.next(true); } catch {}
   }
 
+  /**
+   * Mark the current session as authenticated when tokens are stored in httpOnly cookies
+   * (e.g. OAuth popup flow). This will update the in-memory user and emit auth state.
+   */
+  markAuthenticated(user: UserProfile | null): void {
+    this._currentUserCache = user;
+    try { this.authState.next(true); } catch {}
+  }
+
   /** Get stored refresh token */
   getRefreshToken(): string | null {
     // No longer needed, tokens are in httpOnly cookies
