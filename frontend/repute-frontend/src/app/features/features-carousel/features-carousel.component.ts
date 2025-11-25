@@ -1,37 +1,73 @@
-import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { trigger, transition, style, animate, group, query } from '@angular/animations';
 
 @Component({
   selector: 'app-features-carousel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './features-carousel.component.html',
   styleUrls: ['./features-carousel.component.css'],
+  animations: [
+    // Clean fade/slide animation for text content
+    trigger('slideAnimation', [
+      transition(':increment', [
+        group([
+          query(':enter', [
+            style({ transform: 'translateX(100%)', opacity: 0 }),
+            animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(0)', opacity: 1 }))
+          ], { optional: true }),
+          query(':leave', [
+            animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(-100%)', opacity: 0 }))
+          ], { optional: true })
+        ])
+      ]),
+      transition(':decrement', [
+        group([
+          query(':enter', [
+            style({ transform: 'translateX(-100%)', opacity: 0 }),
+            animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(0)', opacity: 1 }))
+          ], { optional: true }),
+          query(':leave', [
+            animate('500ms cubic-bezier(0.4, 0, 0.2, 1)', style({ transform: 'translateX(100%)', opacity: 0 }))
+          ], { optional: true })
+        ])
+      ])
+    ]),
+    // Simple fade for the image
+    trigger('fadeAnimation', [
+      transition('* <=> *', [
+        style({ opacity: 0 }),
+        animate('600ms ease-in-out', style({ opacity: 1 }))
+      ])
+    ])
+  ]
 })
 export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   currentSlide = 0;
   autoPlayInterval: any;
-  isPaused = false;
   isAnimating = false;
 
   features = [
     {
-      title: 'Text with both iPhone and Android friends, no problem.',
-      description: 'With RCS available across Android and iOS*, you can now text seamlessly with either one, share high-quality photos and videos, join and name group chats, and react to texts with any emoji you like. You\'ll also get the latest AI features, too.*',
-      buttonText: 'Discover Google Messages',
-      buttonLink: '#'
+      title: 'Scan & Analyze with AI Precision.',
+      description: 'Our advanced AI scans thousands of your posts, comments, and interactions across 5+ platforms to uncover hidden reputation risks. Unify your entire digital footprint in one clear, actionable view.',
+      buttonText: 'Explore AI Analysis',
+      image: 'assets/images/carousel-scan.png' // Replace with your image
     },
     {
-      title: 'Make video calls and share files.',
-      description: 'Do not worry, you\'ll still be able to video chat with friends and family on Google Meet and if you want to send files to friends nearby, you\'ve got Quick Share, which works with Android, ChromeOS, and Windows PC devices.*',
-      buttonText: 'Explore Quick Share',
-      buttonLink: '#'
+      title: 'Receive Your Actionable Risk Score.',
+      description: 'Every piece of content is given a 0-100 risk score, categorized from Low to Critical. Our dashboard provides a clear explanation for each flagged item, empowering you to take immediate, informed action.',
+      buttonText: 'See Your Risk Score',
+      image: 'assets/images/carousel-score.png' // Replace with your image
     },
     {
-      title: 'Stay connected everywhere.',
-      description: 'Experience seamless connectivity with powerful features that keep you in touch with what matters most. Share moments, collaborate easily, and stay connected across all your devices.',
-      buttonText: 'Learn More',
-      buttonLink: '#'
+      title: 'Proactively Protect Your Brand.',
+      description: 'Don\'t wait for a crisis. ReputeAI gives you the tools to manage your digital presence proactively, ensuring your online persona aligns perfectly with your professional brand and company values, 24/7.',
+      buttonText: 'Secure Your Brand',
+      image: 'assets/images/carousel-protect.png' // Replace with your image
     }
   ];
 
@@ -50,9 +86,7 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   startAutoPlay(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.autoPlayInterval = setInterval(() => {
-        if (!this.isPaused && !this.isAnimating) {
-          this.nextSlide();
-        }
+        if (!this.isAnimating) this.nextSlide();
       }, 6000);
     }
   }
@@ -60,7 +94,6 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   stopAutoPlay(): void {
     if (this.autoPlayInterval) {
       clearInterval(this.autoPlayInterval);
-      this.autoPlayInterval = null;
     }
   }
 
@@ -68,34 +101,20 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
     if (this.isAnimating) return;
     this.isAnimating = true;
     this.currentSlide = (this.currentSlide + 1) % this.features.length;
-    setTimeout(() => {
-      this.isAnimating = false;
-    }, 600);
+    setTimeout(() => { this.isAnimating = false; }, 600); // Animation duration
   }
 
   prevSlide(): void {
     if (this.isAnimating) return;
     this.isAnimating = true;
     this.currentSlide = (this.currentSlide - 1 + this.features.length) % this.features.length;
-    setTimeout(() => {
-      this.isAnimating = false;
-    }, 600);
+    setTimeout(() => { this.isAnimating = false; }, 600);
   }
 
   goToSlide(index: number): void {
     if (this.isAnimating || index === this.currentSlide) return;
     this.isAnimating = true;
     this.currentSlide = index;
-    setTimeout(() => {
-      this.isAnimating = false;
-    }, 600);
-  }
-
-  pauseAutoPlay(): void {
-    this.isPaused = true;
-  }
-
-  resumeAutoPlay(): void {
-    this.isPaused = false;
+    setTimeout(() => { this.isAnimating = false; }, 600);
   }
 }
