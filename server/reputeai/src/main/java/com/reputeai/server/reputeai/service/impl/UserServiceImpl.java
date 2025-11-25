@@ -120,6 +120,9 @@ public class UserServiceImpl implements UserService {
         }
         profile.setFullName(fullName.isBlank() ? null : fullName);
 
+        // Set profile picture URL (will be null if not set)
+        profile.setProfilePictureUrl(user.getProfilePictureUrl());
+
         profile.setCreatedAt(user.getCreatedAt());
 
         // Extract role names
