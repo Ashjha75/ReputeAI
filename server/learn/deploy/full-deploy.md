@@ -49,16 +49,16 @@
 
 ### ✅ What You Need
 
-1.  **Your Spring Boot project** with:
+1. **Your Spring Boot project** with:
     - `Dockerfile`
     - `docker-compose.yml`
     - `.env` file
 
-2.  **AWS Account** (we'll create this together)
-3.  **Domain name** (optional but recommended)
+2. **AWS Account** (we'll create this together)
+3. **Domain name** (optional but recommended)
     - If you don't have one, you can buy from Route 53 (~$12/year)
 
-4.  **Your laptop** with:
+4. **Your laptop** with:
     - AWS CLI installed
     - Docker installed
     - Terminal/Command Prompt
@@ -69,37 +69,37 @@
 
 ### Step 1: Create AWS Account
 
-1.  **Go to**: https://aws.amazon.com/
-2.  **Click**: "Create an AWS Account"
-3.  **Fill in**:
+1. **Go to**: https://aws.amazon.com/
+2. **Click**: "Create an AWS Account"
+3. **Fill in**:
     - Email address
     - Password
     - AWS account name (e.g., "ReputeAI")
-4.  **Choose**: Personal account
-5.  **Enter**: Credit card details (required, but we'll use free tier)
-6.  **Verify**: Phone number (SMS verification)
-7.  **Select**: Free plan
+4. **Choose**: Personal account
+5. **Enter**: Credit card details (required, but we'll use free tier)
+6. **Verify**: Phone number (SMS verification)
+7. **Select**: Free plan
 
 **Important**: You get 12 months of free tier!
 
 ### Step 2: Secure Your Account
 
-1.  **Enable MFA (Multi-Factor Authentication)**:
+1. **Enable MFA (Multi-Factor Authentication)**:
     - Go to: IAM Console → Your username → Security credentials
     - Click "Assign MFA device"
     - Use Google Authenticator app
 
-2.  **Create Admin User** (Don't use root account):
+2. **Create Admin User** (Don't use root account):
 
-    ```
-    Go to: IAM → Users → Add user
-    Username: admin-user
-    Access type: ✅ Programmatic access + ✅ AWS Management Console access
-    Permissions: Attach existing policy → AdministratorAccess
+   ```
+   Go to: IAM → Users → Add user
+   Username: admin-user
+   Access type: ✅ Programmatic access + ✅ AWS Management Console access
+   Permissions: Attach existing policy → AdministratorAccess
 
-    ```
+   ```
 
-3.  **Download credentials CSV** and save it securely!
+3. **Download credentials CSV** and save it securely!
 
 ### Step 3: Install AWS CLI
 
@@ -280,47 +280,47 @@ docker push 123456789012.dkr.ecr.us-east-1.amazonaws.com/reputeai:latest
 
 **3.1 Create Database via AWS Console**
 
-1.  **Go to**: AWS Console → RDS → Create database
-2.  **Choose settings**:
+1. **Go to**: AWS Console → RDS → Create database
+2. **Choose settings**:
 
-    ```
-    Engine: MySQL 8.0
-    Template: Free tier (for development)
-    DB instance identifier: reputeai-db
-    Master username: admin
-    Master password: [Create strong password - save it!]
+   ```
+   Engine: MySQL 8.0
+   Template: Free tier (for development)
+   DB instance identifier: reputeai-db
+   Master username: admin
+   Master password: [Create strong password - save it!]
 
-    ```
+   ```
 
-3.  **Instance configuration**:
+3. **Instance configuration**:
 
-    ```
-    DB instance class: db.t3.micro (free tier)
-    Storage: 20 GB
-    Storage autoscaling: ✅ Enable (max 100 GB)
+   ```
+   DB instance class: db.t3.micro (free tier)
+   Storage: 20 GB
+   Storage autoscaling: ✅ Enable (max 100 GB)
 
-    ```
+   ```
 
-4.  **Connectivity**:
+4. **Connectivity**:
 
-    ```
-    VPC: Default VPC
-    Public access: No (more secure)
-    VPC security group: Create new
-    Security group name: reputeai-db-sg
+   ```
+   VPC: Default VPC
+   Public access: No (more secure)
+   VPC security group: Create new
+   Security group name: reputeai-db-sg
 
-    ```
+   ```
 
-5.  **Additional configuration**:
+5. **Additional configuration**:
 
-    ```
-    Initial database name: reputeai_db
-    Backup retention: 7 days
-    Enable encryption: ✅ Yes
+   ```
+   Initial database name: reputeai_db
+   Backup retention: 7 days
+   Enable encryption: ✅ Yes
 
-    ```
+   ```
 
-6.  **Click**: "Create database"
+6. **Click**: "Create database"
 
 **Wait 5-10 minutes for database to be ready.**
 
@@ -401,11 +401,11 @@ aws ecs create-cluster --cluster-name reputeai-cluster --region us-east-1
 
 **Or via AWS Console**:
 
-1.  Go to: ECS → Clusters → Create cluster
-2.  Cluster name: `reputeai-cluster`
-3.  Networking: Use default VPC
-4.  Infrastructure: AWS Fargate (serverless)
-5.  Click: Create
+1. Go to: ECS → Clusters → Create cluster
+2. Cluster name: `reputeai-cluster`
+3. Networking: Use default VPC
+4. Infrastructure: AWS Fargate (serverless)
+5. Click: Create
 
 ---
 
@@ -863,11 +863,11 @@ aws application-autoscaling put-scaling-policy \
 
 **11.1 Buy Domain (if needed)**
 
-1.  Go to: Route 53 → Registered domains → Register domain
-2.  Search for domain (e.g., `reputeai.com`)
-3.  Add to cart → Continue
-4.  Fill in contact info
-5.  Complete purchase (~$12/year)
+1. Go to: Route 53 → Registered domains → Register domain
+2. Search for domain (e.g., `reputeai.com`)
+3. Add to cart → Continue
+4. Fill in contact info
+5. Complete purchase (~$12/year)
 
 **11.2 Create Hosted Zone**
 
@@ -881,16 +881,16 @@ aws route53 create-hosted-zone \
 
 **11.3 Point Domain to ALB**
 
-1.  Go to: Route 53 → Hosted zones → your domain
-2.  Click "Create record"
-3.  Settings:
+1. Go to: Route 53 → Hosted zones → your domain
+2. Click "Create record"
+3. Settings:
 
-    ```
-    Record name: (leave empty for root domain)Record type: AAlias: YesRoute traffic to: Application and Classic Load BalancerRegion: us-east-1Load balancer: reputeai-alb
+   ```
+   Record name: (leave empty for root domain)Record type: AAlias: YesRoute traffic to: Application and Classic Load BalancerRegion: us-east-1Load balancer: reputeai-alb
 
-    ```
+   ```
 
-4.  Click "Create records"
+4. Click "Create records"
 
 **Wait 5-10 minutes for DNS to propagate.**
 
@@ -923,10 +923,10 @@ aws acm describe-certificate \
 
 **Add these CNAME records to Route 53**:
 
-1.  Go to: Route 53 → Hosted zones → your domain
-2.  Click "Create record"
-3.  Copy Name and Value from above command
-4.  Click "Create records"
+1. Go to: Route 53 → Hosted zones → your domain
+2. Click "Create record"
+3. Copy Name and Value from above command
+4. Click "Create records"
 
 **Wait 5-15 minutes for validation.**
 
@@ -1013,8 +1013,8 @@ aws logs tail /ecs/reputeai --since 10m
 
 ### CloudWatch Dashboard
 
-1.  Go to: CloudWatch → Dashboards → Create dashboard
-2.  Add widgets:
+1. Go to: CloudWatch → Dashboards → Create dashboard
+2. Add widgets:
     - ECS CPU utilization
     - ECS memory utilization
     - ALB request count
