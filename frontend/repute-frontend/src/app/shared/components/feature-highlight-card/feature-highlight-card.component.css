@@ -7,6 +7,17 @@
   border-radius: 2.2rem;
 }
 
+/* Scroll reveal: start slightly lower and faded, animate in when `.in-view` is toggled */
+.feature-highlight-card {
+  opacity: 0;
+  transform: translateY(18px) scale(0.998);
+  transition: transform 0.7s cubic-bezier(.2,.9,.2,1), opacity 0.55s ease;
+}
+.feature-highlight-card.in-view {
+  opacity: 1;
+  transform: none;
+}
+
 .feature-highlight-card:hover {
   box-shadow: 0 12px 36px 0 rgba(24, 52, 81, 0.12);
   border-color: #d0e2fa;
@@ -58,6 +69,13 @@
   position: relative;
 }
 
+.parallax-wrap {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition: transform 0.12s linear;
+}
+
 .media-frame img {
   display: block;
   width: 110%; /* slightly larger so panning doesn't show edges */
@@ -65,7 +83,7 @@
   object-fit: cover;
   transform-origin: center center;
   will-change: transform;
-  animation: featureMediaZoomPan 18s cubic-bezier(.2,.6,.2,.8) infinite;
+  animation: featureMediaZoomPan 14s cubic-bezier(.2,.6,.2,.8) infinite;
 }
 
 .feature-highlight-copy-vertical {

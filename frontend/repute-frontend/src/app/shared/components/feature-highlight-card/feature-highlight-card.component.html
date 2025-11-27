@@ -2,12 +2,14 @@
   <div class="feature-highlight-inner-vertical">
     <div class="feature-highlight-media-vertical" *ngIf="card.media">
       <div class="media-frame" *ngIf="mediaSrc">
-        <img
-          [src]="mediaSrc"
-          [alt]="card.media.alt || card.title"
-          loading="lazy"
-          decoding="async"
-        />
+        <div class="parallax-wrap">
+          <img
+            [src]="mediaSrc"
+            [alt]="card.media.alt || card.title"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </div>
       <!-- <button
         *ngIf="card.media?.showPlayButton"
