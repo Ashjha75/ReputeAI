@@ -76,6 +76,7 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
 
   private io?: IntersectionObserver;
   private rafId = 0;
+  private revealTimeout = 0 as any;
 
   @HostBinding('class.in-view') hostInView = false;
 
@@ -87,10 +88,39 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
     this.io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const visible = entry.isIntersecting && entry.intersectionRatio > 0;
-        this.hostInView = visible;
         if (visible) {
-          this.startParallaxLoop();
+          // Stagger reveal based on index among sibling cards so they animate one-by-one
+          if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // Respect reduced motion: reveal immediately
+            this.clearRevealTimeout();
+            this.hostInView = true;
+            this.startParallaxLoop();
+            return;
+          }
+
+          const parent = this.host.nativeElement.parentElement;
+          let index = 0;
+          if (parent) {
+            try {
+              const tag = this.host.nativeElement.tagName.toLowerCase();
+              const siblings = Array.from(parent.querySelectorAll(tag));
+              index = Math.max(0, siblings.indexOf(this.host.nativeElement));
+              if (index < 0) index = 0;
+            } catch (e) {
+              index = 0;
+            }
+          }
+
+          const staggerMs = 320; // milliseconds between card reveals
+          this.clearRevealTimeout();
+          this.revealTimeout = setTimeout(() => {
+            this.hostInView = true;
+            this.startParallaxLoop();
+          }, index * staggerMs + 80);
         } else {
+          // leaving viewport: cancel any pending reveal and hide immediately
+          this.clearRevealTimeout();
+          this.hostInView = false;
           this.stopParallaxLoop();
           // reset transform when offscreen
           const wrap = this.host.nativeElement.querySelector('.parallax-wrap') as HTMLElement | null;
@@ -130,6 +160,13 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
     if (this.rafId) {
       cancelAnimationFrame(this.rafId);
       this.rafId = 0;
+    }
+  }
+
+  private clearRevealTimeout(): void {
+    if (this.revealTimeout) {
+      clearTimeout(this.revealTimeout);
+      this.revealTimeout = 0;
     }
   }
 
