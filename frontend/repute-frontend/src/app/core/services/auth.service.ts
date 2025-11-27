@@ -199,8 +199,22 @@ export class AuthService extends BaseApiService {
 
   /**
    * Check if user is authenticated
+   * Now validates that access token cookie exists before trusting localStorage
    */
   isAuthenticated(): boolean {
+    // First check if we have the httpOnly cookie
+    const hasCookie = this.hasAccessTokenCookie();
+    
+    // If no cookie, clear any stale data and return false
+    if (!hasCookie) {
+      if (this._currentUserCache || this.userProfileService.getUserProfile()) {
+        // Cookie is gone but we have stale data, clear it
+        this.clearAuthData();
+      }
+      return false;
+    }
+    
+    // Cookie exists, check if we have user data
     if (this._currentUserCache) {
       return true;
     }
@@ -209,6 +223,9 @@ export class AuthService extends BaseApiService {
       this._currentUserCache = storedProfile;
       return true;
     }
+    
+    // Cookie exists but no user data - this shouldn't happen normally
+    // Return false and let validateAuthState handle fetching profile
     return false;
   }
 
@@ -317,6 +334,57 @@ export class AuthService extends BaseApiService {
       }
     });
     return req$;
+  }
+
+  /**
+   * Check if access token cookie exists
+   * Returns true if the httpOnly cookie is present
+   */
+  private hasAccessTokenCookie(): boolean {
+    if (typeof document === 'undefined') {
+      return false;
+    }
+    // Check for access token cookie (adjust cookie name if your backend uses different name)
+    const cookies = document.cookie.split(';');
+    return cookies.some(cookie => {
+      const trimmed = cookie.trim();
+      return trimmed.startsWith('access_token=') || 
+             trimmed.startsWith('accessToken=') || 
+             trimmed.startsWith('token=') ||
+             trimmed.startsWith('jwt=');
+    });
+  }
+
+  /**
+   * Validate authentication state against cookie presence
+   * Clears localStorage if cookie is missing
+   * Should be called on app init and periodically
+   */
+  validateAuthState(): void {
+    const hasCookie = this.hasAccessTokenCookie();
+    const hasLocalProfile = this.userProfileService.getUserProfile() !== null;
+    
+    // If localStorage has user but cookie is missing, clear everything
+    if (hasLocalProfile && !hasCookie) {
+      console.warn('Access token cookie missing but localStorage has user data. Clearing auth state.');
+      this.clearAuthData();
+    }
+    
+    // If cookie exists but no cached user, try to fetch profile
+    if (hasCookie && !this._currentUserCache && !hasLocalProfile) {
+      // Attempt to fetch user profile since we have a valid cookie
+      this.getUserProfile().subscribe({
+        next: (response) => {
+          if (response?.success && response?.data) {
+            this.markAuthenticated(response.data);
+          }
+        },
+        error: () => {
+          // Cookie exists but profile fetch failed, clear state
+          this.clearAuthData();
+        }
+      });
+    }
   }
 
   /**
