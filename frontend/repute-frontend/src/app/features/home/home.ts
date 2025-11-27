@@ -18,72 +18,70 @@ import { PixelDropPromoComponent } from '../../shared/components/pixel-drop-prom
 import { assetPath } from '../../shared/assets/images';
 
 @Component({
-    selector: 'app-home',
-    imports: [
-      CommonModule,
-      HeroSectionComponent,
-      FeatureGridComponent,
-      SupportFaqComponent,
-      FeaturesCarouselComponent,
-      HowItWorksComponent,
-      FooterComponent,
-      FeatureHighlightCardComponent,
-      CtaBannerComponent,
-      PixelDropPromoComponent
-    ],
-    templateUrl: './home.html',
-    styleUrl: './home.css'
+  selector: 'app-home',
+  imports: [
+    CommonModule,
+    HeroSectionComponent,
+    FeatureGridComponent,
+    SupportFaqComponent,
+    FeaturesCarouselComponent,
+    HowItWorksComponent,
+    FooterComponent,
+    FeatureHighlightCardComponent,
+    CtaBannerComponent,
+    PixelDropPromoComponent
+  ],
+  templateUrl: './home.html',
+  styleUrl: './home.css'
 })
 export class Home implements OnInit {
   // Update copy, media, and actions here to reshuffle spotlight cards without editing the template.
   readonly featureHighlights: FeatureHighlightCard[] = [
     {
-      badge: 'Realtime Alerts',
-      context: 'Signals & Messaging',
-      title: 'Give reputation teams the context they need instantly.',
-      description: 'Custom alert recipes surface the right incidents for each stakeholder, complete with AI-authored summaries that explain the "why" at a glance',
-      footnote: '1',
+      badge: 'Real-Time Alerts',
+      context: 'AI Risk Monitoring',
+      title: 'Get Instant Context on Digital Risks.',
+      description: 'Receive immediate notifications when our AI flags high-risk content. Each alert includes an AI-generated summary explaining the "why," delivered directly via Slack, Teams, or Email.',
       chips: ['Slack', 'Teams', 'Email'],
       actions: [
-        { label: 'Launch playbook', icon: 'arrow_forward', url: 'https://repute.ai/playbooks', variant: 'primary' }
+        { label: 'Customize Your Alerts', icon: 'arrow_forward', url: '#', variant: 'primary' }
       ],
       media: {
         alt: 'Realtime notification mockup',
         showPlayButton: true,
         src: assetPath('banner-notification.png')
       },
-      accent: 'aqua'
+      accent: 'aqua' // Google Blue
     },
     {
       badge: 'Insights Studio',
       context: 'Reporting & Analytics',
-      title: 'Remix your signals with AI-generated storyboards.',
-      description: 'Create tailored update decks in seconds by blending KPI trends, notable mentions, and recommended actions. Share as slides or interactive dashboards',
-      footnote: '2',
-      chips: ['Deck export', 'AI recap'],
+      title: 'AI-Generated Reports on Your Digital Health.',
+      description: 'Go beyond raw data. The Insights Studio automatically generates visual reports on your reputation score, risk trends, and content categories. Export as a PDF or share a live dashboard.',
+      chips: ['PDF Export', 'Trend Analysis', 'AI Summaries'],
       actions: [
-        { label: 'Try now', icon: 'arrow_forward', url: 'https://repute.ai/insights-studio', variant: 'primary' }
+        { label: 'View Sample Report', icon: 'arrow_forward', url: '#', variant: 'primary' }
       ],
       media: {
         alt: 'Reporting storyboard preview',
         src: assetPath('banner-report.png')
       },
-      accent: 'violet'
+      accent: 'violet' // A distinct secondary color
     },
     {
-      badge: 'Coverage Map',
-      context: 'Discovery',
-      title: 'Map every conversation that can impact trust.',
-      description: 'Track narratives across press, social, forums, and developer channels with a unified knowledge graph that updates hourly',
-      chips: ['News', 'Social', 'Communities'],
+      badge: 'Multi-Platform Scan',
+      context: 'Platform Integration',
+      title: 'Connect & Monitor Your Entire Digital Footprint.',
+      description: 'Securely connect Twitter, LinkedIn, GitHub, and more. ReputeAI creates a unified, searchable view of your historical and real-time content, ensuring you have no blind spots.',
+      chips: ['Social Media', 'Professional Networks', 'Developer Forums'],
       actions: [
-        { label: 'See live demo', icon: 'open_in_new', url: 'https://repute.ai/coverage-map-demo', variant: 'outline' }
+        { label: 'See Supported Platforms', icon: 'open_in_new', url: '#', variant: 'outline' }
       ],
       media: {
         showPlayButton: true,
         src: assetPath('banner-map.png')
       },
-      accent: 'emerald'
+      accent: 'emerald' // Android Green accent
     }
   ];
 
@@ -101,7 +99,7 @@ export class Home implements OnInit {
     { level: 'Critical Risk', range: '90-100', color: 'bg-red-100 text-red-800', icon: 'dangerous' }
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit(): void {
     try {
