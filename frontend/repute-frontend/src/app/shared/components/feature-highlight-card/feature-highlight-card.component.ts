@@ -40,7 +40,6 @@ export interface FeatureHighlightCard {
   styleUrl: './feature-highlight-card.component.css'
 })
 export class FeatureHighlightCardComponent {
-  readonly placeholderImage = 'https://via.placeholder.com/360x220.png?text=Feature+Preview';
 
   @Input() card: FeatureHighlightCard = {
     badge: 'Feature badge',
@@ -68,10 +67,7 @@ export class FeatureHighlightCardComponent {
   }
 
   get mediaSrc(): string {
-    if (this.card.media?.src) {
-      return this.card.media.src;
-    }
-    return this.placeholderImage;
+    return this.card.media?.src ?? '';
   }
 
   get resolvedAccent(): FeatureHighlightAccent {

@@ -2,7 +2,7 @@
   <div class="feature-highlight-inner-vertical">
     <div class="feature-highlight-media-vertical" *ngIf="card.media">
       <img
-        *ngIf="card.media?.src || placeholderImage"
+        *ngIf="mediaSrc"
         [src]="mediaSrc"
         [alt]="card.media.alt || card.title"
         loading="lazy"
