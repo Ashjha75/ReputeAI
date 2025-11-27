@@ -35,6 +35,9 @@ export interface UserProfile {
   firstName?: string;
   lastName?: string;
   avatar?: string;
+  avatarUrl?: string;
+  profilePictureUrl?: string;
+  profile_picture_url?: string;
   role?: string;
 }
 
