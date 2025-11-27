@@ -6,6 +6,7 @@ import { BaseApiService } from './base-api.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { UserProfileService } from './user-profile.service';
 
 export interface LoginRequest {
   email: string;
@@ -79,11 +80,15 @@ export class AuthService extends BaseApiService {
   constructor(http: HttpClient) {
     super(http);
     this.authState = new BehaviorSubject<boolean>(this.isAuthenticated());
+    if (!this.isAuthenticated()) {
+      this.userProfileService.clearUserProfile();
+    }
   }
 
   // inject router & notification lazily
   private router = inject(Router);
   private notifService = inject(NotificationService);
+  private userProfileService = inject(UserProfileService);
 
   /**
    * Login user
@@ -125,6 +130,7 @@ export class AuthService extends BaseApiService {
   private storeAuthData(token: string, user: UserProfile, refreshToken?: string): void {
     // Only store user in memory, tokens are in httpOnly cookies
     this._currentUserCache = user;
+    this.userProfileService.setUserProfile(user);
     try { this.authState.next(true); } catch {}
   }
 
@@ -232,6 +238,7 @@ export class AuthService extends BaseApiService {
   saveAuthData(token: string, user: UserProfile): void {
     // Only store user in memory, not tokens
     this._currentUserCache = user;
+    this.userProfileService.setUserProfile(user);
     try { this.authState.next(true); } catch {}
   }
 
@@ -239,6 +246,7 @@ export class AuthService extends BaseApiService {
   saveAuthDataWithRefresh(token: string, user: UserProfile, refreshToken?: string): void {
     // Only store user in memory, not tokens
     this._currentUserCache = user;
+    this.userProfileService.setUserProfile(user);
     try { this.authState.next(true); } catch {}
   }
 
@@ -248,7 +256,13 @@ export class AuthService extends BaseApiService {
    */
   markAuthenticated(user: UserProfile | null): void {
     this._currentUserCache = user;
-    try { this.authState.next(true); } catch {}
+    if (user) {
+      this.userProfileService.setUserProfile(user);
+      try { this.authState.next(true); } catch {}
+      return;
+    }
+    this.userProfileService.clearUserProfile();
+    try { this.authState.next(false); } catch {}
   }
 
   /** Get stored refresh token */
@@ -263,6 +277,7 @@ export class AuthService extends BaseApiService {
   clearAuthData(): void {
     // Only clear user from memory
     this._currentUserCache = null;
+    this.userProfileService.clearUserProfile();
     try { this.authState.next(false); } catch {}
   }
 
