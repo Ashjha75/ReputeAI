@@ -7,13 +7,14 @@
   border-radius: 2.2rem;
 }
 
-/* Scroll reveal: start slightly lower and faded, animate in when `.in-view` is toggled */
-.feature-highlight-card {
+/* Scroll reveal: apply reveal using host class so the inner mat-card isn't permanently hidden
+   HostBinding toggles `.in-view` on the component host, so target that host here. */
+:host(:not(.in-view)) .feature-highlight-card {
   opacity: 0;
   transform: translateY(18px) scale(0.998);
   transition: transform 0.7s cubic-bezier(.2,.9,.2,1), opacity 0.55s ease;
 }
-.feature-highlight-card.in-view {
+:host(.in-view) .feature-highlight-card {
   opacity: 1;
   transform: none;
 }
