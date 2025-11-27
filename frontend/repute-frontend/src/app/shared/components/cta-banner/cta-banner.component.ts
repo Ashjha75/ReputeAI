@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, AfterViewInit, ElementRef, OnDestroy, HostBinding } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,7 +10,32 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './cta-banner.component.html',
   styleUrl: './cta-banner.component.css'
 })
-export class CtaBannerComponent {
+export class CtaBannerComponent implements AfterViewInit, OnDestroy {
   @Input() icon: string = 'local_offer';
   @Input() iconColor: string = '#1967d2';
+  @Input() variant: 'primary' | 'secondary' | 'accent' = 'primary';
+  
+  @HostBinding('class.in-view') inView = false;
+  
+  private io?: IntersectionObserver;
+
+  constructor(private host: ElementRef<HTMLElement>) {}
+
+  ngAfterViewInit(): void {
+    if (typeof window === 'undefined' || !this.host?.nativeElement) return;
+
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+          this.inView = true;
+        }
+      });
+    }, { threshold: [0, 0.2, 0.5] });
+
+    this.io.observe(this.host.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    this.io?.disconnect();
+  }
 }

@@ -1,55 +1,343 @@
+/* Host reveal animation */
+:host {
+  display: block;
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(.2,.9,.2,1), transform 0.8s cubic-bezier(.2,.9,.2,1);
+}
+
+:host(.in-view) {
+  opacity: 1;
+  transform: none;
+}
+
+/* Material Design 3 elevated container */
 .cta-banner {
+  position: relative;
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  background: #f8f9fa;
-  border-radius: 2.2rem;
-  padding: 3.2rem 1.5rem 2.8rem 1.5rem;
+  border-radius: clamp(1.8rem, 3vw, 2.8rem);
+  padding: clamp(3rem, 5vw, 4.5rem) clamp(2rem, 4vw, 3rem);
+  overflow: hidden;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    0 8px 24px rgba(15, 23, 42, 0.08),
+    0 16px 48px rgba(15, 23, 42, 0.06);
+  transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.cta-banner:hover {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 12px 32px rgba(15, 23, 42, 0.12),
+    0 24px 64px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Animated gradient background */
+.cta-banner-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 50%, #fef3f8 100%);
+  z-index: 0;
+}
+
+.cta-banner[data-variant="secondary"] .cta-banner-bg {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #fefce8 100%);
+}
+
+.cta-banner[data-variant="accent"] .cta-banner-bg {
+  background: linear-gradient(135deg, #faf5ff 0%, #ffffff 50%, #fef3f8 100%);
+}
+
+/* Animated gradient orbs */
+.cta-banner-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  animation: floatOrb 12s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  top: -160px;
+  left: -80px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 70%);
+  bottom: -140px;
+  right: -60px;
+  animation-delay: 2s;
+  animation-duration: 14s;
+}
+
+.orb-3 {
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+  top: 50%;
+  right: 10%;
+  animation-delay: 4s;
+  animation-duration: 16s;
+}
+
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -25px) scale(1.08);
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
+}
+
+/* Subtle mesh overlay */
+.cta-banner-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(15, 23, 42, 0.015) 2px, rgba(15, 23, 42, 0.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(15, 23, 42, 0.015) 2px, rgba(15, 23, 42, 0.015) 4px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Content layer */
+.cta-banner-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 16px 0 rgba(24, 52, 81, 0.04);
-  gap: 1.6rem;
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+/* Icon with animated ring */
+.cta-banner-icon-wrapper {
+  position: relative;
+  margin-bottom: 0.5rem;
+  animation: iconReveal 0.8s cubic-bezier(.2,.9,.2,1) 0.3s backwards;
+}
+
+@keyframes iconReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cta-banner-icon-ring {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+  animation: pulseRing 3s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.3;
+  }
 }
 
 .cta-banner-icon {
-  margin-bottom: 0.7rem;
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 
+    0 4px 12px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
 }
 
+.cta-banner:hover .cta-banner-icon {
+  transform: scale(1.08) rotate(5deg);
+}
+
+.cta-banner-icon mat-icon {
+  font-size: 2.8rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  line-height: 2.8rem;
+}
+
+/* Message with reveal animation */
 .cta-banner-message {
-  font-size: 2.1rem;
-  font-weight: 500;
-  color: #181c23;
+  font-size: clamp(1.5rem, 3.5vw, 2.3rem);
+  font-weight: 600;
+  color: #0f172a;
   text-align: center;
-  margin-bottom: 1.2rem;
-  line-height: 1.18;
-  letter-spacing: -0.01em;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 680px;
+  animation: messageReveal 0.8s cubic-bezier(.2,.9,.2,1) 0.5s backwards;
 }
 
+@keyframes messageReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Material Design 3 elevated button */
 .cta-banner-btn {
-  font-size: 1.08rem;
-  font-weight: 500;
-  border-radius: 2rem !important;
-  padding: 0.7rem 2.2rem;
-  border: 2px solid #181c23 !important;
-  color: #181c23 !important;
-  background: #fff !important;
-  box-shadow: 0 2px 8px 0 rgba(24, 52, 81, 0.08);
-  transition: box-shadow 0.18s, background 0.18s, color 0.18s;
+  position: relative;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  border-radius: 999px !important;
+  padding: 0.85rem 2rem 0.85rem 2.2rem !important;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 
+    0 1px 3px rgba(15, 23, 42, 0.12),
+    0 4px 12px rgba(15, 23, 42, 0.12),
+    0 8px 24px rgba(15, 23, 42, 0.08);
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+  animation: btnReveal 0.8s cubic-bezier(.2,.9,.2,1) 0.7s backwards;
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@keyframes btnReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cta-banner-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .cta-banner-btn:hover {
-  background: #f1f3f7 !important;
-  color: #10182f !important;
-  box-shadow: 0 8px 24px 0 rgba(24, 52, 81, 0.10);
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 
+    0 2px 4px rgba(15, 23, 42, 0.12),
+    0 8px 20px rgba(15, 23, 42, 0.14),
+    0 16px 40px rgba(15, 23, 42, 0.1) !important;
 }
 
+.cta-banner-btn:hover::before {
+  opacity: 1;
+}
+
+.cta-banner-btn:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+.cta-banner-btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-banner-btn-icon {
+  font-size: 1.2rem !important;
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.cta-banner-btn:hover .cta-banner-btn-icon {
+  transform: translateX(4px);
+}
+
+/* Responsive adjustments */
 @media (max-width: 900px) {
-  .cta-banner-message {
-    font-size: 1.45rem;
-  }
   .cta-banner {
-    padding: 2.2rem 0.7rem 2rem 0.7rem;
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .cta-banner-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .cta-banner-icon mat-icon {
+    font-size: 2.2rem;
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  
+  .orb-1, .orb-2, .orb-3 {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cta-banner {
+    padding: 2rem 1.2rem;
+  }
+  
+  .cta-banner-message {
+    font-size: 1.35rem;
+  }
+  
+  .cta-banner-btn {
+    font-size: 0.95rem !important;
+    padding: 0.75rem 1.6rem 0.75rem 1.8rem !important;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  :host,
+  .cta-banner-icon-wrapper,
+  .cta-banner-message,
+  .cta-banner-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .cta-banner-gradient-orb {
+    animation: none !important;
+  }
+  
+  .cta-banner-icon-ring {
+    animation: none !important;
   }
 }
