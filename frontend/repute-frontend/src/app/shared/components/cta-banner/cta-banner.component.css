@@ -1,14 +1,14 @@
-/* Host reveal animation */
+/* Host reveal animation - smoother and more elegant */
 :host {
   display: block;
   opacity: 0;
-  transform: translateY(24px) scale(0.98);
-  transition: opacity 0.8s cubic-bezier(.2,.9,.2,1), transform 0.8s cubic-bezier(.2,.9,.2,1);
+  transform: translateY(40px) scale(0.96);
+  transition: opacity 1s cubic-bezier(.16,.84,.44,1), transform 1s cubic-bezier(.16,.84,.44,1);
 }
 
 :host(.in-view) {
   opacity: 1;
-  transform: none;
+  transform: translateY(0) scale(1);
 }
 
 /* Material Design 3 elevated container */
@@ -35,20 +35,21 @@
   transform: translateY(-2px);
 }
 
-/* Animated gradient background */
+/* Animated gradient background - Material Design 3 colors */
 .cta-banner-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 50%, #fef3f8 100%);
+  background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 45%, #f3e5f5 100%);
   z-index: 0;
+  transition: background 0.6s cubic-bezier(.4,0,.2,1);
 }
 
 .cta-banner[data-variant="secondary"] .cta-banner-bg {
-  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 50%, #fefce8 100%);
+  background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 45%, #fff9c4 100%);
 }
 
 .cta-banner[data-variant="accent"] .cta-banner-bg {
-  background: linear-gradient(135deg, #faf5ff 0%, #ffffff 50%, #fef3f8 100%);
+  background: linear-gradient(135deg, #f3e5f5 0%, #ffffff 45%, #fce4ec 100%);
 }
 
 /* Animated gradient orbs */
@@ -64,7 +65,7 @@
 .orb-1 {
   width: 320px;
   height: 320px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(25, 118, 210, 0.28) 0%, transparent 70%);
   top: -160px;
   left: -80px;
   animation-delay: 0s;
@@ -73,7 +74,7 @@
 .orb-2 {
   width: 280px;
   height: 280px;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(156, 39, 176, 0.22) 0%, transparent 70%);
   bottom: -140px;
   right: -60px;
   animation-delay: 2s;
@@ -83,7 +84,7 @@
 .orb-3 {
   width: 240px;
   height: 240px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 150, 136, 0.18) 0%, transparent 70%);
   top: 50%;
   right: 10%;
   animation-delay: 4s;
@@ -323,12 +324,99 @@
   }
 }
 
+/* Carousel content transition */
+.cta-banner-content.transitioning {
+  opacity: 0.4;
+  transform: scale(0.98);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.cta-banner-content:not(.transitioning) {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Carousel navigation */
+.cta-banner-carousel-nav {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.cta-banner-nav-btn {
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+.cta-banner-nav-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+  transform: scale(1.05);
+}
+
+.cta-banner-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cta-banner-nav-btn mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+/* Carousel dots */
+.cta-banner-dots {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.cta-banner-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(15, 23, 42, 0.2);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  padding: 0;
+}
+
+.cta-banner-dot:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.4);
+  transform: scale(1.2);
+}
+
+.cta-banner-dot.active {
+  width: 24px;
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(15, 23, 42, 0.85);
+  border-radius: 5px;
+}
+
+.cta-banner-dot:disabled {
+  cursor: not-allowed;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   :host,
   .cta-banner-icon-wrapper,
   .cta-banner-message,
-  .cta-banner-btn {
+  .cta-banner-btn,
+  .cta-banner-content {
     animation: none !important;
     transition: none !important;
   }

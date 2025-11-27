@@ -3,6 +3,15 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+interface CtaCard {
+  icon: string;
+  iconColor: string;
+  variant: 'primary' | 'secondary' | 'accent';
+  message: string;
+  action: string;
+  actionIcon?: string;
+}
+
 @Component({
   selector: 'app-cta-banner',
   standalone: true,
@@ -18,6 +27,43 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
   @HostBinding('class.in-view') inView = false;
   
   private io?: IntersectionObserver;
+  private autoPlayTimer?: any;
+
+  // Carousel state
+  currentIndex = 0;
+  isTransitioning = false;
+
+  // Pre-defined carousel cards
+  cards: CtaCard[] = [
+    {
+      icon: 'notifications_active',
+      iconColor: '#1976d2',
+      variant: 'primary',
+      message: 'Get real-time alerts when risks are detected. Stay ahead with instant AI-powered notifications.',
+      action: 'Enable Alerts',
+      actionIcon: 'notifications'
+    },
+    {
+      icon: 'insights',
+      iconColor: '#7c3aed',
+      variant: 'accent',
+      message: 'Generate comprehensive reports on your digital reputation. Export insights in seconds.',
+      action: 'View Reports',
+      actionIcon: 'assessment'
+    },
+    {
+      icon: 'security',
+      iconColor: '#059669',
+      variant: 'secondary',
+      message: 'Connect all your platforms securely. Monitor your entire digital footprint in one place.',
+      action: 'Connect Now',
+      actionIcon: 'link'
+    }
+  ];
+
+  get currentCard(): CtaCard {
+    return this.cards[this.currentIndex];
+  }
 
   constructor(private host: ElementRef<HTMLElement>) {}
 
@@ -26,16 +72,65 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
 
     this.io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.15) {
           this.inView = true;
+          this.startAutoPlay();
+        } else {
+          this.stopAutoPlay();
         }
       });
-    }, { threshold: [0, 0.2, 0.5] });
+    }, { threshold: [0, 0.15, 0.3, 0.5] });
 
     this.io.observe(this.host.nativeElement);
   }
 
   ngOnDestroy(): void {
     this.io?.disconnect();
+    this.stopAutoPlay();
+  }
+
+  nextCard(): void {
+    if (this.isTransitioning) return;
+    this.isTransitioning = true;
+    this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+    setTimeout(() => this.isTransitioning = false, 600);
+    this.resetAutoPlay();
+  }
+
+  prevCard(): void {
+    if (this.isTransitioning) return;
+    this.isTransitioning = true;
+    this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
+    setTimeout(() => this.isTransitioning = false, 600);
+    this.resetAutoPlay();
+  }
+
+  goToCard(index: number): void {
+    if (this.isTransitioning || index === this.currentIndex) return;
+    this.isTransitioning = true;
+    this.currentIndex = index;
+    setTimeout(() => this.isTransitioning = false, 600);
+    this.resetAutoPlay();
+  }
+
+  private startAutoPlay(): void {
+    this.stopAutoPlay();
+    this.autoPlayTimer = setInterval(() => {
+      this.nextCard();
+    }, 5000);
+  }
+
+  private stopAutoPlay(): void {
+    if (this.autoPlayTimer) {
+      clearInterval(this.autoPlayTimer);
+      this.autoPlayTimer = undefined;
+    }
+  }
+
+  private resetAutoPlay(): void {
+    this.stopAutoPlay();
+    if (this.inView) {
+      this.startAutoPlay();
+    }
   }
 }
