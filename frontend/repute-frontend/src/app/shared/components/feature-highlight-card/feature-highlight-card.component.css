@@ -97,7 +97,6 @@
 }
 
 .feature-highlight-title {
-  font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
   margin: 0 0 0.3rem 0;
@@ -151,9 +150,7 @@
     min-height: 340px;
     max-height: 420px;
   }
-  .feature-highlight-title {
-    font-size: 1.08rem;
-  }
+  
   .feature-highlight-media-vertical img {
     max-width: 100%;
     border-radius: 0.8rem;
@@ -196,7 +193,6 @@
 }
 
 .feature-highlight-title {
-  font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
   margin: 0 0 0.3rem 0;
@@ -341,9 +337,7 @@
   :host-context(.feature-highlights-grid) {
     grid-template-columns: 1fr !important;
   }
-  .feature-highlight-title {
-    font-size: 1.08rem;
-  }
+
   .feature-highlight-media-vertical img {
     max-width: 100%;
     border-radius: 0.8rem;
@@ -534,7 +528,6 @@
 
 .feature-highlight-title {
   margin: 0;
-  font-size: clamp(1.65rem, 3.2vw, 2.3rem);
   line-height: 1.2;
   color: #0f172a;
   font-weight: 700;
@@ -666,11 +659,61 @@
     padding: 1.4rem 1.2rem;
   }
 
-  .feature-highlight-title {
-    font-size: 1.45rem;
-  }
 
   .feature-highlight-description {
     font-size: 1rem;
+  }
+}
+
+/* Layout / visibility overrides to ensure consistent card heights and full title visibility */
+:host {
+  display: block;
+  height: 100%;
+}
+
+:host(.feature-card-stretch), :host-context(.feature-highlights-grid) > * {
+  align-self: stretch;
+}
+
+:host .feature-highlight-card {
+  /* Force each mat-card to fill the host so grid items become equal height */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Provide a reasonable minimum so short content doesn't shrink cards too small */
+  min-height: 460px;
+}
+
+/* Ensure the copy area expands so cards line up visually */
+:host .feature-highlight-copy-vertical {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Keep actions pinned to the bottom of the card */
+:host .feature-highlight-actions {
+  margin-top: auto;
+}
+
+/* Always show full headings: allow wrapping and visible overflow */
+:host .feature-highlight-title {
+  overflow: visible !important;
+  text-overflow: unset !important;
+  white-space: normal !important;
+  display: block;
+  line-height: 1.18;
+}
+
+/* Let description grow and wrap cleanly */
+:host .feature-highlight-description {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Slightly increase title size on small screens if needed while keeping full visibility */
+@media (max-width: 600px) {
+  :host .feature-highlight-title {
+    font-size: 1.08rem;
   }
 }
