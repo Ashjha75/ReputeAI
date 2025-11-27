@@ -1,16 +1,16 @@
 .feature-highlight-card {
   background: linear-gradient(180deg, #fcfdff 80%, #f6f8fb 100%);
   border: 1.5px solid #e6eaf2;
-  box-shadow: 0 6px 32px 0 rgba(24, 52, 81, 0.10), 0 1.5px 4px 0 rgba(24, 52, 81, 0.04);
+  box-shadow: 0 12px 32px 0 rgba(24, 52, 81, 0.08);
   transition: box-shadow 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1), border-color 0.22s;
   margin: 1.6rem;
   border-radius: 2.2rem;
 }
 
 .feature-highlight-card:hover {
-  box-shadow: 0 16px 40px 0 rgba(24, 52, 81, 0.16), 0 2px 8px 0 rgba(24, 52, 81, 0.08);
+  box-shadow: 0 12px 36px 0 rgba(24, 52, 81, 0.12);
   border-color: #d0e2fa;
-  transform: translateY(-4px) scale(1.025);
+  transform: translateY(-4px);
 }
 /* Uniform card sizing and structure */
 .feature-highlight-card {
@@ -55,8 +55,9 @@
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 1.2rem;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10);
   margin-bottom: 0.5rem;
+  animation: featureMediaZoom 16s ease-in-out infinite;
+  transform-origin: center;
 }
 
 .feature-highlight-copy-vertical {
@@ -155,8 +156,9 @@
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 1.2rem;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10);
   margin-bottom: 0.5rem;
+  animation: featureMediaZoom 16s ease-in-out infinite;
+  transform-origin: center;
 }
 
 .feature-highlight-copy-vertical {
@@ -366,6 +368,19 @@
   --accent: rgba(52, 211, 153, 0.26);
   --accent-light: rgba(52, 211, 153, 0.12);
   background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 60%);
+}
+
+@keyframes featureMediaZoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.04);
+  }
+  60% {
+    transform: scale(0.98);
+  }
 }
 
 .feature-highlight-card.accent-amber {
