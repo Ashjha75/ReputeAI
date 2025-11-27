@@ -106,19 +106,114 @@
 .pixel-drop-logo-smile {
   position: relative;
 }
-.pixel-drop-logo-smiley {
+/* Headline letters for staggered reveal */
+.pixel-drop-headline {
+  display: inline-flex;
+  gap: 0.12ch;
+  align-items: center;
+  justify-content: center;
+}
+
+.pixel-drop-headline .char {
   display: inline-block;
-  width: 65px;
-  height: 65px;
-  background: #fff200;
-  border-radius: 50%;
+  opacity: 0;
+  transform: translateY(18px) scale(0.95);
+  will-change: transform, opacity;
+}
+
+/* Smiley container + badge */
+.pixel-drop-logo-smiley {
   position: absolute;
   left: 110px;
   top: 52px;
-  box-shadow: 0 2px 8px 0 rgba(24, 52, 81, 0.10);
-  background-image: url('data:image/svg+xml;utf8,<svg width="65" height="65" xmlns="http://www.w3.org/2000/svg"><circle cx="32.5" cy="32.5" r="32.5" fill="%23fff200"/><ellipse cx="23" cy="28" rx="4" ry="6" fill="black"/><ellipse cx="41" cy="28" rx="4" ry="6" fill="black"/><path d="M23 40 Q32.5 50 41 40" stroke="black" stroke-width="3" fill="none"/></svg>');
-  background-size: cover;
+  width: 72px;
+  height: 72px;
+  z-index: 2;
 }
+
+.pixel-drop-logo-smiley .smiley-face {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, #fffb3a 0%, #fff200 40%);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.12), inset 0 2px 6px rgba(255,255,255,0.6);
+  position: relative;
+}
+
+.pixel-drop-logo-smiley .smiley-face::before,
+.pixel-drop-logo-smiley .smiley-face::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  background: #111;
+  border-radius: 8px;
+  top: 28%;
+}
+.pixel-drop-logo-smiley .smiley-face::before { left: 28%; }
+.pixel-drop-logo-smiley .smiley-face::after { right: 28%; }
+.pixel-drop-logo-smiley .smiley-face::after { transform: translateY(0); }
+
+.pixel-drop-logo-smiley .smiley-face .mouth {
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  width: 36px;
+  height: 18px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  transform: translateX(-50%);
+  border-bottom: 4px solid #111;
+}
+
+.pixel-drop-logo-smiley .smiley-badge {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(15,23,42,0.18);
+  color: #fff;
+  transform: scale(0);
+}
+
+/* Float and badge pop animations */
+@keyframes smileyFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes badgePop {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* Only run animations when component is in view */
+:host(.in-view) .pixel-drop-headline .char:nth-child(1) { animation: popIn 420ms cubic-bezier(.2,.9,.2,1) 0.08s both; }
+:host(.in-view) .pixel-drop-headline .char:nth-child(2) { animation: popIn 420ms cubic-bezier(.2,.9,.2,1) 0.14s both; }
+:host(.in-view) .pixel-drop-headline .char:nth-child(3) { animation: popIn 420ms cubic-bezier(.2,.9,.2,1) 0.20s both; }
+:host(.in-view) .pixel-drop-headline .char:nth-child(4) { animation: popIn 420ms cubic-bezier(.2,.9,.2,1) 0.26s both; }
+:host(.in-view) .pixel-drop-headline .char:nth-child(5) { animation: popIn 420ms cubic-bezier(.2,.9,.2,1) 0.32s both; }
+:host(.in-view) .pixel-drop-headline .char:nth-child(6) { animation: popIn 420ms cubic-bezier(.2,.9,.2,1) 0.38s both; }
+:host(.in-view) .pixel-drop-headline .char:nth-child(7) { animation: popIn 420ms cubic-bezier(.2,.9,.2,1) 0.44s both; }
+:host(.in-view) .pixel-drop-headline .char:nth-child(8) { animation: popIn 420ms cubic-bezier(.2,.9,.2,1) 0.50s both; }
+
+@keyframes popIn {
+  0% { opacity: 0; transform: translateY(18px) scale(0.95); }
+  60% { opacity: 1; transform: translateY(-6px) scale(1.06); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+:host(.in-view) .pixel-drop-logo-smiley .smiley-face { animation: smileyFloat 3.6s ease-in-out infinite; }
+:host(.in-view) .pixel-drop-logo-smiley .smiley-badge { animation: badgePop 520ms cubic-bezier(.2,.9,.2,1) 0.6s both; }
+
 
 @media (max-width: 1100px) {
   .pixel-drop-promo-container {
