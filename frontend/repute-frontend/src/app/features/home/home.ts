@@ -15,6 +15,7 @@ import {
 } from '../../shared/components/feature-highlight-card/feature-highlight-card.component';
 import { CtaBannerComponent } from '../../shared/components/cta-banner/cta-banner.component';
 import { PixelDropPromoComponent } from '../../shared/components/pixel-drop-promo/pixel-drop-promo.component';
+import { assetPath } from '../../shared/assets/images';
 
 @Component({
     selector: 'app-home',
@@ -48,7 +49,8 @@ export class Home implements OnInit {
       ],
       media: {
         alt: 'Realtime notification mockup',
-        showPlayButton: true
+        showPlayButton: true,
+        src: assetPath('banner-notification.png')
       },
       accent: 'aqua'
     },
@@ -63,7 +65,8 @@ export class Home implements OnInit {
         { label: 'Try now', icon: 'arrow_forward', url: 'https://repute.ai/insights-studio', variant: 'primary' }
       ],
       media: {
-        alt: 'Reporting storyboard preview'
+        alt: 'Reporting storyboard preview',
+        src: assetPath('banner-report.png')
       },
       accent: 'violet'
     },
@@ -77,7 +80,8 @@ export class Home implements OnInit {
         { label: 'See live demo', icon: 'open_in_new', url: 'https://repute.ai/coverage-map-demo', variant: 'outline' }
       ],
       media: {
-        showPlayButton: true
+        showPlayButton: true,
+        src: assetPath('banner-map.png')
       },
       accent: 'emerald'
     }
