@@ -49,15 +49,23 @@
   margin-bottom: 0.5rem;
 }
 
-.feature-highlight-media-vertical img {
+.media-frame {
   width: 100%;
   max-width: 320px;
   aspect-ratio: 16/9;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 1.2rem;
-  margin-bottom: 0.5rem;
-  animation: featureMediaZoom 16s ease-in-out infinite;
-  transform-origin: center;
+  position: relative;
+}
+
+.media-frame img {
+  display: block;
+  width: 110%; /* slightly larger so panning doesn't show edges */
+  height: auto;
+  object-fit: cover;
+  transform-origin: center center;
+  will-change: transform;
+  animation: featureMediaZoomPan 18s cubic-bezier(.2,.6,.2,.8) infinite;
 }
 
 .feature-highlight-copy-vertical {
@@ -380,6 +388,32 @@
   }
   60% {
     transform: scale(0.98);
+  }
+}
+
+@keyframes featureMediaZoomPan {
+  0% {
+    transform: translate3d(0,0,0) scale(1);
+  }
+  25% {
+    transform: translate3d(-3%, -1.5%, 0) scale(1.03);
+  }
+  50% {
+    transform: translate3d(2%, -2%, 0) scale(1.02);
+  }
+  75% {
+    transform: translate3d(-1%, 1.5%, 0) scale(1.01);
+  }
+  100% {
+    transform: translate3d(0,0,0) scale(1);
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .media-frame img {
+    animation: none !important;
+    transform: none !important;
   }
 }
 

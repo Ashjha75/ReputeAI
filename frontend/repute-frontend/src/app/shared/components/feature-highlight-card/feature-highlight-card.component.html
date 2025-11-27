@@ -1,12 +1,14 @@
 <mat-card class="feature-highlight-card mat-elevation-z4" [ngClass]="'accent-' + resolvedAccent">
   <div class="feature-highlight-inner-vertical">
     <div class="feature-highlight-media-vertical" *ngIf="card.media">
-      <img
-        *ngIf="mediaSrc"
-        [src]="mediaSrc"
-        [alt]="card.media.alt || card.title"
-        loading="lazy"
-      />
+      <div class="media-frame" *ngIf="mediaSrc">
+        <img
+          [src]="mediaSrc"
+          [alt]="card.media.alt || card.title"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <!-- <button
         *ngIf="card.media?.showPlayButton"
         type="button"
