@@ -80,9 +80,6 @@ export class AuthService extends BaseApiService {
   constructor(http: HttpClient) {
     super(http);
     this.authState = new BehaviorSubject<boolean>(this.isAuthenticated());
-    if (!this.isAuthenticated()) {
-      this.userProfileService.clearUserProfile();
-    }
   }
 
   // inject router & notification lazily
@@ -201,17 +198,15 @@ export class AuthService extends BaseApiService {
    * Check if user is authenticated
    */
   isAuthenticated(): boolean {
-    const token = this.getToken();
-    if (!token) return false;
-
-    // Check token expiration
-    try {
-      const payload = this.decodeToken(token);
-      const currentTime = Math.floor(Date.now() / 1000);
-      return payload.exp > currentTime;
-    } catch {
-      return false;
+    if (this._currentUserCache) {
+      return true;
     }
+    const storedProfile = this.userProfileService.getUserProfile();
+    if (storedProfile) {
+      this._currentUserCache = storedProfile;
+      return true;
+    }
+    return false;
   }
 
   /**
@@ -287,7 +282,7 @@ export class AuthService extends BaseApiService {
    * On success: save new auth data and show success notification.
    * On failure: clear auth and redirect to login.
    */
-  performRefresh(): Observable<any> {
+  performRefresh(showNotification: boolean = true): Observable<any> {
     // No need to send refresh token in body, backend reads it from cookie
     const req$ = this.post(this.AUTH_ENDPOINTS.REFRESH, {}, false, false);
     req$.subscribe({
@@ -298,16 +293,22 @@ export class AuthService extends BaseApiService {
           const user = original?.user ?? original?.data?.user ?? null;
           if (token) {
             this.saveAuthData(token, user);
-            this.notifService.success(original?.message || res?.message || 'Session refreshed');
+            if (showNotification) {
+              this.notifService.success(original?.message || res?.message || 'Session refreshed');
+            }
             return;
           }
         }
-        this.notifService.error(res?.message || 'Session refresh failed. Please login again.');
+        if (showNotification) {
+          this.notifService.error(res?.message || 'Session refresh failed. Please login again.');
+        }
         try { this.clearAuthData(); } catch {}
         this.router.navigate(['/auth/login']);
       },
       error: (err) => {
-        this.notifService.error(err?.error?.message || err?.message || 'Session refresh failed. Please login again.');
+        if (showNotification) {
+          this.notifService.error(err?.error?.message || err?.message || 'Session refresh failed. Please login again.');
+        }
         try { this.clearAuthData(); } catch {}
         this.router.navigate(['/auth/login']);
       }
