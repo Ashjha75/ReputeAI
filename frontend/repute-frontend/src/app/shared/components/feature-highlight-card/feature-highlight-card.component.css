@@ -18,7 +18,7 @@
   box-shadow: 0 16px 40px 0 rgba(16, 24, 47, 0.28), 0 2px 8px 0 rgba(16, 24, 47, 0.10);
   transform: translateY(-2px) scale(1.03);
 }
-.feature-highlight-card {
+  box-shadow: none;
   background: linear-gradient(180deg, #fcfdff 80%, #f6f8fb 100%);
   border: 1.5px solid #e6eaf2;
   box-shadow: 0 6px 32px 0 rgba(24, 52, 81, 0.10), 0 1.5px 4px 0 rgba(24, 52, 81, 0.04);
@@ -30,8 +30,7 @@
 .feature-highlight-card:hover {
   box-shadow: 0 16px 40px 0 rgba(24, 52, 81, 0.16), 0 2px 8px 0 rgba(24, 52, 81, 0.08);
   border-color: #d0e2fa;
-  transform: translateY(-4px) scale(1.025);
-}
+  transform: translateY(-1px) scale(1.01);
 /* Uniform card sizing and structure */
 .feature-highlight-card {
   max-width: 370px;
@@ -267,13 +266,13 @@
 .feature-highlight-cta.primary {
   background: #0f172a !important;
   color: #ffffff !important;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+  box-shadow: none;
 }
 
 .feature-highlight-cta.outline {
   background: rgba(255, 255, 255, 0.9) !important;
   color: #0f172a !important;
-  box-shadow: inset 0 0 0 2px rgba(15, 23, 42, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.25);
 }
 
 .feature-highlight-cta .mat-icon {
@@ -282,8 +281,7 @@
 }
 
 .feature-highlight-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
+  transform: translateY(-1px);
 }
 
 .feature-highlight-play {
