@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/server/ReputeAI" />
+    <content url="file://$MODULE_DIR$/server/ReputeAI/.idea" />
+    <content url="file://$MODULE_DIR$/server/ReputeAI/.mvn" />
+    <content url="file://$MODULE_DIR$/server/ReputeAI/src" />
+    <content url="file://$MODULE_DIR$/server/reputeai" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
