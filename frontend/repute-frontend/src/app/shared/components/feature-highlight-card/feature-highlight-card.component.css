@@ -390,6 +390,48 @@
     transform: scale(0.98);
   }
 }
+/* stronger, video-like pan+zoom used by media frames */
+@keyframes featureMediaZoomPan {
+  0% {
+    transform: translate3d(0,0,0) scale(1);
+  }
+  20% {
+    transform: translate3d(-4%, -2%, 0) scale(1.06);
+  }
+  40% {
+    transform: translate3d(3%, -1.5%, 0) scale(1.03);
+  }
+  60% {
+    transform: translate3d(-2%, 2%, 0) scale(0.98);
+  }
+  80% {
+    transform: translate3d(1%, 1%, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(0,0,0) scale(1);
+  }
+}
+
+/* Apply a stronger, specific rule so all `.media-frame img` instances animate.
+   Use small per-card stagger so motion feels organic. */
+.feature-highlight-card .media-frame img {
+  animation: featureMediaZoomPan 14s cubic-bezier(.2,.6,.2,.8) infinite;
+  animation-fill-mode: both;
+  will-change: transform;
+}
+
+/* Slight stagger so neighboring cards don't move in lockstep */
+.feature-highlights-grid > *:nth-child(1) .media-frame img { animation-delay: 0s; }
+.feature-highlights-grid > *:nth-child(2) .media-frame img { animation-delay: 1.8s; }
+.feature-highlights-grid > *:nth-child(3) .media-frame img { animation-delay: 3.6s; }
+.feature-highlights-grid > *:nth-child(4) .media-frame img { animation-delay: 5.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-highlight-card .media-frame img {
+    animation: none !important;
+    transform: none !important;
+  }
+}
 
 @keyframes featureMediaZoomPan {
   0% {
