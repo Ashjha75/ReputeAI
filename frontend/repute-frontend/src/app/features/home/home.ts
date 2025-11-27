@@ -75,7 +75,7 @@ export class Home implements OnInit {
       description: 'Securely connect Twitter, LinkedIn, GitHub, and more. ReputeAI creates a unified, searchable view of your historical and real-time content, ensuring you have no blind spots.',
       chips: ['Social Media', 'Professional Networks', 'Developer Forums'],
       actions: [
-        { label: 'See Supported Platforms', icon: 'open_in_new', url: '#', variant: 'outline' }
+        { label: 'Supported Platforms', icon: 'open_in_new', url: '#', variant: 'outline' }
       ],
       media: {
         showPlayButton: true,

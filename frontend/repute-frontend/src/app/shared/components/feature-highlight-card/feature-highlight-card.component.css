@@ -30,14 +30,15 @@
   min-width: 320px;
   width: 100%;
   min-height: 480px;
-  max-height: 520px;
+  /* allow cards to grow to fit content so CTAs never get pushed out */
+  max-height: none;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
   box-sizing: border-box;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .feature-highlight-inner-vertical {
@@ -48,7 +49,7 @@
   justify-content: flex-start;
   height: 100%;
   gap: 1.2rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .feature-highlight-media-vertical {
@@ -682,6 +683,8 @@
   flex-direction: column;
   /* Provide a reasonable minimum so short content doesn't shrink cards too small */
   min-height: 460px;
+  /* ensure CTA area is visible inside card: add bottom padding so actions aren't cut off */
+  padding-bottom: 1.4rem;
 }
 
 /* Ensure the copy area expands so cards line up visually */
