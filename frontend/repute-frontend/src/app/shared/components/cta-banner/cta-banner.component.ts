@@ -46,7 +46,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       action: 'Enable Alerts',
       actionIcon: 'notifications',
       backgroundVideo: assetPath('banner-bg-1.mp4'),
-      backgroundPoster: assetPath('banner-notification.png')
+      backgroundPoster: assetPath('banner-bg-1.mp4')
     },
     {
       icon: 'insights',
@@ -56,7 +56,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       action: 'View Reports',
       actionIcon: 'assessment',
       backgroundVideo: assetPath('banner-bg-2.mp4'),
-      backgroundPoster: assetPath('banner-report.png')
+      backgroundPoster: assetPath('banner-bg-2.mp4')
     },
     {
       icon: 'security',
@@ -66,7 +66,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       action: 'Connect Now',
       actionIcon: 'link',
       backgroundVideo: assetPath('banner-bg-3.mp4'),
-      backgroundPoster: assetPath('banner-map.png')
+      backgroundPoster: assetPath('banner-bg-3.mp4')
     }
   ];
 
