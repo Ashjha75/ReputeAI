@@ -3,6 +3,13 @@ header {
   backdrop-filter: blur(10px);
 }
 
+header.rounded-header {
+  border-radius: 0 0 28px 28px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  margin: 0 0.5rem 0 0.5rem;
+  background-clip: padding-box;
+}
+
 /* Dropdown menu animations */
 .dropdown-menu {
   animation: dropdownFadeIn 0.2s ease-out;
