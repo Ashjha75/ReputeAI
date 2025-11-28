@@ -27,7 +27,7 @@
       </div>
       <h3 class="feature-highlight-title">{{ card.title }}</h3>
       <p class="feature-highlight-description">
-        <!-- {{ card.description }} -->
+        {{ card.description }}
         <sup *ngIf="card.footnote">{{ card.footnote }}</sup>
       </p>
       <div class="feature-highlight-chips" *ngIf="card.chips?.length">

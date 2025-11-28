@@ -1,722 +1,170 @@
-.feature-highlight-card {
-  background: linear-gradient(180deg, #fcfdff 80%, #f6f8fb 100%);
-  border: 1.5px solid #e6eaf2;
-  box-shadow: 0 12px 32px 0 rgba(24, 52, 81, 0.08);
-  transition: box-shadow 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1), border-color 0.22s;
-  margin: 1.6rem;
-  border-radius: 2.2rem;
-}
-
-/* Scroll reveal: apply reveal using host class so the inner mat-card isn't permanently hidden
-   HostBinding toggles `.in-view` on the component host, so target that host here. */
-:host(:not(.in-view)) .feature-highlight-card {
-  opacity: 0;
-  transform: translateY(22px) scale(0.998);
-  transition: transform 0.9s cubic-bezier(.2,.9,.2,1), opacity 0.7s ease;
-}
-:host(.in-view) .feature-highlight-card {
-  opacity: 1;
-  transform: none;
-}
-
-.feature-highlight-card:hover {
-  box-shadow: 0 12px 36px 0 rgba(24, 52, 81, 0.12);
-  border-color: #d0e2fa;
-  transform: translateY(-4px);
-}
-/* Uniform card sizing and structure */
-.feature-highlight-card {
-  max-width: 370px;
-  min-width: 320px;
-  width: 100%;
-  min-height: 480px;
-  /* allow cards to grow to fit content so CTAs never get pushed out */
-  max-height: none;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  margin: 0 auto;
-  overflow: visible;
-}
-
-.feature-highlight-inner-vertical {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: flex-start;
-  height: 100%;
-  gap: 1.2rem;
-  overflow: visible;
-}
-
-.feature-highlight-media-vertical {
-  flex-shrink: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 0.5rem;
-}
-
-.media-frame {
-  width: 100%;
-  max-width: 320px;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  border-radius: 1.2rem;
-  position: relative;
-}
-
-.parallax-wrap {
-  width: 100%;
-  height: 100%;
-  will-change: transform;
-  transition: transform 0.12s linear;
-}
-
-.media-frame img {
-  display: block;
-  width: 110%; /* slightly larger so panning doesn't show edges */
-  height: auto;
-  object-fit: cover;
-  transform-origin: center center;
-  will-change: transform;
-  animation: featureMediaZoomPan 14s cubic-bezier(.2,.6,.2,.8) infinite;
-}
-
-.feature-highlight-copy-vertical {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  justify-content: flex-start;
-  overflow: hidden;
-}
-
-.feature-highlight-title {
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0 0 0.3rem 0;
-  line-height: 1.25;
-  white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.feature-highlight-description {
-  color: #334155;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0 0 0.5rem 0;
-  white-space: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 3.2em;
-}
-
-.feature-highlight-meta,
-.feature-highlight-chips,
-.feature-highlight-actions {
-  flex-shrink: 0;
-}
-
-@media (max-width: 1200px) {
-  .feature-highlight-card {
-    max-width: 100%;
-    min-width: 0;
-  }
-}
-
-@media (max-width: 900px) {
-  :host-context(.feature-highlights-grid) {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .feature-highlight-card {
-    min-width: 0;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  :host-context(.feature-highlights-grid) {
-    grid-template-columns: 1fr !important;
-  }
-  .feature-highlight-card {
-    min-width: 0;
-    max-width: 100%;
-    min-height: 340px;
-    max-height: 420px;
-  }
-  
-  .feature-highlight-media-vertical img {
-    max-width: 100%;
-    border-radius: 0.8rem;
-  }
-}
-/* --- Vertical Polished Card Layout --- */
-.feature-highlight-inner-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  height: 100%;
-  gap: 1.2rem;
-}
-
-.feature-highlight-media-vertical {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-.feature-highlight-media-vertical img {
-  width: 100%;
-  max-width: 320px;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-  border-radius: 1.2rem;
-  margin-bottom: 0.5rem;
-  animation: featureMediaZoom 16s ease-in-out infinite;
-  transform-origin: center;
-}
-
-.feature-highlight-copy-vertical {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  flex: 1 1 auto;
-}
-
-.feature-highlight-title {
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0 0 0.3rem 0;
-  line-height: 1.25;
-}
-
-.feature-highlight-description {
-  color: #334155;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0 0 0.5rem 0;
-}
-
-.feature-highlight-meta {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  align-items: center;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #0f172a;
-  margin-bottom: 0.2rem;
-}
-
-.feature-highlight-badge {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 999px;
-  padding: 0.32rem 0.9rem;
-  box-shadow: 0 1px 4px rgba(56,189,248,0.08);
-  font-size: 0.85em;
-}
-
-.feature-highlight-context {
-  text-transform: none;
-  letter-spacing: normal;
-  color: #475569;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.feature-highlight-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin-bottom: 0.2rem;
-}
-
-.feature-highlight-chip {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 999px;
-  padding: 0.22rem 0.7rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #0f172a;
-  box-shadow: 0 1px 2px rgba(56,189,248,0.06);
-}
-
-.feature-highlight-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin-top: 0.3rem;
-}
-
-.feature-highlight-cta {
-  border-radius: 999px;
-  padding: 0.7rem 1.6rem;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: 0;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  font-size: 1rem;
-}
-
-.feature-highlight-cta.primary {
-  background: #0f172a !important;
-  color: #ffffff !important;
-}
-
-.feature-highlight-cta.outline {
-  background: rgba(255, 255, 255, 0.9) !important;
-  color: #0f172a !important;
-}
-
-.feature-highlight-cta .mat-icon {
-  font-size: 1.1rem;
-  margin-left: 0.35rem;
-}
-
-.feature-highlight-cta:hover {
-  transform: translateY(-2px);
-}
-
-.feature-highlight-play {
-  position: absolute;
-  bottom: 1.2rem;
-  right: 1.2rem;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: none;
-  background: #0f172a;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  z-index: 2;
-}
-
-.feature-highlight-play:hover {
-  transform: scale(1.08);
-}
-
-.feature-highlight-play .mat-icon {
-  font-size: 1.3rem;
-}
-
-/* Responsive grid: 3 per row desktop, 2 tablet, 1 mobile */
-:host-context(.feature-highlights-grid) {
-  height: 100%;
-}
-
-@media (max-width: 1200px) {
-  :host-context(.feature-highlights-grid) {
-    min-width: 0;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 900px) {
-  :host-context(.feature-highlights-grid) {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-}
-
-@media (max-width: 600px) {
-  :host-context(.feature-highlights-grid) {
-    grid-template-columns: 1fr !important;
-  }
-
-  .feature-highlight-media-vertical img {
-    max-width: 100%;
-    border-radius: 0.8rem;
-  }
-}
-.feature-highlight-card {
-  --accent: rgba(56, 189, 248, 0.24);
-  --accent-light: rgba(56, 189, 248, 0.10);
-  border-radius: clamp(1.8rem, 4vw, 2.6rem);
-  padding: clamp(2.3rem, 3vw, 3rem);
-  background: linear-gradient(180deg, #f2f8ff 0%, #ffffff 58%);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12), 0 6px 18px rgba(15, 23, 42, 0.06);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s cubic-bezier(.4,0,.2,1);
-}
-
-.feature-highlight-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 90% 0%, var(--accent) 0%, transparent 55%);
-  opacity: 0.75;
-  pointer-events: none;
-}
-
-.feature-highlight-card:hover {
-  transform: translateY(-8px) scale(1.015);
-  box-shadow: 0 28px 60px rgba(15, 23, 42, 0.16), 0 10px 30px rgba(15, 23, 42, 0.08);
-}
-
-.feature-highlight-card:hover::before {
-  opacity: 0.95;
-}
-
-.feature-highlight-card.accent-aqua {
-  --accent: rgba(56, 189, 248, 0.28);
-  --accent-light: rgba(56, 189, 248, 0.14);
-  background: linear-gradient(180deg, #e7f7ff 0%, #ffffff 60%);
-}
-
-.feature-highlight-card.accent-violet {
-  --accent: rgba(129, 140, 248, 0.28);
-  --accent-light: rgba(129, 140, 248, 0.12);
-  background: linear-gradient(180deg, #f3f1ff 0%, #ffffff 60%);
-}
-
-.feature-highlight-card.accent-emerald {
-  --accent: rgba(52, 211, 153, 0.26);
-  --accent-light: rgba(52, 211, 153, 0.12);
-  background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 60%);
-}
-
-@keyframes featureMediaZoom {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(1.04);
-  }
-  60% {
-    transform: scale(0.98);
-  }
-}
-/* stronger, video-like pan+zoom used by media frames */
-@keyframes featureMediaZoomPan {
-  0% {
-    transform: translate3d(0,0,0) scale(1);
-  }
-  20% {
-    transform: translate3d(-4%, -2%, 0) scale(1.06);
-  }
-  40% {
-    transform: translate3d(3%, -1.5%, 0) scale(1.03);
-  }
-  60% {
-    transform: translate3d(-2%, 2%, 0) scale(0.98);
-  }
-  80% {
-    transform: translate3d(1%, 1%, 0) scale(1.02);
-  }
-  100% {
-    transform: translate3d(0,0,0) scale(1);
-  }
-}
-
-/* Apply a stronger, specific rule so all `.media-frame img` instances animate.
-   Use small per-card stagger so motion feels organic. */
-.feature-highlight-card .media-frame img {
-  animation: featureMediaZoomPan 14s cubic-bezier(.2,.6,.2,.8) infinite;
-  animation-fill-mode: both;
-  will-change: transform;
-}
-
-/* Slight stagger so neighboring cards don't move in lockstep */
-.feature-highlights-grid > *:nth-child(1) .media-frame img { animation-delay: 0s; }
-.feature-highlights-grid > *:nth-child(2) .media-frame img { animation-delay: 1.8s; }
-.feature-highlights-grid > *:nth-child(3) .media-frame img { animation-delay: 3.6s; }
-.feature-highlights-grid > *:nth-child(4) .media-frame img { animation-delay: 5.2s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .feature-highlight-card .media-frame img {
-    animation: none !important;
-    transform: none !important;
-  }
-}
-
-@keyframes featureMediaZoomPan {
-  0% {
-    transform: translate3d(0,0,0) scale(1);
-  }
-  25% {
-    transform: translate3d(-3%, -1.5%, 0) scale(1.03);
-  }
-  50% {
-    transform: translate3d(2%, -2%, 0) scale(1.02);
-  }
-  75% {
-    transform: translate3d(-1%, 1.5%, 0) scale(1.01);
-  }
-  100% {
-    transform: translate3d(0,0,0) scale(1);
-  }
-}
-
-/* Respect user motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .media-frame img {
-    animation: none !important;
-    transform: none !important;
-  }
-}
-
-.feature-highlight-card.accent-amber {
-  --accent: rgba(251, 191, 36, 0.28);
-  --accent-light: rgba(251, 191, 36, 0.16);
-  background: linear-gradient(180deg, #fff7e6 0%, #ffffff 60%);
-}
-
-.feature-highlight-card.accent-neutral {
-  --accent: rgba(148, 163, 184, 0.22);
-  --accent-light: rgba(148, 163, 184, 0.12);
-  background: linear-gradient(180deg, #f5f7fb 0%, #ffffff 58%);
-}
-
-.feature-highlight-inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.6rem, 3vw, 2.4rem);
-  min-height: 100%;
-  z-index: 1;
-}
-
-.feature-highlight-copy {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.8rem, 2.5vw, 1.35rem);
-}
-
-.feature-highlight-meta {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  align-items: center;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #0f172a;
-}
-
-.feature-highlight-badge {
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: 999px;
-  padding: 0.35rem 0.85rem;
-  box-shadow: inset 0 0 0 1px var(--accent-light);
-}
-
-.feature-highlight-context {
-  text-transform: none;
-  letter-spacing: normal;
-  color: #475569;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-
-.feature-highlight-title {
-  margin: 0;
-  line-height: 1.2;
-  color: #0f172a;
-  font-weight: 700;
-}
-
-.feature-highlight-description {
-  margin: 0;
-  color: #334155;
-  font-size: 1.05rem;
-  line-height: 1.7;
-}
-
-.feature-highlight-description sup {
-  font-size: 0.65em;
-  color: rgba(15, 23, 42, 0.6);
-  margin-left: 0.2rem;
-}
-
-.feature-highlight-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-}
-
-.feature-highlight-chip {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 999px;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #0f172a;
-  box-shadow: inset 0 0 0 1px var(--accent-light);
-}
-
-.feature-highlight-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-}
-
-.feature-highlight-cta {
-  border-radius: 999px;
-  padding: 0.7rem 1.6rem;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: 0;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.feature-highlight-cta.primary {
-  background: #0f172a !important;
-  color: #ffffff !important;
-  /* box-shadow: 0 18px 28px rgba(15, 23, 42, 0.28); */
-}
-
-.feature-highlight-cta.outline {
-  background: rgba(255, 255, 255, 0.9) !important;
-  color: #0f172a !important;
-  box-shadow: inset 0 0 0 2px rgba(15, 23, 42, 0.12);
-}
-
-.feature-highlight-cta .mat-icon {
-  font-size: 1.1rem;
-  margin-left: 0.35rem;
-}
-
-.feature-highlight-cta:hover {
-  transform: translateY(-2px);
-  /* box-shadow: 0 20px 36px rgba(15, 23, 42, 0.22); */
-}
-
-.feature-highlight-media {
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  min-height: 140px;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.55);
-  border-radius: 1.6rem;
-}
-
-.feature-highlight-media img {
-  width: min(360px, 88%);
-  border-radius: 1.6rem;
-  box-shadow: 0 28px 48px rgba(15, 23, 42, 0.15);
-}
-
-.feature-highlight-play {
-  position: absolute;
-  bottom: 1.2rem;
-  right: 1.2rem;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: none;
-  background: #0f172a;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.25);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.feature-highlight-play:hover {
-  transform: scale(1.05);
-}
-
-.feature-highlight-play .mat-icon {
-  font-size: 1.6rem;
-}
-
-@media (max-width: 768px) {
-  .feature-highlight-card {
-    padding: 1.75rem 1.5rem;
-  }
-
-  .feature-highlight-media {
-    min-height: 110px;
-  }
-}
-
-@media (max-width: 600px) {
-  .feature-highlight-card {
-    border-radius: 1.6rem;
-    padding: 1.4rem 1.2rem;
-  }
-
-
-  .feature-highlight-description {
-    font-size: 1rem;
-  }
-}
-
-/* Layout / visibility overrides to ensure consistent card heights and full title visibility */
+/* Host reveal animation - smoother and simpler */
 :host {
   display: block;
   height: 100%;
 }
 
-:host(.feature-card-stretch), :host-context(.feature-highlights-grid) > * {
-  align-self: stretch;
+:host(:not(.in-view)) .feature-highlight-card {
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-:host .feature-highlight-card {
-  /* Force each mat-card to fill the host so grid items become equal height */
+:host(.in-view) .feature-highlight-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Card UI - Cleaner and Modern */
+.feature-highlight-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* Provide a reasonable minimum so short content doesn't shrink cards too small */
-  min-height: 460px;
-  /* ensure CTA area is visible inside card: add bottom padding so actions aren't cut off */
-  padding-bottom: 1.4rem;
+  overflow: hidden;
+  position: relative;
 }
 
-/* Ensure the copy area expands so cards line up visually */
-:host .feature-highlight-copy-vertical {
-  flex: 1 1 auto;
+.feature-highlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: #cbd5e1;
+}
+
+/* Inner Layout */
+.feature-highlight-inner-vertical {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  gap: 1.5rem;
 }
 
-/* Keep actions pinned to the bottom of the card */
-:host .feature-highlight-actions {
+/* Media Section */
+.feature-highlight-media-vertical {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f1f5f9;
+  aspect-ratio: 16/9;
+  position: relative;
+}
+
+.media-frame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.parallax-wrap {
+  width: 100%;
+  height: 100%;
+}
+
+.media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Gentle Zoom In/Out Animation */
+  animation: gentleZoom 20s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes gentleZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Content Section */
+.feature-highlight-copy-vertical {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.75rem;
+}
+
+.feature-highlight-meta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.feature-highlight-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+}
+
+.feature-highlight-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.feature-highlight-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Actions */
+.feature-highlight-actions {
   margin-top: auto;
+  display: flex;
+  gap: 0.75rem;
 }
 
-/* Always show full headings: allow wrapping and visible overflow */
-:host .feature-highlight-title {
-  overflow: visible !important;
-  text-overflow: unset !important;
-  white-space: normal !important;
-  display: block;
-  line-height: 1.18;
+.feature-highlight-cta {
+  border-radius: 999px;
+  padding: 0.6rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
 
-/* Let description grow and wrap cleanly */
-:host .feature-highlight-description {
-  max-height: none !important;
-  overflow: visible !important;
+.feature-highlight-cta.primary {
+  background: #0f172a !important;
+  color: white !important;
 }
 
-/* Slightly increase title size on small screens if needed while keeping full visibility */
-@media (max-width: 600px) {
-  :host .feature-highlight-title {
-    font-size: 1.08rem;
+.feature-highlight-cta.primary:hover {
+  background: #1e293b !important;
+}
+
+.feature-highlight-cta.outline {
+  background: transparent !important;
+  border: 1px solid #cbd5e1;
+  color: #0f172a !important;
+}
+
+.feature-highlight-cta.outline:hover {
+  background: #f8fafc !important;
+  border-color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .feature-highlight-card {
+    padding: 1.5rem;
+  }
+  
+  .feature-highlight-title {
+    font-size: 1.25rem;
   }
 }
+

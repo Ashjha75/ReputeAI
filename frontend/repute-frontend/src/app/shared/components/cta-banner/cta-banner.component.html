@@ -1,11 +1,62 @@
-<div class="cta-banner">
-  <div class="cta-banner-icon">
-    <mat-icon [ngStyle]="{ color: iconColor, 'font-size': '2.8rem' }">{{ icon }}</mat-icon>
+<div class="cta-banner" [attr.data-variant]="currentCard.variant">
+  <!-- Animated background layers -->
+  <div class="cta-banner-bg">
+    <div class="cta-banner-gradient-orb orb-1"></div>
+    <div class="cta-banner-gradient-orb orb-2"></div>
+    <div class="cta-banner-gradient-orb orb-3"></div>
+    <div class="cta-banner-mesh"></div>
   </div>
-  <div class="cta-banner-message">
-    <ng-content select="[cta-message]"></ng-content>
+  
+  <!-- Content layer -->
+  <div class="cta-banner-content mb-4" [class.transitioning]="isTransitioning">
+    <div class="cta-banner-icon-wrapper">
+      <div class="cta-banner-icon-ring"></div>
+      <div class="cta-banner-icon">
+        <mat-icon [ngStyle]="{ color: currentCard.iconColor }">{{ currentCard.icon }}</mat-icon>
+      </div>
+    </div>
+    
+    <div class="cta-banner-message">
+      {{ currentCard.message }}
+    </div>
+    
+    <button mat-raised-button class="cta-banner-btn">
+      <span class="cta-banner-btn-text">
+        {{ currentCard.action }}
+      </span>
+      <mat-icon class="cta-banner-btn-icon">{{ currentCard.actionIcon || 'arrow_forward' }}</mat-icon>
+    </button>
   </div>
-  <button mat-raised-button class="cta-banner-btn">
-    <ng-content select="[cta-action]"></ng-content>
-  </button>
+
+  <!-- Carousel Navigation -->
+  <div class="cta-banner-carousel-nav">
+    <button 
+      mat-icon-button 
+      class="cta-banner-nav-btn prev" 
+      (click)="prevCard()"
+      [disabled]="isTransitioning"
+      aria-label="Previous card">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    
+    <div class="cta-banner-dots">
+      <button 
+        *ngFor="let card of cards; let i = index" 
+        class="cta-banner-dot"
+        [class.active]="i === currentIndex"
+        (click)="goToCard(i)"
+        [disabled]="isTransitioning"
+        [attr.aria-label]="'Go to card ' + (i + 1)">
+      </button>
+    </div>
+    
+    <button 
+      mat-icon-button 
+      class="cta-banner-nav-btn next" 
+      (click)="nextCard()"
+      [disabled]="isTransitioning"
+      aria-label="Next card">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
 </div>

@@ -14,7 +14,7 @@ public interface OAuthUserService {
     /**
      * Overloaded method to process OAuth2 login with additional user attributes.
      *
-     * @param oauth2User    the OAuth2 user information
+     * @param oauth2User     the OAuth2 user information
      * @param registrationId the registration ID of the OAuth2 provider
      * @param attributes     additional attributes from the OAuth2 provider
      * @return LoginResponseDto containing the login response information

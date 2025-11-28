@@ -1,74 +1,110 @@
-<section class="feature-grid-section bg-white py-16 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-6xl mx-auto">
+<section class="feature-grid-section bg-white py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
     
     <!-- Section Title -->
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-16 max-w-2xl mx-auto leading-tight">
-      New ways Android lets you do you.
-    </h2>
+    <div class="text-center mb-24 scroll-reveal-header">
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight mb-6">
+        Advanced AI for your reputation.
+      </h2>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+        Harness the power of next-generation machine learning to protect, analyze, and grow your brand's digital presence.
+      </p>
+    </div>
 
     <!-- Feature Items -->
-    <div class="space-y-12 lg:space-y-20">
+    <div class="space-y-24 lg:space-y-32">
       
-      <!-- Feature Item 1 - Image Left, Text Right -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <!-- Feature Item 1 -->
+      <div #featureItem class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center scroll-reveal-item">
         <div class="order-2 lg:order-1">
-          <div class="bg-gray-100 rounded-[32px] aspect-[4/3] overflow-hidden flex items-center justify-center">
-            <!-- Empty container for image -->
-            <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100"></div>
+          <div class="feature-image-container rounded-[2.5rem] aspect-[4/3] overflow-hidden relative shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200"></div>
+            <!-- Placeholder for actual image -->
+            <div class="absolute inset-0 flex items-center justify-center text-slate-300">
+              <svg class="w-24 h-24 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
+            </div>
           </div>
         </div>
         <div class="order-1 lg:order-2 flex flex-col justify-center">
-          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-6 leading-snug">
-            {{ features[0].title }}
-          </h3>
-          <button class="inline-flex items-center px-6 py-3 border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 w-fit">
-            {{ features[0].buttonText }}
-            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Feature Item 2 - Text Left, Image Right -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-        <div class="flex flex-col justify-center">
-          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-6 leading-snug">
-            {{ features[1].title }}
-          </h3>
-          <button class="inline-flex items-center px-6 py-3 border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 w-fit">
-            {{ features[1].buttonText }}
-            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-        </div>
-        <div>
-          <div class="bg-gray-100 rounded-[32px] aspect-[4/3] overflow-hidden flex items-center justify-center">
-            <!-- Empty container for image -->
-            <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100"></div>
+          <div class="feature-content">
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-sm font-semibold tracking-wide mb-4">ANALYTICS</span>
+            <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+              {{ features[0].title }}
+            </h3>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+              {{ features[0].description }}
+            </p>
+            <button class="material-btn-primary">
+              {{ features[0].buttonText }}
+              <span class="material-icon-wrapper">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </span>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Feature Item 3 - Image Left, Text Right -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <!-- Feature Item 2 -->
+      <div #featureItem class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center scroll-reveal-item">
+        <div class="flex flex-col justify-center order-1">
+          <div class="feature-content">
+            <span class="inline-block py-1 px-3 rounded-full bg-purple-50 text-purple-600 text-sm font-semibold tracking-wide mb-4">INTELLIGENCE</span>
+            <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+              {{ features[1].title }}
+            </h3>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+              {{ features[1].description }}
+            </p>
+            <button class="material-btn-primary">
+              {{ features[1].buttonText }}
+              <span class="material-icon-wrapper">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div class="order-2">
+          <div class="feature-image-container rounded-[2.5rem] aspect-[4/3] overflow-hidden relative shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200"></div>
+            <div class="absolute inset-0 flex items-center justify-center text-slate-300">
+              <svg class="w-24 h-24 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Item 3 -->
+      <div #featureItem class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center scroll-reveal-item">
         <div class="order-2 lg:order-1">
-          <div class="bg-gray-100 rounded-[32px] aspect-[4/3] overflow-hidden flex items-center justify-center">
-            <!-- Empty container for image -->
-            <div class="w-full h-full bg-gradient-to-br from-gray-200 to-gray-100"></div>
+          <div class="feature-image-container rounded-[2.5rem] aspect-[4/3] overflow-hidden relative shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200"></div>
+            <div class="absolute inset-0 flex items-center justify-center text-slate-300">
+              <svg class="w-24 h-24 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+            </div>
           </div>
         </div>
         <div class="order-1 lg:order-2 flex flex-col justify-center">
-          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mb-6 leading-snug">
-            {{ features[2].title }}
-          </h3>
-          <button class="inline-flex items-center px-6 py-3 border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300 w-fit">
-            {{ features[2].buttonText }}
-            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
+          <div class="feature-content">
+            <span class="inline-block py-1 px-3 rounded-full bg-emerald-50 text-emerald-600 text-sm font-semibold tracking-wide mb-4">PROTECTION</span>
+            <h3 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+              {{ features[2].title }}
+            </h3>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+              {{ features[2].description }}
+            </p>
+            <button class="material-btn-primary">
+              {{ features[2].buttonText }}
+              <span class="material-icon-wrapper">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 

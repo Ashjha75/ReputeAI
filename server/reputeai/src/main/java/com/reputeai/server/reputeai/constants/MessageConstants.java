@@ -40,6 +40,7 @@ public final class MessageConstants {
     public static final String LOG_EMAIL_VERIFIED = "Email verified for {}";
     public static final String LOG_FORGOT_PASSWORD_REQUEST = "Forgot password request for {}";
     public static final String LOG_RESET_PASSWORD_SUCCESS = "Password reset successful for {}";
+
     // Private constructor to prevent instantiation
     private MessageConstants() {
         throw new AssertionError("Cannot instantiate constants class");

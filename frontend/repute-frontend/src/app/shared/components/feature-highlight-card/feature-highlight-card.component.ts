@@ -75,8 +75,6 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
   }
 
   private io?: IntersectionObserver;
-  private rafId = 0;
-  private revealTimeout = 0 as any;
 
   @HostBinding('class.in-view') hostInView = false;
 
@@ -85,93 +83,18 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     if (typeof window === 'undefined' || !this.host?.nativeElement) return;
 
+    // Simple observer to trigger the CSS reveal animation
     this.io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const visible = entry.isIntersecting && entry.intersectionRatio > 0;
-        if (visible) {
-          // Stagger reveal based on index among sibling cards so they animate one-by-one
-          if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            // Respect reduced motion: reveal immediately
-            this.clearRevealTimeout();
-            this.hostInView = true;
-            this.startParallaxLoop();
-            return;
-          }
-
-          const parent = this.host.nativeElement.parentElement;
-          let index = 0;
-          if (parent) {
-            try {
-              const tag = this.host.nativeElement.tagName.toLowerCase();
-              const siblings = Array.from(parent.querySelectorAll(tag));
-              index = Math.max(0, siblings.indexOf(this.host.nativeElement));
-              if (index < 0) index = 0;
-            } catch (e) {
-              index = 0;
-            }
-          }
-
-          const staggerMs = 320; // milliseconds between card reveals
-          this.clearRevealTimeout();
-          this.revealTimeout = setTimeout(() => {
-            this.hostInView = true;
-            this.startParallaxLoop();
-          }, index * staggerMs + 80);
-        } else {
-          // leaving viewport: cancel any pending reveal and hide immediately
-          this.clearRevealTimeout();
-          this.hostInView = false;
-          this.stopParallaxLoop();
-          // reset transform when offscreen
-          const wrap = this.host.nativeElement.querySelector('.parallax-wrap') as HTMLElement | null;
-          if (wrap) {
-            this.renderer.setStyle(wrap, 'transform', 'translate3d(0,0,0)');
-          }
-        }
+        // Toggle visibility every time it enters/leaves viewport
+        this.hostInView = entry.isIntersecting;
       });
-    }, { threshold: [0, 0.12, 0.4, 0.7] });
+    }, { threshold: 0.15 });
 
     this.io.observe(this.host.nativeElement);
   }
 
-  private startParallaxLoop(): void {
-    if (this.rafId) return; // already running
-
-    const frame = () => {
-      const wrap = this.host.nativeElement.querySelector('.parallax-wrap') as HTMLElement | null;
-      if (wrap) {
-        const rect = this.host.nativeElement.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        const cardCenter = rect.top + rect.height / 2;
-        const distanceFromCenter = cardCenter - (vh / 2);
-        const max = (vh / 2 + rect.height / 2);
-        const ratio = Math.max(-1, Math.min(1, distanceFromCenter / max));
-        const depth = 12; // px translate range
-        const y = -ratio * depth;
-        this.renderer.setStyle(wrap, 'transform', `translate3d(0, ${y}px, 0)`);
-      }
-      this.rafId = requestAnimationFrame(frame);
-    };
-
-    this.rafId = requestAnimationFrame(frame);
-  }
-
-  private stopParallaxLoop(): void {
-    if (this.rafId) {
-      cancelAnimationFrame(this.rafId);
-      this.rafId = 0;
-    }
-  }
-
-  private clearRevealTimeout(): void {
-    if (this.revealTimeout) {
-      clearTimeout(this.revealTimeout);
-      this.revealTimeout = 0;
-    }
-  }
-
   ngOnDestroy(): void {
     this.io?.disconnect();
-    this.stopParallaxLoop();
   }
 }
