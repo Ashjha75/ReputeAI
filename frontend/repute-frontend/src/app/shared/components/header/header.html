@@ -157,12 +157,19 @@
     class="md:hidden bg-white border-t border-gray-100 mobile-menu">
     <div class="px-4 py-4 space-y-4">
       <div *ngFor="let item of navItems" class="space-y-2">
-        <button 
+        <!-- Simple Link -->
+        <a *ngIf="!item.hasDropdown"
+           [routerLink]="item.link"
+           class="block w-full text-gray-900 text-base font-normal py-2">
+           {{ item.label }}
+        </a>
+
+        <!-- Dropdown Trigger -->
+        <button *ngIf="item.hasDropdown"
           (click)="toggleDropdown(item.id)"
           class="w-full flex items-center justify-between text-gray-900 text-base font-normal py-2">
           {{ item.label }}
           <svg 
-            *ngIf="item.hasDropdown"
             class="w-5 h-5 transition-transform duration-200"
             [class.rotate-180]="openDropdown === item.id"
             fill="none" 
@@ -177,7 +184,7 @@
           class="pl-4 space-y-2 mobile-dropdown">
           <a 
             *ngFor="let subItem of item.dropdownItems"
-            [href]="subItem.link"
+            [routerLink]="subItem.link"
             class="block py-2 text-sm text-gray-600 hover:text-gray-900">
             {{ subItem.label }}
           </a>
@@ -185,12 +192,17 @@
       </div>
       
       <!-- Mobile CTA -->
-      <button class="w-full bg-gray-900 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-all duration-300 flex items-center justify-center gap-2 mt-4">
-        Shop phones
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-        </svg>
-      </button>
+      <div *ngIf="!isAuthenticated" class="mt-4 space-y-3">
+        <a routerLink="/auth/login" class="block w-full text-center px-6 py-3 text-base font-medium text-gray-900 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors duration-200">
+          Sign In
+        </a>
+        <a routerLink="/auth/signup" class="w-full text-center bg-gray-900 text-white px-6 py-3 rounded-full text-base font-medium hover:bg-gray-800 transition-all duration-300 flex items-center justify-center gap-2">
+          Get Started
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </header>
