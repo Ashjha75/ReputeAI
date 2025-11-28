@@ -49,3 +49,15 @@
     </div>
   </div>
 </mat-card>
+
+<app-feature-modal
+  [badgeLabel]="card.badge || ''"
+  [badgeContext]="card.context || ''"
+  [title]="card.title"
+  [subtitle]="card.context || ''"
+  [description]="card.description"
+  [mediaSrc]="mediaSrc || null"
+  [mediaAlt]="card.media?.alt || card.title"
+  [showCta]="false"
+  [showMediaControl]="false"
+></app-feature-modal>
