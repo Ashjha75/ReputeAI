@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter, AfterViewInit, ElementRef, OnDe
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { assetPath } from '../../assets/images';
+import IMAGES from '../../assets/images';
 
 interface CtaCard {
   icon: string;
@@ -48,8 +48,8 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       message: 'Get real-time alerts when risks are detected. Stay ahead with instant AI-powered notifications.',
       action: 'Enable Alerts',
       actionIcon: 'notifications',
-      backgroundVideo: assetPath('banner-bg-1.mp4'),
-      backgroundPoster: assetPath('banner-bg-1.png')
+      backgroundVideo: IMAGES.bannerBg5,
+      backgroundPoster: IMAGES.bannerNotification
     },
     {
       icon: 'insights',
@@ -58,8 +58,8 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       message: 'Generate comprehensive reports on your digital reputation. Export insights in seconds.',
       action: 'View Reports',
       actionIcon: 'assessment',
-      backgroundVideo: assetPath('banner-bg-2.mp4'),
-      backgroundPoster: assetPath('banner-bg-2.png')
+      backgroundVideo: IMAGES.bannerBg2,
+      backgroundPoster: IMAGES.bannerReport
     },
     {
       icon: 'security',
@@ -68,8 +68,8 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       message: 'Connect all your platforms securely. Monitor your entire digital footprint in one place.',
       action: 'Connect Now',
       actionIcon: 'link',
-      backgroundVideo: assetPath('banner-bg-3.mp4'),
-      backgroundPoster: assetPath('banner-bg-3.png')
+      backgroundVideo: IMAGES.bannerBg4,
+      backgroundPoster: IMAGES.bannerMap
     }
   ];
 

@@ -28,6 +28,8 @@ export const IMAGES = {
   feature1: imagePath('features-1.png'),
   feature2: imagePath('features-2.png'),
   feature3: imagePath('features-3.png'),
+  heroModalDemo: imagePath('hero-modal-demo.png'),
+  carouselAiScore: imagePath('carousel-ai-score.png'),
   // Videos
   bannerBg1: imagePath('banner-bg-1.mp4'),
   bannerBg2: imagePath('banner-bg-2.mp4'),
