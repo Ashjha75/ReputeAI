@@ -241,26 +241,3 @@
     top: calc(100px + (var(--index) * 15px));
   }
 }
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Icon Styling */
-.step-item mat-icon {
-  transition: transform 0.3s ease;
-}
-
-.step-item:hover mat-icon {
-  transform: scale(1.05);
-}
-
-/* Text Selection */
-::selection {
-  background: #333;
-  color: #fff;
-}
-
-::-moz-selection {
-  background: #333;
-  color: #fff;
-}
