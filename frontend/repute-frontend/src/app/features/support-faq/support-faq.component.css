@@ -11,16 +11,25 @@
 
 .accordion-content.open {
   max-height: 500px;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Accordion item hover effect */
+/* Accordion item styling */
 .accordion-item {
-  transition: background-color 0.2s ease-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.accordion-item:hover {
-  background-color: rgba(249, 250, 251, 0.5);
+.accordion-item.active {
+  border-color: #cbd5e1; /* Slate 300 */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.accordion-item.active .icon-container {
+  background-color: #0f172a; /* Slate 900 */
+}
+
+.accordion-item.active .icon-container svg {
+  color: #ffffff;
 }
 
 /* Arrow rotation animation */
@@ -28,76 +37,52 @@ svg {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Button hover effects */
-button:hover {
-  transition: all 0.2s ease-out;
+/* Material Outline Button */
+.material-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  border: 1px solid #cbd5e1; /* Slate 300 */
+  color: #0f172a; /* Slate 900 */
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-/* Support link buttons */
-a {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.material-btn-outline:hover {
+  background-color: #f8fafc; /* Slate 50 */
+  border-color: #94a3b8; /* Slate 400 */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-a:hover svg {
-  transform: translateX(2px) translateY(-2px);
-  transition: transform 0.3s ease-out;
-}
-
-a:active {
-  transform: scale(0.98);
+.material-btn-outline:active {
+  transform: translateY(0);
 }
 
 /* Smooth text transitions */
 .accordion-content p {
-  animation: fadeInText 0.3s ease-out;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transition-delay: 0.1s;
 }
 
-@keyframes fadeInText {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Focus styles for accessibility */
-button:focus {
-  outline: none;
-  outline-offset: none;
-}
-
-a:focus {
-  outline: none;
-  outline-offset: none;
+.accordion-content.open p {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
-  .support-faq-section h2 {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
   .accordion-content.open {
     max-height: 600px;
   }
 }
-
-/* Underline hover effect */
-.underline {
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-}
-
-/* Border animations */
-.border-b {
-  position: relative;
-}
-
-.border-b::after {
   content: '';
   position: absolute;
   bottom: 0;
