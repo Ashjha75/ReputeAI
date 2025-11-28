@@ -26,7 +26,22 @@ import { assetPath } from '../../assets/images';
             </button>
           </div>
           <div class="feature-media" *ngIf="mediaSrc">
-            <img [src]="mediaSrc" [alt]="mediaAlt" />
+            <ng-container *ngIf="isVideo; else imageTemplate">
+              <video
+                class="feature-modal-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                [attr.poster]="videoPoster"
+              >
+                <source [src]="mediaSrc" type="video/mp4" />
+              </video>
+            </ng-container>
+            <ng-template #imageTemplate>
+              <img [src]="mediaSrc" [alt]="mediaAlt" />
+            </ng-template>
             <button *ngIf="showMediaControl" class="media-control" (click)="toggleMedia()">
               <span class="material-icons">{{ mediaPlaying ? 'pause' : 'play_arrow' }}</span>
             </button>
@@ -37,7 +52,6 @@ import { assetPath } from '../../assets/images';
   `,
   styleUrls: ['./feature-modal.component.css']
 })
-export class FeatureModalComponent implements OnDestroy {
   visible = false;
   mediaPlaying = true;
   @Input() badgeLabel = 'Android 16';
@@ -52,6 +66,8 @@ export class FeatureModalComponent implements OnDestroy {
   @Input() mediaSrc: string | null = assetPath('hero-modal-demo.png');
   @Input() mediaAlt = 'Feature preview';
   @Input() showMediaControl = true;
+  @Input() isVideo: boolean = false;
+  @Input() videoPoster: string | null = null;
   @Output() close = new EventEmitter<void>();
   
   constructor(
