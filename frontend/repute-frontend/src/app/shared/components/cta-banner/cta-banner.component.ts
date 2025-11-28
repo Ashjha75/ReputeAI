@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, AfterViewInit, ElementRef, OnDe
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { assetPath } from '../../assets/images';
 
 interface CtaCard {
   icon: string;
@@ -10,6 +11,8 @@ interface CtaCard {
   message: string;
   action: string;
   actionIcon?: string;
+  backgroundVideo?: string;
+  backgroundPoster?: string;
 }
 
 @Component({
@@ -41,7 +44,9 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       variant: 'primary',
       message: 'Get real-time alerts when risks are detected. Stay ahead with instant AI-powered notifications.',
       action: 'Enable Alerts',
-      actionIcon: 'notifications'
+      actionIcon: 'notifications',
+      backgroundVideo: assetPath('banner-bg-1.mp4'),
+      backgroundPoster: assetPath('banner-notification.png')
     },
     {
       icon: 'insights',
@@ -49,7 +54,9 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       variant: 'accent',
       message: 'Generate comprehensive reports on your digital reputation. Export insights in seconds.',
       action: 'View Reports',
-      actionIcon: 'assessment'
+      actionIcon: 'assessment',
+      backgroundVideo: assetPath('banner-bg-2.mp4'),
+      backgroundPoster: assetPath('banner-report.png')
     },
     {
       icon: 'security',
@@ -57,12 +64,22 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       variant: 'secondary',
       message: 'Connect all your platforms securely. Monitor your entire digital footprint in one place.',
       action: 'Connect Now',
-      actionIcon: 'link'
+      actionIcon: 'link',
+      backgroundVideo: assetPath('banner-bg-3.mp4'),
+      backgroundPoster: assetPath('banner-map.png')
     }
   ];
 
   get currentCard(): CtaCard {
     return this.cards[this.currentIndex];
+  }
+
+  get currentBackgroundVideo(): string | null {
+    return this.currentCard.backgroundVideo ?? null;
+  }
+
+  get currentBackgroundPoster(): string | null {
+    return this.currentCard.backgroundPoster ?? null;
   }
 
   constructor(private host: ElementRef<HTMLElement>) {}

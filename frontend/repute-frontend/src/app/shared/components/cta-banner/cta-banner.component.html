@@ -1,10 +1,22 @@
-<div class="cta-banner" [attr.data-variant]="currentCard.variant">
+<div class="cta-banner" [attr.data-variant]="currentCard.variant" [class.has-video]="!!currentBackgroundVideo">
   <!-- Animated background layers -->
   <div class="cta-banner-bg">
     <div class="cta-banner-gradient-orb orb-1"></div>
     <div class="cta-banner-gradient-orb orb-2"></div>
     <div class="cta-banner-gradient-orb orb-3"></div>
   </div>
+  <video
+    *ngIf="currentBackgroundVideo"
+    class="cta-banner-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    [attr.poster]="currentBackgroundPoster"
+  >
+    <source [src]="currentBackgroundVideo" type="video/mp4" />
+  </video>
   
   <!-- Content layer -->
   <div class="cta-banner-content mb-4" [class.transitioning]="isTransitioning">
