@@ -15,7 +15,7 @@ import {
 } from '../../shared/components/feature-highlight-card/feature-highlight-card.component';
 import { CtaBannerComponent } from '../../shared/components/cta-banner/cta-banner.component';
 import { PixelDropPromoComponent } from '../../shared/components/pixel-drop-promo/pixel-drop-promo.component';
-import { assetPath } from '../../shared/assets/images';
+import IMAGES from '../../shared/assets/images';
 
 @Component({
   selector: 'app-home',
