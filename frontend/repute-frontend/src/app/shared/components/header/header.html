@@ -61,8 +61,9 @@
 
       <!-- Right Side Actions -->
       <div class="flex items-center gap-4">
-        <!-- Search Icon -->
+        <!-- Search Icon (only show when auth buttons hidden) -->
         <button 
+          *ngIf="isAuthenticated"
           (click)="toggleSearch()"
           class="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 hidden md:block relative z-50">
           <svg *ngIf="!isSearchOpen" class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
