@@ -126,28 +126,66 @@
 .feature-highlight-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.6rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
 .feature-highlight-chip {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-  color: #1e40af;
-  border: 1px solid #bfdbfe;
-  border-radius: 6px;
-  padding: 0.35rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 10px; /* Good border radius */
+  padding: 0.4rem 0.85rem;
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.01em;
-  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease;
+  cursor: default;
 }
 
 .feature-highlight-chip:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.15);
-  border-color: #93c5fd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Variant 1: Blue (Analytics/Tech) */
+.feature-highlight-chip:nth-child(4n+1) {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  color: #294294;
+  border-color: #bfdbfe;
+}
+.feature-highlight-chip:nth-child(4n+1):hover {
+  border-color: #60a5fa;
+}
+
+/* Variant 2: Violet (AI/Intelligence) */
+.feature-highlight-chip:nth-child(4n+2) {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ddd6fe 100%);
+  color: #5b21b6;
+  border-color: #c4b5fd;
+}
+.feature-highlight-chip:nth-child(4n+2):hover {
+  border-color: #a78bfa;
+}
+
+/* Variant 3: Emerald (Security/Safe) */
+.feature-highlight-chip:nth-child(4n+3) {
+  background: linear-gradient(135deg, #ecfdf5 0%, #a7f3d0 100%);
+  color: #047857;
+  border-color: #6ee7b7;
+}
+.feature-highlight-chip:nth-child(4n+3):hover {
+  border-color: #34d399;
+}
+
+/* Variant 4: Amber (Alerts/Attention) */
+.feature-highlight-chip:nth-child(4n+4) {
+  background: linear-gradient(135deg, #fffbeb 0%, #fde68a 100%);
+  color: #b45309;
+  border-color: #fcd34d;
+}
+.feature-highlight-chip:nth-child(4n+4):hover {
+  border-color: #fbbf24;
 }
 
 /* Actions */
