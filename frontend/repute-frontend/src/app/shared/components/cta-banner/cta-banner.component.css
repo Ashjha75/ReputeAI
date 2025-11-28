@@ -2,53 +2,54 @@
 :host {
   display: block;
   opacity: 0;
-  transform: translateY(40px) scale(0.96);
-  transition: opacity 1s cubic-bezier(.16,.84,.44,1), transform 1s cubic-bezier(.16,.84,.44,1);
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.2, 0, 0, 1), transform 0.8s cubic-bezier(0.2, 0, 0, 1);
 }
 
 :host(.in-view) {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 /* Material Design 3 elevated container */
 .cta-banner {
   position: relative;
   width: 100%;
+  max-width: 1200px; /* Limit width for better readability on large screens */
   margin: 0 auto;
-  border-radius: clamp(2rem, 3vw, 3rem);
-  padding: clamp(3.5rem, 5vw, 5rem) clamp(2.5rem, 4vw, 4rem) clamp(4rem, 5vw, 5.5rem);
+  border-radius: 28px; /* Material 3 large radius */
+  padding: 48px 24px;
   overflow: hidden;
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.05),
-    0 12px 32px rgba(15, 23, 42, 0.1),
-    0 24px 64px rgba(15, 23, 42, 0.08);
-  transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
+  background: var(--md-sys-color-surface-container-low, #f7f9fc); /* Fallback color */
+  color: var(--md-sys-color-on-surface, #1f1f1f);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 1px 3px 1px rgba(0,0,0,0.15); /* Elevation 1 */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .cta-banner:hover {
-  box-shadow: 
-    0 1px 3px rgba(0, 0, 0, 0.08),
-    0 12px 32px rgba(15, 23, 42, 0.12),
-    0 24px 64px rgba(15, 23, 42, 0.08);
-  transform: translateY(-2px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 2px 6px 2px rgba(0,0,0,0.15); /* Elevation 2 */
 }
 
 /* Animated gradient background - Material Design 3 colors */
 .cta-banner-bg {
   position: absolute;
   inset: 0;
-  background: #ffffff;
+  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%); /* Default subtle gradient */
   z-index: 0;
-  transition: background 0.6s cubic-bezier(.4,0,.2,1);
+  transition: opacity 0.5s ease;
 }
 
 .cta-banner[data-variant="secondary"] .cta-banner-bg {
-  background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 45%, #fff9c4 100%);
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
 }
 
 .cta-banner[data-variant="accent"] .cta-banner-bg {
-  background: linear-gradient(135deg, #f3e5f5 0%, #ffffff 45%, #fce4ec 100%);
+  background: linear-gradient(135deg, #fdf4ff 0%, #ffffff 100%);
 }
 
 /* Animated gradient orbs */
