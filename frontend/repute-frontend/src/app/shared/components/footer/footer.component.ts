@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import IMAGES from '../../assets/images';
 
 interface FooterLink {
   label: string;
@@ -22,6 +23,7 @@ interface FooterSection {
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
+  public logo = IMAGES.logo;
   currentYear = new Date().getFullYear();
 
   footerSections: FooterSection[] = [
