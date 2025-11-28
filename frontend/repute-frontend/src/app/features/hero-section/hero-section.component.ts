@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ConfirmModalComponent, ConfirmModalConfig } from '../../shared/components/confirm-modal/confirm-modal.component';
 import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
 import { isPlatformBrowser } from '@angular/common';
-import { assetPath } from '../../shared/assets/images';
+import IMAGES from '../../shared/assets/images';
 
 // Define the structure for our card data
 interface CarouselItem {

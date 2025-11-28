@@ -49,8 +49,8 @@ export class Home implements OnInit {
       media: {
         alt: 'Realtime notification mockup',
         showPlayButton: true,
-        src: assetPath('banner-bg-5.mp4'),
-        poster: assetPath('banner-notification.png')
+        src: IMAGES.bannerBg5,
+        poster: IMAGES.bannerNotification
       },
       accent: 'aqua' // Google Blue
     },
@@ -65,8 +65,8 @@ export class Home implements OnInit {
       ],
       media: {
         alt: 'Reporting storyboard preview',
-        src: assetPath('banner-bg-2.mp4'),
-        poster: assetPath('banner-report.png')
+        src: IMAGES.bannerBg2,
+        poster: IMAGES.bannerReport
       },
       accent: 'violet' // A distinct secondary color
     },
@@ -81,8 +81,8 @@ export class Home implements OnInit {
       ],
       media: {
         showPlayButton: true,
-        src: assetPath('banner-bg-4.mp4'),
-        poster: assetPath('banner-map.png')
+        src: IMAGES.bannerBg4,
+        poster: IMAGES.bannerMap
       },
       accent: 'emerald' // Android Green accent
     }
