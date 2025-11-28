@@ -1,61 +1,66 @@
-<section class="support-faq-section bg-white py-16 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-4xl mx-auto">
+<section class="support-faq-section bg-white py-24 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
     
     <!-- Section Title -->
-    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-6">
-      Get support
-    </h2>
-
-    <!-- Subtitle with link -->
-    <p class="text-center text-base sm:text-lg text-gray-600 mb-8">
-      Check out our 
-      <a href="#" class="underline hover:text-gray-900 transition-colors duration-200">Help Centre</a> 
-      to get answers. For concierge support, follow the links below:
-    </p>
+    <div class="text-center mb-16">
+      <h2 class="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+        Everything you need to know about ReputeAI. Can't find the answer you're looking for? 
+        <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">Contact our support team.</a>
+      </p>
+    </div>
 
     <!-- Support Links -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
+    <div class="flex flex-wrap justify-center gap-6 mb-20">
       <a 
         *ngFor="let link of supportLinks"
         [href]="link.url"
-        class="inline-flex items-center gap-2 px-6 py-3 border-2 border-gray-900 rounded-full text-sm font-medium text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-300">
+        class="material-btn-outline">
+        <span class="material-icon-wrapper" *ngIf="link.icon === 'email'">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </span>
+        <span class="material-icon-wrapper" *ngIf="link.icon === 'article'">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </span>
         {{ link.label }}
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-        </svg>
       </a>
     </div>
 
     <!-- FAQ Accordion -->
-    <div class="space-y-0 border-t border-gray-200">
+    <div class="space-y-4">
       <div 
         *ngFor="let faq of faqs"
-        class="border-b border-gray-200 accordion-item">
+        class="accordion-item rounded-2xl border border-slate-200 bg-white overflow-hidden transition-all duration-300 hover:shadow-md"
+        [class.active]="isOpen(faq.id)">
         
         <!-- Question Button -->
         <button
           (click)="toggleAccordion(faq.id)"
-          class="w-full flex items-center justify-between py-6 text-left hover:bg-gray-50 transition-all duration-200 px-4 sm:px-6"
+          class="w-full flex items-center justify-between p-6 text-left focus:outline-none"
           [attr.aria-expanded]="isOpen(faq.id)">
-          <span class="text-base sm:text-lg font-semibold text-gray-900 pr-4">
+          <span class="text-lg font-semibold text-slate-900 pr-8">
             {{ faq.question }}
           </span>
-          <svg 
-            class="w-6 h-6 text-gray-900 flex-shrink-0 transition-transform duration-300"
-            [class.rotate-180]="isOpen(faq.id)"
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
+          <div class="icon-container w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+            <svg 
+              class="w-5 h-5 text-slate-600 transition-transform duration-300"
+              [class.rotate-180]="isOpen(faq.id)"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
         </button>
 
         <!-- Answer Content -->
         <div 
-          class="accordion-content"
+          class="accordion-content bg-slate-50"
           [class.open]="isOpen(faq.id)">
-          <div class="px-4 sm:px-6 pb-6">
-            <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+          <div class="px-6 pb-6 pt-2">
+            <p class="text-base text-slate-600 leading-relaxed">
               {{ faq.answer }}
             </p>
           </div>
