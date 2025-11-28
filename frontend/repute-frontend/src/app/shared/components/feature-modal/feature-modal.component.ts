@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Renderer2, Inject, Input, ElementRef, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Output, Renderer2, Inject, Input, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
 import { assetPath } from '../../assets/images';
@@ -26,7 +26,21 @@ import { assetPath } from '../../assets/images';
             </button>
           </div>
           <div class="feature-media" *ngIf="mediaSrc">
-            <img [src]="mediaSrc" [alt]="mediaAlt" />
+            <ng-container *ngIf="isVideo; else imgBlock">
+              <video 
+                #videoPlayer
+                [src]="mediaSrc" 
+                [poster]="mediaPoster" 
+                autoplay 
+                muted 
+                loop 
+                playsinline 
+                class="feature-video">
+              </video>
+            </ng-container>
+            <ng-template #imgBlock>
+              <img [src]="mediaSrc" [alt]="mediaAlt" />
+            </ng-template>
             <button *ngIf="showMediaControl" class="media-control" (click)="toggleMedia()">
               <span class="material-icons">{{ mediaPlaying ? 'pause' : 'play_arrow' }}</span>
             </button>
@@ -50,10 +64,17 @@ export class FeatureModalComponent implements OnDestroy {
   @Input() ctaIcon = 'open_in_new';
   @Output() cta = new EventEmitter<void>();
   @Input() mediaSrc: string | null = assetPath('hero-modal-demo.png');
+  @Input() mediaPoster: string | null = null;
   @Input() mediaAlt = 'Feature preview';
   @Input() showMediaControl = true;
+
+  get isVideo(): boolean {
+    return !!this.mediaSrc && this.mediaSrc.toLowerCase().endsWith('.mp4');
+  }
   @Output() close = new EventEmitter<void>();
   
+  @ViewChild('videoPlayer') videoPlayer?: ElementRef<HTMLVideoElement>;
+
   constructor(
     @Inject(DOCUMENT) private document: Document, 
     private renderer: Renderer2,
@@ -84,5 +105,12 @@ export class FeatureModalComponent implements OnDestroy {
   }
   toggleMedia() {
     this.mediaPlaying = !this.mediaPlaying;
+    if (this.isVideo && this.videoPlayer) {
+      if (this.mediaPlaying) {
+        this.videoPlayer.nativeElement.play();
+      } else {
+        this.videoPlayer.nativeElement.pause();
+      }
+    }
   }
 }

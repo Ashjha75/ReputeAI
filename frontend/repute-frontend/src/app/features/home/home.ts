@@ -49,7 +49,7 @@ export class Home implements OnInit {
       media: {
         alt: 'Realtime notification mockup',
         showPlayButton: true,
-        src: assetPath('banner-bg-1.mp4'),
+        src: assetPath('banner-bg-5.mp4'),
         poster: assetPath('banner-notification.png')
       },
       accent: 'aqua' // Google Blue
@@ -81,7 +81,7 @@ export class Home implements OnInit {
       ],
       media: {
         showPlayButton: true,
-        src: assetPath('banner-bg-3.mp4'),
+        src: assetPath('banner-bg-4.mp4'),
         poster: assetPath('banner-map.png')
       },
       accent: 'emerald' // Android Green accent
