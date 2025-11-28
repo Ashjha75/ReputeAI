@@ -1,6 +1,7 @@
-import { Component, HostListener, OnDestroy, ViewChild } from '@angular/core';
+import { Component, HostListener, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthService, UserProfile } from '../../../core/services/auth.service';
 import { NotificationService } from '../../../core/services/notification.service';
@@ -12,12 +13,14 @@ import IMAGES from '../../assets/images';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatIconModule, ConfirmModalComponent],
+  imports: [CommonModule, RouterModule, MatIconModule, ConfirmModalComponent, FormsModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
 export class Header implements OnDestroy {
   @ViewChild(ConfirmModalComponent) confirmModal!: ConfirmModalComponent;
+  @ViewChild('searchInput') searchInput!: ElementRef;
+  
   // expose static images to the template
   public logo = IMAGES.logo;
   isScrolled = false;
@@ -26,6 +29,11 @@ export class Header implements OnDestroy {
   isAuthenticated = false; // This should be connected to your auth service
   userDropdownOpen = false;
   currentUser: UserProfile | null = null;
+  
+  // Search state
+  isSearchOpen = false;
+  searchQuery = '';
+
   private authSub: Subscription | null = null;
 
   navItems = [
@@ -169,6 +177,32 @@ export class Header implements OnDestroy {
         this.notificationService.error(err?.error?.message || err?.message || 'Logout failed');
       }
     });
+  }
+
+  toggleSearch() {
+    this.isSearchOpen = !this.isSearchOpen;
+    if (this.isSearchOpen) {
+      setTimeout(() => {
+        this.searchInput?.nativeElement?.focus();
+      }, 100);
+    } else {
+      this.searchQuery = '';
+    }
+  }
+
+  closeSearch() {
+    this.isSearchOpen = false;
+    this.searchQuery = '';
+  }
+
+  performSearch() {
+    if (this.searchQuery.trim()) {
+      console.log('Searching for:', this.searchQuery);
+      this.notificationService.showSuccess(`Searching for: ${this.searchQuery}`);
+      // Implement actual search logic here, e.g., navigate to search results
+      // this.router.navigate(['/search'], { queryParams: { q: this.searchQuery } });
+      this.closeSearch();
+    }
   }
 
   ngOnDestroy(): void {
