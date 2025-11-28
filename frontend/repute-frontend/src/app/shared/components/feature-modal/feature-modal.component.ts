@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Renderer2, Inject, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Renderer2, Inject, Input, ElementRef, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
 
@@ -36,7 +36,7 @@ import { DOCUMENT } from '@angular/common';
   `,
   styleUrls: ['./feature-modal.component.css']
 })
-export class FeatureModalComponent {
+export class FeatureModalComponent implements OnDestroy {
   visible = false;
   mediaPlaying = true;
   @Input() badgeLabel = 'Android 16';
@@ -52,16 +52,32 @@ export class FeatureModalComponent {
   @Input() mediaAlt = 'Feature preview';
   @Input() showMediaControl = true;
   @Output() close = new EventEmitter<void>();
-  constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {}
+  
+  constructor(
+    @Inject(DOCUMENT) private document: Document, 
+    private renderer: Renderer2,
+    private el: ElementRef
+  ) {}
+
   open() {
     this.visible = true;
     this.renderer.addClass(this.document.body, 'modal-open');
+    this.document.body.appendChild(this.el.nativeElement);
   }
+
   closeModal() {
     this.visible = false;
     this.renderer.removeClass(this.document.body, 'modal-open');
     this.close.emit();
   }
+
+  ngOnDestroy() {
+    this.renderer.removeClass(this.document.body, 'modal-open');
+    if (this.el.nativeElement.parentNode === this.document.body) {
+      this.document.body.removeChild(this.el.nativeElement);
+    }
+  }
+
   handleCta() {
     this.cta.emit();
   }

@@ -80,6 +80,27 @@
   box-shadow: 0 2px 16px 0 rgba(24, 52, 81, 0.04);
 }
 
+.pixel-drop-logo-mark {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #ffffffcc;
+  box-shadow: 0 4px 16px 0 rgba(24, 52, 81, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.pixel-drop-logo-mark img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
 .pixel-drop-plane {
   position: absolute;
   top: 1.2rem;

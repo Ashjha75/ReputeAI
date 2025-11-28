@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, ElementRef, AfterViewInit, OnDestroy, Renderer2, HostBinding } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ElementRef, AfterViewInit, OnDestroy, Renderer2, HostBinding, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { FeatureModalComponent } from '../feature-modal/feature-modal.component';
 
 export type FeatureHighlightAccent = 'aqua' | 'emerald' | 'violet' | 'amber' | 'neutral';
 
@@ -35,11 +36,13 @@ export interface FeatureHighlightCard {
 @Component({
   selector: 'app-feature-highlight-card',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, FeatureModalComponent],
   templateUrl: './feature-highlight-card.component.html',
   styleUrl: './feature-highlight-card.component.css'
 })
 export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
+
+  @ViewChild(FeatureModalComponent) modal!: FeatureModalComponent;
 
   @Input() card: FeatureHighlightCard = {
     badge: 'Feature badge',
@@ -59,11 +62,16 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
+    // Open the modal to show more details
+    if (this.modal) {
+      this.modal.open();
+    }
+
     this.action.emit(action);
 
-    if (action.url && typeof window !== 'undefined') {
-      window.open(action.url, action.target ?? '_blank');
-    }
+    // if (action.url && typeof window !== 'undefined') {
+    //   window.open(action.url, action.target ?? '_blank');
+    // }
   }
 
   get mediaSrc(): string {

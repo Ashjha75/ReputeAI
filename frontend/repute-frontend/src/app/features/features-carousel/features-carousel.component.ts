@@ -1,14 +1,15 @@
-import { Component, Input, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { trigger, transition, style, animate, group, query } from '@angular/animations';
 import { assetPath } from '../../shared/assets/images';
+import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
 
 @Component({
   selector: 'app-features-carousel',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, FeatureModalComponent],
   templateUrl: './features-carousel.component.html',
   styleUrls: ['./features-carousel.component.css'],
   animations: [
@@ -56,6 +57,8 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
   private colorCanvas?: HTMLCanvasElement;
   private colorContext?: CanvasRenderingContext2D | null;
 
+  @ViewChild(FeatureModalComponent) modal!: FeatureModalComponent;
+
   // Updated content specific to ReputeAI
   features = [
     {
@@ -90,6 +93,12 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.stopAutoPlay();
+  }
+
+  openModal(): void {
+    if (this.modal) {
+      this.modal.open();
+    }
   }
 
   startAutoPlay(): void {

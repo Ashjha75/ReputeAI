@@ -7,12 +7,15 @@
       Every ReputeAI scan brings you new and improved insights,<br>
       including the latest AI-powered risk analysis.*
     </p>
-    <button class="pixel-drop-promo-btn">Explore Features</button>
+    <button class="pixel-drop-promo-btn" (click)="openModal()">Explore Features</button>
   </div>
 
   <!-- Right Column: Abstract Graphic (Updated for ReputeAI) -->
   <div class="pixel-drop-promo-image-card">
     <div class="pixel-drop-promo-image-bg">
+      <div class="pixel-drop-logo-mark">
+        <img [src]="logo" alt="ReputeAI logo" loading="lazy" decoding="async" />
+      </div>
       
       <!-- Top Icon & Text -->
       <div class="absolute top-8 left-8 flex items-center gap-2">
@@ -47,3 +50,15 @@
   </div>
 
 </div>
+
+<app-feature-modal
+  [badgeLabel]="modalContent.badgeLabel"
+  [badgeContext]="modalContent.badgeContext"
+  [title]="modalContent.title"
+  [subtitle]="modalContent.subtitle"
+  [description]="modalContent.description"
+  [mediaSrc]="modalContent.mediaSrc"
+  [mediaAlt]="modalContent.mediaAlt"
+  [showCta]="false"
+  [showMediaControl]="false"
+></app-feature-modal>
