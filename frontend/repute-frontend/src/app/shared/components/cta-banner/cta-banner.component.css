@@ -40,7 +40,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%); /* Default subtle gradient */
-  z-index: 0;
+  z-index: 1;
   transition: opacity 0.5s ease;
 }
 
@@ -58,7 +58,7 @@
   border-radius: 50%;
   filter: blur(80px);
   opacity: 0.6;
-  z-index: 0;
+  z-index: 1;
   animation: floatOrb 10s ease-in-out infinite alternate;
 }
 
@@ -248,4 +248,20 @@
 
 .cta-banner-dot:hover:not(.active) {
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.cta-banner-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: saturate(1.1) contrast(1.05);
+  opacity: 0.5;
+}
+
+.cta-banner.has-video .cta-banner-bg,
+.cta-banner.has-video .cta-banner-gradient-orb {
+  opacity: 0.8;
 }
