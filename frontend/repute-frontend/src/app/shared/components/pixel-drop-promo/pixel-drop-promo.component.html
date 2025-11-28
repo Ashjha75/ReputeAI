@@ -17,6 +17,24 @@
         <img [src]="logo" alt="ReputeAI logo" loading="lazy" decoding="async" />
       </div>
       
+      <div class="pixel-drop-video-wrapper">
+        <video 
+          class="pixel-drop-video"
+          autoplay 
+          muted 
+          loop 
+          playsinline
+          poster="/assets/hero-modal-demo.png"
+        >
+          <source [src]="videoSrc" type="video/mp4" />
+        </video>
+        <div class="pixel-drop-video-copy">
+          <span class="video-deck">Demo loop</span>
+          <h4>Pixel-area playback</h4>
+          <p>Streamlined alerts &amp; visual cues run nonstop while the hero text explains the value.</p>
+        </div>
+      </div>
+
       <!-- Top Icon & Text -->
       <div class="absolute top-8 left-8 flex items-center gap-2">
         <!-- Replaced Paper Plane with Shield Icon -->

@@ -80,6 +80,57 @@
   box-shadow: 0 2px 16px 0 rgba(24, 52, 81, 0.04);
 }
 
+.pixel-drop-video-wrapper {
+  position: absolute;
+  inset: 1.5rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.05);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.2rem;
+  background: linear-gradient(160deg, rgba(0,0,0,0.25), rgba(0,0,0,0));
+}
+
+.pixel-drop-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pixel-drop-video-copy {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  max-width: 65%;
+}
+
+.pixel-drop-video-copy h4 {
+  font-size: 1.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.pixel-drop-video-copy p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.video-deck {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  background: rgba(255,255,255,0.2);
+  padding: 0.1rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.35rem;
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
 .pixel-drop-logo-mark {
   position: absolute;
   top: 1.4rem;
@@ -93,6 +144,7 @@
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(15, 23, 42, 0.08);
+  z-index: 3;
 }
 
 .pixel-drop-logo-mark img {
@@ -116,7 +168,7 @@
   color: #181c23;
   text-align: center;
   position: relative;
-  z-index: 1;
+  z-index: 4;
   line-height: 1.05;
 }
 .pixel-drop-logo-p {}
