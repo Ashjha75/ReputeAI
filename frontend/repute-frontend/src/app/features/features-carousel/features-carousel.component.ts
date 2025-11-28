@@ -181,7 +181,8 @@ export class FeaturesCarouselComponent implements OnInit, OnDestroy {
     const primary = { r: Math.round(r / count), g: Math.round(g / count), b: Math.round(b / count) };
     const light = this.adjustLightness(primary, 0.2);
     const accent = this.adjustHue(this.adjustLightness(primary, -0.08), 18);
-    return `linear-gradient(135deg, ${this.toRgba(light, 0.85)} 10%, ${this.toRgba(accent, 0.95)} 95%)`;
+    // Reduced opacity for glass effect (0.85 -> 0.4, 0.95 -> 0.6)
+    return `linear-gradient(135deg, ${this.toRgba(light, 0.4)} 0%, ${this.toRgba(accent, 0.6)} 100%)`;
   }
 
   private adjustHue(color: { r: number; g: number; b: number }, degrees: number): { r: number; g: number; b: number } {

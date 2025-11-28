@@ -38,11 +38,16 @@
   justify-content: center;
   padding: 24px;
   border-radius: 46% 54% 38% 62% / 60% 30% 70% 40%;
-  background: var(--flower-gradient, #f9fbff);
-  border: 1px solid rgba(99, 102, 241, 0.35);
-  box-shadow: 0 35px 55px rgba(15, 23, 42, 0.25), inset 0 0 35px rgba(99, 102, 241, 0.15);
+  background: var(--flower-gradient, rgba(255, 255, 255, 0.1));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 35px 55px rgba(15, 23, 42, 0.15), 
+    inset 0 0 35px rgba(255, 255, 255, 0.3);
   overflow: visible;
-  animation: containerFloat 12s ease-in-out infinite, liquidShape 16s ease-in-out infinite;
+  animation: containerFloat 12s ease-in-out infinite, liquidShape 20s ease-in-out infinite;
+  transition: background 1s ease;
 }
 
 .flower-container::before {
@@ -333,14 +338,17 @@
   0% {
     border-radius: 46% 54% 38% 62% / 60% 30% 70% 40%;
   }
-  25% {
-    border-radius: 35% 65% 48% 52% / 55% 65% 35% 45%;
+  20% {
+    border-radius: 35% 65% 55% 45% / 40% 50% 50% 60%;
   }
-  50% {
-    border-radius: 58% 42% 51% 49% / 45% 55% 65% 35%;
+  40% {
+    border-radius: 65% 35% 38% 62% / 55% 35% 65% 45%;
   }
-  75% {
-    border-radius: 42% 58% 55% 45% / 40% 50% 45% 65%;
+  60% {
+    border-radius: 42% 58% 65% 35% / 45% 55% 40% 60%;
+  }
+  80% {
+    border-radius: 58% 42% 45% 55% / 50% 45% 55% 50%;
   }
   100% {
     border-radius: 46% 54% 38% 62% / 60% 30% 70% 40%;
