@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import IMAGES from '../../shared/assets/images';
 
 @Component({
   selector: 'app-feature-grid',
@@ -16,7 +17,8 @@ export class FeatureGridComponent implements AfterViewInit, OnDestroy {
       description: 'Monitor your brand health across millions of sources instantly. Our AI filters noise to give you actionable insights.',
       buttonText: 'Explore Analytics',
       imagePosition: 'left',
-      imageAlt: 'Analytics Dashboard'
+      imageAlt: 'Analytics Dashboard',
+      imageSrc: IMAGES.feature1
     },
     {
       id: 2,
@@ -24,7 +26,8 @@ export class FeatureGridComponent implements AfterViewInit, OnDestroy {
       description: 'Go beyond simple keywords. Our NLP models understand context, sarcasm, and emotion to gauge true customer sentiment.',
       buttonText: 'See How It Works',
       imagePosition: 'right',
-      imageAlt: 'Sentiment Analysis'
+      imageAlt: 'Sentiment Analysis',
+      imageSrc: IMAGES.feature2
     },
     {
       id: 3,
@@ -32,7 +35,8 @@ export class FeatureGridComponent implements AfterViewInit, OnDestroy {
       description: 'Detect negative trends before they go viral. Set up smart alerts and automated workflows to protect your brand image.',
       buttonText: 'View Security Features',
       imagePosition: 'left',
-      imageAlt: 'Crisis Prevention'
+      imageAlt: 'Crisis Prevention',
+      imageSrc: IMAGES.feature3
     }
   ];
 
