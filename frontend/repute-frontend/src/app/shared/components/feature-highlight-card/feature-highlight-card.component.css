@@ -1,5 +1,5 @@
 .feature-highlight-card {
-  background: linear-gradient(180deg, #fcfdff 80%, #f6f8fb 100%);
+  background: #ffffff;
   border: 1.5px solid #e6eaf2;
   box-shadow: 0 12px 32px 0 rgba(24, 52, 81, 0.08);
   transition: box-shadow 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1), border-color 0.22s;
