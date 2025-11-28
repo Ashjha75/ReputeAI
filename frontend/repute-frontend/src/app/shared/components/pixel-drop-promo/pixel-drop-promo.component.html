@@ -1,28 +1,49 @@
-<div class="promo-section">
-  <div class="header-sticky-wrapper">
-    <div class="header-content">
-      <h2 class="section-title">The ReputeAI Advantage</h2>
-      <p class="section-subtitle">Four layers of intelligent defense for your digital reputation.</p>
-    </div>
+<div class="pixel-drop-promo-container">
+  
+  <!-- Left Column: Text Content (Updated for ReputeAI) -->
+  <div class="pixel-drop-promo-content">
+    <h2 class="pixel-drop-promo-title">Continuous Monitoring.<br>Constant Peace of Mind.</h2>
+    <p class="pixel-drop-promo-desc">
+      Every ReputeAI scan brings you new and improved insights,<br>
+      including the latest AI-powered risk analysis.*
+    </p>
+    <button class="pixel-drop-promo-btn">Explore Features</button>
   </div>
 
-  <div class="cards-stack-container">
-    <div class="card-wrapper" *ngFor="let card of cards; let i = index" [style.--index]="i">
-      <div class="card" [ngClass]="card.colorClass">
-        <div class="card-body">
-          <div class="card-header">
-            <div class="icon-box">
-              <mat-icon>{{ card.icon }}</mat-icon>
-            </div>
-            <span class="card-number">0{{ i + 1 }}</span>
-          </div>
-          <h3 class="card-title">{{ card.title }}</h3>
-          <p class="card-description">{{ card.description }}</p>
+  <!-- Right Column: Abstract Graphic (Updated for ReputeAI) -->
+  <div class="pixel-drop-promo-image-card">
+    <div class="pixel-drop-promo-image-bg">
+      
+      <!-- Top Icon & Text -->
+      <div class="absolute top-8 left-8 flex items-center gap-2">
+        <!-- Replaced Paper Plane with Shield Icon -->
+        <mat-icon class="text-gray-500">shield</mat-icon>
+        <span class="text-sm font-medium text-gray-500">ReputeAI</span>
+      </div>
+      
+      <!-- Main Abstract Text -->
+      <div class="pixel-drop-logo-text">
+        <!-- Replaced "Pixel Drop" with "AI Score" -->
+        <div class="pixel-drop-headline">
+          <span class="char">A</span>
+          <span class="char">I</span>
+          <span class="spacer">&nbsp;</span>
+          <span class="char">S</span>
+          <span class="char">c</span>
+          <span class="char">o</span>
+          <span class="char">r</span>
+          <span class="char">e</span>
         </div>
-        <div class="card-visual">
-          <div class="visual-pattern"></div>
+
+        <!-- Smiley/check badge element -->
+        <div class="pixel-drop-logo-smiley">
+          <div class="smiley-face" aria-hidden="true">
+            <div class="mouth"></div>
+          </div>
+          <div class="smiley-badge"><mat-icon>check</mat-icon></div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
