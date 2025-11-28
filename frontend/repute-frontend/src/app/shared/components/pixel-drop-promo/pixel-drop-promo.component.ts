@@ -2,6 +2,7 @@ import { Component, AfterViewInit, ElementRef, HostBinding, OnDestroy, ViewChild
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FeatureModalComponent } from '../feature-modal/feature-modal.component';
+import { assetPath, IMAGES } from '../../assets/images';
 
 @Component({
   selector: 'app-pixel-drop-promo',
@@ -13,6 +14,7 @@ import { FeatureModalComponent } from '../feature-modal/feature-modal.component'
 export class PixelDropPromoComponent implements AfterViewInit, OnDestroy {
   @HostBinding('class.in-view') inView = false;
   @ViewChild(FeatureModalComponent) modal!: FeatureModalComponent;
+  logo = IMAGES.logo;
 
   modalContent = {
     badgeLabel: 'AI Monitoring',
@@ -20,7 +22,7 @@ export class PixelDropPromoComponent implements AfterViewInit, OnDestroy {
     title: 'Continuous Monitoring. Constant Peace of Mind.',
     subtitle: 'Advanced Risk Analysis',
     description: 'ReputeAI’s continuous monitoring engine works 24/7 to scan your digital footprint. Our AI detects emerging risks, flags harmful content, and provides actionable insights to protect your reputation before issues escalate. Stay ahead of the curve with automated alerts and comprehensive reporting.',
-    mediaSrc: '/carousel-ai-score.png', // Using an existing asset
+    mediaSrc: assetPath('carousel-score.png'), // Consistent with header logo handling
     mediaAlt: 'AI Score Dashboard'
   };
 
