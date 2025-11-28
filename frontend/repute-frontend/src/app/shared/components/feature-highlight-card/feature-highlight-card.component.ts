@@ -86,13 +86,10 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
     // Simple observer to trigger the CSS reveal animation
     this.io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.hostInView = true;
-          // Once revealed, we don't need to observe anymore for performance
-          this.io?.disconnect();
-        }
+        // Toggle visibility every time it enters/leaves viewport
+        this.hostInView = entry.isIntersecting;
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
     this.io.observe(this.host.nativeElement);
   }
