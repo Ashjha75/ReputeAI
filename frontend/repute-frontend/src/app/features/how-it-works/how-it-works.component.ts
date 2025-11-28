@@ -1,12 +1,4 @@
-import { Component, ElementRef, AfterViewInit, QueryList, ViewChildren, NgZone } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -23,18 +15,9 @@ interface Step {
   standalone: true,
   imports: [CommonModule, MatIconModule],
   templateUrl: './how-it-works.component.html',
-  styleUrls: ['./how-it-works.component.css'],
-  animations: [
-    trigger('scrollFadeInUp', [
-      state('hidden', style({ opacity: 0, transform: 'translateY(40px)' })),
-      state('visible', style({ opacity: 1, transform: 'translateY(0)' })),
-      transition('hidden => visible', [
-        animate('0.7s cubic-bezier(.4,0,.2,1)')
-      ])
-    ])
-  ]
+  styleUrls: ['./how-it-works.component.css']
 })
-export class HowItWorksComponent implements AfterViewInit {
+export class HowItWorksComponent {
   steps: Step[] = [
     {
       number: 1,
@@ -61,42 +44,4 @@ export class HowItWorksComponent implements AfterViewInit {
       icon: 'insights'
     }
   ];
-  // Track which step is visible
-  stepStates: string[] = [];
-
-  @ViewChildren('stepCard', { read: ElementRef }) stepCards!: QueryList<ElementRef>;
-
-
-  constructor(private ngZone: NgZone, private cdr: ChangeDetectorRef) {
-    this.stepStates = Array(this.steps.length).fill('hidden');
-  }
-
-  ngAfterViewInit() {
-    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const idx = Number((entry.target as HTMLElement).getAttribute('data-step-index'));
-          if (entry.isIntersecting && this.stepStates[idx] !== 'visible') {
-            setTimeout(() => {
-              this.ngZone.run(() => {
-                this.stepStates[idx] = 'visible';
-                this.cdr.detectChanges();
-              });
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.18 });
-      this.stepCards.forEach((el, idx) => {
-        el.nativeElement.setAttribute('data-step-index', idx);
-        observer.observe(el.nativeElement);
-      });
-    } else {
-      // Fallback: show all if IntersectionObserver not available
-      setTimeout(() => {
-        this.stepStates = this.stepStates.map(() => 'visible');
-        this.cdr.detectChanges();
-      });
-    }
-  }
 }
