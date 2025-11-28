@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Renderer2, Inject, Input, ElementRef, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Output, Renderer2, Inject, Input, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
 import { assetPath } from '../../assets/images';
@@ -28,6 +28,7 @@ import { assetPath } from '../../assets/images';
           <div class="feature-media" *ngIf="mediaSrc">
             <ng-container *ngIf="isVideo; else imgBlock">
               <video 
+                #videoPlayer
                 [src]="mediaSrc" 
                 [poster]="mediaPoster" 
                 autoplay 
@@ -72,6 +73,8 @@ export class FeatureModalComponent implements OnDestroy {
   }
   @Output() close = new EventEmitter<void>();
   
+  @ViewChild('videoPlayer') videoPlayer?: ElementRef<HTMLVideoElement>;
+
   constructor(
     @Inject(DOCUMENT) private document: Document, 
     private renderer: Renderer2,
@@ -102,5 +105,12 @@ export class FeatureModalComponent implements OnDestroy {
   }
   toggleMedia() {
     this.mediaPlaying = !this.mediaPlaying;
+    if (this.isVideo && this.videoPlayer) {
+      if (this.mediaPlaying) {
+        this.videoPlayer.nativeElement.play();
+      } else {
+        this.videoPlayer.nativeElement.pause();
+      }
+    }
   }
 }
