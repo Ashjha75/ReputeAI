@@ -69,9 +69,9 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
 
     this.action.emit(action);
 
-    if (action.url && typeof window !== 'undefined') {
-      window.open(action.url, action.target ?? '_blank');
-    }
+    // if (action.url && typeof window !== 'undefined') {
+    //   window.open(action.url, action.target ?? '_blank');
+    // }
   }
 
   get mediaSrc(): string {
