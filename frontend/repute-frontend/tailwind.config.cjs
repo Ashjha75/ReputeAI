@@ -76,6 +76,10 @@ module.exports = {
           'from': { opacity: '0', transform: 'translateY(30px)' },
           'to': { opacity: '1', transform: 'translateY(0)' }
         },
+        'fadeInDown': {
+          'from': { opacity: '0', transform: 'translateY(-10px)' },
+          'to': { opacity: '1', transform: 'translateY(0)' }
+        },
         'scaleInBounce': {
           '0%': { opacity: '0', transform: 'scale(0.3)' },
           '50%': { transform: 'scale(1.05)' },
