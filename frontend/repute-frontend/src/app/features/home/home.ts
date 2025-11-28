@@ -49,8 +49,8 @@ export class Home implements OnInit {
       media: {
         alt: 'Realtime notification mockup',
         showPlayButton: true,
-        src: assetPath('banner-bg-1.mp4'),
-        poster: assetPath('banner-notification.png')
+        src: assetPath('banner-notification.mp4'),
+        poster: assetPath('banner-notification.mp4')
       },
       accent: 'aqua' // Google Blue
     },
