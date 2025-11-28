@@ -86,7 +86,7 @@
             <p class="text-lg text-slate-600 mb-8 leading-relaxed">
               {{ features[2].description }}
             </p>
-            <button class="material-btn-primary">
+            <button class="material-btn-primary" (click)="openFeatureModal(features[2])">
               {{ features[2].buttonText }}
               <span class="material-icon-wrapper">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,4 +100,15 @@
 
     </div>
   </div>
+  <app-feature-modal
+    [badgeLabel]="modalContent.badgeLabel"
+    [badgeContext]="modalContent.badgeContext"
+    [title]="modalContent.title"
+    [subtitle]="modalContent.subtitle"
+    [description]="modalContent.description"
+    [mediaSrc]="modalContent.mediaSrc"
+    [mediaAlt]="modalContent.mediaAlt"
+    [showCta]="false"
+    [showMediaControl]="false"
+  ></app-feature-modal>
 </section>

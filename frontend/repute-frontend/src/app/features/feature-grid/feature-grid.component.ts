@@ -62,6 +62,7 @@ export class FeatureGridComponent implements AfterViewInit, OnDestroy {
     mediaSrc: IMAGES.feature1,
     mediaAlt: 'Feature preview'
   };
+  private observer: IntersectionObserver | undefined;
   openFeatureModal(feature: FeatureGridItem) {
     this.modalContent = {
       ...this.modalContent,
