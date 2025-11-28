@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ConfirmModalComponent, ConfirmModalConfig } from '../../shared/components/confirm-modal/confirm-modal.component';
 import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
 import { isPlatformBrowser } from '@angular/common';
+import { assetPath } from '../../shared/assets/images';
 
 // Define the structure for our card data
 interface CarouselItem {
@@ -96,7 +97,7 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
       'Our advanced algorithms scan Twitter/X, LinkedIn, and GitHub to identify potential risks in your digital footprint. We analyze sentiment, keyword history, and brand alignment.',
     ctaLabel: 'View Sample Report',
     ctaIcon: 'analytics',
-    mediaSrc: 'assets/hero-modal-demo.png', 
+    mediaSrc: assetPath('hero-modal-demo.png'), 
     mediaAlt: 'AI Analysis Dashboard Demo'
   };
 
@@ -110,7 +111,7 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
   };
 
   // Fallback image for modal
-  fallbackImage = 'assets/fallback.png';
+  fallbackImage = assetPath('fallback.png');
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
