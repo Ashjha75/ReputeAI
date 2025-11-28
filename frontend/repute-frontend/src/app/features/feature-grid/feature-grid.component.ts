@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,28 +8,65 @@ import { CommonModule } from '@angular/common';
   templateUrl: './feature-grid.component.html',
   styleUrls: ['./feature-grid.component.css'],
 })
-export class FeatureGridComponent {
+export class FeatureGridComponent implements AfterViewInit, OnDestroy {
   features = [
     {
       id: 1,
-      title: 'YouTube Create and other ways to elevate your content.',
-      buttonText: 'See the latest',
+      title: 'Real-time Reputation Analytics',
+      description: 'Monitor your brand health across millions of sources instantly. Our AI filters noise to give you actionable insights.',
+      buttonText: 'Explore Analytics',
       imagePosition: 'left',
-      imageAlt: 'Content creation'
+      imageAlt: 'Analytics Dashboard'
     },
     {
       id: 2,
-      title: 'Pair and cast to your favourite devices.',
-      buttonText: 'See how devices connect',
+      title: 'AI-Driven Sentiment Analysis',
+      description: 'Go beyond simple keywords. Our NLP models understand context, sarcasm, and emotion to gauge true customer sentiment.',
+      buttonText: 'See How It Works',
       imagePosition: 'right',
-      imageAlt: 'Device pairing'
+      imageAlt: 'Sentiment Analysis'
     },
     {
       id: 3,
-      title: 'More spam and phishing protection.',
-      buttonText: 'Learn about security',
+      title: 'Automated Crisis Prevention',
+      description: 'Detect negative trends before they go viral. Set up smart alerts and automated workflows to protect your brand image.',
+      buttonText: 'View Security Features',
       imagePosition: 'left',
-      imageAlt: 'Security features'
+      imageAlt: 'Crisis Prevention'
     }
   ];
+
+  @ViewChildren('featureItem') featureItems!: QueryList<ElementRef>;
+  private observer: IntersectionObserver | undefined;
+
+  ngAfterViewInit() {
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          // Toggle class based on visibility for continuous scroll effect
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          } else {
+            entry.target.classList.remove('in-view');
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+
+      this.featureItems.changes.subscribe(() => {
+        this.observeItems();
+      });
+      
+      this.observeItems();
+    }
+  }
+
+  private observeItems() {
+    this.featureItems.forEach(item => {
+      this.observer?.observe(item.nativeElement);
+    });
+  }
+
+  ngOnDestroy() {
+    this.observer?.disconnect();
+  }
 }
