@@ -86,8 +86,6 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
 
   constructor(private host: ElementRef<HTMLElement>) {}
 
-  @ViewChild('ctaVideo') ctaVideo?: ElementRef<HTMLVideoElement>;
-
   ngAfterViewInit(): void {
     if (typeof window === 'undefined' || !this.host?.nativeElement) return;
 
@@ -103,6 +101,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     }, { threshold: [0, 0.15, 0.3, 0.5] });
 
     this.io.observe(this.host.nativeElement);
+    this.refreshBackgroundVideo();
   }
 
   ngOnDestroy(): void {
