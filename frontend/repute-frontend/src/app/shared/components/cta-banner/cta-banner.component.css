@@ -56,7 +56,7 @@
 .cta-banner-gradient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(24px);
+  filter: none; /* removed heavy blur per request */
   opacity: 0.6;
   z-index: 1;
   animation: floatOrb 10s ease-in-out infinite alternate;
