@@ -56,7 +56,7 @@
 .cta-banner-gradient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(24px);
   opacity: 0.6;
   z-index: 1;
   animation: floatOrb 10s ease-in-out infinite alternate;
@@ -257,8 +257,8 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  filter: saturate(1.1) contrast(1.05);
-  opacity: 0.5;
+  filter: saturate(1.05) contrast(1.02);
+  opacity: 0.45;
 }
 
 .cta-banner.has-video .cta-banner-bg,

@@ -36,6 +36,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
   currentIndex = 0;
   isTransitioning = false;
   private lastBackgroundVideo: string | null = null;
+  private refreshScheduled = false;
   @ViewChild('ctaVideo') ctaVideo?: ElementRef<HTMLVideoElement>;
 
   // Pre-defined carousel cards
@@ -48,7 +49,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       action: 'Enable Alerts',
       actionIcon: 'notifications',
       backgroundVideo: assetPath('banner-bg-1.mp4'),
-      backgroundPoster: assetPath('banner-notification.png')
+      backgroundPoster: assetPath('banner-bg-1.png')
     },
     {
       icon: 'insights',
@@ -58,7 +59,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       action: 'View Reports',
       actionIcon: 'assessment',
       backgroundVideo: assetPath('banner-bg-2.mp4'),
-      backgroundPoster: assetPath('banner-report.png')
+      backgroundPoster: assetPath('banner-bg-2.png')
     },
     {
       icon: 'security',
@@ -68,7 +69,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       action: 'Connect Now',
       actionIcon: 'link',
       backgroundVideo: assetPath('banner-bg-3.mp4'),
-      backgroundPoster: assetPath('banner-map.png')
+      backgroundPoster: assetPath('banner-bg-3.png')
     }
   ];
 
@@ -113,7 +114,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     if (this.isTransitioning) return;
     this.isTransitioning = true;
     this.currentIndex = (this.currentIndex + 1) % this.cards.length;
-    this.refreshBackgroundVideo();
+    this.scheduleBackgroundVideoRefresh();
     setTimeout(() => this.isTransitioning = false, 600);
     this.resetAutoPlay();
   }
@@ -122,7 +123,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     if (this.isTransitioning) return;
     this.isTransitioning = true;
     this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
-    this.refreshBackgroundVideo();
+    this.scheduleBackgroundVideoRefresh();
     setTimeout(() => this.isTransitioning = false, 600);
     this.resetAutoPlay();
   }
@@ -131,7 +132,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     if (this.isTransitioning || index === this.currentIndex) return;
     this.isTransitioning = true;
     this.currentIndex = index;
-    this.refreshBackgroundVideo();
+    this.scheduleBackgroundVideoRefresh();
     setTimeout(() => this.isTransitioning = false, 600);
     this.resetAutoPlay();
   }
@@ -155,6 +156,17 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     if (this.inView) {
       this.startAutoPlay();
     }
+  }
+
+  private scheduleBackgroundVideoRefresh(): void {
+    if (this.refreshScheduled) {
+      return;
+    }
+    this.refreshScheduled = true;
+    Promise.resolve().then(() => {
+      this.refreshScheduled = false;
+      this.refreshBackgroundVideo();
+    });
   }
 
   private refreshBackgroundVideo(): void {
