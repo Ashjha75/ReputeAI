@@ -1,15 +1,17 @@
-import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import IMAGES from '../../shared/assets/images';
+import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
 
 @Component({
   selector: 'app-feature-grid',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './feature-grid.component.html',
   styleUrls: ['./feature-grid.component.css'],
+  imports: [CommonModule, FeatureModalComponent]
 })
 export class FeatureGridComponent implements AfterViewInit, OnDestroy {
+  @ViewChild(FeatureModalComponent) modal!: FeatureModalComponent;
   features = [
     {
       id: 1,
@@ -41,6 +43,15 @@ export class FeatureGridComponent implements AfterViewInit, OnDestroy {
   ];
 
   @ViewChildren('featureItem') featureItems!: QueryList<ElementRef>;
+  modalContent = {
+    badgeLabel: 'ReputeAI Feature Spotlight',
+    badgeContext: 'Product Highlights',
+    title: '',
+    subtitle: '',
+    description: '',
+    mediaSrc: IMAGES.feature1,
+    mediaAlt: 'Feature preview'
+  };
   private observer: IntersectionObserver | undefined;
 
   ngAfterViewInit() {
