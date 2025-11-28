@@ -35,6 +35,7 @@ import { assetPath } from '../../assets/images';
                 muted 
                 loop 
                 playsinline 
+                preload="auto"
                 class="feature-video">
               </video>
             </ng-container>
