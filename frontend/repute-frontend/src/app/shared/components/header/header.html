@@ -24,11 +24,18 @@
           (mouseenter)="toggleDropdown(item.id)"
           (mouseleave)="closeDropdown()">
           
-          <button 
+          <!-- Simple Link -->
+          <a *ngIf="!item.hasDropdown"
+             [routerLink]="item.link"
+             class="flex items-center gap-1 text-gray-900 text-sm font-normal hover:text-gray-700 transition-colors duration-200 py-2 cursor-pointer">
+            {{ item.label }}
+          </a>
+
+          <!-- Dropdown Trigger -->
+          <button *ngIf="item.hasDropdown"
             class="flex items-center gap-1 text-gray-900 text-sm font-normal hover:text-gray-700 transition-colors duration-200 py-2">
             {{ item.label }}
             <svg 
-              *ngIf="item.hasDropdown"
               class="w-4 h-4 transition-transform duration-200"
               [class.rotate-180]="openDropdown === item.id"
               fill="none" 
@@ -44,8 +51,8 @@
             class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 dropdown-menu">
             <a 
               *ngFor="let subItem of item.dropdownItems"
-              [href]="subItem.link"
-              class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+              [routerLink]="subItem.link"
+              class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200 cursor-pointer">
               {{ subItem.label }}
             </a>
           </div>

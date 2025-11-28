@@ -30,34 +30,41 @@ export class Header implements OnDestroy {
 
   navItems = [
     {
-      id: 'discover',
-      label: 'Discover Android',
+      id: 'features',
+      label: 'Features',
       hasDropdown: true,
       dropdownItems: [
-        { label: 'Features', link: '#' },
-        { label: 'What\'s New', link: '#' },
-        { label: 'Android Updates', link: '#' },
+        { label: 'Sentiment Analysis', link: '/features/sentiment-analysis' },
+        { label: 'Crisis Prevention', link: '/features/crisis-prevention' },
+        { label: 'Brand Monitoring', link: '/features/brand-monitoring' },
       ]
     },
     {
-      id: 'switch',
-      label: 'Switch to Android',
+      id: 'solutions',
+      label: 'Solutions',
       hasDropdown: true,
       dropdownItems: [
-        { label: 'Make the Switch', link: '#' },
-        { label: 'Transfer Your Data', link: '#' },
-        { label: 'Why Android', link: '#' },
+        { label: 'Enterprise', link: '/solutions/enterprise' },
+        { label: 'Agencies', link: '/solutions/agencies' },
+        { label: 'Small Business', link: '/solutions/small-business' },
       ]
     },
     {
-      id: 'devices',
-      label: 'Explore devices',
+      id: 'resources',
+      label: 'Resources',
       hasDropdown: true,
       dropdownItems: [
-        { label: 'Phones', link: '#' },
-        { label: 'Tablets', link: '#' },
-        { label: 'Watches', link: '#' },
+        { label: 'Blog', link: '/blog' },
+        { label: 'Case Studies', link: '/case-studies' },
+        { label: 'API Docs', link: '/docs' },
       ]
+    },
+    {
+      id: 'pricing',
+      label: 'Pricing',
+      hasDropdown: false,
+      link: '/pricing',
+      dropdownItems: []
     }
   ];
 
