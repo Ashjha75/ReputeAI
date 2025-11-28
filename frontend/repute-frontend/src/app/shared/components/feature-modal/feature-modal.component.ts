@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, Renderer2, Inject, Input, ElementRef, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
+import { assetPath } from '../../assets/images';
 
 @Component({
   selector: 'app-feature-modal',
@@ -48,7 +49,7 @@ export class FeatureModalComponent implements OnDestroy {
   @Input() ctaLabel = 'Learn more about accessibility';
   @Input() ctaIcon = 'open_in_new';
   @Output() cta = new EventEmitter<void>();
-  @Input() mediaSrc: string | null = 'assets/hero-modal-demo.png';
+  @Input() mediaSrc: string | null = assetPath('hero-modal-demo.png');
   @Input() mediaAlt = 'Feature preview';
   @Input() showMediaControl = true;
   @Output() close = new EventEmitter<void>();
