@@ -1,64 +1,43 @@
-<section class="how-it-works-section py-20 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-5xl mx-auto">
-    
-    <!-- Section Header -->
-    <div class="text-center mb-16">
-      <div class="inline-flex items-center justify-center px-5 py-2 bg-gray-900 rounded-full mb-6">
-        <span class="text-white font-medium text-sm tracking-wide">HOW IT WORKS</span>
-      </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Get Started with ReputeAI
-      </h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Simple steps to transform your online reputation
-      </p>
+<section class="how-it-works-section">
+  <div class="header-sticky-wrapper">
+    <div class="header-content">
+      <div class="badge-pill">HOW IT WORKS</div>
+      <h2 class="section-title">Get Started with ReputeAI</h2>
+      <p class="section-subtitle">Simple steps to transform your online reputation</p>
     </div>
+  </div>
 
-    <!-- Steps List -->
-    <div class="space-y-12">
-       <div *ngFor="let step of steps; let i = index"
-         class="step-item"
-         #stepCard
-         [attr.data-step-index]="i">
-        <!-- Step Card -->
-        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-lg hover:shadow-xl transition-shadow duration-300"
-             [@scrollFadeInUp]="stepStates[i]">
-          <div class="flex flex-col md:flex-row gap-8 items-center">
-            <!-- Phone Mockup (Left Side) -->
-            <div class="flex-shrink-0">
-              <div class="phone-mockup bg-gray-900 rounded-3xl p-4 w-48 h-96 flex items-center justify-center shadow-2xl">
-                <div class="text-center text-white space-y-4">
-                  <mat-icon class="text-6xl opacity-80">{{ step.icon }}</mat-icon>
-                  <div class="text-xs opacity-60">Step {{ step.number }}</div>
-                </div>
-              </div>
+  <div class="cards-stack-container">
+    <div class="card-wrapper" *ngFor="let step of steps; let i = index" [style.--index]="i">
+      <div class="card" [ngClass]="'card-' + (i + 1)">
+        <div class="card-content">
+          <div class="step-indicator">
+            <span class="step-number">0{{ step.number }}</span>
+            <div class="step-line"></div>
+          </div>
+          
+          <div class="text-content">
+            <h3 class="card-title">{{ step.title }}</h3>
+            <p class="card-description">{{ step.description }}</p>
+          </div>
+
+          <div class="card-visual">
+            <div class="icon-circle">
+              <mat-icon>{{ step.icon }}</mat-icon>
             </div>
-            <!-- Step Content (Right Side) -->
-            <div class="flex-grow">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-gray-900 flex items-center justify-center">
-                  <span class="text-white font-bold text-lg">{{ step.number }}</span>
-                </div>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-900">
-                  {{ step.title }}
-                </h3>
-              </div>
-              <p class="text-gray-600 leading-relaxed text-base md:text-lg">
-                {{ step.description }}
-              </p>
-            </div>
+            <div class="visual-decoration"></div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- CTA Button -->
-    <div class="text-center mt-16">
-      <button class="get-started-btn px-10 py-4 bg-gray-900 text-white font-semibold text-lg rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-        Get Started Now
-      </button>
-      <p class="mt-4 text-gray-500 text-sm">No credit card required • Free 14-day trial</p>
-    </div>
-
+  <!-- CTA Button -->
+  <div class="cta-container">
+    <button class="get-started-btn">
+      Get Started Now
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+    <p class="cta-subtext">No credit card required • Free 14-day trial</p>
   </div>
 </section>
