@@ -15,6 +15,7 @@ export interface FeatureCardAction {
   variant?: 'primary' | 'outline';
 }
 
+export interface FeatureCardMedia {
   src?: string;
   alt?: string;
   poster?: string;

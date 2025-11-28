@@ -1,14 +1,29 @@
 <mat-card class="feature-highlight-card mat-elevation-z4" [ngClass]="'accent-' + resolvedAccent">
   <div class="feature-highlight-inner-vertical">
-    <div class="feature-highlight-media-vertical" *ngIf="card.media">
-      <div class="media-frame" *ngIf="mediaSrc">
+    <div class="feature-highlight-media-vertical" *ngIf="mediaSrc">
+      <div class="media-frame">
         <div class="parallax-wrap">
-          <img
-            [src]="mediaSrc"
-            [alt]="card.media.alt || card.title"
-            loading="lazy"
-            decoding="async"
-          />
+          <ng-container *ngIf="mediaIsVideo; else imageTemplate">
+            <video
+              class="feature-highlight-card-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              [attr.poster]="mediaPoster"
+            >
+              <source [src]="mediaSrc" type="video/mp4" />
+            </video>
+          </ng-container>
+          <ng-template #imageTemplate>
+            <img
+              [src]="mediaSrc"
+              [alt]="card.media?.alt || card.title"
+              loading="lazy"
+              decoding="async"
+            />
+          </ng-template>
         </div>
       </div>
       <!-- <button
