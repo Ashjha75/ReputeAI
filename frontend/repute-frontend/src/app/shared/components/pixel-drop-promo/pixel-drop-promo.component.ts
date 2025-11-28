@@ -22,7 +22,7 @@ export class PixelDropPromoComponent implements AfterViewInit, OnDestroy {
     title: 'Continuous Monitoring. Constant Peace of Mind.',
     subtitle: 'Advanced Risk Analysis',
     description: 'ReputeAI’s continuous monitoring engine works 24/7 to scan your digital footprint. Our AI detects emerging risks, flags harmful content, and provides actionable insights to protect your reputation before issues escalate. Stay ahead of the curve with automated alerts and comprehensive reporting.',
-    mediaSrc: assetPath('carousel-score.png'), // Consistent with header logo handling
+    mediaSrc: assetPath('carousel-ai-score.png'), // Consistent with header logo handling
     mediaAlt: 'AI Score Dashboard'
   };
 
