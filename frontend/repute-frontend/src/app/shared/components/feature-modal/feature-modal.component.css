@@ -152,10 +152,15 @@ body.modal-open {
   justify-content: center;
 }
 
-.feature-media img {
+.feature-media img,
+.feature-video {
   width: min(360px, 80vw);
   border-radius: 1.8rem;
   box-shadow: 0 35px 60px rgba(15, 23, 42, 0.15);
+}
+
+.feature-video {
+  object-fit: cover;
 }
 
 .media-control {
