@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, AfterViewInit, ElementRef, OnDestroy, HostBinding } from '@angular/core';
+import { Component, Input, Output, EventEmitter, AfterViewInit, ElementRef, OnDestroy, HostBinding, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -35,6 +35,8 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
   // Carousel state
   currentIndex = 0;
   isTransitioning = false;
+  private lastBackgroundVideo: string | null = null;
+  @ViewChild('ctaVideo') ctaVideo?: ElementRef<HTMLVideoElement>;
 
   // Pre-defined carousel cards
   cards: CtaCard[] = [
@@ -46,7 +48,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       action: 'Enable Alerts',
       actionIcon: 'notifications',
       backgroundVideo: assetPath('banner-bg-1.mp4'),
-      backgroundPoster: assetPath('banner-bg-1.mp4')
+      backgroundPoster: assetPath('banner-notification.png')
     },
     {
       icon: 'insights',
@@ -56,7 +58,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       action: 'View Reports',
       actionIcon: 'assessment',
       backgroundVideo: assetPath('banner-bg-2.mp4'),
-      backgroundPoster: assetPath('banner-bg-2.mp4')
+      backgroundPoster: assetPath('banner-report.png')
     },
     {
       icon: 'security',
@@ -66,7 +68,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       action: 'Connect Now',
       actionIcon: 'link',
       backgroundVideo: assetPath('banner-bg-3.mp4'),
-      backgroundPoster: assetPath('banner-bg-3.mp4')
+      backgroundPoster: assetPath('banner-map.png')
     }
   ];
 
@@ -83,6 +85,8 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
   }
 
   constructor(private host: ElementRef<HTMLElement>) {}
+
+  @ViewChild('ctaVideo') ctaVideo?: ElementRef<HTMLVideoElement>;
 
   ngAfterViewInit(): void {
     if (typeof window === 'undefined' || !this.host?.nativeElement) return;
@@ -110,6 +114,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     if (this.isTransitioning) return;
     this.isTransitioning = true;
     this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+    this.refreshBackgroundVideo();
     setTimeout(() => this.isTransitioning = false, 600);
     this.resetAutoPlay();
   }
@@ -118,6 +123,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     if (this.isTransitioning) return;
     this.isTransitioning = true;
     this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
+    this.refreshBackgroundVideo();
     setTimeout(() => this.isTransitioning = false, 600);
     this.resetAutoPlay();
   }
@@ -126,6 +132,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     if (this.isTransitioning || index === this.currentIndex) return;
     this.isTransitioning = true;
     this.currentIndex = index;
+    this.refreshBackgroundVideo();
     setTimeout(() => this.isTransitioning = false, 600);
     this.resetAutoPlay();
   }
@@ -149,5 +156,19 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     if (this.inView) {
       this.startAutoPlay();
     }
+  }
+
+  private refreshBackgroundVideo(): void {
+    const videoSrc = this.currentBackgroundVideo;
+    if (this.lastBackgroundVideo === videoSrc) {
+      return;
+    }
+    this.lastBackgroundVideo = videoSrc;
+    const videoEl = this.ctaVideo?.nativeElement;
+    if (!videoEl || !videoSrc) {
+      return;
+    }
+    videoEl.load();
+    videoEl.play().catch(() => { /* ignore autoplay restrictions */ });
   }
 }
