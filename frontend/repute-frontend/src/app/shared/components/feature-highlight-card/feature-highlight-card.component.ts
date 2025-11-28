@@ -18,7 +18,6 @@ export interface FeatureCardAction {
 export interface FeatureCardMedia {
   src?: string;
   alt?: string;
-  poster?: string;
   showPlayButton?: boolean;
 }
 
@@ -75,16 +74,8 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
     // }
   }
 
-  get mediaSrc(): string | null {
-    return this.card.media?.src ?? null;
-  }
-
-  get mediaPoster(): string | null {
-    return this.card.media?.poster ?? null;
-  }
-
-  get mediaIsVideo(): boolean {
-    return !!this.mediaSrc && this.mediaSrc.toLowerCase().endsWith('.mp4');
+  get mediaSrc(): string {
+    return this.card.media?.src ?? '';
   }
 
   get resolvedAccent(): FeatureHighlightAccent {
