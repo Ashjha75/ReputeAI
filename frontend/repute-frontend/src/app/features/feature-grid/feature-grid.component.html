@@ -30,7 +30,7 @@
             <p class="text-lg text-slate-600 mb-8 leading-relaxed">
               {{ features[0].description }}
             </p>
-            <button class="material-btn-primary">
+            <button class="material-btn-primary" (click)="openFeatureModal(features[0])">
               {{ features[0].buttonText }}
               <span class="material-icon-wrapper">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,7 +53,7 @@
             <p class="text-lg text-slate-600 mb-8 leading-relaxed">
               {{ features[1].description }}
             </p>
-            <button class="material-btn-primary">
+            <button class="material-btn-primary" (click)="openFeatureModal(features[1])">
               {{ features[1].buttonText }}
               <span class="material-icon-wrapper">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

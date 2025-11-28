@@ -3,6 +3,16 @@ import { CommonModule } from '@angular/common';
 import IMAGES from '../../shared/assets/images';
 import { FeatureModalComponent } from '../../shared/components/feature-modal/feature-modal.component';
 
+interface FeatureGridItem {
+  id: number;
+  title: string;
+  description: string;
+  buttonText: string;
+  imagePosition: 'left' | 'right';
+  imageAlt: string;
+  imageSrc: string;
+}
+
 @Component({
   selector: 'app-feature-grid',
   standalone: true,
@@ -52,7 +62,17 @@ export class FeatureGridComponent implements AfterViewInit, OnDestroy {
     mediaSrc: IMAGES.feature1,
     mediaAlt: 'Feature preview'
   };
-  private observer: IntersectionObserver | undefined;
+  openFeatureModal(feature: FeatureGridItem) {
+    this.modalContent = {
+      ...this.modalContent,
+      title: feature.title,
+      subtitle: feature.buttonText,
+      description: `${feature.description} ReputeAI extends this capability with automated playbooks tailored to teams, audit-ready logs, and mobile alerts so every stakeholder can stay on top of shifts in seconds.`,
+      mediaSrc: feature.imageSrc,
+      mediaAlt: feature.imageAlt
+    };
+    this.modal?.open();
+  }
 
   ngAfterViewInit() {
     if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
