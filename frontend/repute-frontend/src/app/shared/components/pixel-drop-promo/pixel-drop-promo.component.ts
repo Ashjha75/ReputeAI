@@ -1,20 +1,28 @@
-import { Component, AfterViewInit, ElementRef, HostBinding, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, HostBinding, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { FeatureModalComponent } from '../feature-modal/feature-modal.component';
 
 @Component({
   selector: 'app-pixel-drop-promo',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [CommonModule, MatIconModule, FeatureModalComponent],
   templateUrl: './pixel-drop-promo.component.html',
   styleUrls: ['./pixel-drop-promo.component.css']
 })
 export class PixelDropPromoComponent implements AfterViewInit, OnDestroy {
   @HostBinding('class.in-view') inView = false;
+  @ViewChild(FeatureModalComponent) modal!: FeatureModalComponent;
 
   private io?: IntersectionObserver;
 
   constructor(private host: ElementRef<HTMLElement>) {}
+
+  openModal() {
+    if (this.modal) {
+      this.modal.open();
+    }
+  }
 
   ngAfterViewInit(): void {
     if (typeof window === 'undefined' || !this.host?.nativeElement) return;
