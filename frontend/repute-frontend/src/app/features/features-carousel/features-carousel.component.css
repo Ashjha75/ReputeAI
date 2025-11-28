@@ -1,7 +1,7 @@
 /* Main Section */
 .features-carousel-section {
   position: relative;
-  background: linear-gradient(to bottom, #f3f4f6c2 0%, #e5e7eba1 100%);
+  background: #ffffff;
   padding: 80px 20px;
   overflow: hidden;
 }
