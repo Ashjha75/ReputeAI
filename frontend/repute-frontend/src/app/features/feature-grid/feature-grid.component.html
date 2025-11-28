@@ -18,11 +18,7 @@
       <div #featureItem class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center scroll-reveal-item">
         <div class="order-2 lg:order-1">
           <div class="feature-image-container rounded-[2.5rem] aspect-[4/3] overflow-hidden relative shadow-2xl">
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200"></div>
-            <!-- Placeholder for actual image -->
-            <div class="absolute inset-0 flex items-center justify-center text-slate-300">
-              <svg class="w-24 h-24 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
-            </div>
+            <img [src]="features[0].imageSrc" [alt]="features[0].imageAlt" class="w-full h-full object-cover" loading="lazy">
           </div>
         </div>
         <div class="order-1 lg:order-2 flex flex-col justify-center">
@@ -69,10 +65,7 @@
         </div>
         <div class="order-2">
           <div class="feature-image-container rounded-[2.5rem] aspect-[4/3] overflow-hidden relative shadow-2xl">
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200"></div>
-            <div class="absolute inset-0 flex items-center justify-center text-slate-300">
-              <svg class="w-24 h-24 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></svg>
-            </div>
+            <img [src]="features[1].imageSrc" [alt]="features[1].imageAlt" class="w-full h-full object-cover" loading="lazy">
           </div>
         </div>
       </div>
@@ -81,10 +74,7 @@
       <div #featureItem class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center scroll-reveal-item">
         <div class="order-2 lg:order-1">
           <div class="feature-image-container rounded-[2.5rem] aspect-[4/3] overflow-hidden relative shadow-2xl">
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200"></div>
-            <div class="absolute inset-0 flex items-center justify-center text-slate-300">
-              <svg class="w-24 h-24 opacity-20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
-            </div>
+            <img [src]="features[2].imageSrc" [alt]="features[2].imageAlt" class="w-full h-full object-cover" loading="lazy">
           </div>
         </div>
         <div class="order-1 lg:order-2 flex flex-col justify-center">
