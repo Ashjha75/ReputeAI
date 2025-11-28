@@ -24,7 +24,10 @@ export const IMAGES = {
   logo: imagePath('logo.png'),
   bannerMap: imagePath('banner-map.png'),
   bannerReport: imagePath('banner-report.png'),
-  bannerNotification: imagePath('banner-notification.png')
+  bannerNotification: imagePath('banner-notification.png'),
+  feature1: imagePath('features-1.png'),
+  feature2: imagePath('features-2.png'),
+  feature3: imagePath('features-3.png')
 };
 
 export type ImageKey = keyof typeof IMAGES;
