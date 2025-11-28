@@ -22,7 +22,7 @@ interface FeatureGridItem {
 })
 export class FeatureGridComponent implements AfterViewInit, OnDestroy {
   @ViewChild(FeatureModalComponent) modal!: FeatureModalComponent;
-  features = [
+  features: FeatureGridItem[] = [
     {
       id: 1,
       title: 'Real-time Reputation Analytics',
