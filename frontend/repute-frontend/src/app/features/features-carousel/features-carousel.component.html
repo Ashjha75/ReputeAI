@@ -66,7 +66,7 @@
             <p class="card-description">{{ feature.description }}</p>
 
             <!-- CTA Button -->
-            <button class="cta-button">
+            <button class="cta-button" (click)="openModal()">
               {{ feature.buttonText }}
               <svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
@@ -102,3 +102,15 @@
     </div>
   </div>
 </section>
+
+<app-feature-modal
+  [badgeLabel]="'ReputeAI Feature'"
+  [badgeContext]="'AI Powered'"
+  [title]="features[currentSlide].title"
+  [subtitle]="features[currentSlide].buttonText"
+  [description]="features[currentSlide].description"
+  [mediaSrc]="features[currentSlide].image"
+  [mediaAlt]="features[currentSlide].title"
+  [showCta]="false"
+  [showMediaControl]="false"
+></app-feature-modal>
