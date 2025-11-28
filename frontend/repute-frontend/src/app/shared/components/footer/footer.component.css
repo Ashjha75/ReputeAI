@@ -1,7 +1,8 @@
 .footer {
-  background: #ffffff;
-  border-top: 1px solid #e2e8f0; /* Slate 200 */
+  background: #020617; /* Slate 950 - Deep Dark Background */
+  border-top: 1px solid #1e293b; /* Slate 800 */
   position: relative;
+  color: #94a3b8; /* Slate 400 */
 }
 
 /* Brand logo hover effect */
@@ -14,7 +15,7 @@
 }
 
 /* Link hover effects */
-.footer a:not(.social-icon):not(.bg-slate-900) {
+.footer a:not(.social-icon):not(.bg-white) {
   position: relative;
   display: inline-block;
 }
@@ -22,17 +23,25 @@
 /* Social icon animations */
 .social-icon {
   transform: translateY(0);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .social-icon:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.social-icon:hover svg {
+  color: #020617; /* Dark icon on white hover */
 }
 
 /* Newsletter Input Focus */
 input:focus {
-  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.1);
+  border-color: #6366f1; /* Indigo 500 */
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
 /* Responsive adjustments */
