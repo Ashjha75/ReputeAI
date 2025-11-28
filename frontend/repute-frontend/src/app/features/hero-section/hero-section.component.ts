@@ -97,7 +97,7 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
       'Our advanced algorithms scan Twitter/X, LinkedIn, and GitHub to identify potential risks in your digital footprint. We analyze sentiment, keyword history, and brand alignment.',
     ctaLabel: 'View Sample Report',
     ctaIcon: 'analytics',
-    mediaSrc: assetPath('hero-modal-demo.png'), 
+    mediaSrc: IMAGES.heroModalDemo, 
     mediaAlt: 'AI Analysis Dashboard Demo'
   };
 
