@@ -198,7 +198,7 @@ export class Header implements OnDestroy {
   performSearch() {
     if (this.searchQuery.trim()) {
       console.log('Searching for:', this.searchQuery);
-      this.notificationService.showSuccess(`Searching for: ${this.searchQuery}`);
+      this.notificationService.success(`Searching for: ${this.searchQuery}`);
       // Implement actual search logic here, e.g., navigate to search results
       // this.router.navigate(['/search'], { queryParams: { q: this.searchQuery } });
       this.closeSearch();

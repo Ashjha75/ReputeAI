@@ -45,6 +45,7 @@ module.exports = {
       animation: {
         // Kept: Generic gradient shift animation
         'gradient-shift': 'gradient-shift 15s ease infinite',
+        'fade-in-down': 'fadeInDown 0.3s ease-out forwards',
         // Removed: 'float-slow', 'float-medium', 'float-fast' (Not part of new aesthetic)
         // Removed: 'pulse-glow', 'pulse-subtle', 'pulse-slow' (Not part of new aesthetic)
         // Kept: Generic gradient text animation

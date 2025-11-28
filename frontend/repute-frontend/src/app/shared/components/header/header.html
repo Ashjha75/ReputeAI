@@ -62,9 +62,14 @@
       <!-- Right Side Actions -->
       <div class="flex items-center gap-4">
         <!-- Search Icon -->
-        <button class="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 hidden md:block">
-          <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button 
+          (click)="toggleSearch()"
+          class="p-2 hover:bg-gray-100 rounded-full transition-all duration-200 hidden md:block relative z-50">
+          <svg *ngIf="!isSearchOpen" class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <svg *ngIf="isSearchOpen" class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
 
@@ -147,7 +152,25 @@
           </svg>
         </button>
       </div>
+    </div>
+  </div>
 
+  <!-- Search Bar Overlay -->
+  <div 
+    *ngIf="isSearchOpen"
+    class="absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-lg p-4 z-40 animate-fade-in-down">
+    <div class="max-w-3xl mx-auto relative">
+      <input 
+        #searchInput
+        type="text" 
+        [(ngModel)]="searchQuery"
+        (keyup.enter)="performSearch()"
+        placeholder="Search features, solutions, or resources..." 
+        class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-12 pr-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition-all"
+      >
+      <svg class="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </svg>
     </div>
   </div>
 
