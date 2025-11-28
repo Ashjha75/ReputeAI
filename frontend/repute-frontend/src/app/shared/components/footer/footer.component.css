@@ -1,88 +1,66 @@
 .footer {
   background: #ffffff;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #e2e8f0; /* Slate 200 */
   position: relative;
-}
-
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(99, 102, 241, 0.3) 50%,
-    transparent 100%
-  );
 }
 
 /* Brand logo hover effect */
 .footer .w-10 {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .footer .w-10:hover {
-  transform: scale(1.05);
+  transform: scale(1.1) rotate(-3deg);
 }
 
 /* Link hover effects */
-.footer a {
+.footer a:not(.social-icon):not(.bg-slate-900) {
   position: relative;
   display: inline-block;
-}
-
-.footer a::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: #6366f1;
-  transition: width 0.3s ease;
-}
-
-.footer a:hover::after {
-  width: 100%;
 }
 
 /* Social icon animations */
 .social-icon {
   transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .social-icon:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Newsletter Input Focus */
+input:focus {
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.1);
 }
 
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+  .footer .grid {
+    gap: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .footer .grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
   }
 
-  .footer .col-span-1:first-child {
-    text-align: center;
+  .footer .lg\:col-span-4, 
+  .footer .lg\:col-span-7 {
+    grid-column: span 1;
   }
-
-  .footer .flex.items-center.gap-2 {
-    justify-content: center;
-  }
-
-  .footer ul {
-    text-align: center;
+  
+  .newsletter-form {
+    max-width: 100%;
   }
 }
 
 /* Smooth fade-in animation */
 .footer {
-  animation: fade-in 0.6s ease-out;
+  animation: fade-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @keyframes fade-in {

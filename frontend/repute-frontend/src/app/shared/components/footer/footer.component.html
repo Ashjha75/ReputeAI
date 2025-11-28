@@ -1,65 +1,84 @@
 <footer class="footer">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     
     <!-- Main Footer Content -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
       
-      <!-- Brand Section -->
-      <div class="col-span-1">
-        <div class="flex items-center gap-2 mb-4">
-          <div class="w-10 h-10 bg-gradient-to-br from-black to-black rounded-xl flex items-center justify-center">
+      <!-- Brand Section (Wider) -->
+      <div class="lg:col-span-4">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center shadow-lg">
             <span class="text-white font-bold text-xl">R</span>
           </div>
-          <span class="text-xl font-bold text-gray-900">ReputeAI</span>
+          <span class="text-2xl font-bold text-slate-900 tracking-tight">ReputeAI</span>
         </div>
-        <p class="text-gray-600 text-sm leading-relaxed">
-          AI-powered reputation management for the modern digital age.
+        <p class="text-slate-600 text-base leading-relaxed mb-8">
+          AI-powered reputation management for the modern digital age. Monitor, analyze, and protect your brand with real-time intelligence.
         </p>
+        
+        <!-- Newsletter (New) -->
+        <div class="newsletter-form">
+          <h4 class="text-sm font-semibold text-slate-900 mb-3">Stay updated</h4>
+          <div class="flex gap-2">
+            <input type="email" placeholder="Enter your email" class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-transparent transition-all">
+            <button class="bg-slate-900 text-white px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors shadow-md">
+              Subscribe
+            </button>
+          </div>
+        </div>
       </div>
 
+      <!-- Spacer -->
+      <div class="hidden lg:block lg:col-span-1"></div>
+
       <!-- Footer Links -->
-      <div *ngFor="let section of footerSections" class="col-span-1">
-        <h3 class="text-gray-900 font-semibold mb-4 text-sm">{{ section.title }}</h3>
-        <ul class="space-y-3">
-          <li *ngFor="let link of section.links">
-            <a *ngIf="link.route" 
-               [routerLink]="link.route"
-               class="text-gray-600 hover:text-black text-sm transition-colors duration-200">
-              {{ link.label }}
-            </a>
-            <a *ngIf="link.external" 
-               [href]="link.external"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="text-gray-600 hover:text-black text-sm transition-colors duration-200">
-              {{ link.label }}
-            </a>
-          </li>
-        </ul>
+      <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+        <div *ngFor="let section of footerSections">
+          <h3 class="text-slate-900 font-bold mb-6 text-sm uppercase tracking-wider">{{ section.title }}</h3>
+          <ul class="space-y-4">
+            <li *ngFor="let link of section.links">
+              <a *ngIf="link.route" 
+                 [routerLink]="link.route"
+                 class="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors duration-200 block">
+                {{ link.label }}
+              </a>
+              <a *ngIf="link.external" 
+                 [href]="link.external"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="text-slate-500 hover:text-slate-900 text-sm font-medium transition-colors duration-200 block">
+                {{ link.label }}
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
     <!-- Divider -->
-    <div class="border-t border-gray-200 pt-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="border-t border-slate-200 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
         
         <!-- Copyright -->
-        <p class="text-gray-500 text-sm">
+        <p class="text-slate-500 text-sm font-medium">
           © {{ currentYear }} ReputeAI. All rights reserved.
         </p>
 
-        <!-- Social Links -->
+        <!-- Social Links (Fixed Icons) -->
         <div class="flex items-center gap-4">
-          <span class="text-gray-500 text-sm mr-2">Follow us</span>
           <a *ngFor="let social of socialLinks" 
              [href]="social.url"
              target="_blank"
              rel="noopener noreferrer"
              [attr.aria-label]="social.label"
-             class="social-icon w-9 h-9 rounded-full bg-gray-100 hover:bg-black flex items-center justify-center transition-all duration-300 group">
-            <mat-icon class="text-gray-600 group-hover:text-white text-xl transition-colors duration-300">
-              {{ social.icon }}
-            </mat-icon>
+             class="social-icon w-10 h-10 rounded-full bg-slate-50 hover:bg-slate-900 flex items-center justify-center transition-all duration-300 group border border-slate-200 hover:border-slate-900">
+            <!-- SVG Icon -->
+            <svg class="w-5 h-5 text-slate-600 group-hover:text-white transition-colors duration-300" 
+                 fill="currentColor" 
+                 viewBox="0 0 24 24" 
+                 aria-hidden="true">
+              <path [attr.d]="social.path"></path>
+            </svg>
           </a>
         </div>
       </div>
