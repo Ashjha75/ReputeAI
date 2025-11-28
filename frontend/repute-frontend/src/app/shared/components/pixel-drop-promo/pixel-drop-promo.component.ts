@@ -14,6 +14,16 @@ export class PixelDropPromoComponent implements AfterViewInit, OnDestroy {
   @HostBinding('class.in-view') inView = false;
   @ViewChild(FeatureModalComponent) modal!: FeatureModalComponent;
 
+  modalContent = {
+    badgeLabel: 'AI Monitoring',
+    badgeContext: 'Real-time Protection',
+    title: 'Continuous Monitoring. Constant Peace of Mind.',
+    subtitle: 'Advanced Risk Analysis',
+    description: 'ReputeAI’s continuous monitoring engine works 24/7 to scan your digital footprint. Our AI detects emerging risks, flags harmful content, and provides actionable insights to protect your reputation before issues escalate. Stay ahead of the curve with automated alerts and comprehensive reporting.',
+    mediaSrc: 'assets/carousel-score.png', // Using an existing asset
+    mediaAlt: 'AI Score Dashboard'
+  };
+
   private io?: IntersectionObserver;
 
   constructor(private host: ElementRef<HTMLElement>) {}
