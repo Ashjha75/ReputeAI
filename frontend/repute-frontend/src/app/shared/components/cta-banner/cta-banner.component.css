@@ -168,7 +168,7 @@
   font-weight: 500 !important;
   letter-spacing: 0.1px !important;
   text-transform: none !important; /* Material 3 uses sentence case */
-  background-color: #1a73e8 !important; /* Primary color */
+  background-color: #000000 !important; /* Black color */
   color: white !important;
   box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12) !important;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -179,7 +179,7 @@
 
 .cta-banner-btn:hover {
   box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2), 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12) !important;
-  background-color: #1557b0 !important;
+  background-color: #333333 !important;
 }
 
 .cta-banner-btn-icon {
@@ -243,7 +243,7 @@
 .cta-banner-dot.active {
   width: 24px; /* Active dot expands */
   border-radius: 4px;
-  background-color: #1a73e8;
+  background-color: #000000;
 }
 
 .cta-banner-dot:hover:not(.active) {
