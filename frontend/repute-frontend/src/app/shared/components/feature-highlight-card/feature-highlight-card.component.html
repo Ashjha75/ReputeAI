@@ -5,16 +5,15 @@
         <div class="parallax-wrap">
           <ng-container *ngIf="mediaIsVideo; else imageTemplate">
             <video
+              #featureHighlightVideo
               class="feature-highlight-card-video"
               autoplay
               muted
               loop
               playsinline
               preload="auto"
-            >
-              <source [src]="mediaSrc" type="video/mp4" />
-              #featureHighlightVideo
-            </video>
+              [src]="mediaSrc"
+            ></video>
           </ng-container>
           <ng-template #imageTemplate>
             <img
