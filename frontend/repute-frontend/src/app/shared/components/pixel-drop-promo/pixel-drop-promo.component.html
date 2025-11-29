@@ -19,16 +19,15 @@
       
       <div class="pixel-drop-video-wrapper">
         <video 
+          #pixelDropVideo
           class="pixel-drop-video"
           autoplay 
           muted 
           loop 
           playsinline
           preload="auto"
-          [poster]="posterSrc"
-        >
-          <source [src]="videoSrc" type="video/mp4" />
-        </video>
+          [src]="videoSrc"
+        ></video>
         <div class="pixel-drop-video-copy">
           <!-- <span class="video-deck">Demo loop</span> -->
           <!-- <h4>Pixel-area playback</h4> -->

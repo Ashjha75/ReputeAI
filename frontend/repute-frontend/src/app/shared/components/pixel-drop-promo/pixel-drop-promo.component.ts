@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ElementRef, HostBinding, OnDestroy, ViewChild
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FeatureModalComponent } from '../feature-modal/feature-modal.component';
-import { assetPath, IMAGES } from '../../assets/images';
+import { IMAGES } from '../../assets/images';
 
 @Component({
   selector: 'app-pixel-drop-promo',
@@ -26,7 +26,8 @@ export class PixelDropPromoComponent implements AfterViewInit, OnDestroy {
     mediaAlt: 'AI Score Dashboard'
   };
   videoSrc = IMAGES.pixelArea;
-  posterSrc = IMAGES.heroModalDemo;
+  @ViewChild('pixelDropVideo') pixelDropVideo?: ElementRef<HTMLVideoElement>;
+  private videoWarmup = false;
 
   private io?: IntersectionObserver;
 
@@ -44,13 +45,36 @@ export class PixelDropPromoComponent implements AfterViewInit, OnDestroy {
       entries.forEach(e => {
         if (e.isIntersecting && e.intersectionRatio > 0.15) {
           this.inView = true;
+          this.tryPlayVideo(this.pixelDropVideo?.nativeElement);
         }
       });
     }, { threshold: [0.05, 0.15, 0.5] });
     this.io.observe(this.host.nativeElement);
+    this.preloadVideo();
   }
 
   ngOnDestroy(): void {
     this.io?.disconnect();
+  }
+
+  private preloadVideo(): void {
+    const videoEl = this.pixelDropVideo?.nativeElement;
+    if (!videoEl || this.videoWarmup) {
+      return;
+    }
+    this.videoWarmup = true;
+    videoEl.src = this.videoSrc;
+    videoEl.load();
+    this.tryPlayVideo(videoEl);
+  }
+
+  private tryPlayVideo(videoEl?: HTMLVideoElement): void {
+    if (!videoEl) {
+      return;
+    }
+    videoEl.muted = true;
+    videoEl.play().catch(() => {
+      // Autoplay might still be blocked; keep trying in view.
+    });
   }
 }
