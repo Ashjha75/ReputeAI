@@ -11,9 +11,9 @@
               loop
               playsinline
               preload="auto"
-              [attr.poster]="mediaPoster"
             >
               <source [src]="mediaSrc" type="video/mp4" />
+              #featureHighlightVideo
             </video>
           </ng-container>
           <ng-template #imageTemplate>

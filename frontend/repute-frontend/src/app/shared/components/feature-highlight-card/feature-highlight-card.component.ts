@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, ElementRef, AfterViewInit, OnDestroy, Renderer2, HostBinding, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ElementRef, AfterViewInit, AfterViewChecked, OnDestroy, Renderer2, HostBinding, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -41,7 +41,7 @@ export interface FeatureHighlightCard {
   templateUrl: './feature-highlight-card.component.html',
   styleUrl: './feature-highlight-card.component.css'
 })
-export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
+export class FeatureHighlightCardComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
 
   @ViewChild(FeatureModalComponent) modal!: FeatureModalComponent;
 
@@ -92,8 +92,11 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
   }
 
   private io?: IntersectionObserver;
+  private lastMediaSrc: string | null = null;
 
   @HostBinding('class.in-view') hostInView = false;
+
+  @ViewChild('featureHighlightVideo') featureHighlightVideo?: ElementRef<HTMLVideoElement>;
 
   constructor(private host: ElementRef<HTMLElement>, private renderer: Renderer2) {}
 
@@ -111,7 +114,30 @@ export class FeatureHighlightCardComponent implements AfterViewInit, OnDestroy {
     this.io.observe(this.host.nativeElement);
   }
 
+  ngAfterViewChecked(): void {
+    this.reloadPreviewVideo();
+  }
+
   ngOnDestroy(): void {
     this.io?.disconnect();
+  }
+
+  private reloadPreviewVideo(): void {
+    if (!this.mediaIsVideo) {
+      this.lastMediaSrc = null;
+      return;
+    }
+    const currentSrc = this.mediaSrc;
+    if (!currentSrc || this.lastMediaSrc === currentSrc) {
+      return;
+    }
+    this.lastMediaSrc = currentSrc;
+    const video = this.featureHighlightVideo?.nativeElement;
+    if (!video) {
+      return;
+    }
+    video.src = currentSrc;
+    video.load();
+    video.play().catch(() => { /* ignore autoplay blocks */ });
   }
 }
