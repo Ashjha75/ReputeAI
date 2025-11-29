@@ -110,9 +110,6 @@ export class HeroSectionComponent implements OnInit, OnDestroy {
     cancelLabel: 'Cancel'
   };
 
-  // Fallback image for modal
-  fallbackImage = assetPath('fallback.png');
-
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit(): void {

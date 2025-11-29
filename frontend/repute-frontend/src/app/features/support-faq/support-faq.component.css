@@ -83,6 +83,7 @@ svg {
     max-height: 600px;
   }
 }
+.accordion-item .border-b::after {
   content: '';
   position: absolute;
   bottom: 0;
