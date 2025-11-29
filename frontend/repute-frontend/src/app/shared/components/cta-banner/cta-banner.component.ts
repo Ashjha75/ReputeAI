@@ -12,7 +12,6 @@ interface CtaCard {
   action: string;
   actionIcon?: string;
   backgroundVideo?: string;
-  backgroundPoster?: string;
 }
 
 @Component({
@@ -48,8 +47,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       message: 'Get real-time alerts when risks are detected. Stay ahead with instant AI-powered notifications.',
       action: 'Enable Alerts',
       actionIcon: 'notifications',
-      backgroundVideo: IMAGES.bannerBg5,
-      backgroundPoster: IMAGES.bannerNotification
+      backgroundVideo: IMAGES.bannerBg5
     },
     {
       icon: 'insights',
@@ -58,8 +56,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       message: 'Generate comprehensive reports on your digital reputation. Export insights in seconds.',
       action: 'View Reports',
       actionIcon: 'assessment',
-      backgroundVideo: IMAGES.bannerBg2,
-      backgroundPoster: IMAGES.bannerReport
+      backgroundVideo: IMAGES.bannerBg2
     },
     {
       icon: 'security',
@@ -68,8 +65,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
       message: 'Connect all your platforms securely. Monitor your entire digital footprint in one place.',
       action: 'Connect Now',
       actionIcon: 'link',
-      backgroundVideo: IMAGES.bannerBg4,
-      backgroundPoster: IMAGES.bannerMap
+      backgroundVideo: IMAGES.bannerBg4
     }
   ];
 
@@ -79,10 +75,6 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
 
   get currentBackgroundVideo(): string | null {
     return this.currentCard.backgroundVideo ?? null;
-  }
-
-  get currentBackgroundPoster(): string | null {
-    return this.currentCard.backgroundPoster ?? null;
   }
 
   constructor(private host: ElementRef<HTMLElement>) {}
