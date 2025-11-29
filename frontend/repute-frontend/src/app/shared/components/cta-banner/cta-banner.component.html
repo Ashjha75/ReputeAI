@@ -14,10 +14,8 @@
     loop
     playsinline
     preload="auto"
-    [attr.poster]="currentBackgroundPoster"
-  >
-    <source [src]="currentBackgroundVideo" type="video/mp4" />
-  </video>
+    [src]="currentBackgroundVideo"
+  ></video>
   
   <!-- Content layer -->
   <div class="cta-banner-content mb-4" [class.transitioning]="isTransitioning">

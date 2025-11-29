@@ -94,7 +94,7 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
     }, { threshold: [0, 0.15, 0.3, 0.5] });
 
     this.io.observe(this.host.nativeElement);
-    this.refreshBackgroundVideo();
+    Promise.resolve().then(() => this.refreshBackgroundVideo());
   }
 
   ngOnDestroy(): void {
@@ -163,15 +163,18 @@ export class CtaBannerComponent implements AfterViewInit, OnDestroy {
 
   private refreshBackgroundVideo(): void {
     const videoSrc = this.currentBackgroundVideo;
-    if (this.lastBackgroundVideo === videoSrc) {
+    if (!videoSrc || this.lastBackgroundVideo === videoSrc) {
       return;
     }
     this.lastBackgroundVideo = videoSrc;
-    const videoEl = this.ctaVideo?.nativeElement;
-    if (!videoEl || !videoSrc) {
-      return;
-    }
-    videoEl.load();
-    videoEl.play().catch(() => { /* ignore autoplay restrictions */ });
+    Promise.resolve().then(() => {
+      const videoEl = this.ctaVideo?.nativeElement;
+      if (!videoEl) {
+        return;
+      }
+      videoEl.src = videoSrc;
+      videoEl.load();
+      videoEl.play().catch(() => { /* ignore autoplay restrictions */ });
+    });
   }
 }
