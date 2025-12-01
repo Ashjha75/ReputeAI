@@ -54,9 +54,11 @@ export class Header implements OnDestroy {
       label: 'Features',
       hasDropdown: true,
       dropdownItems: [
-        { label: 'Hero', sectionId: 'hero-section' },
         { label: 'Spotlight', sectionId: 'feature-highlights' },
-        { label: 'Grid', sectionId: 'feature-grid' },
+        { label: 'Highlights', sectionId: 'feature-grid' },
+        { label: 'How It Works', sectionId: 'how-it-works' },
+        { label: 'Features Banner', sectionId: 'cta-banner' },
+        { label: 'Faq', sectionId: 'support-faq' },
       ]
     },
     {
