@@ -41,6 +41,7 @@ export class Header implements OnDestroy {
   isAuthenticated = false; // This should be connected to your auth service
   userDropdownOpen = false;
   currentUser: UserProfile | null = null;
+  private dropdownCloseTimer: ReturnType<typeof setTimeout> | null = null;
   
   // Search state
   isSearchOpen = false;
@@ -98,13 +99,26 @@ export class Header implements OnDestroy {
   toggleDropdown(itemId: string) {
     if (this.openDropdown === itemId) {
       this.openDropdown = null;
-    } else {
-      this.openDropdown = itemId;
+      return;
     }
+    this.openDropdown = itemId;
+  }
+
+  openDropdownById(itemId: string) {
+    if (this.dropdownCloseTimer) {
+      clearTimeout(this.dropdownCloseTimer);
+      this.dropdownCloseTimer = null;
+    }
+    this.openDropdown = itemId;
   }
 
   closeDropdown() {
-    this.openDropdown = null;
+    if (this.dropdownCloseTimer) {
+      clearTimeout(this.dropdownCloseTimer);
+    }
+    this.dropdownCloseTimer = setTimeout(() => {
+      this.openDropdown = null;
+    }, 150);
   }
 
   toggleMobileMenu() {
@@ -267,5 +281,9 @@ export class Header implements OnDestroy {
 
   ngOnDestroy(): void {
     if (this.authSub) { this.authSub.unsubscribe(); }
+    if (this.dropdownCloseTimer) {
+      clearTimeout(this.dropdownCloseTimer);
+      this.dropdownCloseTimer = null;
+    }
   }
 }
