@@ -10,6 +10,18 @@ import { Subscription } from 'rxjs';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 import IMAGES from '../../assets/images';
 
+type DropdownSection = { label: string; sectionId: string };
+type DropdownLink = { label: string; link: string };
+
+type HeaderDropdownItem = DropdownSection | DropdownLink;
+interface HeaderNavItem {
+  id: string;
+  label: string;
+  hasDropdown: boolean;
+  link?: string;
+  dropdownItems: HeaderDropdownItem[];
+}
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -36,7 +48,7 @@ export class Header implements OnDestroy {
 
   private authSub: Subscription | null = null;
 
-  navItems = [
+  navItems: HeaderNavItem[] = [
     {
       id: 'features',
       label: 'Features',

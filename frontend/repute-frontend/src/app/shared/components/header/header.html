@@ -51,22 +51,20 @@
             *ngIf="item.hasDropdown && openDropdown === item.id"
             class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 dropdown-menu">
             <ng-container *ngFor="let subItem of item.dropdownItems">
-              <ng-container *ngIf="subItem.sectionId; else routerLink">
-                <button
-                  type="button"
-                  (click)="scrollToSection(subItem.sectionId)"
-                  class="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">
-                  {{ subItem.label }}
-                </button>
-              </ng-container>
-              <ng-template #routerLink>
-                <a 
-                  [routerLink]="subItem.link"
-                  class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
-                  (click)="closeDropdown()">
-                  {{ subItem.label }}
-                </a>
-              </ng-template>
+              <button
+                *ngIf="subItem.sectionId"
+                type="button"
+                (click)="scrollToSection(subItem.sectionId)"
+                class="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+                {{ subItem.label }}
+              </button>
+              <a 
+                *ngIf="subItem.link"
+                [routerLink]="subItem.link"
+                class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
+                (click)="closeDropdown()">
+                {{ subItem.label }}
+              </a>
             </ng-container>
           </div>
         </div>
@@ -220,22 +218,20 @@
           *ngIf="item.hasDropdown && openDropdown === item.id"
           class="pl-4 space-y-2 mobile-dropdown">
           <ng-container *ngFor="let subItem of item.dropdownItems">
-            <ng-container *ngIf="subItem.sectionId; else mobileLink">
-              <button
-                type="button"
-                class="block py-2 text-sm text-gray-600 hover:text-gray-900 text-left w-full"
-                (click)="scrollToSection(subItem.sectionId)">
-                {{ subItem.label }}
-              </button>
-            </ng-container>
-            <ng-template #mobileLink>
-              <a 
-                [routerLink]="subItem.link"
-                class="block py-2 text-sm text-gray-600 hover:text-gray-900"
-                (click)="toggleDropdown(item.id)">
-                {{ subItem.label }}
-              </a>
-            </ng-template>
+            <button
+              *ngIf="subItem.sectionId"
+              type="button"
+              class="block py-2 text-sm text-gray-600 hover:text-gray-900 text-left w-full"
+              (click)="scrollToSection(subItem.sectionId)">
+              {{ subItem.label }}
+            </button>
+            <a 
+              *ngIf="subItem.link"
+              [routerLink]="subItem.link"
+              class="block py-2 text-sm text-gray-600 hover:text-gray-900"
+              (click)="toggleDropdown(item.id)">
+              {{ subItem.label }}
+            </a>
           </ng-container>
         </div>
       </div>
