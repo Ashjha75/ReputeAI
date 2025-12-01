@@ -123,6 +123,14 @@ export class Header implements OnDestroy {
     }
   }
 
+  isDropdownSection(item: HeaderDropdownItem): item is DropdownSection {
+    return (item as DropdownSection).sectionId !== undefined;
+  }
+
+  isDropdownLink(item: HeaderDropdownItem): item is DropdownLink {
+    return (item as DropdownLink).link !== undefined;
+  }
+
   toggleUserDropdown() {
     this.userDropdownOpen = !this.userDropdownOpen;
   }
