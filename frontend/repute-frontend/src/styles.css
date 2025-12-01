@@ -5,6 +5,10 @@
 @tailwind utilities;
 @import "tailwindcss/base";
 @import "tailwindcss/components";
+/* globally enable smooth anchor jumps */
+:root {
+  scroll-behavior: smooth;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f8fafc; }
 

@@ -4,12 +4,15 @@
 
 <!-- Hero Section Component Host -->
 <app-hero-section></app-hero-section>
+<section id="hero-section">
+	<app-hero-section></app-hero-section>
+</section>
 
-<!-- Features Carousel Section -->
-<app-features-carousel></app-features-carousel>
+<section id="features-carousel">
+	<app-features-carousel></app-features-carousel>
+</section>
 
-<!-- Spotlight Feature Cards Section -->
-<section class="feature-highlights-section fade-in-card">
+<section id="feature-highlights" class="feature-highlights-section fade-in-card">
 	<div class="feature-highlights-grid">
 		<app-feature-highlight-card
 			*ngFor="let card of featureHighlights"
@@ -19,27 +22,26 @@
 	</div>
 </section>
 
-<app-how-it-works></app-how-it-works>
+<section id="how-it-works">
+	<app-how-it-works></app-how-it-works>
+</section>
 
+<section id="pixel-drop">
+	<app-pixel-drop-promo></app-pixel-drop-promo>
+</section>
 
+<section id="feature-grid">
+	<app-feature-grid></app-feature-grid>
+</section>
 
+<section id="cta-banner">
+	<div class="cta-banner-wrapper">
+		<app-cta-banner></app-cta-banner>
+	</div>
+</section>
 
+<section id="support-faq">
+	<app-support-faq></app-support-faq>
+</section>
 
-<!-- Pixel Drop Promo Section -->
-<app-pixel-drop-promo></app-pixel-drop-promo>
-
-<!-- How It Works Section -->
-
-<!-- Feature Grid Section -->
-<app-feature-grid></app-feature-grid>
-<div class="cta-banner-wrapper">
-	<app-cta-banner></app-cta-banner>
-</div>
-<!-- Support FAQ Section -->
-<app-support-faq></app-support-faq>
-
-
-
-
-<!-- Footer -->
 <app-footer></app-footer>
