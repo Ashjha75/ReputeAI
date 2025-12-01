@@ -137,7 +137,11 @@ export class FeatureHighlightCardComponent implements AfterViewInit, AfterViewCh
       return;
     }
     video.src = currentSrc;
-    video.load();
-    video.play().catch(() => { /* ignore autoplay blocks */ });
+    if (typeof video.load === 'function') {
+      video.load();
+    }
+    if (typeof video.play === 'function') {
+      video.play().catch(() => { /* ignore autoplay blocks */ });
+    }
   }
 }
