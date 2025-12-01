@@ -42,9 +42,9 @@ export class Header implements OnDestroy {
       label: 'Features',
       hasDropdown: true,
       dropdownItems: [
-        { label: 'Sentiment Analysis', link: '/features/sentiment-analysis' },
-        { label: 'Crisis Prevention', link: '/features/crisis-prevention' },
-        { label: 'Brand Monitoring', link: '/features/brand-monitoring' },
+        { label: 'Hero', sectionId: 'hero-section' },
+        { label: 'Spotlight', sectionId: 'feature-highlights' },
+        { label: 'Grid', sectionId: 'feature-grid' },
       ]
     },
     {
@@ -95,6 +95,20 @@ export class Header implements OnDestroy {
 
   toggleMobileMenu() {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  scrollToSection(sectionId: string): void {
+    if (!sectionId || typeof document === 'undefined') {
+      return;
+    }
+    const target = document.getElementById(sectionId);
+    if (target) {
+      this.closeDropdown();
+      if (this.isMobileMenuOpen) {
+        this.toggleMobileMenu();
+      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   toggleUserDropdown() {
