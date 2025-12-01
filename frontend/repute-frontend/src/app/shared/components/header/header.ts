@@ -112,17 +112,41 @@ export class Header implements OnDestroy {
   }
 
   scrollToSection(sectionId: string): void {
-    if (!sectionId || typeof document === 'undefined') {
+    if (!sectionId) {
       return;
     }
-    const target = document.getElementById(sectionId);
-    if (target) {
+
+    const closeNavState = () => {
       this.closeDropdown();
       if (this.isMobileMenuOpen) {
         this.toggleMobileMenu();
       }
+    };
+
+    const scrollIntoView = () => {
+      if (typeof document === 'undefined') {
+        return;
+      }
+      const target = document.getElementById(sectionId);
+      if (!target) {
+        return;
+      }
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    closeNavState();
+
+    const currentPath = this.router.url.split('?')[0].split('#')[0];
+    const isOnHome = currentPath === '' || currentPath === '/';
+
+    if (isOnHome) {
+      scrollIntoView();
+      return;
     }
+
+    this.router.navigate(['/'], { fragment: sectionId }).then(() => {
+      setTimeout(scrollIntoView, 120);
+    });
   }
 
   isDropdownSection(item: HeaderDropdownItem): item is DropdownSection {
